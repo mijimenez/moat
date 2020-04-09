@@ -14,7 +14,12 @@ const userSchema = new Schema({
       unique: false,
       required: "Password is Required",
       validate: [({ length }) => length >= 6, "Password should be longer."]
-   }
+   },
+   email: {
+      type: String,
+      unique: true,
+      match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
+    }
 })
 // Define schema methods
 userSchema.methods = {
