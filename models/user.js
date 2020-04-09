@@ -19,7 +19,11 @@ const userSchema = new Schema({
       type: String,
       unique: true,
       match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
-    }
+   },
+   userCreated: {
+      type: Date,
+      default: Date.now
+   }
 })
 // Define schema methods
 userSchema.methods = {
