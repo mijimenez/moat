@@ -15,7 +15,7 @@ router.post("/signup", (req, res) => {
                 error: `Sorry, already a user with the username: ${username}`
             })
         }
-        else {
+        else { 
             // New way to add new user document
             // const newUser = new userModel({
             //     username: username,
