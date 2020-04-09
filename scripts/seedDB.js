@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const db = require("../models/user");
+const User = require("../models/user");
 
 
 mongoose.connect(
@@ -13,12 +13,18 @@ const userSeed = [
     password: "Testing_1",
     email: "test@gmail.com",
     userCreated: new Date(Date.now())
-  }
+  },
+  {
+   username: "StaySixFeetAwayPlease",
+   password: "Password_1",
+   email: "test2@gmail.com",
+   userCreated: new Date(Date.now())
+ }
 ];
 
-db
+User
   .deleteMany({})
-  .then(() => db.collection.insertMany(userSeed))
+  .then(() => User.collection.insertMany(userSeed))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
