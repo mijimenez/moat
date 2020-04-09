@@ -35,7 +35,7 @@ app.use("/user", userRoutes);
 // Define any API routes before this runs
 app.get("*", (req, res) => {
   res.send("catch all route being hit");
-  // res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 app.listen(PORT, () => {
