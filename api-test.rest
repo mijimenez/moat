@@ -2,8 +2,9 @@ POST http://localhost:3001/user/signup HTTP/1.1
 content-type: application/json
 
 {
-    "username": "Madeline",
-    "password": "12345"
+    "username": "My guy",
+    "password": "TestPW",
+    "email": "email@yahoo.com"
 }
 
 ###
@@ -11,9 +12,10 @@ POST http://localhost:3001/user/login HTTP/1.1
 content-type: application/json
 
 {
-    "username": "Madeline",
-    "password": "12345"
+    "username": "My guy",
+    "password": "TestPW"
 }
 
 ###
 POST http://localhost:3001/user/logout HTTP/1.1
+
