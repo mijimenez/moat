@@ -1,0 +1,16 @@
+.col, [class*="col-"]  {
+    text-align: center;
+}
+
+.btn {
+    width: 100%;
+}
+
+hr {
+    width: 40%;
+    display:inline-block;
+}
+
+.order-md-12 {
+    background-color: rgba(53, 50, 50, 0.575);
+}
