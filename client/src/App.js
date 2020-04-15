@@ -16,7 +16,7 @@ function App() {
         <Nav />
         <Switch>
           <Route exact path={"/"}>
-            <Home/>
+            <Home />
           </Route>
           <Route exact path={"/signin"}>
             <Signin />
@@ -26,6 +26,9 @@ function App() {
           </Route>
           <Route exact path={"/dashboard"}>
             <Dashboard />
+          </Route>
+          <Route exact path={"/account"}>
+            {/* <Account /> */}
           </Route>
           <Route>
             <NoMatch />

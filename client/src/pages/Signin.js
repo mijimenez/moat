@@ -30,7 +30,7 @@ function Signin() {
             <div className="row">
                 <div className="col-md-6 order-md-12">
                     <Emblem style={{ borderRadius: "50%" }} />
-                    <Tagline />
+                    <Tagline lineNum={[1,2,3]}/>
                 </div>
 
                 <div className="col-md-6 order-md-1">

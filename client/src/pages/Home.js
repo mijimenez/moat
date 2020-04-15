@@ -15,7 +15,7 @@ function Home() {
             <div className="row">
                 <div className="col-md-12 order-md-12">
                     <Emblem style={{ borderRadius: "50%" }} />
-                    <Tagline />
+                    <Tagline lineNum={[1,2]}/>
                 </div>
             </div>
         </div>

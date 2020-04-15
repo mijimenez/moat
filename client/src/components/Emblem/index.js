@@ -3,11 +3,9 @@ import React from "react";
 
 function Emblem(props) {
     return (
-        <>
-            <div className="emblem">
-                <img src="https://via.placeholder.com/100" {...props}/>
-            </div>
-        </>
+        <div key="emblem" className="emblem">
+            <img src="https://via.placeholder.com/100" {...props} />
+        </div>
     );
 }
 
