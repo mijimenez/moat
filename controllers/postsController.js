@@ -14,7 +14,7 @@ module.exports = {
    },
    note: function (req, res) {
       console.log(req.body)
-      db.Note.create(req.body)
+      db.NewPost.create(req.body)
       .then((savedNote) => {
          res.json(savedNote)
       }).catch((err) => {

@@ -2,9 +2,9 @@ POST http://localhost:3001/api/user/signup HTTP/1.1
 content-type: application/json
 
 {
-    "username": "Yah boy",
-    "password": "Get it",
-    "email": "yahoo@yahoo.com"
+    "username": "My guy",
+    "password": "TestPW",
+    "email": "email@gmail.com"
 }
 
 ###
@@ -12,8 +12,8 @@ POST http://localhost:3001/api/user/login HTTP/1.1
 content-type: application/json
 
 {
-    "username": "Yah boy",
-    "password": "Get it"
+    "username": "My guy",
+    "password": "TestPW"
 }
 
 ###

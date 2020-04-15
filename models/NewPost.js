@@ -3,11 +3,11 @@ const Schema = mongoose.Schema;
 mongoose.promise = Promise
 
 const postSchema = new Schema({
-  title: {
+  postTitle: {
      type: String,
      unique: true
   },
-  text: {
+  postBody: {
      type: String
   },
   date: { 

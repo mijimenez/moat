@@ -5,13 +5,6 @@ const express = require("express");
 
 // Defining methods for the booksController
 module.exports = {
-   findAll: function (req, res) {
-      db.Book
-         .find(req.query)
-         .sort({ _id: -1 })
-         .then(dbModel => res.json(dbModel))
-         .catch(err => res.status(422).json(err));
-   },
    signUp: function (req, res) {
       console.log(req.body)
       const { username, password, email } = req.body
@@ -36,11 +29,5 @@ module.exports = {
             })
          }
       })
-   },
-   remove: function (req, res) {
-      db.Book
-         .deleteOne({ _id: req.params.id })
-         .then(dbModel => res.json(dbModel))
-         .catch(err => res.status(422).json(err));
    }
 };
