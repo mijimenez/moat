@@ -20,6 +20,10 @@ const userSchema = new Schema({
       unique: true,
       match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
    },
+   date: { 
+      type: Date, 
+      default: Date.now 
+   },
    notes: [
       {
         type: Schema.Types.ObjectId,

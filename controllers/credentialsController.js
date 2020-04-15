@@ -1,7 +1,7 @@
 const db = require("../models");
 const router = require("express").Router();
 const express = require("express");
-const passport = require("../passport");
+
 
 // Defining methods for the booksController
 module.exports = {
@@ -12,8 +12,6 @@ module.exports = {
          .then(dbModel => res.json(dbModel))
          .catch(err => res.status(422).json(err));
    },
-
-
    signUp: function (req, res) {
       console.log(req.body)
       const { username, password, email } = req.body
@@ -39,22 +37,6 @@ module.exports = {
          }
       })
    },
-
-   note: function (req, res) {
-      console.log(req.body)
-      db.Note.create({ title: "test", text: "test" })
-      .then((savedUser) => {
-         res.json(savedUser)
-      }).catch((err) => {
-         res.json(err)
-      })
-   },
-
-
-
-
-
-
    remove: function (req, res) {
       db.Book
          .deleteOne({ _id: req.params.id })
