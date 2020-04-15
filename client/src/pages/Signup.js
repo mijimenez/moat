@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Tagline from "../components/Tagline";
 import Emblem from "../components/Emblem";
-import SignupForm from "../components/SignupForm";
+import SigninForm from "../components/SigninForm";
 import Button from "../components/Button";
 import "./style.css";
 
@@ -38,7 +38,7 @@ function Signup() {
 
                 <div className="col-md-6 order-md-1">
                     <Emblem style={{ borderRadius: "50%" }} />
-                    <SignupForm userInfo={userInfo} handleInputChange={handleInputChange} />
+                    <SigninForm userInfo={userInfo} handleInputChange={handleInputChange} />
                     <Button className="btn btn-primary signupBtn" value="SIGN UP" handleBtnClick={handleBtnClick} disabled={!(userInfo.username) || !(userInfo.password)} />
                     <div><hr />OR<hr /></div>
                     <div>Already have an account?</div>
