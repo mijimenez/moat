@@ -3,16 +3,21 @@ const Schema = mongoose.Schema;
 mongoose.promise = Promise
 
 const postSchema = new Schema({
-  postTitle: {
-     type: String,
-     unique: true
-  },
-  postBody: {
-     type: String
-  },
-  date: { 
-     type: Date, 
-     default: Date.now 
+   userID: { 
+      type: String
+   },
+   postTitle: {
+      type: String,
+      unique: true,
+      required: true
+   },
+   postBody: {
+      type: String,
+      required: true
+   },
+   date: {
+      type: Date,
+      default: Date.now
    }
 });
 

@@ -14,6 +14,8 @@ module.exports = {
    },
    note: function (req, res) {
       console.log(req.body)
+      // const userID = req.body._id
+      // const { _id: userID, username, password, email } = req.body
       db.NewPost.create(req.body)
       .then((savedNote) => {
          res.json(savedNote)
