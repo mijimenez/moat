@@ -20,16 +20,16 @@ const userSchema = new Schema({
       unique: true,
       match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
    },
-   date: { 
-      type: Date, 
-      default: Date.now 
+   date: {
+      type: Date,
+      default: Date.now
    },
-   notes: [
+   createdPosts: [
       {
-        type: Schema.Types.ObjectId,
-        ref: "Note"
+         type: Schema.Types.ObjectId,
+         ref: "NewPost"
       }
-    ]
+   ]
 })
 // Define schema methods
 userSchema.methods = {
