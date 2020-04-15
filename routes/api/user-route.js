@@ -5,20 +5,7 @@ const userModel = require("../../models/user");
 const passport = require("../../passport");
 const Note = require("../../models/Note");
 
-// test
-router.post("/testers", (req, res) => {
-   console.log(req.body)
-   const { title, text } = req.body
-   Note.create({
-      title: "test",
-      text: "test"
-   }).then((savedUser) => {
-      res.json(savedUser)
-   }).catch((err) => {
-      res.json(err)
-   })
-});
-
+// api/user/signup
 
 // Sign up route
 router.post("/signup", (req, res) => {

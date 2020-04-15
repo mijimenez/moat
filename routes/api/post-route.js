@@ -4,8 +4,8 @@ const app = express();
 const userModel = require("../../models/user");
 const Note = require("../../models/Note");
 
-// test
-router.post("/testers", ({body}, res) => {
+// api/post/testers
+router.post("/testers", (req, res) => {
    console.log(req.body)
    const { title, text } = req.body
    Note.create({
@@ -17,3 +17,5 @@ router.post("/testers", ({body}, res) => {
       res.json(err)
    })
 });
+
+module.exports = router;
