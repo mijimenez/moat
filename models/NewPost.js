@@ -15,6 +15,9 @@ const postSchema = new Schema({
       type: String,
       required: true
    },
+   comments: {
+      type: []
+   },
    date: {
       type: Date,
       default: Date.now

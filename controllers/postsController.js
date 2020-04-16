@@ -5,10 +5,10 @@ const passport = require("../passport");
 
 // Defining methods for the booksController
 module.exports = {
-   findAll: function (req, res) {
-      db.Book
+   getTrending: function (req, res) {
+      db.NewPost
          .find(req.query)
-         .sort({ _id: -1 })
+         .sort({ date: -1, comments: -1})
          .then(dbModel => res.json(dbModel))
          .catch(err => res.status(422).json(err));
    },

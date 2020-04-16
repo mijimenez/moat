@@ -5,5 +5,6 @@ const apiController = require("../../controllers/postsController")
 // api/post
 router.route("/")
    .post(apiController.note)
+   .get(apiController.getTrending)
 
 module.exports = router;
