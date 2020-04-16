@@ -1,13 +1,22 @@
 const router = require("express").Router();
-const express = require("express");
 const credentialsController = require("../../controllers/credentialsController")
 const passport = require("../../passport");
 
-// api/user/signup
 
+// from server you can follow the path to see how the route path gets it's name
+// server -> routes/index -> routes/api/index -> routes/api/user-route
+
+// actual route is api/user/signup
 router.route("/signup")
-   .get(credentialsController.signUp)
    .post(credentialsController.signUp)
+
+//actual route is api/user
+router.route("/")
+   .get(credentialsController.allUsers)
+
+//actual route is api/user/profile
+router.route("/profile")
+   .get(credentialsController.findUser)
 
 
 // // Login route

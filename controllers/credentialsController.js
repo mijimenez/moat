@@ -1,10 +1,25 @@
 const db = require("../models");
-const router = require("express").Router();
-const express = require("express");
+
 
 
 // Defining methods for the booksController
 module.exports = {
+   allUsers: function (req,res) {
+      console.log(req.body)
+      db.User
+      .find()
+      .sort({_id: -1})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+   },
+   findUser: function (req, res) {
+      const username = req.body.username
+      console.log(username)
+      db.User
+      .find({username})
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+   },
    signUp: function (req, res) {
       console.log(req.body)
       const { username, password, email } = req.body

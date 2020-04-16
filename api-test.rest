@@ -1,14 +1,12 @@
-GET http://localhost:3001/api/post HTTP/1.1
+GET http://localhost:3001/api/user/profile HTTP/1.1
 content-type: application/json
 
 {
-    "username": "My guy",
-    "password": "TestPW",
-    "email": "email@gmail.com"
+    "username": "Christian"
 }
 
 ###
-POST http://localhost:3001/api/user/login HTTP/1.1
+POST http://localhost:3000/api/user/login HTTP/1.1
 content-type: application/json
 
 {
