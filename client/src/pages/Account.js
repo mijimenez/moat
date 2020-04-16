@@ -5,7 +5,7 @@ import SigninForm from "../components/SigninForm";
 import Button from "../components/Button";
 import "./style.css";
 
-function Signup() {
+function Account() {
     const [userInfo, setUserInfo] = useState({
         firstName: "",
         lastName: "",
@@ -31,22 +31,28 @@ function Signup() {
     return (
         <div className="container" style={{ marginTop: "30px", marginBottom: "100px", minHeight: "100vh" }}>
             <div className="row">
-                <div className="col-md-6 order-md-12">
+                <div className="col-md-6" style={{ borderRight: "solid" }}>
                     <Image style={{ borderRadius: "50%" }} />
-                    <Tagline lineNum={[1, 2, 3]} />
+                    <div>Upload Profile Picture</div>
+                    <div>
+                        <p>First Name, Last Name</p>
+                        <p>Username</p>
+                        <p>Email</p>
+                    </div>
                 </div>
 
-                <div className="col-md-6 order-md-1">
-                    <Image className="d-none d-md-block" style={{ borderRadius: "50%" }} />
+                <div className="col-md-6 px-5">
+                    <div>Update Information</div>
                     <SigninForm userInfo={userInfo} handleInputChange={handleInputChange} />
-                    <Button className="btn btn-primary signupBtn" value="SIGN UP" handleBtnClick={handleBtnClick} disabled={!(userInfo.username) || !(userInfo.password)} />
-                    <div><hr />OR<hr /></div>
-                    <div>Already have an account?</div>
-                    <div><a href="/signin"><b>Sign in here.</b></a></div>
+                    <Button className="btn btn-primary updateBtn" value="SAVE" handleBtnClick={handleBtnClick} />
                 </div>
+            </div>
+
+            <div className="">
+                
             </div>
         </div>
     );
 }
 
-export default Signup;
+export default Account;

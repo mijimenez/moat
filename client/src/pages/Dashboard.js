@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Tagline from "../components/Tagline";
-// import Emblem from "../components/Emblem";
 // import Button from "../components/Button";
 import "./style.css";
 
@@ -12,7 +11,7 @@ function Dashboard() {
 
     return (
         <div className="container" style={{ marginTop: "30px", marginBottom: "100px", minHeight: "100vh" }}>
-            <div className="row">
+            <div className="row" style={{ backgroundColor: "rgba(53, 50, 50, 0.575)" }}>
                 <div className="col-md-6">
                     <Tagline lineNum={[{ 1: "Welcome to" }, 2]} />
                 </div>
