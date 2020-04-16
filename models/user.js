@@ -20,10 +20,16 @@ const userSchema = new Schema({
       unique: true,
       match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
    },
-   userCreated: {
+   date: {
       type: Date,
       default: Date.now
-   }
+   },
+   createdPosts: [
+      {
+         type: Schema.Types.ObjectId,
+         ref: "NewPost"
+      }
+   ]
 })
 // Define schema methods
 userSchema.methods = {
@@ -45,5 +51,5 @@ userSchema.pre('save', function (next) {
       next()
    }
 })
-const User = mongoose.model('User', userSchema)
-module.exports = User
+const User = mongoose.model('User', userSchema);
+module.exports = User;
