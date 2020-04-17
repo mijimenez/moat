@@ -3,16 +3,19 @@ const router = require("express").Router();
 const express = require("express");
 const passport = require("../passport");
 
-// Defining methods for the booksController
+
 module.exports = {
+   // gets all Notes and orders by date and then comment amount.
+   // For future we can limit to top 50 results or something
    getTrending: function (req, res) {
       db.NewPost
          .find(req.query)
+         .limit(50)
          .sort({ date: -1, comments: -1})
          .then(dbModel => res.json(dbModel))
          .catch(err => res.status(422).json(err));
    },
-   note: function (req, res) {
+   post: function (req, res) {
       console.log(req.body)
       // const userID = req.body._id
       // const { _id: userID, username, password, email } = req.body

@@ -8,7 +8,7 @@ const apiController = require("../../controllers/postsController")
 
 // api/post
 router.route("/")
-   .post(apiController.note)
+   .post(apiController.post)
    .get(apiController.getTrending)
 
 module.exports = router;
