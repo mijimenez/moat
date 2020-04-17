@@ -1,0 +1,130 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+
+/* ---------  Variables */
+$c-theme: #ed1c24;
+$c-theme-accent: #949494;
+$c-theme-accent-darken: darken($c-theme-accent, 20%);
+$c-white: #fff;
+$c-black: #000;
+$c-bg: #f9f9f9;
+
+@import url(https://fonts.googleapis.com/css?family=Roboto&display=swap);
+
+$f-headings: 'Roboto', sans-serif;
+$f-body: 'Roboto', sans-serif;
+
+
+/* ---------  Mixins */
+@mixin box-shadow {
+  -webkit-box-shadow: 0px 3px 5px -2px rgba(0,0,0,0.3);
+  -moz-box-shadow: 0px 3px 5px -2px rgba(0,0,0,0.3);
+  box-shadow: 0px 3px 5px -2px rgba(0,0,0,0.3);
+}
+
+@mixin center($max-width) {
+  width: 90%;
+  max-width: $max-width;
+  margin: auto;
+}
+
+
+/* ---------  Setup */
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+      margin: 0;
+      background: $c-bg; 
+  }
+
+
+  /* ---------  Fonts */
+  h1, h2, h3, h4, h5 {
+    font-family: $f-headings;
+    margin: 0;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    color: $c-white;
+    font-size: 2rem;
+    @media screen and (min-width: 576px) {
+        font-size: 2.5rem;
+    }
+  }
+
+  h2 {
+      color: $c-theme;
+      font-size: 1.5rem;
+      @media screen and (min-width: 576px) {
+        font-size: 1.875rem;
+      }
+  }
+
+  h3 {
+      font-weight: normal;
+      font-size: .9rem;
+      @media screen and (min-width: 767px) {
+        font-size: 1.17rem;
+      }
+  }
+
+  h6 {
+    color: $c-theme;
+    font-weight: bold;
+    font-family: $f-headings;
+    margin: 0;
+  }
+
+  strong {
+    color: $c-black;
+  }
+
+  p, ul, li, a, label, input[type="text"],
+  textarea[type="text"], input[type="text"]::placeholder, textarea[type="text"]::placeholder, button[type="submit"] {
+    font-family: $f-body;
+    margin: 0;
+    color: #777;
+  }
+
+  ul {
+      list-style-type: none;
+      padding: 0;
+  }
+
+  a {
+      text-decoration: none;
+      transition: .4s all;
+      &:hover, &:active {
+        color: $c-theme;
+        text-decoration: none;
+    }
+  }
+
+  // ----- Layout
+
+
+/* ----- Sticky Footer */
+// .react-body {
+//   display: flex;
+//   flex-direction: column;
+//   height: 100vh;
+//   .react-main {
+//     flex: 1 0 auto;
+//     min-height: auto;
+//   }
+// }
+  

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Tagline from "../components/Tagline";
 import Image from "../components/Image";
 // import Button from "../components/Button";
-import "./style.css";
+import "./sass/style.scss";
 
 function Home() {
 

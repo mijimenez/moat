@@ -3,7 +3,7 @@ import Tagline from "../components/Tagline";
 // import Button from "../components/Button";
 import ListGroup from "../components/ListGroup";
 import Card from "../components/Card";
-import "./style.css";
+import "./sass/style.scss";
 
 function Dashboard() {
 
