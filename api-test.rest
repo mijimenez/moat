@@ -1,10 +1,8 @@
-POST http://localhost:3001/api/user/signup HTTP/1.1
+GET http://localhost:3001/api/user/Madeline HTTP/1.1
 content-type: application/json
 
 {
-    "username": "Unique2",
-    "password": "Password_1",
-    "email": "unique@gmail.com"
+    "username": "Madeline"
 }
 
 ###

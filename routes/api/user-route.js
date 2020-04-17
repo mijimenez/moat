@@ -15,7 +15,7 @@ router.route("/")
    .get(credentialsController.allUsers)
 
 //actual route is api/user/profile
-router.route("/profile")
+router.route("/:id")
    .get(credentialsController.findUser)
 
 
