@@ -1,13 +1,18 @@
 import React from "react";
 // import "./style.css";
 
-function Tagline() {
+function Tagline({ lineNum }) {
+    const tagArray = ["MOAT", "MASTER OF ALL TRADES", "A place for hobbyists and professionals to exchange advice."];
     return (
-        <>
-            <div>MOAT</div>
-            <div>MASTER OF ALL TRADES</div>
-            <div>A place for hobbyists and professionals to exchange advice.</div>
-        </>
+        lineNum.map(num => {
+            return (
+                <div>
+                    {
+                        Object.values(num).length > 0 ? Object.values(num).concat(` ${tagArray[Object.keys(num) - 1]}`) : tagArray[num - 1]
+                    }
+                </div>
+            )
+        })
     );
 }
 
