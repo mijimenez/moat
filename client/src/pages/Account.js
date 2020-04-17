@@ -48,8 +48,17 @@ function Account() {
                 </div>
             </div>
 
-            <div className="">
-                
+            <div className="row">
+                <div className="col-md-3" style={{}}>
+                    <div className="">
+                        Add Post
+                    </div>
+                </div>
+                <div className="col-md-9" style={{}}>
+                    <div className="">
+                        Your Posts
+                    </div>
+                </div>
             </div>
         </div>
     );

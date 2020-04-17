@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Tagline from "../components/Tagline";
 // import Button from "../components/Button";
+import ListGroup from "../components/ListGroup";
+import Card from "../components/Card";
 import "./style.css";
 
 function Dashboard() {
@@ -21,8 +23,14 @@ function Dashboard() {
             </div>
             <div className="row">
                 <div className="col-md-3">
+                    each category will be dynamically displayed later on
+                    <ListGroup />
                 </div>
                 <div className="col-md-9">
+                    <div>Trending</div>
+                    <Card>
+                        
+                    </Card>
                 </div>
             </div>
         </div>
