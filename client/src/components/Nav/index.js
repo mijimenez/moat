@@ -10,7 +10,8 @@ function Navbar() {
     }, [path]);
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{ display: window.location.pathname === "/signin" || window.location.pathname === "/signup" ? "none" : "block" }}>
+        // display: window.location.pathname === "/" || window.location.pathname === "/signin" || window.location.pathname === "/signup" ? "none" : "block"
+        <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{  }}>
             <div className="container">
                 <Link className="navbar-brand" to="/" onClick={() => setPath("/")}>MOAT</Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
