@@ -1,5 +1,5 @@
 import React from "react";
-// import "./style.css";
+// import "../sass/style.scss";
 
 function SigninForm({ userInfo, handleInputChange }) {
     const infoReceived = Object.keys(userInfo);

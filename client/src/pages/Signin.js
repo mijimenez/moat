@@ -3,7 +3,7 @@ import Tagline from "../components/Tagline";
 import Image from "../components/Image";
 import SigninForm from "../components/SigninForm";
 import Button from "../components/Button";
-import "./style.css";
+import "./sass/style.scss";
 
 function Signin() {
     const [userInfo, setUserInfo] = useState({

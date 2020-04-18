@@ -5,7 +5,9 @@ import Image from "../components/Image";
 import SigninForm from "../components/SigninForm";
 import Button from "../components/Button";
 import Card from "../components/Card";
-import "./style.css";
+import "./sass/style.scss";
+import UserPost from "../components/UserPost";
+import API from "../utils/API";
 
 function Account() {
     const [userInfo, setUserInfo] = useState({});
@@ -19,7 +21,7 @@ function Account() {
     }, [])
 
     function getUser() {
-        return axios.get("/api/user/hello")
+       API.getUser("hello")
             .then(res => {
                 console.log(res.data);
                 setUserPosts({ _id: res.data._id, createdPosts: ["5e966dae089aab309c5b0348", "5e966dae089aab309c5b0345"] });
@@ -81,7 +83,7 @@ function Account() {
                         <p>Your Posts</p>
                     </div>
                     <div className="row" id={userPosts._id}>
-                        <Card userPosts={userPosts} handleBtnClick={handleBtnClick} />
+                        <UserPost userPosts={userPosts} handleBtnClick={handleBtnClick} />
                     </div>
                 </div>
             </div>

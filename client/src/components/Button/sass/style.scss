@@ -1,0 +1,17 @@
+@import '../../../Index_sass/sass/index.scss';
+
+// ---- Button
+button {
+    background-color: $c-theme;
+    color: $c-white;
+    text-transform: uppercase;
+    border-radius: 20px;
+    padding: .5em 1.5em;
+    border: none;
+    cursor: pointer;
+    transition: .4s all;
+    &:hover, &:focus {
+        background-color: darken($c-theme, 15%);
+    }
+}
+

@@ -1,3 +1,5 @@
+@import '../../Index_sass/sass/index.scss';
+
 .col, [class*="col-"]  {
     text-align: center;
 }
@@ -13,4 +15,10 @@ hr {
 
 .order-md-12 {
     background-color: rgba(53, 50, 50, 0.575);
+}
+
+// ----- Dashboard Page
+.hero {
+    background-color: $c-theme;
+    color: $c-white;
 }

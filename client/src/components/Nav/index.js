@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-// import "./style.css";
+import "./sass/style.scss";
 
 function Navbar() {
     const [path, setPath] = useState(window.location.pathname);
@@ -10,15 +10,14 @@ function Navbar() {
     }, [path]);
 
     return (
-        // display: window.location.pathname === "/" || window.location.pathname === "/signin" || window.location.pathname === "/signup" ? "none" : "block"
-        <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{  }}>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{ display: window.location.pathname === "/" || window.location.pathname === "/signin" || window.location.pathname === "/signup" ? "none" : "block" }}>
             <div className="container">
                 <Link className="navbar-brand" to="/" onClick={() => setPath("/")}>MOAT</Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav navbar-right">
+                    <ul className="navbar-nav navbar-right ml-auto">
                         {/* <li className="nav-item active">
                             <Link className="nav-link" to="/" onClick={() => setPath("/")}>Home <span className="sr-only">(current)</span></Link>
                         </li> */}

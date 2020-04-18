@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const credentialsController = require("../../controllers/credentialsController")
+const credentialsController = require("../../controllers/userController")
 const passport = require("../../passport");
 
 
@@ -15,7 +15,7 @@ router.route("/")
    .get(credentialsController.allUsers)
 
 //actual route is api/user/profile
-router.route("/profile")
+router.route("/:id")
    .get(credentialsController.findUser)
 
 

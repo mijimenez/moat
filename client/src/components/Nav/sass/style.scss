@@ -1,0 +1,7 @@
+@import '../../../Index_sass/sass/index.scss';
+
+// ---- Nav
+.navbar {
+    background-color: $c-white!important;
+    @include box-shadow;
+}
