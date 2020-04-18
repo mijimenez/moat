@@ -1,5 +1,5 @@
 import React from "react";
-import "../sass/style.scss";
+// import "./sass/style.scss";
 
 function Button(props) {
   return (

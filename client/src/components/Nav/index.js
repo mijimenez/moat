@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "../sass/style.scss";
+// import "../sass/style.scss";
 
 function Navbar() {
     const [path, setPath] = useState(window.location.pathname);

@@ -3,6 +3,7 @@ import Tagline from "../components/Tagline";
 // import Button from "../components/Button";
 import ListGroup from "../components/ListGroup";
 import Card from "../components/Card";
+import Post from "../components/Post";
 import "./sass/style.scss";
 
 function Dashboard() {
@@ -28,9 +29,7 @@ function Dashboard() {
                 </div>
                 <div className="col-md-9">
                     <div>Trending</div>
-                    <Card>
-                        
-                    </Card>
+                    <Post />
                 </div>
             </div>
         </div>
