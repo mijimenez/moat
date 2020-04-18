@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-// import "./style.css";
+import "./sass/style.scss";
 
 function Navbar() {
     const [path, setPath] = useState(window.location.pathname);
@@ -17,7 +17,7 @@ function Navbar() {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav navbar-right">
+                    <ul className="navbar-nav navbar-right ml-auto">
                         {/* <li className="nav-item active">
                             <Link className="nav-link" to="/" onClick={() => setPath("/")}>Home <span className="sr-only">(current)</span></Link>
                         </li> */}

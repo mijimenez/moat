@@ -3,7 +3,8 @@ import Tagline from "../components/Tagline";
 // import Button from "../components/Button";
 import ListGroup from "../components/ListGroup";
 import Card from "../components/Card";
-import "./style.css";
+import Post from "../components/Post";
+import "./sass/style.scss";
 
 function Dashboard() {
 
@@ -13,7 +14,7 @@ function Dashboard() {
 
     return (
         <div className="container" style={{ marginTop: "30px", marginBottom: "100px", minHeight: "100vh" }}>
-            <div className="row" style={{ backgroundColor: "rgba(53, 50, 50, 0.575)" }}>
+            <div className="hero row p-5 mb-3" style={{ backgroundColor: "rgba(53, 50, 50, 0.575)" }}>
                 <div className="col-md-6">
                     <Tagline lineNum={[{ 1: "Welcome to" }, 2]} />
                 </div>
@@ -23,14 +24,11 @@ function Dashboard() {
             </div>
             <div className="row">
                 <div className="col-md-3">
-                    each category will be dynamically displayed later on
                     <ListGroup />
                 </div>
                 <div className="col-md-9">
-                    <div>Trending</div>
-                    <Card>
-                        
-                    </Card>
+                    <div className="mb-3">Trending</div>
+                    <Post />
                 </div>
             </div>
         </div>
