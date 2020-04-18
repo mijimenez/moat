@@ -5,4 +5,7 @@ export default {
     getUser: function (id) {
         return axios.get("/api/user/" + id);
     },
+    getTrending: function () {
+        return axios.get("/api/post");
+    }
 };

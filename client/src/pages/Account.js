@@ -21,10 +21,10 @@ function Account() {
     }, [])
 
     function getUser() {
-       API.getUser("hello")
+       API.getUser("PolkaDotMask")
             .then(res => {
                 console.log(res.data);
-                setUserPosts({ _id: res.data._id, createdPosts: ["5e966dae089aab309c5b0348", "5e966dae089aab309c5b0345"] });
+                setUserPosts({ _id: res.data._id, createdPosts: ["5e98fe4042c3d87f55c921ea", "5e98fe4042c3d87f55c921e5"] });
                 setUserInfo(
                     {
                         firstName: res.data.firstName ? res.data.firstName : "",

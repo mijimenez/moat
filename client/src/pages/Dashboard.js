@@ -4,31 +4,29 @@ import Tagline from "../components/Tagline";
 import ListGroup from "../components/ListGroup";
 import Card from "../components/Card";
 import Post from "../components/Post";
+import API from "../utils/API";
 import "./sass/style.scss";
 
 function Dashboard() {
 
-//   // Setting our component's initial state
-//   const [posts, setPosts] = useState([])
+    const [trendingPosts, setTrendingPosts] = useState({})
 
-//   function getTrending() {
-//     return axios.get("/api/post")
-//   };
+    useEffect(() => {
+        getTrending();
+    }, [])
 
+    function getTrending() {
+        API.getTrending()
+        .then(res => 
+            setTrendingPosts(res.data)
+        )
+        .catch(err => console.log(err));
+    }
+    console.log(trendingPosts);
 
-//   // Load all trending posts from database
-//   useEffect(() => {
-//     // API.getTrending()
-//     // .then(res => 
-//     //     setPosts(res.data)
-//     //   )
-//     //   .catch(err => console.log(err));
-//     getTrending();
-//   }, [])
-
-    const handleBtnClick = event => {
-        event.preventDefault();
-    };
+    // const handleBtnClick = event => {
+    //     event.preventDefault();
+    // };
 
     return (
         <div className="container" style={{ marginTop: "30px", marginBottom: "100px", minHeight: "100vh" }}>
@@ -46,7 +44,19 @@ function Dashboard() {
                 </div>
                 <div className="col-md-9">
                     <div className="mb-3">Trending</div>
-                    <Post />
+                    {trendingPosts.length >0? (
+                    <div> 
+                        {trendingPosts.map(post => (
+                            <Post
+                                postTitle={post.postTitle}
+                                postBody={post.postBody}
+                                comments={post.comments.length}
+                            />
+                        ))}
+                    </div>
+                    ) : (
+                    <p className="display-message text-center mt-5">No one has created any posts yet!</p>
+                    )}
                 </div>
             </div>
         </div>

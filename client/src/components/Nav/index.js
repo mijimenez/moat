@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./sass/style.scss";
+import CreatePostModal from "../CreatePostModal";
 
 function Navbar() {
     const [path, setPath] = useState(window.location.pathname);
@@ -32,6 +33,9 @@ function Navbar() {
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/signup" onClick={() => setPath("/signup")}>Sign Up</Link>
+                        </li>
+                        <li>
+                            <CreatePostModal />
                         </li>
                     </ul>
                 </div>
