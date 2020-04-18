@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 // import Tagline from "../components/Tagline";
 import Image from "../components/Image";
 import SigninForm from "../components/SigninForm";
@@ -12,22 +11,24 @@ import API from "../utils/API";
 function Account() {
     const [userInfo, setUserInfo] = useState({});
     const [userPosts, setUserPosts] = useState({
-        _id: "",
-        createdPosts: [],
-        createdComments: []
+        userId: "",
+        createdPostIds: [],
+        createdCommentsIds: []
     })
+    const [posts, setPosts] = useState([]);
 
     useEffect(() => {
         getUser();
     }, [])
 
+    let usernameStored;
     function getUser() {
-        const usernameStored = localStorage.getItem("usernameMOAT");
-        console.log(usernameStored)
+        usernameStored = localStorage.getItem("usernameMOAT");
+        console.log("usernameStored" + usernameStored)
         API.getUser(usernameStored)
             .then(res => {
                 console.log(res.data);
-                setUserPosts({ _id: res.data._id, createdPosts: [res.data.createdPosts], createdComments: [res.data.createdComments] });
+                setUserPosts({ userId: res.data._id, createdPostsIds: [res.data.createdPosts], createdCommentsIds: [res.data.createdComments] });
                 setUserInfo(
                     {
                         firstName: res.data.firstName ? res.data.firstName : "",
@@ -39,12 +40,16 @@ function Account() {
                 )
             })
             .then(() => {
-                // getPostsByUser()
+                getPostsByUser()
             })
     }
 
     function getPostsByUser() {
-
+        API.getAllUserPosts(usernameStored)
+            .then(res => {
+                console.log(res.data);
+                setPosts(res.data);
+            })
     }
 
     const handleInputChange = event => {
@@ -89,10 +94,10 @@ function Account() {
                     <div className="row">
                         <p>Your Posts</p>
                     </div>
-                    <div className="row" id={userPosts._id}>
-                        {userPosts.createdPosts.map(userPost => (
-                            < UserPost userPost={userPost} createdComments={userPosts.createdComments} handleBtnClick={handleBtnClick} />
-                            ))
+                    <div className="row" id={userPosts.userId}>
+                        {posts.map(post => (
+                            < UserPost post={post} handleBtnClick={handleBtnClick} />
+                        ))
                         }
                     </div>
                 </div>
