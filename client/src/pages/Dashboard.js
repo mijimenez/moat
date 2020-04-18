@@ -8,6 +8,24 @@ import "./sass/style.scss";
 
 function Dashboard() {
 
+//   // Setting our component's initial state
+//   const [posts, setPosts] = useState([])
+
+//   function getTrending() {
+//     return axios.get("/api/post")
+//   };
+
+
+//   // Load all trending posts from database
+//   useEffect(() => {
+//     // API.getTrending()
+//     // .then(res => 
+//     //     setPosts(res.data)
+//     //   )
+//     //   .catch(err => console.log(err));
+//     getTrending();
+//   }, [])
+
     const handleBtnClick = event => {
         event.preventDefault();
     };

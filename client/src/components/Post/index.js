@@ -7,7 +7,8 @@ function Post(props) {
     return (
         <Card>
             <div className="description-w-btn d-flex mb-3">
-                <p className="description text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget blandit felis, vel accumsan eros. Morbi eu finibus nulla, sit amet pellentesque velit.</p>
+                <h3 className="title text-left">{props.postTitle}</h3>
+                <p className="description text-left">{props.postBody}</p>
                 <Button className="view-btn align-self-start ml-3"
                     value="View"
                 />
@@ -17,7 +18,7 @@ function Post(props) {
                     <h6 className="tag">Food</h6>
                     <h6 className="tag">Home</h6>
                 </div>
-                <p className="commentsNum font-weight-bold">5 Comments</p>
+                <p className="commentsNum font-weight-bold">{props.comments} Comments</p>
             </div>
         </Card>
     );
