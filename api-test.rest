@@ -1,21 +1,30 @@
-POST http://localhost:3001/api/post HTTP/1.1
+POST http://localhost:3001/api/user/signup HTTP/1.1
 content-type: application/json
 
 {
-    "userid": "Christian",
-    "postTitle": "Test",
-    "postBody": "test"
+    "username": "Unique2",
+    "password": "Password_1",
+    "email": "unique@gmail.com"
 }
 
 ###
-POST http://localhost:3000/api/user/login HTTP/1.1
+POST http://localhost:3001/api/user/login HTTP/1.1
 content-type: application/json
 
 {
-    "username": "My guy",
-    "password": "TestPW"
+    "username": "PolkaDotMask",
+    "password": "Password_1"
 }
 
 ###
 POST http://localhost:3001/api/user/logout HTTP/1.1
 
+###
+GET http://localhost:3001/api/user HTTP/1.1
+content-type: application/json
+
+{
+    "username": "Unique3",
+    "password": "Password_1",
+    "email": "unique3@gmail.com"
+}
