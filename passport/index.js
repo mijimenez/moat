@@ -5,9 +5,9 @@ const User = require('../models/user')
 // called on login, saves the id to session req.session.passport.user = {id:'..'}
 // keeps them logged in in Passport
 passport.serializeUser((user, done) => {
-	// console.log('*** serializeUser called, user: ')
+	console.log('*** serializeUser called, user: ')
 	console.log(user) // the whole raw user object!
-	// console.log('---------')
+	console.log('---------')
 	// The second argument in 'done()' below is the object that is saved to req.session.pasport.user
 	// Which then gets passed to deserializeUser below as it's 'user' parameter.
 	done(null, { "_id": user._id, "username": user.username })
@@ -16,7 +16,7 @@ passport.serializeUser((user, done) => {
 // user object attaches to the request as req.user = { "_id": user._id, "username": user.username }
 // keeps them logged in in express
 passport.deserializeUser((user, done) => {
-	// console.log('DeserializeUser called')
+	console.log('DeserializeUser called')
 	// User.findOne(
 	// 	{ _id: id },
 	// 	'username',
