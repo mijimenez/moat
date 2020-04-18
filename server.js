@@ -7,6 +7,7 @@ const session = require("express-session");
 const dbConnection = require("./models/mongoose");
 const userRoutes = require("./routes");
 const MongoStore = require("connect-mongo")(session);
+const mongoose = require("mongoose")
 
 
 // Define middleware here
@@ -29,19 +30,6 @@ app.use(
 // Passport
 app.use(passport.initialize())
 app.use(passport.session()) // calls the deserializeUser
-
-// const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/moatDB'
-// mongoose.connect(uri).then(
-//    () => {
-//       /** ready to use. The `mongoose.connect()` promise resolves to undefined. */
-//       console.log('Connected to Mongo');
-//    },
-//    err => {
-//       /** handle initial connection error */
-//       console.log('error connecting to Mongo: ')
-//       console.log(err);
-//    }
-// );
 
 
 // Define API routes here
