@@ -10,8 +10,11 @@ mongoose.connect(
 
 const userSeed = [
    {
+      profilePicture: "../img/NoImageFound.png",
+      categoryPreferences: ["Cosmetics","Lawn Care"],
+      createdComments: [],
       username: "PolkaDotMask",
-      password: "Testing_1",
+      password: "$2a$10$AnAbaVkRtrG.c829veVge.v2gHPZqxW98HPcyxzO.7QFz80.n7tze",
       email: "test@gmail.com",
       date: new Date(Date.now()),
       createdPosts: [
@@ -19,8 +22,11 @@ const userSeed = [
       ]
    },
    {
+      profilePicture: "../img/NoImageFound.png",
+      categoryPreferences: ["Cosmetics","Piano"],
+      createdComments: [],
       username: "StaySixFeetAwayPlease",
-      password: "Password_1",
+      password: "$2a$10$AnAbaVkRtrG.c829veVge.v2gHPZqxW98HPcyxzO.7QFz80.n7tze",
       email: "test2@gmail.com",
       date: new Date(Date.now()),
       createdPosts: [
@@ -28,8 +34,11 @@ const userSeed = [
       ]
    },
    {
+      profilePicture: "../img/NoImageFound.png",
+      categoryPreferences: ["Dance","Guitar"],
+      createdComments: [],
       username: "TestUser",
-      password: "Password_1",
+      password: "$2a$10$AnAbaVkRtrG.c829veVge.v2gHPZqxW98HPcyxzO.7QFz80.n7tze",
       email: "test3@gmail.com",
       date: new Date(Date.now()),
       createdPosts: [
@@ -37,8 +46,11 @@ const userSeed = [
       ]
    },
    {
+      profilePicture: "../img/NoImageFound.png",
+      categoryPreferences: ["Technology","Lawn Care"],
+      createdComments: [],
       username: "Christian",
-      password: "Password_1",
+      password: "$2a$10$AnAbaVkRtrG.c829veVge.v2gHPZqxW98HPcyxzO.7QFz80.n7tze",
       email: "test4@gmail.com",
       date: new Date(Date.now()),
       createdPosts: [
@@ -46,8 +58,11 @@ const userSeed = [
       ]
    },
    {
+      profilePicture: "../img/NoImageFound.png",
+      categoryPreferences: ["Hair Care","Lawn Care"],
+      createdComments: [],
       username: "Madeline",
-      password: "Password_1",
+      password: "$2a$10$AnAbaVkRtrG.c829veVge.v2gHPZqxW98HPcyxzO.7QFz80.n7tze",
       email: "test5@gmail.com",
       date: new Date(Date.now()),
       createdPosts: [
@@ -55,8 +70,11 @@ const userSeed = [
       ]
    },
    {
+      profilePicture: "../img/NoImageFound.png",
+      categoryPreferences: ["Gaming","Lawn Care"],
+      createdComments: [],
       username: "Seohui",
-      password: "Password_1",
+      password: "$2a$10$AnAbaVkRtrG.c829veVge.v2gHPZqxW98HPcyxzO.7QFz80.n7tze",
       email: "test6@gmail.com",
       date: new Date(Date.now()),
       createdPosts: [

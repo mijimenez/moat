@@ -1,7 +1,10 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const bcrypt = require('bcryptjs');
+// const noImage = require('../img/NoImageFound.png')
+
 mongoose.promise = Promise
+
 // Define userSchema
 const userSchema = new Schema({
    username: {
@@ -20,6 +23,13 @@ const userSchema = new Schema({
       unique: true,
       match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
    },
+   profilePicture: {
+      type: String,
+      default: "../img/NoImageFound.png"
+   },
+   categoryPreferences: {
+      type: []
+   },
    date: {
       type: Date,
       default: Date.now
@@ -28,6 +38,12 @@ const userSchema = new Schema({
       {
          type: Schema.Types.ObjectId,
          ref: "NewPost"
+      }
+   ],
+   createdComments: [
+      {
+         type: Schema.Types.ObjectId,
+         ref: "NewComment"
       }
    ]
 })
