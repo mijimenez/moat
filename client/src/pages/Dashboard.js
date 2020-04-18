@@ -14,7 +14,7 @@ function Dashboard() {
 
     return (
         <div className="container" style={{ marginTop: "30px", marginBottom: "100px", minHeight: "100vh" }}>
-            <div className="row" style={{ backgroundColor: "rgba(53, 50, 50, 0.575)" }}>
+            <div className="row p-5 mb-3" style={{ backgroundColor: "rgba(53, 50, 50, 0.575)" }}>
                 <div className="col-md-6">
                     <Tagline lineNum={[{ 1: "Welcome to" }, 2]} />
                 </div>
@@ -28,7 +28,7 @@ function Dashboard() {
                     <ListGroup />
                 </div>
                 <div className="col-md-9">
-                    <div>Trending</div>
+                    <div className="mb-3">Trending</div>
                     <Post />
                 </div>
             </div>

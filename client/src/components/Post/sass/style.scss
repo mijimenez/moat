@@ -1,1 +1,13 @@
+@import '../../../Index_sass/sass/index.scss';
+
 // ---- Post
+.card {
+    .tag {
+        border: thin solid $c-black;
+        border-radius: 20px;
+        padding: 1em 2em;
+        &:not(:last-child) {
+            margin-right: 1em;
+        }
+    }
+}

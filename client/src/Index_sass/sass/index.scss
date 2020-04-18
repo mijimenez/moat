@@ -82,6 +82,13 @@ $f-body: 'Roboto', sans-serif;
       }
   }
 
+  h5 {
+    font-size: .8rem;
+    font-weight: bold;
+    font-family: $f-headings;
+    margin: 0;
+  }
+
   h6 {
     color: $c-theme;
     font-weight: bold;

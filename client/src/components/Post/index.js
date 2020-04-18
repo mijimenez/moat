@@ -6,15 +6,19 @@ import "./sass/style.scss";
 function Post(props) {
     return (
         <Card>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget blandit felis, vel accumsan eros. Morbi eu finibus nulla, sit amet pellentesque velit.</p>
-            <Button 
-                value="View"
-            />
-            <div className="tags">
-                <h5 className="tag">Food</h5>
-                <h5 className="tag">Home</h5>
+            <div className="description-w-btn d-flex mb-3">
+                <p className="description text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget blandit felis, vel accumsan eros. Morbi eu finibus nulla, sit amet pellentesque velit.</p>
+                <Button className="view-btn align-self-start ml-3"
+                    value="View"
+                />
             </div>
-            <p className="commentsNum">5 Comments</p>
+            <div className="tags-w-num d-flex justify-content-between align-items-center">
+                <div className="tags d-flex">
+                    <h5 className="tag">Food</h5>
+                    <h5 className="tag">Home</h5>
+                </div>
+                <p className="commentsNum">5 Comments</p>
+            </div>
         </Card>
     );
 }
