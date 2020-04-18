@@ -20,8 +20,11 @@ POST http://localhost:3000/api/user/login HTTP/1.1
 content-type: application/json
 
 {
-    "username": "hello",
-    "password": "123456"
+    "username": "Seohui",
+    "password": "Password_1"
+}
+
+###
 POST http://localhost:3001/api/user/login HTTP/1.1
 content-type: application/json
 
@@ -33,7 +36,6 @@ content-type: application/json
 ###
 POST http://localhost:3001/api/user/logout HTTP/1.1
 
-<<<<<<< HEAD
 
 ###
 GET http://localhost:3001/api/user/profile HTTP/1.1
@@ -42,7 +44,6 @@ Content-Type: application/json
 {
     "username": "hello"
 }
-=======
 ###
 GET http://localhost:3001/api/user HTTP/1.1
 content-type: application/json
@@ -52,4 +53,3 @@ content-type: application/json
     "password": "Password_1",
     "email": "unique3@gmail.com"
 }
->>>>>>> origin

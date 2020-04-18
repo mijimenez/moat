@@ -13,7 +13,8 @@ function Account() {
     const [userInfo, setUserInfo] = useState({});
     const [userPosts, setUserPosts] = useState({
         _id: "",
-        createdPosts: []
+        createdPosts: [],
+        createdComments: []
     })
 
     useEffect(() => {
@@ -21,10 +22,12 @@ function Account() {
     }, [])
 
     function getUser() {
-       API.getUser("hello")
+        const usernameStored = localStorage.getItem("usernameMOAT");
+        console.log(usernameStored)
+        API.getUser(usernameStored)
             .then(res => {
                 console.log(res.data);
-                setUserPosts({ _id: res.data._id, createdPosts: ["5e966dae089aab309c5b0348", "5e966dae089aab309c5b0345"] });
+                setUserPosts({ _id: res.data._id, createdPosts: [res.data.createdPosts], createdComments: [res.data.createdComments] });
                 setUserInfo(
                     {
                         firstName: res.data.firstName ? res.data.firstName : "",
@@ -36,8 +39,12 @@ function Account() {
                 )
             })
             .then(() => {
-
+                // getPostsByUser()
             })
+    }
+
+    function getPostsByUser() {
+
     }
 
     const handleInputChange = event => {
@@ -83,7 +90,10 @@ function Account() {
                         <p>Your Posts</p>
                     </div>
                     <div className="row" id={userPosts._id}>
-                        <UserPost userPosts={userPosts} handleBtnClick={handleBtnClick} />
+                        {userPosts.createdPosts.map(userPost => (
+                            < UserPost userPost={userPost} createdComments={userPosts.createdComments} handleBtnClick={handleBtnClick} />
+                            ))
+                        }
                     </div>
                 </div>
             </div>

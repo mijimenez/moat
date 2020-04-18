@@ -3,6 +3,7 @@ import Tagline from "../components/Tagline";
 import Image from "../components/Image";
 import SigninForm from "../components/SigninForm";
 import Button from "../components/Button";
+import API from "../utils/API";
 import "./sass/style.scss";
 
 function Signin() {
@@ -22,7 +23,12 @@ function Signin() {
     const handleBtnClick = event => {
         event.preventDefault();
         console.log(userInfo);
-        console.log(event.target);
+        API.loginUser(userInfo)
+            .then(res => {
+                console.log(res);
+                localStorage.setItem("usernameMOAT", res.data.username);
+                if (res.status === 200) window.location.href = "/dashboard";
+            })
     };
 
     return (
