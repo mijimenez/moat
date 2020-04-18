@@ -8,7 +8,10 @@ const apiController = require("../../controllers/postsController")
 
 // api/post
 router.route("/")
-   .post(apiController.post)
    .get(apiController.getTrending)
+
+router.route("/:id")
+   .post(apiController.createPost)
+   .get(apiController.getAllUserPosts)
 
 module.exports = router;
