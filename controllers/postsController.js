@@ -27,11 +27,6 @@ module.exports = {
       })
    },
 
-
-
-
-
-
    remove: function (req, res) {
       db.Book
          .deleteOne({ _id: req.params.id })
