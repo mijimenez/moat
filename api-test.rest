@@ -1,8 +1,11 @@
-GET http://localhost:3001/api/user/Madeline HTTP/1.1
+GET http://localhost:3001/api/post/Madeline HTTP/1.1
 content-type: application/json
 
 {
-    "username": "Madeline"
+    "username": "Madeline",
+    "postTitle": "Test23",
+    "postBody": "This is big ol test. I'm returning the newly created post",
+    "categories": ["Food", "Family"]
 }
 
 ###
@@ -16,40 +19,3 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:3000/api/user/login HTTP/1.1
-content-type: application/json
-
-{
-    "username": "hello",
-    "password": "123456"
-POST http://localhost:3001/api/user/login HTTP/1.1
-content-type: application/json
-
-{
-    "username": "PolkaDotMask",
-    "password": "Password_1"
-}
-
-###
-POST http://localhost:3001/api/user/logout HTTP/1.1
-
-<<<<<<< HEAD
-
-###
-GET http://localhost:3001/api/user/profile HTTP/1.1
-Content-Type: application/json
-
-{
-    "username": "hello"
-}
-=======
-###
-GET http://localhost:3001/api/user HTTP/1.1
-content-type: application/json
-
-{
-    "username": "Unique3",
-    "password": "Password_1",
-    "email": "unique3@gmail.com"
-}
->>>>>>> origin

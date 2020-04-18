@@ -1,7 +1,7 @@
 const db = require("../models");
-const router = require("express").Router();
-const express = require("express");
-const passport = require("../passport");
+// const router = require("express").Router();
+// const express = require("express");
+// const passport = require("../passport");
 
 
 module.exports = {
@@ -11,22 +11,43 @@ module.exports = {
       db.NewPost
          .find(req.query)
          .limit(50)
-         .sort({ date: -1, comments: -1})
+         .sort({ date: -1, comments: -1 })
          .then(dbModel => res.json(dbModel))
          .catch(err => res.status(422).json(err));
    },
-   post: function (req, res) {
+   createPost: function (req, res) {
       console.log(req.body)
-      // const userID = req.body._id
-      // const { _id: userID, username, password, email } = req.body
-      db.NewPost.create(req.body)
-      .then((savedNote) => {
-         res.json(savedNote)
-      }).catch((err) => {
-         res.json(err)
-      })
-   },
+      console.log(req.params.id)
 
+      db.NewPost.create(req.body)
+         .then(function (dbReview) {
+            console.log(dbReview._id)
+            res.json(dbReview)
+            return db.User.findOneAndUpdate(
+               { username: req.params.id },
+               { $push: { createdPosts: dbReview._id } },
+               { new: true, useFindAndModify: false }
+            );
+         })
+         // .then(function (dbProduct) {
+         //    console.log(dbProduct)
+         //    // If we were able to successfully update a Product, send it back to the client
+         //    res.json(dbProduct);
+         // })
+         .catch((err) => {
+            res.json(err)
+         })
+   },
+   getAllUserPosts: function (req, res) {
+      console.log(req.params.id)
+
+      db.NewPost.find({username: req.params.id})
+      .then(allPosts => {
+         console.log(allPosts);
+         res.json(allPosts)
+      })
+      .catch((err) => res.status(422).json(err));
+   },
    remove: function (req, res) {
       db.Book
          .deleteOne({ _id: req.params.id })
