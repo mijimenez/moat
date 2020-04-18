@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 // import logo from "./logo.svg";
 import Nav from "./components/Nav";
-import Home from "./pages/Home";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
@@ -16,10 +15,7 @@ function App() {
       <div>
         <Nav />
         <Switch>
-          <Route exact path={"/"}>
-            <Home />
-          </Route>
-          <Route exact path={"/signin"}>
+          <Route exact path={["/", "/signin"]}>
             <Signin />
           </Route>
           <Route exact path={"/signup"}>
