@@ -3,7 +3,8 @@
 // ---- Post
 .card {
     .tag {
-        border: thin solid $c-black;
+        color: $c-theme;
+        border: thin solid $c-theme;
         border-radius: 20px;
         padding: 1em 2em;
         &:not(:last-child) {

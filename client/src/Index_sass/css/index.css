@@ -42,7 +42,7 @@ h1 {
 }
 
 h2 {
-  color: #ed1c24;
+  color: #818181;
   font-size: 1.5rem;
 }
 
@@ -71,7 +71,7 @@ h5 {
 }
 
 h6 {
-  color: #ed1c24;
+  font-size: .7rem;
   font-weight: bold;
   font-family: "Roboto", sans-serif;
   margin: 0;
@@ -121,7 +121,7 @@ a {
 }
 
 a:hover, a:active {
-  color: #ed1c24;
+  color: #818181;
   text-decoration: none;
 }
 

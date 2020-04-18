@@ -13,7 +13,7 @@ body {
   }
 
 /* ---------  Variables */
-$c-theme: #ed1c24;
+$c-theme: #818181;
 $c-theme-accent: #949494;
 $c-theme-accent-darken: darken($c-theme-accent, 20%);
 $c-white: #fff;
@@ -90,7 +90,7 @@ $f-body: 'Roboto', sans-serif;
   }
 
   h6 {
-    color: $c-theme;
+    font-size: .7rem;
     font-weight: bold;
     font-family: $f-headings;
     margin: 0;

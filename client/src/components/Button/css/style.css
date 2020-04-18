@@ -126,25 +126,19 @@ a:hover, a:active {
 }
 
 /* ----- Sticky Footer */
-.col, [class*="col-"] {
-  text-align: center;
-}
-
-.btn {
-  width: 100%;
-}
-
-hr {
-  width: 40%;
-  display: inline-block;
-}
-
-.order-md-12 {
-  background-color: rgba(53, 50, 50, 0.575);
-}
-
-.hero {
+button {
   background-color: #818181;
   color: #fff;
+  text-transform: uppercase;
+  border-radius: 20px;
+  padding: .5em 1.5em;
+  border: none;
+  cursor: pointer;
+  -webkit-transition: .4s all;
+  transition: .4s all;
+}
+
+button:hover, button:focus {
+  background-color: #5b5b5b;
 }
 /*# sourceMappingURL=style.css.map */

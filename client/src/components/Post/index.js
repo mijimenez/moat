@@ -14,10 +14,10 @@ function Post(props) {
             </div>
             <div className="tags-w-num d-flex justify-content-between align-items-center">
                 <div className="tags d-flex">
-                    <h5 className="tag">Food</h5>
-                    <h5 className="tag">Home</h5>
+                    <h6 className="tag">Food</h6>
+                    <h6 className="tag">Home</h6>
                 </div>
-                <p className="commentsNum">5 Comments</p>
+                <p className="commentsNum font-weight-bold">5 Comments</p>
             </div>
         </Card>
     );
