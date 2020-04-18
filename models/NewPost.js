@@ -15,6 +15,7 @@ const postSchema = new Schema({
       type: String,
       required: true
    },
+   categories: [],
    comments: [
       {
          type: Schema.Types.ObjectId,
