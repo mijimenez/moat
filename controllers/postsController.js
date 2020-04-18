@@ -22,34 +22,18 @@ module.exports = {
       db.NewPost.create(req.body)
          .then(function (dbReview) {
             console.log(dbReview._id)
-            // If a Review was created successfully, find one Product with an `_id` equal to `req.params.id`. 
-            // Update the Product to be associated with the new Review
-            // { new: true } tells the query that we want it to return the updated Product -- 
-            // it returns the original by default
-            // Since our mongoose query returns a promise, we can chain another `.then` which 
-            // receives the result of the query
+            res.json(dbReview)
             return db.User.findOneAndUpdate(
                { username: req.params.id },
                { $push: { createdPosts: dbReview._id } },
-               { new: true }
+               { new: true, useFindAndModify: false }
             );
          })
-         .then(function (dbProduct) {
-            console.log(dbProduct)
-            // If we were able to successfully update a Product, send it back to the client
-            res.json(dbProduct);
-         })
-         // db.NewPost.create(req.body)
-         //    .then(function (savedNote) {
-         //       return User.findOneAndUpdate(
-         //          { _id: req.params.id },
-         //          { $push: { createPosts: savedNote._id } },
-         //          { new: true }
-         //       );
-         //    })
-         //    .then((newPost) => {
-         //       res.json(newPost);
-         //    })
+         // .then(function (dbProduct) {
+         //    console.log(dbProduct)
+         //    // If we were able to successfully update a Product, send it back to the client
+         //    res.json(dbProduct);
+         // })
          .catch((err) => {
             res.json(err)
          })

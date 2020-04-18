@@ -3,8 +3,8 @@ content-type: application/json
 
 {
     "userID": "Madeline",
-    "postTitle": "Test17",
-    "postBody": "Testing17",
+    "postTitle": "Test19",
+    "postBody": "This is big ol test. I'm returning the newly created post",
     "categories": ["Food", "Family"]
 }
 
