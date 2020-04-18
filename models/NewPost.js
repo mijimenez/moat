@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 mongoose.promise = Promise
 
 const postSchema = new Schema({
-   userID: {
+   username: {
       type: String
    },
    postTitle: {

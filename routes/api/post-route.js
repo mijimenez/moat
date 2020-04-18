@@ -11,7 +11,7 @@ router.route("/")
    .get(apiController.getTrending)
 
 router.route("/:id")
-   .post(apiController.post)
-   // .get(apiController.allPosts)
+   .post(apiController.createPost)
+   .get(apiController.getAllUserPosts)
 
 module.exports = router;
