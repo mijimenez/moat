@@ -1,5 +1,5 @@
 import React from "react";
-// import Card from "../Card";
+import { Input, TextArea, Select, FormBtn } from "../PostForm";
 import "./sass/style.scss";
 
 function CreatePostModal(props) {
@@ -14,16 +14,29 @@ function CreatePostModal(props) {
             <div className="modal-dialog" role="document">
                 <div className="modal-content">
                 <div className="modal-header">
-                    <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 className="modal-title" id="exampleModalLabel">New Post</h5>
                     <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div className="modal-body">
+                    <Input
+                        // onChange={handleInputChange}
+                        name="title"
+                        placeholder="Title (required)"
+                    />
+                    <TextArea
+                        // onChange={handleInputChange}
+                        name="body"
+                        placeholder="Body (required)"
+                    />
+                    <Select />
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" className="btn btn-primary">Save changes</button>
+                    <FormBtn
+                        // onClick={handleFormSubmit}
+                        value="Post"
+                    />
                 </div>
                 </div>
             </div>

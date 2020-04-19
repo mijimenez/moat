@@ -6,6 +6,7 @@ import Button from "../components/Button";
 import Card from "../components/Card";
 import "./sass/style.scss";
 import UserPost from "../components/UserPost";
+import CreatePostModal from "../components/CreatePostModal";
 import API from "../utils/API";
 
 function Account() {
@@ -23,19 +24,12 @@ function Account() {
 
     let usernameStored;
     function getUser() {
-<<<<<<< HEAD
-       API.getUser("PolkaDotMask")
-            .then(res => {
-                console.log(res.data);
-                setUserPosts({ _id: res.data._id, createdPosts: ["5e98fe4042c3d87f55c921ea", "5e98fe4042c3d87f55c921e5"] });
-=======
         usernameStored = localStorage.getItem("usernameMOAT");
         console.log("usernameStored" + usernameStored)
         API.getUser(usernameStored)
             .then(res => {
                 console.log(res.data);
                 setUserPosts({ userId: res.data._id, createdPostsIds: [res.data.createdPosts], createdCommentsIds: [res.data.createdComments] });
->>>>>>> master
                 setUserInfo(
                     {
                         firstName: res.data.firstName ? res.data.firstName : "",
@@ -94,7 +88,10 @@ function Account() {
             <div className="row">
                 <div className="col-md-3" style={{}}>
                     <div className="">
-                        Add Post <span> <Button className="btn btn-info addBtn" value="+" handleBtnClick={handleBtnClick} /></span>
+                        Add Post <span>
+                            {/* <Button className="btn btn-info addBtn" value="+" handleBtnClick={handleBtnClick} /> */}
+                            <CreatePostModal />
+                            </span>
                     </div>
                 </div>
                 <div className="col-md-9" style={{}}>
