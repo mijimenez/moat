@@ -72,8 +72,10 @@ module.exports = {
    },
 
    //
-   remove: function (req, res) {
-      db.Book
+   removePost: function (req, res) {
+      console.log(req.params.id)
+      
+      db.NewPost
          .deleteOne({ _id: req.params.id })
          .then(dbModel => res.json(dbModel))
          .catch(err => res.status(422).json(err));
