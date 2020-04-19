@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import API from "../../utils/API";
 import "./sass/style.scss";
 
 function Navbar() {
@@ -9,8 +10,13 @@ function Navbar() {
         setPath(window.location.pathname);
     }, [path]);
 
+    function logout() {
+        API.logoutUser();
+        localStorage.removeItem("usernameMOAT");
+    }
+
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{ display: window.location.pathname === "/signin" || window.location.pathname === "/signup" ? "none" : "block" }}>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{ display: window.location.pathname === "/" || window.location.pathname === "/signin" || window.location.pathname === "/signup" ? "none" : "block" }}>
             <div className="container">
                 <Link className="navbar-brand" to="/" onClick={() => setPath("/")}>MOAT</Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,11 +34,11 @@ function Navbar() {
                             <Link className="nav-link" to="/account" onClick={() => setPath("/account")}>Account</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/signin" onClick={() => setPath("/signin")}>Sign In</Link>
+                            <Link className="nav-link" to="/" onClick={() => { return setPath("/"), logout() }}>Logout</Link>
                         </li>
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <Link className="nav-link" to="/signup" onClick={() => setPath("/signup")}>Sign Up</Link>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
             </div>
