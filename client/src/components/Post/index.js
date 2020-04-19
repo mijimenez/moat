@@ -7,8 +7,10 @@ function Post(props) {
     return (
         <Card>
             <div className="description-w-btn d-flex mb-3">
-                <h3 className="title text-left">{props.postTitle}</h3>
-                <p className="description text-left">{props.postBody}</p>
+                <div className="titles">
+                    <h3 className="title text-left mb-3">{props.postTitle}</h3>
+                    <p className="description text-left">{props.postBody}</p>
+                </div>
                 <Button className="view-btn align-self-start ml-3"
                     value="View"
                 />
