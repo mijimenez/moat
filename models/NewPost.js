@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 mongoose.promise = Promise
 
 const postSchema = new Schema({
-   userID: {
+   username: {
       type: String
    },
    postTitle: {
@@ -15,6 +15,7 @@ const postSchema = new Schema({
       type: String,
       required: true
    },
+   categories: [],
    comments: [
       {
          type: Schema.Types.ObjectId,
