@@ -9,6 +9,7 @@ export default {
     getUser: function (id) {
         return axios.get("/api/user/" + id);
     },
+    // Get all posts by trending. Will render to dashboard page.
     getTrending: function () {
         return axios.get("/api/post");
     },
@@ -19,5 +20,9 @@ export default {
     // Logout user
     logoutUser: function () {
         return axios.post("/api/user/logout");
-    }
+    },
+    // Create new user post
+    createPost: function (id) {
+        return axios.post("/api/post/" + id);
+    },
 };

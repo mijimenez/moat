@@ -1,8 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import API from "../../utils/API";
 import { Input, TextArea, Select, FormBtn } from "../PostForm";
 import "./sass/style.scss";
 
 function CreatePostModal(props) {
+
+    const [formObject, setFormObject] = useState({})
+
+    // Handles updating component state when the user types into the input field
+    function handleInputChange(event) {
+        const { name, value } = event.target;
+        setFormObject({...formObject, [name]: value})
+    };
+
+    // When the form is submitted, use the API.createPost method to create a new post by user
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        API.createPost({
+            username: formObject.username,
+            postTitle: formObject.postTitle,
+            postBody: formObject.postBody,
+            categories: formObject.categories
+        })
+        .catch(err => console.log(err));
+        console.log(formObject);
+    };
+
+
     return (
         <div>
             <button type="button" className="create-post-btn" data-toggle="modal" data-target="#exampleModal">
@@ -21,20 +45,23 @@ function CreatePostModal(props) {
                 </div>
                 <div className="modal-body">
                     <Input
-                        // onChange={handleInputChange}
-                        name="title"
+                        onChange={handleInputChange}
+                        name="postTitle"
                         placeholder="Title (required)"
                     />
                     <TextArea
-                        // onChange={handleInputChange}
-                        name="body"
+                        onChange={handleInputChange}
+                        name="postBody"
                         placeholder="Body (required)"
                     />
-                    <Select />
+                    <Select
+                        onChange={handleInputChange}
+                        name="categories"
+                    />
                 </div>
                 <div className="modal-footer">
                     <FormBtn
-                        // onClick={handleFormSubmit}
+                        onClick={handleFormSubmit}
                         value="Post"
                     />
                 </div>
