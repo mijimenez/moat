@@ -15,6 +15,8 @@ module.exports = {
          .then(dbModel => res.json(dbModel))
          .catch(err => res.status(422).json(err));
    },
+
+   // creates a post and adds to user's document
    createPost: function (req, res) {
       console.log(req.body)
       console.log(req.params.id)
@@ -38,6 +40,19 @@ module.exports = {
             res.json(err)
          })
    },
+
+   // gets a specific post 
+   getUserPost: function (req, res) {
+      console.log(req.params);
+      
+      db.NewPost.find({_id: req.params.post})
+      .then(userPost => {
+         console.log(userPost);
+         res.json(userPost)
+      })
+   },
+
+   // finds all the posts by a single user
    getAllUserPosts: function (req, res) {
       console.log(req.params.id)
 
@@ -48,8 +63,19 @@ module.exports = {
       })
       .catch((err) => res.status(422).json(err));
    },
-   remove: function (req, res) {
-      db.Book
+
+   //
+   getAllUserCategories: function (req, res) {
+      console.log(req.params);
+
+      db.NewPost.find({username: req.params.name, categories: req.params.category})
+   },
+
+   //
+   removePost: function (req, res) {
+      console.log(req.params.id)
+      
+      db.NewPost
          .deleteOne({ _id: req.params.id })
          .then(dbModel => res.json(dbModel))
          .catch(err => res.status(422).json(err));
