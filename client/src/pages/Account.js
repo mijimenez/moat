@@ -6,6 +6,7 @@ import Button from "../components/Button";
 import Card from "../components/Card";
 import "./sass/style.scss";
 import UserPost from "../components/UserPost";
+import CreatePostModal from "../components/CreatePostModal";
 import API from "../utils/API";
 
 function Account() {
@@ -87,7 +88,10 @@ function Account() {
             <div className="row">
                 <div className="col-md-3" style={{}}>
                     <div className="">
-                        Add Post <span> <Button className="btn btn-info addBtn" value="+" handleBtnClick={handleBtnClick} /></span>
+                        Add Post <span>
+                            {/* <Button className="btn btn-info addBtn" value="+" handleBtnClick={handleBtnClick} /> */}
+                            <CreatePostModal />
+                            </span>
                     </div>
                 </div>
                 <div className="col-md-9" style={{}}>

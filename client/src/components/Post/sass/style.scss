@@ -2,6 +2,9 @@
 
 // ---- Post
 .card {
+    &:not(:last-child) {
+        margin-bottom: 1em;
+    }
     .tag {
         color: $c-theme;
         border: thin solid $c-theme;
