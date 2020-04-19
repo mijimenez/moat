@@ -13,9 +13,13 @@ router.route("/")
 router.route("/:id")
    .post(apiController.createPost)
    .get(apiController.getAllUserPosts)
-
+   .delete(apiController.removePost)
+   
+// full route is api/post/1/"id"
 router.route("/1/:post")
    .get(apiController.getUserPost)
+
+
 
 // route to get posts by user and category
 // router.route("/1/category/:name/:category")
