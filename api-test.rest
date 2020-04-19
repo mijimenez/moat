@@ -1,25 +1,25 @@
-GET http://localhost:3001/api/post/Madeline HTTP/1.1
+GET http://localhost:3001/api/post/1/5e9b89cde0b41f09b4abde92 HTTP/1.1
 content-type: application/json
 
 {
-    "username": "Madeline",
-    "postTitle": "Test23",
+    "username": "Christian",
+    "postTitle": "Test25",
     "postBody": "This is big ol test. I'm returning the newly created post",
     "categories": ["Food", "Family"]
 }
 
 ###
-POST http://localhost:3000/api/user/signup HTTP/1.1
+POST http://localhost:3001/api/user/signup HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "hello",
+    "username": "hi",
     "password": "123456",
-    "email": "mint1@mail.com"
+    "email": "mint2@mail.com"
 }
 
 ###
-POST http://localhost:3000/api/user/login HTTP/1.1
+POST http://localhost:3001/api/user/login HTTP/1.1
 content-type: application/json
 
 {
