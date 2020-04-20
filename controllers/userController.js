@@ -4,6 +4,8 @@ const db = require("../models");
 
 // Defining methods for the booksController
 module.exports = {
+
+   // find all users
    allUsers: function (req,res) {
       console.log(req.body)
       db.User
@@ -12,6 +14,8 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
    },
+
+   // find a single user by username
    findUser: function (req, res) {
       const username = req.params.id
       console.log(username)
@@ -20,9 +24,11 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
    },
+
+   // sign up using the passport validation and password hashing
    signUp: function (req, res) {
       console.log(req.body)
-      const { username, password, email } = req.body
+      const { username, password, email, firstName, lastName } = req.body
       // ADD VALIDATION
       db.User.findOne({ username: username }, (err, user) => {
          if (err) {
@@ -36,7 +42,9 @@ module.exports = {
             db.User.create({
                username: username,
                password: password,
-               email: email
+               email: email,
+               firstName: firstName,
+               lastName: lastName
             }).then((savedUser) => {
                res.json(savedUser)
             }).catch((err) => {

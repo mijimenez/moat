@@ -15,10 +15,11 @@ const postSchema = new Schema({
       type: String,
       required: true
    },
+   postImage: {
+
+   },
    categories: [],
-   comments: [
-      
-   ],
+   comments: [],
    date: {
       type: Date,
       default: Date.now
