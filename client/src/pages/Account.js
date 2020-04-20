@@ -3,10 +3,11 @@ import React, { useState, useEffect } from "react";
 import Image from "../components/Image";
 import SigninForm from "../components/SigninForm";
 import Button from "../components/Button";
-import Card from "../components/Card";
+// import Card from "../components/Card";
 import "./sass/style.scss";
 import UserPost from "../components/UserPost";
 import CreatePostModal from "../components/CreatePostModal";
+// import ViewPostModal from "../components/ViewPostModal";
 import API from "../utils/API";
 
 function Account() {
@@ -25,7 +26,7 @@ function Account() {
     let usernameStored;
     function getUser() {
         usernameStored = localStorage.getItem("usernameMOAT");
-        console.log("usernameStored" + usernameStored)
+        console.log("usernameStored: " + usernameStored)
         API.getUser(usernameStored)
             .then(res => {
                 console.log(res.data);
@@ -43,6 +44,7 @@ function Account() {
             .then(() => {
                 getPostsByUser()
             })
+            .catch(err => console.log(err));
     }
 
     function getPostsByUser() {
@@ -51,6 +53,7 @@ function Account() {
                 console.log(res.data);
                 setPosts(res.data);
             })
+            .catch(err => console.log(err));
     }
 
     const handleInputChange = event => {
@@ -61,7 +64,7 @@ function Account() {
     const handleBtnClick = event => {
         event.preventDefault();
         console.log(userInfo);
-        // console.log(event.target);
+        // console.log(event.target.value);
         console.log(userPosts);
     };
 
@@ -81,7 +84,7 @@ function Account() {
                 <div className="col-md-6 px-5">
                     <div>Update Information</div>
                     <SigninForm userInfo={userInfo} handleInputChange={handleInputChange} />
-                    <Button className="btn btn-primary updateBtn" value="SAVE" handleBtnClick={handleBtnClick} />
+                    <Button className="btn btn-primary updateBtn" value="save" onClick={handleBtnClick} />
                 </div>
             </div>
 
@@ -91,7 +94,7 @@ function Account() {
                         Add Post <span>
                             {/* <Button className="btn btn-info addBtn" value="+" handleBtnClick={handleBtnClick} /> */}
                             <CreatePostModal />
-                            </span>
+                        </span>
                     </div>
                 </div>
                 <div className="col-md-9" style={{}}>
@@ -99,10 +102,14 @@ function Account() {
                         <p>Your Posts</p>
                     </div>
                     <div className="row" id={userPosts.userId}>
-                        {posts.map(post => (
-                            < UserPost post={post} handleBtnClick={handleBtnClick} />
-                        ))
-                        }
+                        {/* {
+                            posts.length > 0 ? posts.map(post =>
+                                (< UserPost post={post} />)) :
+                                <div className="description-w-btn d-flex mb-3">
+                                    <p className="description text-left">No Posts Yet</p>
+                                </div>
+                        } */}
+                        < UserPost posts={posts} />
                     </div>
                 </div>
             </div>

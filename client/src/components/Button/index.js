@@ -3,7 +3,7 @@ import "./sass/style.scss";
 
 function Button(props) {
   return (
-  <button onClick={props.handleBtnClick} {...props}>{props.value}</button>
+    <button {...props}>{props.value}</button>
   );
 }
 

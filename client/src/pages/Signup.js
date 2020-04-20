@@ -39,7 +39,7 @@ function Signup() {
                 <div className="col-md-6 order-md-1">
                     <Image className="d-none d-md-block" style={{ borderRadius: "50%" }} />
                     <SigninForm userInfo={userInfo} handleInputChange={handleInputChange} />
-                    <Button className="btn btn-primary signupBtn" value="SIGN UP" handleBtnClick={handleBtnClick} disabled={!(userInfo.username) || !(userInfo.password)} />
+                    <Button className="btn btn-primary signupBtn" value="sign up" onClick={handleBtnClick} disabled={!(userInfo.username) || !(userInfo.password) || !(userInfo.email)} />
                     <div><hr />OR<hr /></div>
                     <div>Already have an account?</div>
                     <div><a href="/signin"><b>Sign in here.</b></a></div>
