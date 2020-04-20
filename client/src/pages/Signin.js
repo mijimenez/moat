@@ -29,6 +29,7 @@ function Signin() {
                 localStorage.setItem("usernameMOAT", res.data.username);
                 if (res.status === 200) window.location.href = "/dashboard";
             })
+            .catch(err => console.log(err));
     };
 
     return (
@@ -42,7 +43,7 @@ function Signin() {
                 <div className="col-md-6 order-md-1">
                     <Image className="d-none d-md-block" style={{ borderRadius: "50%" }} />
                     <SigninForm userInfo={userInfo} handleInputChange={handleInputChange} />
-                    <Button className="btn btn-primary signinBtn" value="SIGN IN" handleBtnClick={handleBtnClick} disabled={!(userInfo.username) || !(userInfo.password)} />
+                    <Button className="btn btn-primary signinBtn" value="sign in" onClick={handleBtnClick} disabled={!(userInfo.username) || !(userInfo.password)} />
                     <div><hr />OR<hr /></div>
                     <div>Create your account by</div>
                     <div><a href="/signup"><b>signing up here.</b></a></div>

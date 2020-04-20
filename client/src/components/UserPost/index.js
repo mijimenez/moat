@@ -1,54 +1,56 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Card from "../Card";
-import Button from "../Button"
+import Button from "../Button";
+import ViewPostModal from "../ViewPostModal";
+import API from "../../utils/API";
 
-function UserPost({ post, handleBtnClick }) {
+function UserPost({ post, posts }) {
+    // useEffect(() => {
+    // }, [])
+
+    const handleBtnClick = event => {
+        event.preventDefault();
+        // console.log("Post id: " + event.target.id);
+    };
+
+    const deletePost = (id) => {
+        console.log("Deleting post id: " + id)
+
+        API.deleteUserPost(id)
+            .then((res) => {
+                if (res.status === 200) {
+                    window.location.reload();
+                }
+            })
+            .catch(err => console.log(err));
+    }
+
     return (
-        // userPosts.createdPosts.map(userPost => (
-        <Card>
-            <div className="description-w-btn d-flex mb-3">
-                <p className="description text-left">{post.postTitle}</p>
-                <Button className="viewBtn align-self-start ml-3"
-                    value="View" handleBtnClick={handleBtnClick}
-                />
-                <Button className="deleteBtn align-self-start ml-3"
-                    value="Delete" handleBtnClick={handleBtnClick}
-                />
-            </div>
-            <div className="tags-w-num d-flex justify-content-between align-items-center">
-                <div className="tags d-flex">
-                    <h6 className="tag">Food</h6>
-                    <h6 className="tag">Home</h6>
+        posts.map((post, i) => (
+            <Card>
+                <div className="description-w-btn d-flex mb-3">
+                    <p className="description text-left">{post.postTitle}</p>
+                    <Button className="viewBtn align-self-start ml-3"
+                        id={post._id} value="view" data-toggle="modal"
+                        data-target={`#viewPostModal${i}`}
+                        onClick={handleBtnClick}
+                    />
+                    <ViewPostModal modalId={i} post={post} />
+                    <Button className="deleteBtn align-self-start ml-3"
+                        id={post._id} value="delete" onClick={() => deletePost(post._id)}
+                    />
                 </div>
-                <p className="commentsNum font-weight-bold">{post.comments.length} Comments</p>
-            </div>
-        </Card>
-        // ))
+                <div className="tags-w-num d-flex justify-content-between align-items-center">
+                    <div className="tags d-flex">
+                        {post.categories.map(category => (
+                            <h6 className="tag">{category}</h6>
+                        ))}
+                    </div>
+                    <p className="commentsNum font-weight-bold">{post.comments.length} Comments</p>
+                </div>
+            </Card>
+        ))
     );
 }
 
 export default UserPost;
-
-{/* <div className="card" style={{ width: "100%" }}>
-                <div className="card-body">
-                    <div className="row">
-                        <div className="col-md-7">
-                            {userPost}
-                        </div>
-                        <div className="col-md-3 p-0">
-                            <Button className="btn btn-info viewBtn" value="VIEW" handleBtnClick={handleBtnClick} />
-                        </div>
-                        <div className="col-md-2 p-0">
-                            <Button className="btn btn-info deleteBtn" value="X" handleBtnClick={handleBtnClick} />
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-md-8">
-                            <Button className="btn btn-info tempBtn" value="FOOD" handleBtnClick={handleBtnClick} />
-                            <Button className="btn btn-info tempBtn" value="HOME" handleBtnClick={handleBtnClick} />
-                        </div>
-                        <div className="col-md-4">
-                            comments
-                        </div>
-                    </div>
-                </div> */}

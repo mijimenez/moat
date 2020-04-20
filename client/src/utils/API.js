@@ -25,4 +25,12 @@ export default {
     createPost: function (id) {
         return axios.post("/api/post/" + id);
     },
+    // Get specific user post 
+    getUserPost: function (post) {
+        return axios.get("/api/post/1/" + post);
+    },
+    // Delete specific user post
+    deleteUserPost: function(id) {
+        return axios.delete("/api/post/" + id);
+    }
 };
