@@ -24,21 +24,17 @@ module.exports = {
 
       req.body.username = req.user.username;
       db.NewPost.create(req.body)
-         .then(function (dbReview) {
-            console.log(dbReview._id)
-            res.json(dbReview)
+         .then(function (newPost) {
+            console.log(newPost._id)
+            res.json(newPost)
             return db.User.findOneAndUpdate(
+
                { _id: req.user._id },
                // { username: req.params.id },
                { $push: { createdPosts: dbReview._id } },
                { new: true, useFindAndModify: false }
             );
          })
-         // .then(function (dbProduct) {
-         //    console.log(dbProduct)
-         //    // If we were able to successfully update a Product, send it back to the client
-         //    res.json(dbProduct);
-         // })
          .catch((err) => {
             res.json(err)
          })
@@ -67,6 +63,7 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
    },
 
+
    //
    getAllUserCategories: function (req, res) {
       console.log(req.params);
@@ -77,7 +74,7 @@ module.exports = {
    //
    removePost: function (req, res) {
       console.log(req.params.id)
-      
+
       db.NewPost
          .deleteOne({ _id: req.params.id })
          .then(dbModel => res.json(dbModel))
