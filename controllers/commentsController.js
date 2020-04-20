@@ -36,7 +36,7 @@ module.exports = {
                { _id: req.params.id },
                {
                   $push: {
-                     comments: {
+                     commentsArray: {
                         commentId: newComment._id,
                         comment: comment
                      },
