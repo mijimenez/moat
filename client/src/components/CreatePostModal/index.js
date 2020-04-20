@@ -17,7 +17,6 @@ function CreatePostModal(props) {
     function handleFormSubmit(event) {
         event.preventDefault();
         API.createPost({
-            username: formObject.username,
             postTitle: formObject.postTitle,
             postBody: formObject.postBody,
             categories: formObject.categories
