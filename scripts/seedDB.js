@@ -128,6 +128,15 @@ const newSeed = [
       categories: ["Social", "Games"],
       comments: [1,2],
       date: new Date(Date.now())
+   },
+   {
+      fakePost_Id: "5e966dae089aab309c5b0344",
+      username: "Seohui",
+      postTitle: "Washer is leaking out the back.",
+      postBody: "Hey, so last week I was doing laundry when I heard a big thud from the laundry room. Going into investigate I couldn't figure out what caused the sound but now when I do laundry the washer leaks water. It's one of those portcullis washers with the little window in the front. Attaching a picture. Any advice?",
+      categories: ["Appliance", "Home"],
+      comments: [1,2,3],
+      date: new Date(Date.now())
    }
 ]
 

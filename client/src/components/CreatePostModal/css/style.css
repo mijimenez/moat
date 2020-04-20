@@ -126,18 +126,12 @@ a:hover, a:active {
 }
 
 /* ----- Sticky Footer */
-.card:not(:last-child) {
-  margin-bottom: 1em;
+.create-post-btn {
+  border-radius: 50%;
+  padding: .5em 1em;
 }
 
-.card .tag {
-  color: #818181;
-  border: thin solid #818181;
-  border-radius: 20px;
-  padding: 1em 2em;
-}
-
-.card .tag:not(:last-child) {
-  margin-right: 1em;
+.textArea {
+  height: 200px !important;
 }
 /*# sourceMappingURL=style.css.map */

@@ -4,17 +4,33 @@ import Tagline from "../components/Tagline";
 import ListGroup from "../components/ListGroup";
 import Card from "../components/Card";
 import Post from "../components/Post";
+import API from "../utils/API";
 import "./sass/style.scss";
 
 function Dashboard() {
 
-    const handleBtnClick = event => {
-        event.preventDefault();
-    };
+    const [trendingPosts, setTrendingPosts] = useState({})
+
+    useEffect(() => {
+        getTrending();
+    }, [])
+
+    function getTrending() {
+        API.getTrending()
+        .then(res => 
+            setTrendingPosts(res.data)
+        )
+        .catch(err => console.log(err));
+    }
+    console.log(trendingPosts);
+
+    // const handleBtnClick = event => {
+    //     event.preventDefault();
+    // };
 
     return (
         <div className="container" style={{ marginTop: "30px", marginBottom: "100px", minHeight: "100vh" }}>
-            <div className="hero row p-5 mb-3" style={{ backgroundColor: "rgba(53, 50, 50, 0.575)" }}>
+            <div className="hero row p-5 mb-3">
                 <div className="col-md-6">
                     <Tagline lineNum={[{ 1: "Welcome to" }, 2]} />
                 </div>
@@ -28,7 +44,20 @@ function Dashboard() {
                 </div>
                 <div className="col-md-9">
                     <div className="mb-3">Trending</div>
-                    <Post />
+                    {trendingPosts.length >0? (
+                    <div> 
+                        {/* {trendingPosts.map(post => (
+                            <Post
+                                postTitle={post.postTitle}
+                                postBody={post.postBody}
+                                comments={post.comments.length}
+                            />
+                        ))} */}
+                        < Post posts={trendingPosts} />
+                    </div>
+                    ) : (
+                    <p className="display-message text-center mt-5">No one has created any posts yet!</p>
+                    )}
                 </div>
             </div>
         </div>
