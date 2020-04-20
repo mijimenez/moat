@@ -6,6 +6,9 @@ const postSchema = new Schema({
    username: {
       type: String
    },
+   profilePicture: {
+      type: String
+   },
    postTitle: {
       type: String,
       unique: true,
