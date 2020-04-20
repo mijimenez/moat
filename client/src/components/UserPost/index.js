@@ -29,8 +29,11 @@ function UserPost({ post, posts }) {
         posts.map((post, i) => (
             <Card>
                 <div className="description-w-btn d-flex mb-3">
-                    <p className="description text-left">{post.postTitle}</p>
-                    <Button className="viewBtn align-self-start ml-3"
+                    <div className="titles">
+                        <h3 className="title text-left mb-3">{post.postTitle}</h3>
+                        <p className="description text-left">{post.postBody}</p>
+                    </div>
+                    <Button className="viewBtn align-self-start ml-auto"
                         id={post._id} value="view" data-toggle="modal"
                         data-target={`#viewPostModal${i}`}
                         onClick={handleBtnClick}

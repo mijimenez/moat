@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 // import API from "../../utils/API";
 import { TextArea } from "../PostForm";
 import Button from "../Button";
-// import "./sass/style.scss";
+import "./sass/style.scss";
 
 function ViewPostModal({ post, modalId }) {
     const [formObject, setFormObject] = useState({});
@@ -43,17 +43,18 @@ function ViewPostModal({ post, modalId }) {
                             </button>
                         </div>
                         <div className="modal-body">
-                            <div>
+                            <div className="titles mb-3">
+                                <h3 className="title text-left mb-3">{post.postTitle}</h3>
                                 <p className="description text-left">{post.postBody}</p>
                             </div>
-                            <div className="tags-w-num d-flex justify-content-between align-items-center">
+                            <div className="tags-w-num  mb-3 d-flex justify-content-between align-items-center">
                                 <div className="tags d-flex">
                                     {post.categories.map(category => (
                                         <h6 className="tag">{category}</h6>
                                     ))}
                                 </div>
                             </div>
-                            <p className="commentsNum font-weight-bold description text-left">
+                            <p className="commentsNum  mb-3 font-weight-bold description text-left">
                                 {post.comments.length} Comments
                             </p>
                             <TextArea
