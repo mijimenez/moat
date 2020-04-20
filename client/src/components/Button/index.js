@@ -3,7 +3,9 @@ import "./sass/style.scss";
 
 function Button(props) {
   return (
-    <button {...props}>{props.value}</button>
+    <button {...props}>
+      {props.value}
+    </button>
   );
 }
 
