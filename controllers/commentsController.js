@@ -40,7 +40,6 @@ module.exports = {
                         commentId: newComment._id,
                         comment: comment
                      },
-
                   }
                },
                { new: true, useFindAndModify: false }

@@ -22,7 +22,7 @@ const postSchema = new Schema({
 
    },
    categories: [],
-   comments: [
+   commentsArray: [
       {
          commentId: String,
          comment: [],
