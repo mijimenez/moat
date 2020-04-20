@@ -21,7 +21,7 @@ return (
                             </div>
                         </div>
                         <p className="commentsNum font-weight-bold description text-left">
-                            {post.comments.length} Comments
+                            {post.commentsArray.length} Comments
                         </p>
                         <TextArea
                             onChange={handleInputChange}

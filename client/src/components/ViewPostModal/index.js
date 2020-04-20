@@ -55,7 +55,7 @@ function ViewPostModal({ post, modalId }) {
                                 </div>
                             </div>
                             <p className="commentsNum  mb-3 font-weight-bold description text-left">
-                                {post.comments.length} Comments
+                                {post.commentsArray.length} Comments
                             </p>
                             <TextArea
                                 onChange={handleInputChange}
