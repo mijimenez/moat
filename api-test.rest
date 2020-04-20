@@ -4,10 +4,10 @@ content-type: application/json
 {
     "username": "Christian",
     "profilePicture": "../img/NoImageFound.png",
-    "postTitle": "Test title",
+    "postTitle": "wwww title",
     "postID": "5e9ba396f343df239831fb51",
-    "commentBody": "Big TTT",
-    "postBody": "This is big ol test. I'm returning the newly created post",
+    "commentBody": "werwer TTT",
+    "postBody": "This werwerwerwer the newly created post",
     "categories": ["Food", "Family"]
 }
 

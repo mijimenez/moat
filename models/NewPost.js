@@ -22,7 +22,13 @@ const postSchema = new Schema({
 
    },
    categories: [],
-   comments: [],
+   comments: [
+      {
+         commentId: String,
+         comment: [],
+         _id: false
+      },
+   ],
    date: {
       type: Date,
       default: Date.now

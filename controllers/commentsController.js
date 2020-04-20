@@ -29,15 +29,18 @@ module.exports = {
 
       db.NewComment.create(req.body)
          .then(function (newComment) {
-            // console.log(newComment._id)
-            
+            console.log("Test " + newComment._id)
+
             res.json(newComment)
             return db.NewPost.findOneAndUpdate(
                { _id: req.params.id },
                {
                   $push: {
-                     comments: comment,
-                     // commentId: newComment._id
+                     comments: {
+                        commentId: newComment._id,
+                        comment: comment
+                     },
+
                   }
                },
                { new: true, useFindAndModify: false }
@@ -49,11 +52,10 @@ module.exports = {
    },
 
 
-
-
-
    removeComment: function (req, res) {
-      db.Book
+      console.log(req.params.id)
+
+      db.NewComment
          .deleteOne({ _id: req.params.id })
          .then(dbModel => res.json(dbModel))
          .catch(err => res.status(422).json(err));
