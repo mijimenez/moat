@@ -7,33 +7,54 @@ const passport = require("../passport");
 module.exports = {
    // gets all Notes and orders by date and then comment amount.
    // For future we can limit to top 50 results or something
-   getTrending: function (req, res) {
+   getAllComments: function (req, res) {
       db.NewPost
          .find(req.query)
          .limit(50)
-         .sort({ date: -1, comments: -1})
+         .sort({ date: -1, comments: -1 })
          .then(dbModel => res.json(dbModel))
          .catch(err => res.status(422).json(err));
    },
-   post: function (req, res) {
-      console.log(req.body)
-      // const userID = req.body._id
-      // const { _id: userID, username, password, email } = req.body
-      db.NewPost.create(req.body)
-      .then((savedNote) => {
-         res.json(savedNote)
-      }).catch((err) => {
-         res.json(err)
-      })
+
+   // create a new comment on a post
+   createComment: function (req, res) {
+
+      var comment = {
+         username: req.body.username,
+         profilePicture: req.body.profilePicture,
+         commentBody: req.body.commentBody,
+         date: new Date()
+      }
+      console.log(comment)
+
+      db.NewComment.create(req.body)
+         .then(function (newComment) {
+            console.log("Test " + newComment._id)
+
+            res.json(newComment)
+            return db.NewPost.findOneAndUpdate(
+               { _id: req.params.id },
+               {
+                  $push: {
+                     comments: {
+                        commentId: newComment._id,
+                        comment: comment
+                     },
+                  }
+               },
+               { new: true, useFindAndModify: false }
+            );
+         })
+         .catch((err) => {
+            res.json(err)
+         })
    },
 
 
+   removeComment: function (req, res) {
+      console.log(req.params.id)
 
-
-
-
-   remove: function (req, res) {
-      db.Book
+      db.NewComment
          .deleteOne({ _id: req.params.id })
          .then(dbModel => res.json(dbModel))
          .catch(err => res.status(422).json(err));

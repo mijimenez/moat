@@ -16,7 +16,7 @@ router.route("/:id")
    .delete(apiController.removePost)
    
 // full route is api/post/1/"id"
-router.route("/1/:post")
+router.route("/1/:name")
    .get(apiController.getUserPost)
 
 
