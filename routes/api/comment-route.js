@@ -5,9 +5,15 @@ const commentController = require("../../controllers/commentsController")
 // from server you can follow the path to see how the route path gets it's name
 // server -> routes/index -> routes/api/index -> routes/api/post-route
 
-// api/post
+// api/comment
 router.route("/")
-   .post(commentController.post)
-   .get(commentController.getTrending)
+   .get(commentController.getAllComments)
+   // .get(commentController.getTrending)
+
+// api/comment/"some kind of id"
+router.route("/:id")
+   .post(commentController.createComment)
+   .delete(commentController.removeComment)
+   // create route to get all comments by a user for user profile
 
 module.exports = router;

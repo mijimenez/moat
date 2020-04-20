@@ -23,6 +23,12 @@ const userSchema = new Schema({
       unique: true,
       match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
    },
+   firstName: {
+      type: String
+   },
+   lastName: {
+      type: String
+   },
    profilePicture: {
       type: String,
       default: "../img/NoImageFound.png"
