@@ -109,7 +109,12 @@ function Account() {
                                     <p className="description text-left">No Posts Yet</p>
                                 </div>
                         } */}
-                        < UserPost posts={posts} />
+                        {
+                            posts.length > 0 ? < UserPost posts={posts} getUser={getUser} /> :
+                                <div className="description-w-btn d-flex mb-3">
+                                    <p className="description text-left">No Posts Yet</p>
+                                </div>
+                        }
                     </div>
                 </div>
             </div>
