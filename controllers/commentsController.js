@@ -23,7 +23,7 @@ module.exports = {
          username: req.body.username,
          profilePicture: req.body.profilePicture,
          commentBody: req.body.commentBody,
-         date: Date.now()
+         date: new Date()
       }
       console.log(comment)
 
