@@ -4,11 +4,15 @@ import React from "react";
 function ListGroup(props) {
     return (
         <ul class="list-group">
-            <li class="list-group-item">By Category</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Morbi leo risus</li>
-            <li class="list-group-item">Porta ac consectetur ac</li>
-            <li class="list-group-item">Vestibulum at eros</li>
+            <li class="list-group-item font-weight-bold">By Category</li>
+            <li class="list-group-item">Appliance</li>
+            <li class="list-group-item">Home</li>
+            <li class="list-group-item">Lawn</li>
+            <li class="list-group-item">Hair</li>
+            <li class="list-group-item">Cosmetics</li>
+            <li class="list-group-item">Technology</li>
+            <li class="list-group-item">Social</li>
+            <li class="list-group-item">Games</li>
         </ul>
     );
 }
