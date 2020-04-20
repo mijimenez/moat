@@ -46,13 +46,14 @@ function Dashboard() {
                     <div className="mb-3">Trending</div>
                     {trendingPosts.length >0? (
                     <div> 
-                        {trendingPosts.map(post => (
+                        {/* {trendingPosts.map(post => (
                             <Post
                                 postTitle={post.postTitle}
                                 postBody={post.postBody}
                                 comments={post.comments.length}
                             />
-                        ))}
+                        ))} */}
+                        < Post posts={trendingPosts} />
                     </div>
                     ) : (
                     <p className="display-message text-center mt-5">No one has created any posts yet!</p>
