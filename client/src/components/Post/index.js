@@ -45,7 +45,7 @@ function Post({ post, posts }) {
                         <h3 className="title text-left mb-3">{post.postTitle}</h3>
                         <p className="description text-left">{post.postBody}</p>
                     </div>
-                    <Button className="viewBtn align-self-start ml-3"
+                    <Button className="viewBtn align-self-start ml-auto"
                         id={post._id} value="view" data-toggle="modal"
                         data-target={`#viewPostModal${i}`}
                         onClick={handleBtnClick}
