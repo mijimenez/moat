@@ -20,13 +20,16 @@ module.exports = {
    createPost: function (req, res) {
       console.log(req.body)
       console.log(req.params.id)
+      console.log(req.user);
 
+      req.body.username = req.user.username;
       db.NewPost.create(req.body)
          .then(function (dbReview) {
             console.log(dbReview._id)
             res.json(dbReview)
             return db.User.findOneAndUpdate(
-               { username: req.params.id },
+               { _id: req.user._id },
+               // { username: req.params.id },
                { $push: { createdPosts: dbReview._id } },
                { new: true, useFindAndModify: false }
             );

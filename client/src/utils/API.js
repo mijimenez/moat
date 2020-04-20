@@ -22,8 +22,11 @@ export default {
         return axios.post("/api/user/logout");
     },
     // Create new user post
-    createPost: function (id) {
-        return axios.post("/api/post/" + id);
+    // createPost: function (id, post) {
+    //     return axios.post("/api/post/" + id, post);
+    // },
+    createPost: function (post) {
+        return axios.post("/api/post/1", post);
     },
     // Get specific user post 
     getUserPost: function (post) {
