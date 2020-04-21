@@ -19,7 +19,14 @@ function CreatePostModal(props) {
         API.createPost({
             postTitle: formObject.postTitle,
             postBody: formObject.postBody,
-            categories: formObject.categories
+            categories: formObject.categories,
+            username: localStorage.getItem("usernameMOAT"),
+            profilePicture: localStorage.getItem("profilePicMOAT")
+        })
+        .then(res=>{
+            if (res.status === 200) {
+               window.location.reload();
+            }
         })
         .catch(err => console.log(err));
         console.log(formObject);
@@ -62,6 +69,7 @@ function CreatePostModal(props) {
                     <FormBtn
                         onClick={handleFormSubmit}
                         value="Post"
+                        disabled={!formObject.postTitle || !formObject.postBody}
                     />
                 </div>
                 </div>

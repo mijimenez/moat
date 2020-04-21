@@ -64,6 +64,7 @@ module.exports = {
       console.log(req.params.id)
 
       db.NewPost.find({ username: req.params.id })
+         .sort({ date: -1})
          .then(allPosts => {
             console.log(allPosts);
             res.json(allPosts)
