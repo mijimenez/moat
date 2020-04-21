@@ -24,10 +24,9 @@ const postSchema = new Schema({
    categories: [],
    commentsArray: [
       {
-         commentId: String,
-         comment: [],
-         _id: false
-      },
+         type: Schema.Types.ObjectId,
+         ref: "NewComment"
+      }
    ],
    date: {
       type: Date,

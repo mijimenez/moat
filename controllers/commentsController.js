@@ -32,22 +32,38 @@ module.exports = {
             console.log("Test " + newComment._id)
 
             res.json(newComment)
-            return db.NewPost.findOneAndUpdate(
-               { _id: req.params.id },
-               {
-                  $push: {
-                     commentsArray: {
-                        commentId: newComment._id,
-                        comment: comment
-                     },
-                  }
-               },
-               { new: true, useFindAndModify: false }
-            );
-         })
-         .catch((err) => {
-            res.json(err)
-         })
+            return db.NewPost.find({ _id: req.params.id })
+               .populate('commentsArray')
+               .exec(function (err, newPost) {
+                  if (err) return console.log(err);
+                  console.log("test" + newPost)
+               })
+         });
+      //    return db.NewPost.findOneAndUpdate(
+      //       { _id: req.params.id },
+      //       {
+      //          $push: {
+      //             commentsArray: {
+      //                commentId: newComment._id,
+      //                commentSchema: comment
+      //             },
+      //          }
+      //       },
+      //       { new: true, useFindAndModify: false }
+      //    );
+      // })
+      // .catch((err) => {
+      //    res.json(err)
+      // })
+   },
+
+   findCommentByPost: function (req, res) {
+      console.log(req.params)
+
+      db.NewPost.find({ _id: req.params.id })
+         .then(comment => {
+            console.log(comment)
+         });
    },
 
 
