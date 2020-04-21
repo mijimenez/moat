@@ -19,7 +19,8 @@ router.route("/:id")
 router.route("/1/:name")
    .get(apiController.getUserPost)
 
-
+router.route("/cat/:category")
+   .get(apiController.getPostByCategories)
 
 // route to get posts by user and category
 // router.route("/1/category/:name/:category")
