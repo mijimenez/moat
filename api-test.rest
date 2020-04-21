@@ -1,10 +1,12 @@
-GET http://localhost:3001/api/post/1/5e9b89cde0b41f09b4abde92 HTTP/1.1
+POST http://localhost:3001/api/post/5e9e31a445e1672d28080135 HTTP/1.1
 content-type: application/json
 
 {
     "username": "Christian",
-    "postTitle": "Test25",
-    "postBody": "This is big ol test. I'm returning the newly created post",
+    "profilePicture": "../img/NoImageFound.png",
+    "postTitle": "wwww title",
+    "postID": "5e9ba396f343df239831fb51",
+    "postBody": "This werwerwerwer the newly created post",
     "categories": ["Food", "Family"]
 }
 

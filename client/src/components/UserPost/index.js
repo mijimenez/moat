@@ -49,7 +49,7 @@ function UserPost({ posts, getUser }) {
                             <h6 className="tag">{category}</h6>
                         ))}
                     </div>
-                    <p className="commentsNum font-weight-bold">{post.comments.length} Comments</p>
+                    <p className="commentsNum font-weight-bold">{post.commentsArray.length} Comments</p>
                 </div>
             </Card>
         ))

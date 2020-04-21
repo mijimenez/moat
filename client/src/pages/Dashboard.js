@@ -50,7 +50,7 @@ function Dashboard() {
                             <Post
                                 postTitle={post.postTitle}
                                 postBody={post.postBody}
-                                comments={post.comments.length}
+                                comments={post.commentsArray.length}
                             />
                         ))} */}
                         < Post posts={trendingPosts} />

@@ -6,6 +6,9 @@ const postSchema = new Schema({
    username: {
       type: String
    },
+   profilePicture: {
+      type: String
+   },
    postTitle: {
       type: String,
       unique: true,
@@ -15,12 +18,16 @@ const postSchema = new Schema({
       type: String,
       required: true
    },
+   postImage: {
+
+   },
    categories: [],
-   comments: [
+   commentsArray: [
       {
-         type: Schema.Types.ObjectId,
-         ref: "NewComment"
-      }
+         commentId: String,
+         comment: [],
+         _id: false
+      },
    ],
    date: {
       type: Date,

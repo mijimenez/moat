@@ -24,9 +24,14 @@ export function Input(props) {
         <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Categories</label>
         <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" {...props} >
             <option selected>Choose...</option>
-            <option value="1">Food</option>
-            <option value="2">Home</option>
-            <option value="3">Tech</option>
+            <option value="Appliance">Appliance</option>
+            <option value="Home">Home</option>
+            <option value="Lawn">Lawn</option>
+            <option value="Hair">Hair</option>
+            <option value="Cosmetics">Cosmetics</option>
+            <option value="Technology">Technology</option>
+            <option value="Social">Social</option>
+            <option value="Games">Games</option>
         </select>
     </div>
     );
@@ -36,6 +41,7 @@ export function Input(props) {
     return (
         <Button
             value="Post"
+            onClick={props.onClick}
         />
     );
   }

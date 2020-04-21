@@ -3,9 +3,12 @@ const Schema = mongoose.Schema;
 mongoose.promise = Promise
 
 const commentSchema = new Schema({
-    userID: {
+    username: {
         type: String,
         required: true
+    },
+    profilePicture: {
+        type: String
     },
     postID: {
         type: String,

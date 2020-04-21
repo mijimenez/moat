@@ -19,23 +19,28 @@ module.exports = {
    // creates a post and adds to user's document
    createPost: function (req, res) {
       console.log(req.body)
-      console.log(req.params.id)
+      console.log(req.params)
+
+      const userId = req.params.id
+      console.log(userId)
 
       db.NewPost.create(req.body)
-         .then(function (dbReview) {
-            console.log(dbReview._id)
-            res.json(dbReview)
+         .then(function (newPost) {
+            console.log(newPost._id)
+
+            res.json(newPost)
             return db.User.findOneAndUpdate(
-               { username: req.params.id },
-               { $push: { createdPosts: dbReview._id } },
+
+               { _id: userId },
+               // { username: req.params.id },
+               {
+                  $push: {
+                     createdPosts: newPost._id
+                  }
+               },
                { new: true, useFindAndModify: false }
             );
          })
-         // .then(function (dbProduct) {
-         //    console.log(dbProduct)
-         //    // If we were able to successfully update a Product, send it back to the client
-         //    res.json(dbProduct);
-         // })
          .catch((err) => {
             res.json(err)
          })
@@ -44,37 +49,41 @@ module.exports = {
    // gets a specific post 
    getUserPost: function (req, res) {
       console.log(req.params);
-      
-      db.NewPost.find({_id: req.params.post})
-      .then(userPost => {
-         console.log(userPost);
-         res.json(userPost)
-      })
+
+      db.NewPost.find({ _id: req.params.post })
+         .then(userPost => {
+            console.log(userPost);
+            res.json(userPost)
+         })
    },
 
    // finds all the posts by a single user
    getAllUserPosts: function (req, res) {
       console.log(req.params.id)
 
-      db.NewPost.find({username: req.params.id})
-      .then(allPosts => {
-         console.log(allPosts);
-         res.json(allPosts)
-      })
-      .catch((err) => res.status(422).json(err));
+      db.NewPost.find({ username: req.params.id })
+         .then(allPosts => {
+            console.log(allPosts);
+            res.json(allPosts)
+         })
+         .catch((err) => res.status(422).json(err));
    },
+
 
    //
    getAllUserCategories: function (req, res) {
       console.log(req.params);
 
-      db.NewPost.find({username: req.params.name, categories: req.params.category})
+      db.NewPost.find({ username: req.params.name, categories: req.params.category })
    },
 
+   getPostByCategories: function (req, res) {
+
+   },
    //
    removePost: function (req, res) {
       console.log(req.params.id)
-      
+
       db.NewPost
          .deleteOne({ _id: req.params.id })
          .then(dbModel => res.json(dbModel))
