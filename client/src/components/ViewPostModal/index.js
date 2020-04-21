@@ -3,9 +3,14 @@ import React, { useState, useEffect } from "react";
 import { TextArea } from "../PostForm";
 import Button from "../Button";
 import "./sass/style.scss";
+import API from "../../utils/API";
 
 function ViewPostModal({ post, modalId }) {
-    const [formObject, setFormObject] = useState({});
+    const [formObject, setFormObject] = useState({
+        username: localStorage.getItem("usernameMOAT"),
+        profilePicture: localStorage.getItem("profilePicMOAT"),
+        date: new Date()
+    });
     // useEffect(() => {
     //     viewPost();
     // }, [])
@@ -18,6 +23,14 @@ function ViewPostModal({ post, modalId }) {
         event.preventDefault();
         console.log(post);
         console.log(formObject);
+        createComment();
+    };
+
+    const createComment = () => {
+        API.createComment(post._id, formObject)
+        .then((res)=>{
+           console.log(res);
+        })
     };
     // const viewPost = () => {
     //     console.log(postId)

@@ -39,5 +39,13 @@ export default {
     // Delete specific user post
     deleteUserPost: function(id) {
         return axios.delete("/api/post/" + id);
+    },
+    // Get comments of each post
+    findCommentByPost: function(id) {
+        return axios.get("/api/comment/" + id);
+    },
+    // Create comment
+    createComment: function(id, info) {
+        return axios.post("/api/comment/" + id, info);
     }
 };

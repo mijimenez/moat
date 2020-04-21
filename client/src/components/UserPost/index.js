@@ -5,13 +5,18 @@ import ViewPostModal from "../ViewPostModal";
 import API from "../../utils/API";
 
 function UserPost({ posts, getUser }) {
-    // useEffect(() => {
-    // }, [])
+    useEffect(() => {
+        console.log(posts)
+    }, [])
 
     const handleBtnClick = event => {
         event.preventDefault();
         // console.log("Post id: " + event.target.id);
     };
+
+    // const findCommentByPost = () => {
+    //     API.findCommentByPost(pos)
+    // }
 
     const deletePost = (id) => {
         console.log("Deleting post id: " + id)
