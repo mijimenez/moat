@@ -14,6 +14,7 @@ function Navbar() {
     function logout() {
         API.logoutUser();
         localStorage.removeItem("usernameMOAT");
+        localStorage.removeItem("profilePicMOAT");
     }
 
     return (

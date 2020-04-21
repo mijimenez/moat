@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 // import Tagline from "../components/Tagline";
-import Image from "../components/Image";
+// import Image from "../components/Image";
 import SigninForm from "../components/SigninForm";
 import Button from "../components/Button";
 // import Card from "../components/Card";
@@ -14,6 +14,7 @@ function Account() {
     const [userInfo, setUserInfo] = useState({});
     const [userPosts, setUserPosts] = useState({
         userId: "",
+        profilePic: "",
         createdPostIds: [],
         createdCommentsIds: []
     })
@@ -30,7 +31,7 @@ function Account() {
         API.getUser(usernameStored)
             .then(res => {
                 console.log(res.data);
-                setUserPosts({ userId: res.data._id, createdPostsIds: [res.data.createdPosts], createdCommentsIds: [res.data.createdComments] });
+                setUserPosts({ userId: res.data._id, profilePic: res.data.profilePicture, createdPostsIds: [res.data.createdPosts], createdCommentsIds: [res.data.createdComments] });
                 setUserInfo(
                     {
                         firstName: res.data.firstName ? res.data.firstName : "",
@@ -72,7 +73,7 @@ function Account() {
         <div className="container" style={{ marginTop: "30px", marginBottom: "100px", minHeight: "100vh" }}>
             <div className="row">
                 <div className="col-md-6" style={{}}>
-                    <Image style={{ borderRadius: "50%" }} />
+                    <img src={userPosts.profilePic} style={{ borderRadius: "50%" }} />
                     <div>Upload Profile Picture</div>
                     <div>
                         <p>{userInfo.firstName}, {userInfo.lastName}</p>

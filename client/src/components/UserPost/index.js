@@ -19,7 +19,6 @@ function UserPost({ posts, getUser }) {
         API.deleteUserPost(id)
             .then((res) => {
                 if (res.status === 200) {
-                    // window.location.reload();
                     getUser();
                 }
             })
