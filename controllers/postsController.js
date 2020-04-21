@@ -52,6 +52,9 @@ module.exports = {
       return db.NewPost.findOne({ _id: req.params.id })
          .populate('commentsArray').exec((err, commentsArray) => {
             console.log(commentsArray)
+            if(err) {
+               res.status(422).json(err)
+            }
             res.json(commentsArray)
          })
    },

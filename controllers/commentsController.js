@@ -73,7 +73,7 @@ module.exports = {
          { _id: req.params.id }
       )
       return db.NewPost.findOneAndUpdate(
-         {commentsArray: {$in: }}
+         // {commentsArray: {$in: }}
       )
          .then(dbModel => res.json(dbModel))
          .catch(err => res.status(422).json(err));
