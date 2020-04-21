@@ -20,7 +20,7 @@ code {
 
 body {
   margin: 0;
-  background: #f9f9f9;
+  background: #edf1f8;
 }
 
 /* ---------  Fonts */
@@ -205,11 +205,93 @@ hr {
   #dashboardPage .categories {
     width: 30%;
     padding: 0;
-    margin: 0 5% 0 0;
+    margin: 2.5em 5% 0 0;
     text-align: left;
   }
   #dashboardPage .trending {
     width: 65%;
+  }
+}
+
+#accountPage .info {
+  background-color: #fff;
+  padding: 5% 0;
+  -webkit-box-shadow: 0px 3px 5px -2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 3px 5px -2px rgba(0, 0, 0, 0.3);
+}
+
+#accountPage .info .row {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -moz-align-items: center;
+  align-items: center;
+}
+
+#accountPage .info .row .user-image {
+  margin-bottom: 10%;
+  padding-bottom: 10%;
+  border-bottom: thin solid #000;
+  width: 100%;
+  text-align: center;
+}
+
+@media (min-width: 37.5em) {
+  #accountPage .info .row .user-image {
+    width: 40%;
+    margin: 0 10% 0 0;
+    padding: 0 10% 0 0;
+    border-bottom: 0;
+    border-right: thin solid #000;
+  }
+}
+
+#accountPage .info .user-info {
+  width: 100%;
+}
+
+@media (min-width: 37.5em) {
+  #accountPage .info .user-info {
+    width: 60%;
+  }
+}
+
+#accountPage .yourPosts {
+  padding: 5% 0;
+}
+
+#accountPage .yourPosts .add-post {
+  width: 100%;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  padding: 0 0 5% 0;
+}
+
+#accountPage .yourPosts .add-post .card .card-body {
+  display: -webkit-box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -moz-align-items: center;
+  align-items: center;
+}
+
+#accountPage .yourPosts .posts {
+  width: 100%;
+}
+
+@media (min-width: 37.5em) {
+  #accountPage .yourPosts .add-post {
+    width: 25%;
+    margin: 2.5em 5% 0 0;
+  }
+  #accountPage .yourPosts .posts {
+    width: 70%;
   }
 }
 /*# sourceMappingURL=style.css.map */

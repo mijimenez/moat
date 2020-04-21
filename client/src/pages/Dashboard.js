@@ -45,7 +45,7 @@ function Dashboard() {
                     <ListGroup />
                 </div>
                 <div className="trending">
-                    <div className="mb-3">Trending</div>
+                    <p className="mb-3 text-center font-weight-bold">Trending</p>
                     {trendingPosts.length >0? (
                     <div> 
                         {/* {trendingPosts.map(post => (

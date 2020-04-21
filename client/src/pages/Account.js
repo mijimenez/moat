@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Image from "../components/Image";
 import SigninForm from "../components/SigninForm";
 import Button from "../components/Button";
-// import Card from "../components/Card";
+import Card from "../components/Card";
 import "./sass/style.scss";
 import UserPost from "../components/UserPost";
 // import Post from "../components/Post";
@@ -70,47 +70,49 @@ function Account() {
     };
 
     return (
-        <div className="container" id="accountPage" style={{ marginTop: "30px", marginBottom: "100px", minHeight: "100vh" }}>
-            <div className="row">
-                <div className="col-md-6" style={{}}>
-                    <Image style={{ borderRadius: "50%" }} />
-                    <div>Upload Profile Picture</div>
-                    <div>
-                        <p>{userInfo.firstName}, {userInfo.lastName}</p>
-                        <p>{userInfo.username}</p>
-                        <p>{userInfo.email}</p>
-                    </div>
-                </div>
+        <div id="accountPage">
+            <div className="info">
+                <div className="container">
+                    <div className="row">
+                        <div className="user-image" style={{}}>
+                            <Image style={{ borderRadius: "50%" }} />
+                            <div>Upload Profile Picture</div>
+                            <div>
+                                <p>{userInfo.firstName}, {userInfo.lastName}</p>
+                                <p>{userInfo.username}</p>
+                                <p>{userInfo.email}</p>
+                            </div>
+                        </div>
 
-                <div className="col-md-6 px-5">
-                    <div>Update Information</div>
-                    <SigninForm userInfo={userInfo} handleInputChange={handleInputChange} />
-                    <Button className="btn btn-primary updateBtn" value="save" onClick={handleBtnClick} />
+                        <div className="col user-info">
+                            <p className="mb-3 text-center font-weight-bold">Update Information</p>
+                            <SigninForm userInfo={userInfo} handleInputChange={handleInputChange} />
+                            <Button className="btn btn-primary updateBtn" value="save" onClick={handleBtnClick} />
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div className="row">
-                <div className="col-md-3" style={{}}>
-                    <div className="">
-                        Add Post <span>
-                            {/* <Button className="btn btn-info addBtn" value="+" handleBtnClick={handleBtnClick} /> */}
+            <div className="container yourPosts">
+                <div className="row">
+                    <div className="add-post" style={{}}>
+                        <Card className="add-post-card">
+                            <p className="mr-3 font-weight-bold">Add Post</p>
                             <CreatePostModal />
-                        </span>
+                        </Card>
                     </div>
-                </div>
-                <div className="col-md-9" style={{}}>
-                    <div className="row">
-                        <p>Your Posts</p>
-                    </div>
-                    <div className="row" id={userPosts.userId}>
-                        {/* {
-                            posts.length > 0 ? posts.map(post =>
-                                (< UserPost post={post} />)) :
-                                <div className="description-w-btn d-flex mb-3">
-                                    <p className="description text-left">No Posts Yet</p>
-                                </div>
-                        } */}
-                        < UserPost posts={posts} />
+                    <div className="posts" style={{}}>
+                        <p className="mb-3 text-center font-weight-bold">Your Posts</p>
+                        <div className="user-posts" id={userPosts.userId}>
+                            {/* {
+                                posts.length > 0 ? posts.map(post =>
+                                    (< UserPost post={post} />)) :
+                                    <div className="description-w-btn d-flex mb-3">
+                                        <p className="description text-left">No Posts Yet</p>
+                                    </div>
+                            } */}
+                            < UserPost posts={posts} />
+                        </div>
                     </div>
                 </div>
             </div>
