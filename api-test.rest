@@ -1,12 +1,12 @@
-GET http://localhost:3001/api/post/1/5e9e4c109c1acd1b80368c67 HTTP/1.1
+POST http://localhost:3001/api/post/Christian HTTP/1.1
 content-type: application/json
 
 {
     "username": "Christian",
     "profilePicture": "../img/NoImageFound.png",
-    "postTitle": "wqerqwer title",
+    "postTitle": "uivyyvyyvvv title",
     "postID": "5e9e4c109c1acd1b80368c67",
-    "commentBody": "qwerqwer is my qwerqwerqwerqwer",
+    "commentBody": " is my qwerqwerqwerqwer",
     "postBody": "eeee eeeee the newly created post",
     "categories": ["Food", "Family"]
 }
