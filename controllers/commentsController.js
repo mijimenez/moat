@@ -69,13 +69,39 @@ module.exports = {
    removeComment: function (req, res) {
       console.log(req.params.id)
 
-      db.NewComment.deleteOne(
-         { _id: req.params.id }
-      )
-      return db.NewPost.findOneAndUpdate(
-         // {commentsArray: {$in: }}
-      )
-         .then(dbModel => res.json(dbModel))
-         .catch(err => res.status(422).json(err));
+      db.NewComment.findOneAndDelete({ _id: req.params.id })
+         .then((deletedDocument) => {
+            console.log(deletedDocument)
+
+            return db.NewPost.findOneAndUpdate(
+               { _id: deletedDocument.postID },
+               {
+                  $pull: {
+                     commentsArray: req.params.id
+                  }
+               },
+               { useFindAndModify: false }
+            )
+            .then((test) => {
+               console.log(test)
+            })
+         })
+      // console.log(res.body)
+      // .then(test => {
+      //    console.log(test)
+      // })
+
+      // return db.NewPost.findOneAndUpdate(
+      //    // { _id: test.postID },
+      //    {
+      //       $pull: {
+      //          commentsArray: req.params.id
+      //       }
+      //    },
+      //    { useFindAndModify: false }
+
+      // )
+      // .then(dbModel => res.json(dbModel))
+      // .catch(err => res.status(422).json(err));
    }
 };
