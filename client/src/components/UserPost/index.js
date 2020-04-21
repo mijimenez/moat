@@ -4,12 +4,7 @@ import Button from "../Button";
 import ViewPostModal from "../ViewPostModal";
 import API from "../../utils/API";
 
-<<<<<<< HEAD
-
-function UserPost({ post, posts }) {
-=======
 function UserPost({ posts, getUser }) {
->>>>>>> master
     // useEffect(() => {
     // }, [])
 
