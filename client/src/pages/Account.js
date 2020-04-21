@@ -70,7 +70,7 @@ function Account() {
     };
 
     return (
-        <div className="container" style={{ marginTop: "30px", marginBottom: "100px", minHeight: "100vh" }}>
+        <div className="container" id="accountPage" style={{ marginTop: "30px", marginBottom: "100px", minHeight: "100vh" }}>
             <div className="row">
                 <div className="col-md-6" style={{}}>
                     <Image style={{ borderRadius: "50%" }} />

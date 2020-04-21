@@ -4,6 +4,7 @@ import Button from "../Button";
 import ViewPostModal from "../ViewPostModal";
 import API from "../../utils/API";
 
+
 function UserPost({ post, posts }) {
     // useEffect(() => {
     // }, [])

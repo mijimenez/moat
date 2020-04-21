@@ -18,7 +18,48 @@ hr {
 }
 
 // ----- Dashboard Page
-.hero {
-    background-color: $c-theme;
-    color: $c-white;
+#dashboardPage {
+    .hero {
+        background-color: $c-theme;
+        .wrapper {
+            color: $c-white;
+            text-align: center;
+            .welcome {
+                margin-bottom: 1em;
+            }
+            p {
+                color: $c-white;
+            }
+            @media (min-width: $mq-medium) {
+                text-align: left;
+                @include flexbox;
+                @include align-items(center);
+                @include justify-content(space-between);
+                .welcome {
+                    margin: 0 5% 0 0;
+                }
+            }
+        }
+    }
+    .categories {
+        padding: 0;
+        margin: 0 0 5% 0;
+        width: 100%;
+        text-align: center;
+    }
+    .trending {
+        padding: 0;
+        width: 100%;
+    }
+    @media (min-width: $mq-small) {
+        .categories {
+            width: 30%;
+            padding: 0;
+            margin: 0 5% 0 0;
+            text-align: left;
+        }
+        .trending {
+            width: 65%;
+        }
+    }
 }

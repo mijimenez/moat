@@ -4,6 +4,7 @@ import Button from "../Button"
 import ViewPostModal from "../ViewPostModal";
 import "./sass/style.scss";
 
+
 function Post({ post, posts }) {
     // useEffect(() => {
     // }, [])
