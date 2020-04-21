@@ -18,7 +18,106 @@ hr {
 }
 
 // ----- Dashboard Page
-.hero {
-    background-color: $c-theme;
-    color: $c-white;
+#dashboardPage {
+    .hero {
+        background-color: $c-theme;
+        .wrapper {
+            color: $c-white;
+            text-align: center;
+            .welcome {
+                margin-bottom: 1em;
+            }
+            p {
+                color: $c-white;
+            }
+            @media (min-width: $mq-medium) {
+                text-align: left;
+                @include flexbox;
+                @include align-items(center);
+                @include justify-content(space-between);
+                .welcome {
+                    margin: 0 5% 0 0;
+                }
+            }
+        }
+    }
+    .categories {
+        padding: 0;
+        margin: 0 0 5% 0;
+        width: 100%;
+        text-align: center;
+    }
+    .trending {
+        padding: 0;
+        width: 100%;
+    }
+    @media (min-width: $mq-small) {
+        .categories {
+            width: 30%;
+            padding: 0;
+            margin: 2.5em 5% 0 0;
+            text-align: left;
+        }
+        .trending {
+            width: 65%;
+        }
+    }
+}
+
+// ----- Account Page
+#accountPage {
+    .info {
+        background-color: $c-white;
+        padding: 5% 0;
+        @include box-shadow;
+        .row {
+            @include align-items(center);
+            .user-image {
+                margin-bottom: 10%;
+                padding-bottom: 10%;
+                border-bottom: thin solid $c-black;
+                width: 100%;
+                text-align: center;
+                @media (min-width: $mq-small) {
+                    width: 40%;
+                    margin: 0 10% 0 0;
+                    padding: 0 10% 0 0;
+                    border-bottom: 0;
+                    border-right: thin solid $c-black;
+                }
+            }
+        }
+        .user-info {
+            width: 100%;
+            @media (min-width: $mq-small) {
+                width: 60%;
+            }
+        }
+    }
+    .yourPosts {
+        padding: 5% 0;
+        .add-post {
+            width: 100%;
+            margin-bottom: 5%;
+            margin-top: 5%;
+            padding: 0 0 5% 0;
+            .card .card-body {
+                @include flexbox;
+                @include justify-content(center);
+                @include align-items(center);
+            }
+        }
+        .posts {
+            width: 100%;
+        }
+        @media (min-width: $mq-small) {
+            .add-post {
+                width: 25%;
+                margin: 2.5em 5% 0 0;
+            }
+            .posts {
+                width: 70%;
+            }
+        }
+    }
 }
