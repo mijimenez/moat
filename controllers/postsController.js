@@ -32,7 +32,6 @@ module.exports = {
             return db.User.findOneAndUpdate(
 
                { _id: userId },
-               // { username: req.params.id },
                {
                   $push: {
                      createdPosts: newPost._id
@@ -54,6 +53,9 @@ module.exports = {
          .then(userPost => {
             console.log(userPost);
             res.json(userPost)
+         })
+         .catch(err => {
+            res.status(422).json(err)
          })
    },
 
@@ -77,9 +79,20 @@ module.exports = {
       db.NewPost.find({ username: req.params.name, categories: req.params.category })
    },
 
+   // getting a post by specific categories
    getPostByCategories: function (req, res) {
-
+      
+      console.log(req.params)
+   
+      db.NewPost.find({ categories: req.params.category || /req.params/i})
+      .then(postCategory => {
+         console.log(postCategory)
+      })
+      .catch(err => {
+         res.status(422).json(err)
+      })
    },
+   
    //
    removePost: function (req, res) {
       console.log(req.params.id)

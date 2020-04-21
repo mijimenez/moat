@@ -50,6 +50,15 @@ module.exports = {
          })
    },
 
+   findCommentByPost: function (req,res) {
+      console.log(req.params)
+
+      db.NewPost.find({commentId: req.params.id})
+      .then(comment => {
+         console.log(comment)
+      })
+   },
+
 
    removeComment: function (req, res) {
       console.log(req.params.id)

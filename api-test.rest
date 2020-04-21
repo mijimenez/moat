@@ -1,4 +1,4 @@
-POST http://localhost:3001/api/post/5e9e31a445e1672d28080135 HTTP/1.1
+GET http://localhost:3001/api/comment/cat/Home HTTP/1.1
 content-type: application/json
 
 {
