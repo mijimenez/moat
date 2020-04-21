@@ -16,7 +16,7 @@ router.route("/:id")
    .delete(apiController.removePost)
    
 // full route is api/post/1/"id"
-router.route("/1/:name")
+router.route("/1/:id")
    .get(apiController.getUserPost)
 
 router.route("/cat/:category")

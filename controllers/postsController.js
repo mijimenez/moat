@@ -47,15 +47,15 @@ module.exports = {
 
    // gets a specific post 
    getUserPost: function (req, res) {
-      console.log(req.params);
+      console.log(req.params)
 
-      db.NewPost.find({ _id: req.params.post })
-         .then(userPost => {
-            console.log(userPost);
-            res.json(userPost)
-         })
-         .catch(err => {
-            res.status(422).json(err)
+      return db.NewPost.findOne({ _id: req.params.id })
+         .populate('commentsArray').exec((err, commentsArray) => {
+            console.log(commentsArray)
+            if(err) {
+               res.status(422).json(err)
+            }
+            res.json(commentsArray)
          })
    },
 

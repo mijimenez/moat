@@ -32,46 +32,49 @@ module.exports = {
             console.log("Test " + newComment._id)
 
             res.json(newComment)
-            return db.NewPost.find({ _id: req.params.id })
-               .populate('commentsArray')
-               .exec(function (err, newPost) {
-                  if (err) return console.log(err);
-                  console.log("test" + newPost)
-               })
-         });
-      //    return db.NewPost.findOneAndUpdate(
-      //       { _id: req.params.id },
-      //       {
-      //          $push: {
-      //             commentsArray: {
-      //                commentId: newComment._id,
-      //                commentSchema: comment
-      //             },
-      //          }
-      //       },
-      //       { new: true, useFindAndModify: false }
-      //    );
-      // })
-      // .catch((err) => {
-      //    res.json(err)
-      // })
+            return db.NewPost.findOneAndUpdate(
+
+               { _id: req.params.id },
+               {
+                  $push: {
+                     commentsArray: newComment._id
+                  }
+               },
+               { new: true, useFindAndModify: false }
+            );
+         })
+         .then(test => {
+            console.log(test)
+         })
+         .catch((err) => {
+            res.json(err)
+         })
    },
+
 
    findCommentByPost: function (req, res) {
       console.log(req.params)
 
-      db.NewPost.find({ _id: req.params.id })
-         .then(comment => {
-            console.log(comment)
-         });
+      return db.NewPost.findOne({ _id: req.params.id })
+         .populate('commentsArray').exec((err, commentsArray) => {
+            console.log(commentsArray)
+            res.json(commentsArray)
+         })
+      // .then(comment => {
+      //    console.log(comment)
+      // });
    },
 
 
    removeComment: function (req, res) {
       console.log(req.params.id)
 
-      db.NewComment
-         .deleteOne({ _id: req.params.id })
+      db.NewComment.deleteOne(
+         { _id: req.params.id }
+      )
+      return db.NewPost.findOneAndUpdate(
+         // {commentsArray: {$in: }}
+      )
          .then(dbModel => res.json(dbModel))
          .catch(err => res.status(422).json(err));
    }
