@@ -31,7 +31,7 @@ module.exports = {
             res.json(newPost)
             return db.User.findOneAndUpdate(
 
-               { _id: userId },
+               { username : userId },
                {
                   $push: {
                      createdPosts: newPost._id
@@ -39,9 +39,6 @@ module.exports = {
                },
                { new: true, useFindAndModify: false }
             );
-         })
-         .catch((err) => {
-            res.json(err)
          })
    },
 
@@ -61,7 +58,7 @@ module.exports = {
 
    // finds all the posts by a single user
    getAllUserPosts: function (req, res) {
-      console.log(req.params.id)
+      console.log("userID " + req.params.id)
 
       db.NewPost.find({ username: req.params.id })
          .sort({ date: -1})
