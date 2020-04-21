@@ -27,6 +27,7 @@ function Signin() {
             .then(res => {
                 console.log(res);
                 localStorage.setItem("usernameMOAT", res.data.username);
+                localStorage.setItem("profilePicMOAT", res.data.profilePicture);
                 if (res.status === 200) window.location.href = "/dashboard";
             })
             .catch(err => console.log(err));

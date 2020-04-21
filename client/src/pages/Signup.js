@@ -3,6 +3,7 @@ import Tagline from "../components/Tagline";
 import Image from "../components/Image";
 import SigninForm from "../components/SigninForm";
 import Button from "../components/Button";
+import API from "../utils/API";
 import "./sass/style.scss";
 
 function Signup() {
@@ -25,7 +26,14 @@ function Signup() {
     const handleBtnClick = event => {
         event.preventDefault();
         console.log(userInfo);
-        console.log(event.target);
+        API.signupUser(userInfo)
+            .then(res => {
+                console.log(res);
+                localStorage.setItem("usernameMOAT", res.data.username);
+                localStorage.setItem("profilePicMOAT", res.data.profilePicture);
+                if (res.status === 200) window.location.href = "/dashboard";
+            })
+            .catch(err => console.log(err));
     };
 
     return (
