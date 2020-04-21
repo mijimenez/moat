@@ -6,6 +6,7 @@ import Button from "../components/Button";
 // import Card from "../components/Card";
 import "./sass/style.scss";
 import UserPost from "../components/UserPost";
+// import Post from "../components/Post";
 import CreatePostModal from "../components/CreatePostModal";
 // import ViewPostModal from "../components/ViewPostModal";
 import API from "../utils/API";
