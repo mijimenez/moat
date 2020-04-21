@@ -1,6 +1,10 @@
 import axios from "axios";
 
 export default {
+    // Sign up user
+    signupUser: function(userInfo) {
+        return axios.post("/api/user/signup", userInfo);
+    },
     // Login user
     loginUser: function (userInfo) {
         return axios.post("/api/user/login", userInfo);
