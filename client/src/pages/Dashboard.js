@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import Tagline from "../components/Tagline";
 // import Button from "../components/Button";
 import ListGroup from "../components/ListGroup";
-import Post from "../components/Post";
+import UserPost from "../components/UserPost";
+// import Post from "../components/Post";
 import API from "../utils/API";
 import "./sass/style.scss";
 
@@ -11,8 +12,16 @@ function Dashboard() {
     const [trendingPosts, setTrendingPosts] = useState({})
 
     useEffect(() => {
+        getUser();
         getTrending();
     }, [])
+
+    let usernameStored;
+    function getUser() {
+        usernameStored = localStorage.getItem("usernameMOAT");
+        console.log("usernameStored: " + usernameStored)
+        API.getUser(usernameStored);
+    }
 
     function getTrending() {
         API.getTrending()
@@ -46,20 +55,11 @@ function Dashboard() {
                 </div>
                 <div className="trending">
                     <p className="mb-3 text-center font-weight-bold">Trending</p>
-                    {trendingPosts.length >0? (
-                    <div> 
-                        {/* {trendingPosts.map(post => (
-                            <Post
-                                postTitle={post.postTitle}
-                                postBody={post.postBody}
-                                comments={post.commentsArray.length}
-                            />
-                        ))} */}
-                        < Post posts={trendingPosts} />
-                    </div>
-                    ) : (
-                    <p className="display-message text-center mt-5">No one has created any posts yet!</p>
-                    )}
+                    {
+                        trendingPosts.length > 0 ? trendingPosts.map(post =>
+                        (< UserPost post={post} getUser={getUser} />)) : (
+                            <p className="display-message text-center mt-5">No one has created any posts yet!</p>
+                        )}   
                 </div>
             </div>
         </div>
