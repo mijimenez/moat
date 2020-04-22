@@ -105,14 +105,14 @@ function Account() {
                         <p className="mb-3 text-center font-weight-bold">Your Posts</p>
                         <div className="user-posts" id={userPosts.userId}>
                             {/* {
-                                posts.length > 0 ? posts.map(post =>
-                                    (< UserPost post={post} />)) :
+                                posts.length > 0 ? < UserPost posts={posts} getUser={getUser} /> :
                                     <div className="description-w-btn d-flex mb-3">
                                         <p className="description text-left">No Posts Yet</p>
                                     </div>
                             } */}
                             {
-                                posts.length > 0 ? < UserPost posts={posts} getUser={getUser} /> :
+                                posts.length > 0 ? posts.map(post =>
+                                    (< UserPost post={post} getUser={getUser}/>)) :
                                     <div className="description-w-btn d-flex mb-3">
                                         <p className="description text-left">No Posts Yet</p>
                                     </div>
