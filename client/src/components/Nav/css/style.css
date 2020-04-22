@@ -20,19 +20,19 @@ code {
 
 body {
   margin: 0;
-  background: #f9f9f9;
+  background: #edf1f8;
 }
 
 /* ---------  Fonts */
 h1, h2, h3, h4, h5 {
   font-family: "Roboto", sans-serif;
   margin: 0;
-  text-transform: uppercase;
 }
 
 h1 {
   color: #fff;
   font-size: 2rem;
+  font-weight: bold;
 }
 
 @media screen and (min-width: 576px) {
@@ -42,7 +42,7 @@ h1 {
 }
 
 h2 {
-  color: #818181;
+  color: #1f93ff;
   font-size: 1.5rem;
 }
 
@@ -54,13 +54,20 @@ h2 {
 
 h3 {
   font-weight: normal;
-  font-size: .9rem;
+  font-size: 1.2rem;
 }
 
 @media screen and (min-width: 767px) {
   h3 {
     font-size: 1.17rem;
   }
+}
+
+h4 {
+  font-weight: normal;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
 }
 
 h5 {
@@ -74,6 +81,7 @@ h6 {
   font-size: .7rem;
   font-weight: bold;
   font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
   margin: 0;
 }
 
@@ -121,7 +129,7 @@ a {
 }
 
 a:hover, a:active {
-  color: #818181;
+  color: #1f93ff;
   text-decoration: none;
 }
 
@@ -130,5 +138,27 @@ a:hover, a:active {
   background-color: #fff !important;
   -webkit-box-shadow: 0px 3px 5px -2px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 3px 5px -2px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-brand {
+  display: -webkit-box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -moz-align-items: center;
+  align-items: center;
+}
+
+.navbar-brand img {
+  height: 27px;
+}
+
+.navbar-brand .logo-name {
+  display: inline;
+  color: #000;
+  font-size: 1.5em;
+  letter-spacing: 4px;
 }
 /*# sourceMappingURL=style.css.map */

@@ -37,20 +37,25 @@ function Signup() {
     };
 
     return (
-        <div className="container" id="signupPage" style={{ marginTop: "30px", marginBottom: "100px", minHeight: "100vh" }}>
-            <div className="row">
-                <div className="col-md-6 order-md-12">
-                    <Image style={{ borderRadius: "50%" }} />
-                    <Tagline lineNum={[1, 2, 3]} />
+        <div id="signupPage">
+            <div className="welcome-side">
+                <div className="wrapper">
+                    <img src={process.env.PUBLIC_URL + "/img/moat_logo_white.png"} alt="MOAT Logo" className="logo"/>
+                    <div className="welcome">
+                        <h1 className="logo-name">MOAT</h1>
+                        <h4 className="tagline text-white">Master of All Trades</h4>
+                    </div>
+                    <p className="text-white">A place for hobbyists and professionals to exchange advice.</p>
                 </div>
+            </div>
 
-                <div className="col-md-6 order-md-1">
-                    <Image className="d-none d-md-block" style={{ borderRadius: "50%" }} />
+            <div className="form-side">
+                <div className="wrapper">
                     <SigninForm userInfo={userInfo} handleInputChange={handleInputChange} />
-                    <Button className="btn btn-primary signupBtn" value="sign up" onClick={handleBtnClick} disabled={!(userInfo.username) || !(userInfo.password) || !(userInfo.email)} />
-                    <div><hr />OR<hr /></div>
-                    <div>Already have an account?</div>
-                    <div><a href="/signin"><b>Sign in here.</b></a></div>
+                    <Button className="btn btn-primary mb-3 signupBtn" value="sign up" onClick={handleBtnClick} disabled={!(userInfo.username) || !(userInfo.password) || !(userInfo.email)} />
+                    <p className="or">OR</p>
+                    <p>Already have an account?</p>
+                    <div><a href="/signin" className="font-weight-bold signup-link">Sign in here.</a></div>
                 </div>
             </div>
         </div>

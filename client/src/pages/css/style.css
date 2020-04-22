@@ -129,7 +129,7 @@ a {
 }
 
 a:hover, a:active {
-  color: #1f93ff;
+  color: #52acff;
   text-decoration: none;
 }
 
@@ -149,6 +149,77 @@ hr {
 
 .order-md-12 {
   background-color: rgba(53, 50, 50, 0.575);
+}
+
+#signinPage, #signupPage {
+  text-align: center;
+}
+
+#signinPage .form-side, #signupPage .form-side {
+  padding: 15%;
+}
+
+#signinPage .form-side .wrapper, #signupPage .form-side .wrapper {
+  width: 100%;
+}
+
+#signinPage .form-side .wrapper .or::before, #signinPage .form-side .wrapper .or::after, #signupPage .form-side .wrapper .or::before, #signupPage .form-side .wrapper .or::after {
+  display: inline-block;
+  content: "";
+  border-top: thin solid black;
+  width: 25%;
+  margin: 0 1rem;
+  -webkit-transform: translateY(-6px);
+          transform: translateY(-6px);
+}
+
+#signinPage .form-side .wrapper .signup-link, #signupPage .form-side .wrapper .signup-link {
+  color: #1f93ff;
+}
+
+#signinPage .welcome-side, #signupPage .welcome-side {
+  padding: 15%;
+  background-color: #1f93ff;
+}
+
+#signinPage .welcome-side .logo, #signupPage .welcome-side .logo {
+  width: 100%;
+  max-width: 80px;
+}
+
+#signinPage .welcome-side .logo-name, #signupPage .welcome-side .logo-name {
+  font-size: 4em;
+  letter-spacing: 12px;
+}
+
+#signinPage .welcome-side .tagline, #signupPage .welcome-side .tagline {
+  margin-bottom: 4em;
+}
+
+@media (min-width: 48em) {
+  #signinPage, #signupPage {
+    display: -webkit-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100vh;
+  }
+  #signinPage .form-side, #signinPage .welcome-side, #signupPage .form-side, #signupPage .welcome-side {
+    display: -webkit-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -moz-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -moz-align-items: center;
+    align-items: center;
+    padding: 5%;
+    width: 50%;
+  }
 }
 
 #dashboardPage .hero {

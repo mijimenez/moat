@@ -489,7 +489,7 @@ $f-body: 'Roboto', sans-serif;
       text-decoration: none;
       transition: .4s all;
       &:hover, &:active {
-        color: $c-theme;
+        color: lighten($c-theme, 10%);
         text-decoration: none;
     }
   }
