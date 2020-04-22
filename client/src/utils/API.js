@@ -25,10 +25,6 @@ export default {
     logoutUser: function () {
         return axios.post("/api/user/logout");
     },
-    // Create new user post
-    // createPost: function (id, post) {
-    //     return axios.post("/api/post/" + id, post);
-    // },
     createPost: function (post) {
         return axios.post("/api/post/1", post);
     },
@@ -47,5 +43,9 @@ export default {
     // Create comment
     createComment: function(id, info) {
         return axios.post("/api/comment/" + id, info);
+    },
+    // Upload user profile picture
+    uploadPhoto: function(profilePhoto) {
+        return axios.post("/api/user/updatePhoto", profilePhoto);
     }
 };

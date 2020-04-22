@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 // import Tagline from "../components/Tagline";
 // import Image from "../components/Image";
 import SigninForm from "../components/SigninForm";
@@ -11,12 +11,11 @@ import CreatePostModal from "../components/CreatePostModal";
 import API from "../utils/API";
 
 // ----- Image upload
-// using require
 import FileUploadWithPreview from 'file-upload-with-preview';
-// const FileUploadWithPreview = require('file-upload-with-preview');
 
 function Account() {
     const [userInfo, setUserInfo] = useState({});
+    const uploadedImages = useRef([]);
     // const [userUpload, setUserUpload] = useState({});
     const [userPosts, setUserPosts] = useState({
         userId: "",
@@ -40,9 +39,12 @@ function Account() {
             //     console.log(e.detail.addedFilesCount)
             // }
             // console.log(upload.cachedFileArray);
+            // console.log("e.detail.cachedFileArray: " , upload.cachedFileArray);
+            // uploadedImages.current = e.detail.cachedFileArray;
+            // console.log("Cached File: " , upload.cachedFileArray);
+            uploadedImages.current = upload.cachedFileArray;
         });
         getUser();
-        storeCachedImages(upload);
     }, [])
 
     let usernameStored;
@@ -90,9 +92,15 @@ function Account() {
         console.log(userPosts);
     };
 
-    function storeCachedImages(upload) {
-        console.log(upload.cachedFileArray);
-    }
+    const handleUploadClick = event => {
+        // console.log("Uploaded: ", uploadedImages.current[0]);
+        const profilePic = uploadedImages.current[0];
+        API.uploadPhoto(profilePic)
+            .then(res => {
+                console.log("Successfully uploaded profile pic!");
+            })
+            .catch(err => console.log("Failed uploading picture."))
+    };
 
     return (
         <div id="accountPage">
@@ -107,12 +115,18 @@ function Account() {
                             <div class="custom-file-container" data-upload-id="myUniqueUploadId">
                                 <label>Upload File <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">&times;</a></label>
                                 <label class="custom-file-container__custom-file" >
-                                    <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="*" multiple aria-label="Choose File"/>
+                                    <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="*" aria-label="Choose File"/>
                                     <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
                                     <span class="custom-file-container__custom-file__custom-file-control"></span>
                                 </label>
                                 <div class="custom-file-container__image-preview"></div>
+                                <Button className="btn btn-primary updateBtn" value="Upload" onClick={handleUploadClick} />
                             </div>
+                            {/* <div class="custom-file">
+                                <input type="file" className="custom-file-input" id="customFile" onClick={handleUploadClick}/>
+                                <label className="custom-file-label" for="customFile">Choose file</label>
+                                <Button className="btn btn-primary updateBtn" value="Upload" onClick={handleUploadClick} />
+                            </div> */}
 
 
                             <div>

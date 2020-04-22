@@ -3,7 +3,6 @@ import Tagline from "../components/Tagline";
 // import Button from "../components/Button";
 import ListGroup from "../components/ListGroup";
 import UserPost from "../components/UserPost";
-// import Post from "../components/Post";
 import API from "../utils/API";
 import "./sass/style.scss";
 
