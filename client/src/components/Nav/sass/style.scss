@@ -4,4 +4,17 @@
 .navbar {
     background-color: $c-white!important;
     @include box-shadow;
+    &-brand {
+        @include flexbox;
+        @include align-items(center);
+        img {
+            height: 27px;
+        }
+        .logo-name {
+            display: inline;
+            color: $c-black;
+            font-size: 1.5em;
+            letter-spacing: 4px;
+        }
+    }
 }

@@ -34,20 +34,25 @@ function Signin() {
     };
 
     return (
-        <div className="container" id="signinPage" style={{ marginTop: "30px", marginBottom: "100px", minHeight: "100vh" }}>
-            <div className="row">
-                <div className="col-md-6 order-md-12">
-                    <Image style={{ borderRadius: "50%" }} />
-                    <Tagline lineNum={[1, 2, 3]} />
+        <div id="signinPage">
+            <div className="welcome-side">
+                <div className="wrapper">
+                    <img src={process.env.PUBLIC_URL + "/img/moat_logo_white.png"} alt="MOAT Logo" className="logo"/>
+                    <div className="welcome">
+                        <h1 className="logo-name">MOAT</h1>
+                        <h4 className="tagline text-white">Master of All Trades</h4>
+                    </div>
+                    <p className="text-white">A place for hobbyists and professionals to exchange advice.</p>
                 </div>
+            </div>
 
-                <div className="col-md-6 order-md-1">
-                    <Image className="d-none d-md-block" style={{ borderRadius: "50%" }} />
+            <div className="form-side">
+                <div className="wrapper">
                     <SigninForm userInfo={userInfo} handleInputChange={handleInputChange} />
-                    <Button className="btn btn-primary signinBtn" value="sign in" onClick={handleBtnClick} disabled={!(userInfo.username) || !(userInfo.password)} />
-                    <div><hr />OR<hr /></div>
-                    <div>Create your account by</div>
-                    <div><a href="/signup"><b>signing up here.</b></a></div>
+                    <Button className="btn btn-primary mb-3 signinBtn" value="sign in" onClick={handleBtnClick} disabled={!(userInfo.username) || !(userInfo.password)} />
+                    <p className="or">OR</p>
+                    <p>Create your account by</p>
+                    <div><a href="/signup" className="font-weight-bold signup-link">signing up here.</a></div>
                 </div>
             </div>
         </div>

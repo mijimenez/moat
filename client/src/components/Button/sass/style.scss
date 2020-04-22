@@ -1,7 +1,7 @@
 @import '../../../Index_sass/sass/index.scss';
 
 // ---- Button
-button {
+button, .btn {
     background-color: $c-theme;
     color: $c-white;
     text-transform: uppercase;
