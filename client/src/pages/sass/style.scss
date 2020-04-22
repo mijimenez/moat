@@ -17,6 +17,56 @@ hr {
     background-color: rgba(53, 50, 50, 0.575);
 }
 
+// ----- Signin & Signup Pages
+#signinPage, #signupPage {
+    text-align: center;
+    .form-side {
+        padding: 15%;
+        .wrapper {
+            width: 100%;
+            .or {
+                &::before, &::after {
+                    display: inline-block;
+                    content: "";
+                    border-top: thin solid black;
+                    width: 25%;
+                    margin: 0 1rem;
+                    transform: translateY(-6px)
+                }
+            }
+            .signup-link {
+                color: $c-theme;
+            }
+        }
+    }
+    .welcome-side {
+        padding: 15%;
+        background-color: $c-theme;
+        .logo {
+            width: 100%;
+            max-width: 80px;
+        }
+        .logo-name {
+            font-size: 4em;
+            letter-spacing: 12px;
+        }
+        .tagline {
+            margin-bottom: 4em;
+        }
+    }
+    @media (min-width: $mq-mediumSmall) {
+        @include flexbox;
+        height: 100vh;
+        .form-side, .welcome-side {
+            @include flexbox;
+            @include justify-content(center);
+            @include align-items(center);
+            padding: 5%;
+            width: 50%;
+        }
+    }
+}
+
 // ----- Dashboard Page
 #dashboardPage {
     .hero {

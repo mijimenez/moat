@@ -10,8 +10,14 @@ import CreatePostModal from "../components/CreatePostModal";
 // import ViewPostModal from "../components/ViewPostModal";
 import API from "../utils/API";
 
+// ----- Image upload
+// using require
+import FileUploadWithPreview from 'file-upload-with-preview';
+// const FileUploadWithPreview = require('file-upload-with-preview');
+
 function Account() {
     const [userInfo, setUserInfo] = useState({});
+    // const [userUpload, setUserUpload] = useState({});
     const [userPosts, setUserPosts] = useState({
         userId: "",
         profilePic: "",
@@ -20,8 +26,23 @@ function Account() {
     })
     const [posts, setPosts] = useState([]);
 
+    var upload;
+
     useEffect(() => {
+        upload = new FileUploadWithPreview('myUniqueUploadId');
+        window.addEventListener('fileUploadWithPreview:imagesAdded', function(e) {
+            // e.detail.uploadId
+            // e.detail.cachedFileArray
+            // e.detail.addedFilesCount
+            // Use e.detail.uploadId to match up to your specific input
+            // if (e.detail.uploadId === 'mySecondImage') {
+            //     console.log(e.detail.cachedFileArray)
+            //     console.log(e.detail.addedFilesCount)
+            // }
+            // console.log(upload.cachedFileArray);
+        });
         getUser();
+        storeCachedImages(upload);
     }, [])
 
     let usernameStored;
@@ -69,6 +90,10 @@ function Account() {
         console.log(userPosts);
     };
 
+    function storeCachedImages(upload) {
+        console.log(upload.cachedFileArray);
+    }
+
     return (
         <div id="accountPage">
             <div className="info">
@@ -77,6 +102,19 @@ function Account() {
                         <div className="user-image" style={{}}>
                             <img src={userPosts.profilePic} style={{ borderRadius: "50%" }} />
                             <div>Upload Profile Picture</div>
+
+
+                            <div class="custom-file-container" data-upload-id="myUniqueUploadId">
+                                <label>Upload File <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">&times;</a></label>
+                                <label class="custom-file-container__custom-file" >
+                                    <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="*" multiple aria-label="Choose File"/>
+                                    <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
+                                    <span class="custom-file-container__custom-file__custom-file-control"></span>
+                                </label>
+                                <div class="custom-file-container__image-preview"></div>
+                            </div>
+
+
                             <div>
                                 <p>{userInfo.firstName}, {userInfo.lastName}</p>
                                 <p>{userInfo.username}</p>
