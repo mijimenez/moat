@@ -44,4 +44,7 @@ router.post('/logout', (req, res) => {
    }
 })
 
+// Update user information
+router.post('/updatePhoto', credentialsController.uploadPhoto)
+
 module.exports = router;

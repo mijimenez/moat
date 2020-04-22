@@ -1,4 +1,5 @@
 const db = require("../models");
+const formidable = require('formidable');
 
 
 
@@ -52,5 +53,22 @@ module.exports = {
             })
          }
       })
+   },
+
+   uploadPhoto: function (req, res) {
+      console.log("Received profile pic image");
+      console.log(req.body);
+      var form = new formidable.IncomingForm();
+      form.uploadDir = "./"; // set my directory where to save uploaded files
+      form.keepExtensions = true;
+      form.parse(req, function (err, fields, files) {
+         console.log(`File Name Uploaded: ${files.filetoupload.name}
+         File Name In Uploaded Directory: ${files.filetoupload.path}`);
+
+         // Here we can save path of file to a database.
+
+         res.write('File uploaded');
+         res.end();
+      });
    }
 };
