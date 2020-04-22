@@ -11,7 +11,7 @@ module.exports = {
       db.NewPost
          .find(req.query)
          .limit(50)
-         .sort({ date: -1, comments: -1 })
+         .sort({ commentsArray: -1, date: -1 })
          .then(dbModel => res.json(dbModel))
          .catch(err => res.status(422).json(err));
    },
