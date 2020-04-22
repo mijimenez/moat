@@ -4,14 +4,31 @@ import Button from "../Button";
 import ViewPostModal from "../ViewPostModal";
 import API from "../../utils/API";
 
-function UserPost({ posts, getUser }) {
-    // useEffect(() => {
-    // }, [])
+function UserPost({ post, posts, getUser }) {
+    const [commentsArray, setCommentsArray] = useState([]);
+
+    useEffect(() => {
+        // console.log(posts)
+    }, [])
 
     const handleBtnClick = event => {
         event.preventDefault();
-        // console.log("Post id: " + event.target.id);
+        console.log("Post id: " + event.target.id);
+        // API.findCommentByPost(event.target.id)
+        //     .then(res => {
+        //         console.log(res.data);
+        //         setCommentsArray(res.data.commentsArray);
+        //     })
+        findCommentByPost();
     };
+
+    const findCommentByPost = () => {
+        API.findCommentByPost(post._id)
+            .then(res => {
+                console.log(res.data);
+                setCommentsArray(res.data.commentsArray);
+            })
+    }
 
     const deletePost = (id) => {
         console.log("Deleting post id: " + id)
@@ -26,7 +43,7 @@ function UserPost({ posts, getUser }) {
     }
 
     return (
-        posts.map((post, i) => (
+        // posts.map((post, i) => (
             <Card>
                 <div className="description-w-btn d-flex mb-3">
                     <div className="titles">
@@ -35,10 +52,11 @@ function UserPost({ posts, getUser }) {
                     </div>
                     <Button className="viewBtn align-self-start ml-auto"
                         id={post._id} value="view" data-toggle="modal"
-                        data-target={`#viewPostModal${i}`}
+                        // data-target={`#viewPostModal${i}`}
+                        data-target={`#viewPostModal${post._id}`}
                         onClick={handleBtnClick}
                     />
-                    <ViewPostModal modalId={i} post={post} />
+                    <ViewPostModal modalId={post._id} post={post} commentsArray={commentsArray} getUser={getUser}/>
                     <Button className="deleteBtn align-self-start ml-3"
                         id={post._id} value="delete" onClick={() => deletePost(post._id)}
                     />
@@ -52,7 +70,7 @@ function UserPost({ posts, getUser }) {
                     <p className="commentsNum font-weight-bold">{post.commentsArray.length} Comments</p>
                 </div>
             </Card>
-        ))
+        // ))
     );
 }
 
