@@ -25,6 +25,8 @@
     "connect-mongo": "^3.2.0",
     "express": "^4.16.3",
     "express-session": "^1.17.0",
+    "file-upload-with-preview": "^4.0.8",
+    "formidable": "^1.2.2",
     "if-env": "^1.0.4",
     "mongoose": "^5.9.7",
     "node-sass": "^4.13.1",
