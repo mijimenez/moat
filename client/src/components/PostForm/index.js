@@ -42,6 +42,7 @@ export function Input(props) {
         <Button
             value="Post"
             onClick={props.onClick}
+            disabled={props.disabled}
         />
     );
   }

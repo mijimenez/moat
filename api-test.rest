@@ -1,11 +1,11 @@
-POST http://localhost:3001/api/comment/5e9e4c109c1acd1b80368c67 HTTP/1.1
+DELETE http://localhost:3001/api/comment/5e9f6a5082de714768b2d8f9 HTTP/1.1
 content-type: application/json
 
 {
     "username": "Christian",
     "profilePicture": "../img/NoImageFound.png",
     "postTitle": "wqerqwer title",
-    "postID": "5e9e4c109c1acd1b80368c67",
+    "postID": "5e9f6809f013442008ada215",
     "commentBody": "qwerqwer is my qwerqwerqwerqwer",
     "postBody": "eeee eeeee the newly created post",
     "categories": ["Food", "Family"]

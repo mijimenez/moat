@@ -31,7 +31,7 @@ module.exports = {
             res.json(newPost)
             return db.User.findOneAndUpdate(
 
-               { _id: userId },
+               { username : userId },
                {
                   $push: {
                      createdPosts: newPost._id
@@ -40,30 +40,28 @@ module.exports = {
                { new: true, useFindAndModify: false }
             );
          })
-         .catch((err) => {
-            res.json(err)
-         })
    },
 
    // gets a specific post 
    getUserPost: function (req, res) {
-      console.log(req.params);
+      console.log(req.params)
 
-      db.NewPost.find({ _id: req.params.post })
-         .then(userPost => {
-            console.log(userPost);
-            res.json(userPost)
-         })
-         .catch(err => {
-            res.status(422).json(err)
+      return db.NewPost.findOne({ _id: req.params.id })
+         .populate('commentsArray').exec((err, commentsArray) => {
+            console.log(commentsArray)
+            if(err) {
+               res.status(422).json(err)
+            }
+            res.json(commentsArray)
          })
    },
 
    // finds all the posts by a single user
    getAllUserPosts: function (req, res) {
-      console.log(req.params.id)
+      console.log("userID " + req.params.id)
 
       db.NewPost.find({ username: req.params.id })
+         .sort({ date: -1})
          .then(allPosts => {
             console.log(allPosts);
             res.json(allPosts)
