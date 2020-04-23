@@ -1,9 +1,10 @@
-GET http://localhost:3001/api/user/PolkaDotMask HTTP/1.1
+POST http://localhost:3001/api/user/PolkaDotMask HTTP/1.1
 content-type: application/json
 
 {
-    "username": "PolkaDotMask",
+    "username": "PolkaDotMask2",
     "firstName": "Phenix",
+    "password": "Testing_1",
     "profilePicture": "../img/NoImageFound.png",
     "postTitle": "wqerqwer title",
     "postID": "5e9f6809f013442008ada215",

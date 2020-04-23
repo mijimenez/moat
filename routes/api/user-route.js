@@ -17,6 +17,7 @@ router.route("/")
 //actual route is api/user/profile
 router.route("/:id")
    .get(credentialsController.findUser)
+   .post(credentialsController.updateUser)
 
 router.route("/cat/:id")
    .get(credentialsController.getUserCategories)
