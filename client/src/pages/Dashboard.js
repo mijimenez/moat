@@ -13,6 +13,7 @@ function Dashboard() {
 
     useEffect(() => {
         getTrending();
+        console.log("Dashboard useEffect")
     }, [])
 
     function getTrending() {

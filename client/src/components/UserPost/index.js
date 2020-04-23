@@ -9,25 +9,27 @@ function UserPost({ post, posts, getUser, getTrending }) {
     const [commentsArray, setCommentsArray] = useState([]);
 
     useEffect(() => {
-        // console.log(posts)
-    }, [])
+        console.log("userpost useEffect")
+    }, [commentsArray.length > 0])
 
     const handleBtnClick = event => {
         event.preventDefault();
-        console.log("Post id: " + event.target.id);
+        // console.log("Post id: " + event.target.id);
         // API.findCommentByPost(event.target.id)
         //     .then(res => {
         //         console.log(res.data);
         //         setCommentsArray(res.data.commentsArray);
         //     })
+        console.log("when click view button (post._id): " + post._id)
         findCommentByPost();
     };
 
     const findCommentByPost = () => {
         API.findCommentByPost(post._id)
             .then(res => {
-                console.log(res.data);
+                console.log(`comments for post id(${post._id}): ${JSON.stringify(res.data.commentsArray)}`);
                 setCommentsArray(res.data.commentsArray);
+                sendToModal();
             })
     }
 
@@ -43,13 +45,19 @@ function UserPost({ post, posts, getUser, getTrending }) {
             .catch(err => console.log(err));
     }
 
+    function sendToModal() {
+        return(<ViewPostModal modalId={post._id} post={post} commentsArray={commentsArray} getUser={getUser} getTrending={getTrending} />)
+    }
+
     return (
         // posts.map((post, i) => (
         <Card>
             <div className="description-w-btn d-flex mb-3">
                 <div className="titles">
                     {/* Putting just fake image of user for now */}
-                    <p className="description text-left"><Image style={{ borderRadius: "50%" }} /> {post.username}</p>
+                    <p className="description text-left">
+                        <img src={process.env.PUBLIC_URL + post.profilePicture} style={{ borderRadius: "50%" }} /> {post.username}
+                    </p>
                     <h3 className="title text-left mb-3">{post.postTitle}</h3>
                     <p className="description text-left">{post.postBody}</p>
                 </div>
@@ -59,7 +67,8 @@ function UserPost({ post, posts, getUser, getTrending }) {
                     data-target={`#viewPostModal${post._id}`}
                     onClick={handleBtnClick}
                 />
-                <ViewPostModal modalId={post._id} post={post} commentsArray={commentsArray} getUser={getUser} getTrending={getTrending} />
+                {sendToModal()}
+                {/* <ViewPostModal modalId={post._id} post={post} commentsArray={commentsArray} getUser={getUser} getTrending={getTrending} /> */}
                 {getUser ?
                     <Button className="deleteBtn align-self-start ml-3"
                         id={post._id} value="delete" onClick={() => deletePost(post._id)}
