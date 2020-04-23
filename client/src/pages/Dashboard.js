@@ -27,9 +27,10 @@ function Dashboard() {
 
     function getTrending() {
         API.getTrending()
-        .then(res => 
+        .then(res => {
+            // console.log(res.data);
             setTrendingPosts(res.data)
-        )
+        })
         .catch(err => console.log(err));
     }
     // console.log(trendingPosts);
@@ -38,9 +39,10 @@ function Dashboard() {
     function handleCategorySelect(categoryPicked) {
         console.log(categoryPicked);
         API.getPostByCategories(categoryPicked)
-        .then(res => 
+        .then(res => {
+            console.log(res.data);
             setTrendingPosts(res.data)
-        )
+        })
         .catch(err => console.log(err));
     };
 

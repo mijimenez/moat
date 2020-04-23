@@ -80,10 +80,10 @@ module.exports = {
    // getting a post by specific categories
    getPostByCategories: function (req, res) {
       console.log(req.params)
-   
       db.NewPost.find({ categories: req.params.category || /req.params/i})
       .then(postCategory => {
          console.log(postCategory)
+         res.json(postCategory)
       })
       .catch(err => {
          res.status(422).json(err)
