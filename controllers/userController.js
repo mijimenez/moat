@@ -48,7 +48,7 @@ module.exports = {
 
       db.User.findOneAndUpdate(
          {
-            _id: req.params.id
+            username: req.params.id
          },
          {
             username: username,

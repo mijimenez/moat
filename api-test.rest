@@ -1,4 +1,4 @@
-Put http://localhost:3001/api/user/5e9e47b37d37452f0c2c72ab HTTP/1.1
+DELETE http://localhost:3001/api/comment/5ea1e95e2c1d425678ff5b1e HTTP/1.1
 content-type: application/json
 
 {

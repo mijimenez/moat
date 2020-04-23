@@ -19,6 +19,7 @@ module.exports = {
    // create a new comment on a post
    createComment: function (req, res) {
 
+      console.log(req.body.postID)
       db.NewComment.create(req.body)
          .then(function (newComment) {
             console.log("Test " + newComment._id)
@@ -56,10 +57,13 @@ module.exports = {
 
 
    removeComment: function (req, res) {
+      
       console.log(req.params.id)
 
       db.NewComment.findOneAndDelete({ _id: req.params.id })
          .then((deletedDocument) => {
+            
+            res.json(deletedDocument)
             console.log("test " + deletedDocument.postID)
 
             return db.NewPost.findOneAndUpdate(
