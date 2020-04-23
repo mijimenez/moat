@@ -28,7 +28,8 @@ router.post(
       console.log('logged in', req.user);
       var userInfo = {
          username: req.user.username,
-         profilePicture: req.user.profilePicture
+         profilePicture: req.user.profilePicture,
+         categoryPreferences: req.user.categoryPreferences
       };
       res.send(userInfo);
    }

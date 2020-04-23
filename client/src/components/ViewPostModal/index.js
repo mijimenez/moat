@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 // import API from "../../utils/API";
 import { TextArea } from "../PostForm";
 import Button from "../Button";
+import Image from "../Image";
 import "./sass/style.scss";
 import API from "../../utils/API";
 
-function ViewPostModal({ post, modalId, commentsArray, getUser }) {
+function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
     const [formObject, setFormObject] = useState({
         postID: post._id,
         username: localStorage.getItem("usernameMOAT"),
@@ -30,7 +31,9 @@ function ViewPostModal({ post, modalId, commentsArray, getUser }) {
         console.log(post);
         console.log(formObject);
         // console.log(event.target.id);
-        getUser();
+        {
+            getUser ? getUser() : getTrending();
+        }
         // createComment();
     };
 
@@ -55,7 +58,7 @@ function ViewPostModal({ post, modalId, commentsArray, getUser }) {
     }
 
     const deleteComment = (event) => {
-        console.log(event.target.id)
+        console.log("deleting comment id: " + event.target.id)
     }
     // const viewPost = () => {
     //     console.log(postId)
@@ -74,8 +77,9 @@ function ViewPostModal({ post, modalId, commentsArray, getUser }) {
                     <div className="modal-content">
 
                         <div className="modal-body">
-                            <img src={commentsArray.profilePicture} style={{ borderRadius: "50%" }} />
-                            <p className="description text-left">{comment.username}</p>
+                            {/* <img src={commentsArray.profilePicture} style={{ borderRadius: "50%" }} /> */}
+                            {/* Putting just fake image of user for now */}
+                            <p className="description text-left"><Image style={{ borderRadius: "50%" }} />{comment.username}</p>
                             <p className="description text-left">{comment.commentBody}</p>
                         </div>
                         <div className="modal-footer">
@@ -110,7 +114,8 @@ function ViewPostModal({ post, modalId, commentsArray, getUser }) {
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <p className="modal-title" id="viewPostModalLabel">Posted by {post.username}</p>
+                            {/* Putting just fake image of user for now */}
+                            <p className="modal-title" id="viewPostModalLabel">Posted by {post.username} <Image style={{ borderRadius: "50%" }} /></p>
                             <button type="button" onClick={handleBtnClick} className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -131,12 +136,12 @@ function ViewPostModal({ post, modalId, commentsArray, getUser }) {
                                 {commentLength > 0 ? commentLength : commentsArray.length} Comments
                             </p> */}
                             {commentLength > 0 ? renderNumberOfComments(commentLength) : renderNumberOfComments(commentsArray.length)}
-                            <textarea id="commentBody" rows="4" cols="50"
+                            <TextArea id="commentBody" rows="4" cols="50"
                                 onChange={handleInputChange}
                                 value={formObject.commentBody}
                                 name="commentBody"
                                 placeholder=""
-                            ></textarea>
+                            ></TextArea>
                         </div>
                         <div className="modal-footer">
                             <Button
