@@ -16,6 +16,17 @@ module.exports = {
       .catch(err => res.status(422).json(err));
    },
 
+   getUserCategories: function (req, res) {
+      console.log(req.body)
+
+      db.User
+         .findOne({ username: req.params.id })
+         .sort()
+         .then(userCat => {
+            res.json(userCat.categoryPreferences)
+         });
+   },
+
    // find a single user by username
    findUser: function (req, res) {
       const username = req.params.id
@@ -24,6 +35,55 @@ module.exports = {
       .findOne({username: username})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+   },
+
+   updateUser: function (req, res) {
+
+      // var password = req.body.password
+      const { username, password, email, firstName, lastName } = req.body
+      // bcrypt.hash(password, (hash) => {
+      //    req.body.password = hash
+      // })
+      // ADD VALIDATION
+      db.User.findOne({ username: req.params.id }, (err, user) => {
+         console.log(user.username)
+         if (err) {
+            console.log('User.js post error: ', err)
+         } else if (req.params.id !== user.username && user) {
+            console.log(user.username)
+            res.json({
+               error: `Sorry, already a user with the username: ${username}`
+            })
+         } 
+         else if (req.body.email !== user.email && user) {
+            console.log(user.email)
+            res.json({
+               error: `Sorry, already a user with the email: ${req.body.email}`
+            })
+         }
+         else {
+            db.User.findOneAndUpdate(
+               {
+                  username: req.params.id
+               },
+               {
+                  username: username,
+                  password: password,
+                  email: email,
+                  firstName: firstName,
+                  lastName: lastName
+               },
+               {
+                  useFindAndModify: false
+               }
+            ).then((savedUser) => {
+
+               res.json(savedUser)
+            }).catch((err) => {
+               res.json(err)
+            })
+         }
+      })
    },
 
    // sign up using the passport validation and password hashing

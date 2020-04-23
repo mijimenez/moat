@@ -14,21 +14,26 @@ router.route("/signup")
 router.route("/")
    .get(credentialsController.allUsers)
 
-//actual route is api/user/profile
+//actual route is api/user/
 router.route("/:id")
    .get(credentialsController.findUser)
+   .put(credentialsController.updateUser)
 
+// actual route is api/user/cat/":id"
+router.route("/cat/:id")
+   .get(credentialsController.getUserCategories)
 
 // // Login route
 // --- (You can send user id to front end here if you want, but Express is already keeping track of user through serialize/deserialize so no need to pass user id)
 router.post(
-'/login',
+   '/login',
    passport.authenticate('local'),
    (req, res) => {
       console.log('logged in', req.user);
       var userInfo = {
          username: req.user.username,
-         profilePicture: req.user.profilePicture
+         profilePicture: req.user.profilePicture,
+         categoryPreferences: req.user.categoryPreferences
       };
       res.send(userInfo);
    }
