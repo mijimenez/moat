@@ -17,12 +17,15 @@ router.route("/")
 //actual route is api/user/profile
 router.route("/:id")
    .get(credentialsController.findUser)
+   .post(credentialsController.updateUser)
 
+router.route("/cat/:id")
+   .get(credentialsController.getUserCategories)
 
 // // Login route
 // --- (You can send user id to front end here if you want, but Express is already keeping track of user through serialize/deserialize so no need to pass user id)
 router.post(
-'/login',
+   '/login',
    passport.authenticate('local'),
    (req, res) => {
       console.log('logged in', req.user);

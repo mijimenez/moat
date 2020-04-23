@@ -16,6 +16,17 @@ module.exports = {
       .catch(err => res.status(422).json(err));
    },
 
+   getUserCategories: function (req, res) {
+      console.log(req.body)
+
+      db.User
+         .findOne({ username: req.params.id })
+         .sort()
+         .then(userCat => {
+            res.json(userCat.categoryPreferences)
+         });
+   },
+
    // find a single user by username
    findUser: function (req, res) {
       const username = req.params.id
@@ -24,6 +35,50 @@ module.exports = {
       .findOne({username: username})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+   },
+
+   updateUser: function (req, res) {
+      console.log(req.body)
+      console.log(req.params.id)
+      // var password = req.body.password
+      const { username, password, email, firstName, lastName, categoryPreferences } = req.body
+      // bcrypt.hash(password, (hash) => {
+      //    req.body.password = hash
+      // })
+      // ADD VALIDATION
+      db.User.findOne({ username: username }, (err, user) => {
+         if (err) {
+            console.log('User.js post error: ', err)
+         } else if (user) {
+            res.json({
+               error: `Sorry, already a user with the username: ${username}`
+            })
+         }
+         else {
+            db.User.findOneAndUpdate(
+               {
+                  username: req.params.id
+               },
+               {
+                  username: username,
+                  password: password,
+                  email: email,
+                  firstName: firstName,
+                  lastName: lastName,
+                  categoryPreferences: categoryPreferences
+               },
+               {
+                  runValidators: true,
+                  useFindAndModify: false
+               }
+            ).then((savedUser) => {
+               console.log(savedUser)
+               res.json(savedUser)
+            }).catch((err) => {
+               res.json(err)
+            })
+         }
+      })
    },
 
    // sign up using the passport validation and password hashing
