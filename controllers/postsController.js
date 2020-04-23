@@ -21,8 +21,8 @@ module.exports = {
       console.log(req.body)
       console.log(req.params)
 
-      const userId = req.params.id
-      console.log(userId)
+      const id = req.params.id
+      console.log(id)
 
       db.NewPost.create(req.body)
          .then(function (newPost) {
@@ -31,7 +31,7 @@ module.exports = {
             res.json(newPost)
             return db.User.findOneAndUpdate(
 
-               { username : userId },
+               { _id : id },
                {
                   $push: {
                      createdPosts: newPost._id
@@ -60,7 +60,7 @@ module.exports = {
    getAllUserPosts: function (req, res) {
       console.log("userID " + req.params.id)
 
-      db.NewPost.find({ username: req.params.id })
+      db.NewPost.find({ _id: req.params.id })
          .sort({ date: -1})
          .then(allPosts => {
             console.log(allPosts);
@@ -74,7 +74,7 @@ module.exports = {
    getAllUserCategories: function (req, res) {
       console.log(req.params);
 
-      db.NewPost.find({ username: req.params.name, categories: req.params.category })
+      db.NewPost.find({ _id: req.params.name, categories: req.params.category })
    },
 
    // getting a post by specific categories
