@@ -14,11 +14,12 @@ router.route("/signup")
 router.route("/")
    .get(credentialsController.allUsers)
 
-//actual route is api/user/profile
+//actual route is api/user/
 router.route("/:id")
    .get(credentialsController.findUser)
    .put(credentialsController.updateUser)
 
+// actual route is api/user/cat/":id"
 router.route("/cat/:id")
    .get(credentialsController.getUserCategories)
 
