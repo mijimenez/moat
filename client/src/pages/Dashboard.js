@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Tagline from "../components/Tagline";
 // import Button from "../components/Button";
-import ListGroup from "../components/ListGroup";
 import UserPost from "../components/UserPost";
 import { List, ListItem } from "../components/List";
 import API from "../utils/API";
@@ -61,7 +60,6 @@ function Dashboard() {
             </div>
             <div className="row">
                 <div className="categories">
-                    {/* <ListGroup /> */}
                     {categories.length >0? (
                     <List>
                         <li class="list-group-item font-weight-bold">By Category</li>
