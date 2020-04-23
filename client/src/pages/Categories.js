@@ -9,31 +9,35 @@ import API from "../utils/API";
 import "./sass/style.scss";
 import categories from "../utils/categories.json"
 
-export default function Categories() {
+function Categories() {
 
-//    const [userCategories, setCategories] = useState({})
+   const [userCategories, setCategories] = useState({})
 
-//    useEffect(() => {
-//       getUser();
-//       getUserCategories();
-//    }, [])
+   useEffect(() => {
+      getUser();
+      getUserCategories();
+   }, [])
 
-//    let usernameStored;
-//    function getUser() {
-//       usernameStored = localStorage.getItem("usernameMOAT");
-//       console.log("usernameStored: " + usernameStored)
-//       API.getUser(usernameStored);
-//   }
+   let usernameStored;
+   function getUser() {
+      usernameStored = localStorage.getItem("usernameMOAT");
+      console.log("usernameStored: " + usernameStored)
+      API.getUser(usernameStored);
+   }
 
-   // function getUserCategories() {
-   //    API.getUserCategories("PolkaDotMask")
-   //       .then(res => {
-   //          console.log(res.data)
-   //          setCategories(res.data)
-   //          console.log(userCategories)
-   //       })
-         
-   // }
+   function getUserCategories() {
+      usernameStored = localStorage.getItem("usernameMOAT");
+      console.log("usernameStored: " + usernameStored)
+      console.log(usernameStored)
+      API.getUserCategories(usernameStored)
+         .then(res => {
+            console.log(res.data)
+            setCategories(res.data)
+            console.log(userCategories)
+         })
+         .catch(err => console.log(err));
+   }
+   console.log(userCategories)
 
 
    return (
@@ -59,10 +63,13 @@ export default function Categories() {
             <div className="categories">
                <ul class="list-group">
                   <li class="list-group-item font-weight-bold">Your Categories</li>
-                  {/* {userCategories.map(category =>
-                     <li className="list-group-item">{category}</li>
-                  )} */}
+                  {userCategories.length > 0 ? userCategories.map(post =>
+                     <li className="list-group-item">{post}  <button id="test">X</button></li>) : (
+                        <li className="list-group-item"><div className="row">It looks like you don't have any categories yet.</div><br></br><div className="row">Just click some categories that you are interested in to get started</div></li>
+                     )}
+                     <button>Save</button>
                </ul>
+               
             </div>
             <div className="trending">
                <p className="mb-3 text-center font-weight-bold">Trending</p>
@@ -78,3 +85,4 @@ export default function Categories() {
 
 }
 
+export default Categories;
