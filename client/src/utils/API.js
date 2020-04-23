@@ -49,7 +49,7 @@ export default {
         return axios.post("/api/comment/" + id, info);
     },
     // Upload user profile picture
-    uploadPhoto: function(profilePhoto) {
-        return axios.post("/api/user/updatePhoto", profilePhoto);
+    uploadPhoto: function(file) {
+        return axios.post("/api/user/updatePhoto", file);
     }
 };
