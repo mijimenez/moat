@@ -7,6 +7,7 @@ import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import Account from "./pages/Account";
 import NoMatch from "./pages/NoMatch";
+import Categories from "./pages/Categories";
 import "./App.css";
 
 function App() {
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route exact path={"/account"}>
             <Account />
+          </Route>
+          <Route exact path={"/categories"}>
+            <Categories />
           </Route>
           <Route>
             <NoMatch />

@@ -42,6 +42,13 @@ function Navbar() {
                         </li>
                         <li className="nav-item">
                             <Link className={
+                                window.location.pathname === "/categories"
+                                    ? "nav-link active"
+                                    : "nav-link inactive"
+                            } to="/categories" onClick={() => setPath("/categories")}>Categories</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className={
                                 window.location.pathname === "/account"
                                     ? "nav-link active"
                                     : "nav-link inactive"

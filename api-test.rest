@@ -1,14 +1,18 @@
-DELETE http://localhost:3001/api/comment/5e9f6a5082de714768b2d8f9 HTTP/1.1
+GET http://localhost:3001/api/post/cat/Home HTTP/1.1
 content-type: application/json
 
 {
-    "username": "Christian",
+    "username": "StaySixFeetAwayPlease2",
+    "firstName": "Fenix",
+    "lastName": "Ho",
+    "password": "Testing_1",
+    "email": "joe3@gmail.com",
     "profilePicture": "../img/NoImageFound.png",
     "postTitle": "wqerqwer title",
     "postID": "5e9f6809f013442008ada215",
     "commentBody": "qwerqwer is my qwerqwerqwerqwer",
     "postBody": "eeee eeeee the newly created post",
-    "categories": ["Food", "Family"]
+    "category": ["Food", "Family"]
 }
 
 ###
