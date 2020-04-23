@@ -38,20 +38,27 @@ module.exports = {
    },
 
    updateUser: function (req, res) {
-      console.log(req.body)
-      console.log(req.params.id)
+
       // var password = req.body.password
-      const { username, password, email, firstName, lastName, categoryPreferences } = req.body
+      const { username, password, email, firstName, lastName } = req.body
       // bcrypt.hash(password, (hash) => {
       //    req.body.password = hash
       // })
       // ADD VALIDATION
-      db.User.findOne({ username: username }, (err, user) => {
+      db.User.findOne({ username: req.params.id }, (err, user) => {
+         console.log(user.username)
          if (err) {
             console.log('User.js post error: ', err)
-         } else if (user) {
+         } else if (req.params.id !== user.username && user) {
+            console.log(user.username)
             res.json({
                error: `Sorry, already a user with the username: ${username}`
+            })
+         } 
+         else if (req.body.email !== user.email && user) {
+            console.log(user.email)
+            res.json({
+               error: `Sorry, already a user with the email: ${req.body.email}`
             })
          }
          else {
@@ -64,15 +71,13 @@ module.exports = {
                   password: password,
                   email: email,
                   firstName: firstName,
-                  lastName: lastName,
-                  categoryPreferences: categoryPreferences
+                  lastName: lastName
                },
                {
-                  runValidators: true,
                   useFindAndModify: false
                }
             ).then((savedUser) => {
-               console.log(savedUser)
+
                res.json(savedUser)
             }).catch((err) => {
                res.json(err)

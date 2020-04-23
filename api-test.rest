@@ -1,16 +1,18 @@
-POST http://localhost:3001/api/user/PolkaDotMask HTTP/1.1
+POST http://localhost:3001/api/user/StaySixFeetAwayPlease2 HTTP/1.1
 content-type: application/json
 
 {
-    "username": "PolkaDotMask2",
+    "username": "StaySixFeetAwayPlease2",
     "firstName": "Phenix",
+    "lastName": "Ho",
     "password": "Testing_1",
+    "email": "joe2@gmail.com",
     "profilePicture": "../img/NoImageFound.png",
     "postTitle": "wqerqwer title",
     "postID": "5e9f6809f013442008ada215",
     "commentBody": "qwerqwer is my qwerqwerqwerqwer",
     "postBody": "eeee eeeee the newly created post",
-    "categories": ["Food", "Family"]
+    "category": ["Food", "Family"]
 }
 
 ###
