@@ -17,7 +17,7 @@ router.route("/")
 //actual route is api/user/profile
 router.route("/:id")
    .get(credentialsController.findUser)
-   .post(credentialsController.updateUser)
+   .put(credentialsController.updateUser)
 
 router.route("/cat/:id")
    .get(credentialsController.getUserCategories)
@@ -31,7 +31,8 @@ router.post(
       console.log('logged in', req.user);
       var userInfo = {
          username: req.user.username,
-         profilePicture: req.user.profilePicture
+         profilePicture: req.user.profilePicture,
+         categoryPreferences: req.user.categoryPreferences
       };
       res.send(userInfo);
    }
