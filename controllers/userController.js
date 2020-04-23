@@ -42,6 +42,7 @@ module.exports = {
 
       const hashedPassword = bcrypt.hashSync(req.body.password, 10)
       console.log(hashedPassword)
+      console.log(req.params.id)
       // var password = req.body.password
       const { username, email, firstName, lastName } = req.body
       // bcrypt.hash(password, (hash) => {
@@ -50,11 +51,11 @@ module.exports = {
       // user.hashPassword(req.body.password)
       // console.log(db.User.checkPassword(req.body.password))
       // ADD VALIDATION
-      db.User.findOne({ username: req.params.id }, (err, user) => {
+      db.User.findOne({ _id: req.params.id }, (err, user) => {
          console.log(user.username)
          if (err) {
             console.log('User.js post error: ', err)
-         } else if (req.params.id !== user.username && user) {
+         } else if (req.body.username !== user.username && user) {
             console.log(user.username)
             res.json({
                error: `Sorry, already a user with the username: ${username}`
@@ -69,7 +70,7 @@ module.exports = {
          else {
             db.User.findOneAndUpdate(
                {
-                  username: req.params.id
+                  _id: req.params.id
                },
                {
                   username: username,

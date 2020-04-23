@@ -1,4 +1,4 @@
-POST http://localhost:3001/api/comment/5ea1d39a81dcf55598c54943 HTTP/1.1
+Put http://localhost:3001/api/user/5e9e47b37d37452f0c2c72ab HTTP/1.1
 content-type: application/json
 
 {
