@@ -71,7 +71,7 @@ module.exports = {
 
       db.NewComment.findOneAndDelete({ _id: req.params.id })
          .then((deletedDocument) => {
-            console.log(deletedDocument)
+            console.log("test " + deletedDocument.postID)
 
             return db.NewPost.findOneAndUpdate(
                { _id: deletedDocument.postID },
