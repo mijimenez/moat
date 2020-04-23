@@ -28,6 +28,7 @@ function Signin() {
                 console.log(res);
                 localStorage.setItem("usernameMOAT", res.data.username);
                 localStorage.setItem("profilePicMOAT", res.data.profilePicture);
+                localStorage.setItem("categoryMOAT", res.data.categoryPreferences);
                 if (res.status === 200) window.location.href = "/dashboard";
             })
             .catch(err => console.log(err));
@@ -37,7 +38,7 @@ function Signin() {
         <div id="signinPage">
             <div className="welcome-side">
                 <div className="wrapper">
-                    <img src={process.env.PUBLIC_URL + "/img/moat_logo_white.png"} alt="MOAT Logo" className="logo"/>
+                    <img src={process.env.PUBLIC_URL + "/img/moat_logo_white.png"} alt="MOAT Logo" className="logo" />
                     <div className="welcome">
                         <h1 className="logo-name">MOAT</h1>
                         <h4 className="tagline text-white">Master of All Trades</h4>

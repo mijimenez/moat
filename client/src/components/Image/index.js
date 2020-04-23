@@ -3,7 +3,7 @@ import React from "react";
 
 function Image(props) {
     return (
-        <img src="https://via.placeholder.com/100" {...props} alt="" />
+        <img src="https://via.placeholder.com/30" {...props} alt="" />
     );
 }
 

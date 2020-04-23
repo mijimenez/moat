@@ -11,16 +11,9 @@ function Dashboard() {
     const [trendingPosts, setTrendingPosts] = useState({})
 
     useEffect(() => {
-        getUser();
         getTrending();
+        console.log("Dashboard useEffect")
     }, [])
-
-    let usernameStored;
-    function getUser() {
-        usernameStored = localStorage.getItem("usernameMOAT");
-        console.log("usernameStored: " + usernameStored)
-        API.getUser(usernameStored);
-    }
 
     function getTrending() {
         API.getTrending()
@@ -56,7 +49,7 @@ function Dashboard() {
                     <p className="mb-3 text-center font-weight-bold">Trending</p>
                     {
                         trendingPosts.length > 0 ? trendingPosts.map(post =>
-                        (< UserPost post={post} getUser={getUser} />)) : (
+                        (< UserPost post={post} getTrending={getTrending} />)) : (
                             <p className="display-message text-center mt-5">No one has created any posts yet!</p>
                         )}   
                 </div>
