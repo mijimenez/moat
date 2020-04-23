@@ -16,6 +16,17 @@ module.exports = {
       .catch(err => res.status(422).json(err));
    },
 
+   getUserCategories: function (req, res) {
+      console.log(req.body)
+
+      db.User
+         .findOne({ username: req.params.id })
+         .sort()
+         .then(userCat => {
+            res.json(userCat.categoryPreferences)
+         });
+   },
+
    // find a single user by username
    findUser: function (req, res) {
       const username = req.params.id
