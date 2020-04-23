@@ -75,9 +75,10 @@ module.exports = {
                },
                { useFindAndModify: false }
             )
-               .then((test) => {
-                  console.log(test)
-               })
+            .then((test) => {
+               console.log(test)
+               res.json(test);
+            })
          })
    }
 };
