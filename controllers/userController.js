@@ -1,5 +1,6 @@
 const db = require("../models");
 const formidable = require('formidable');
+const bcrypt = require("bcryptjs");
 
 
 
@@ -39,11 +40,15 @@ module.exports = {
 
    updateUser: function (req, res) {
 
+      const hashedPassword = bcrypt.hashSync(req.body.password, 10)
+      console.log(hashedPassword)
       // var password = req.body.password
-      const { username, password, email, firstName, lastName } = req.body
+      const { username, email, firstName, lastName } = req.body
       // bcrypt.hash(password, (hash) => {
       //    req.body.password = hash
       // })
+      // user.hashPassword(req.body.password)
+      // console.log(db.User.checkPassword(req.body.password))
       // ADD VALIDATION
       db.User.findOne({ username: req.params.id }, (err, user) => {
          console.log(user.username)
@@ -68,7 +73,7 @@ module.exports = {
                },
                {
                   username: username,
-                  password: password,
+                  password: hashedPassword,
                   email: email,
                   firstName: firstName,
                   lastName: lastName

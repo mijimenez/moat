@@ -1,12 +1,12 @@
-POST http://localhost:3001/api/comment/5e9f1602bfacd93d689befe5 HTTP/1.1
+PUT http://localhost:3001/api/user/PolkaDotMask1 HTTP/1.1
 content-type: application/json
 
 {
-    "username": "StaySixFeetAwayPlease2",
-    "firstName": "Fenix",
+    "username": "PolkaDotMask1",
+    "firstName": "Joe",
     "lastName": "Ho",
-    "password": "Testing_1",
-    "email": "joe3@gmail.com",
+    "password": "Testing_2",
+    "email": "joe2@gmail.com",
     "profilePicture": "../img/NoImageFound.png",
     "postTitle": "wqerqwer title",
     "postID": "5e9e4c109c1acd1b80368c67",

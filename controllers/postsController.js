@@ -82,6 +82,8 @@ module.exports = {
       console.log(req.params)
    
       db.NewPost.find({ categories: req.params.category || /req.params/i})
+      .limit(50)
+      .sort({ commentsArray: -1, date: -1 })
       .then(postCategory => {
          console.log(postCategory)
          res.json(postCategory)
