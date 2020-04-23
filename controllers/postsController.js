@@ -79,7 +79,6 @@ module.exports = {
 
    // getting a post by specific categories
    getPostByCategories: function (req, res) {
-      
       console.log(req.params)
    
       db.NewPost.find({ categories: req.params.category || /req.params/i})
