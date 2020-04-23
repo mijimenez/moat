@@ -8,13 +8,13 @@ const bcrypt = require("bcryptjs");
 module.exports = {
 
    // find all users
-   allUsers: function (req,res) {
+   allUsers: function (req, res) {
       console.log(req.body)
       db.User
-      .find()
-      .sort({_id: -1})
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+         .find()
+         .sort({ _id: -1 })
+         .then(dbModel => res.json(dbModel))
+         .catch(err => res.status(422).json(err));
    },
 
    getUserCategories: function (req, res) {
@@ -33,9 +33,9 @@ module.exports = {
       const username = req.params.id
       console.log(username)
       db.User
-      .findOne({username: username})
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+         .findOne({ username: username })
+         .then(dbModel => res.json(dbModel))
+         .catch(err => res.status(422).json(err));
    },
 
    updateUser: function (req, res) {
@@ -45,52 +45,38 @@ module.exports = {
       console.log(req.params.id)
       // var password = req.body.password
       const { username, email, firstName, lastName } = req.body
-      // bcrypt.hash(password, (hash) => {
-      //    req.body.password = hash
-      // })
-      // user.hashPassword(req.body.password)
-      // console.log(db.User.checkPassword(req.body.password))
-      // ADD VALIDATION
-      db.User.findOne({ _id: req.params.id }, (err, user) => {
-         console.log(user.username)
-         if (err) {
-            console.log('User.js post error: ', err)
-         } else if (req.body.username !== user.username && user) {
-            console.log(user.username)
-            res.json({
-               error: `Sorry, already a user with the username: ${username}`
-            })
-         } 
-         else if (req.body.email !== user.email && user) {
-            console.log(user.email)
-            res.json({
-               error: `Sorry, already a user with the email: ${req.body.email}`
-            })
-         }
-         else {
-            db.User.findOneAndUpdate(
-               {
-                  _id: req.params.id
-               },
-               {
-                  username: username,
-                  password: hashedPassword,
-                  email: email,
-                  firstName: firstName,
-                  lastName: lastName
-               },
-               {
-                  useFindAndModify: false
-               }
-            ).then((savedUser) => {
 
-               res.json(savedUser)
-            }).catch((err) => {
-               res.json(err)
-            })
+      db.User.findOneAndUpdate(
+         {
+            _id: req.params.id
+         },
+         {
+            username: username,
+            password: hashedPassword,
+            email: email,
+            firstName: firstName,
+            lastName: lastName
+         },
+         {
+            useFindAndModify: false
          }
+      ).then((savedUser) => {
+
+         res.json(savedUser)
+         // db.NewPost.updateMany(
+         //    {
+         //       username: savedUser.username
+         //    },
+         //    {
+         //       username: req.body.username
+         //    }
+         // )
+      }).catch((err) => {
+         res.json(err)
       })
+
    },
+
 
    // sign up using the passport validation and password hashing
    signUp: function (req, res) {
