@@ -17,6 +17,10 @@ export default {
     getTrending: function () {
         return axios.get("/api/post");
     },
+    // Get trending by selected category
+    getPostByCategories: function(category) {
+        return axios.get("/api/post", category)
+    },
     // Get all posts by specific user
     getAllUserPosts: function (id) {
         return axios.get("/api/post/" + id);

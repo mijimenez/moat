@@ -3,10 +3,13 @@ import Tagline from "../components/Tagline";
 // import Button from "../components/Button";
 import ListGroup from "../components/ListGroup";
 import UserPost from "../components/UserPost";
+import { List, ListItem } from "../components/List";
 import API from "../utils/API";
 import "./sass/style.scss";
 
 function Dashboard() {
+
+    const categories = ["Appliance", "Home", "Lawn"];
 
     const [trendingPosts, setTrendingPosts] = useState({})
 
@@ -29,11 +32,17 @@ function Dashboard() {
         )
         .catch(err => console.log(err));
     }
-    console.log(trendingPosts);
+    // console.log(trendingPosts);
 
-    // const handleBtnClick = event => {
-    //     event.preventDefault();
-    // };
+
+    function handleCategorySelect(category) {
+        console.log(category);
+        API.getPostByCategories(category)
+        .then(res => 
+            setTrendingPosts(res.data)
+        )
+        .catch(err => console.log(err));
+    };
 
     return (
         <div className="container" id="dashboardPage" style={{ marginTop: "30px", marginBottom: "100px", minHeight: "100vh" }}>
@@ -50,7 +59,22 @@ function Dashboard() {
             </div>
             <div className="row">
                 <div className="categories">
-                    <ListGroup />
+                    {/* <ListGroup /> */}
+                    {categories.length >0? (
+                    <List>
+                        <li class="list-group-item font-weight-bold">By Category</li>
+                        {categories.map(category => (
+                            <ListItem
+                                key={category.id}
+                                item={category}
+                                handleCategorySelect={handleCategorySelect}
+                                categoryPicked={category}
+                            />
+                        ))}
+                    </List>
+                    ) : (
+                        <p className="display-message text-center mt-5">No categories added. Add from categories tab to save search preferences.</p>
+                    )}
                 </div>
                 <div className="trending">
                     <p className="mb-3 text-center font-weight-bold">Trending</p>
