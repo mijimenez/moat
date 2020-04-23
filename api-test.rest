@@ -1,12 +1,12 @@
-POST http://localhost:3001/api/user/StaySixFeetAwayPlease2 HTTP/1.1
+PUT http://localhost:3001/api/user/StaySixFeetAwayPlease2 HTTP/1.1
 content-type: application/json
 
 {
     "username": "StaySixFeetAwayPlease2",
-    "firstName": "Phenix",
+    "firstName": "Fenix",
     "lastName": "Ho",
     "password": "Testing_1",
-    "email": "joe2@gmail.com",
+    "email": "joe3@gmail.com",
     "profilePicture": "../img/NoImageFound.png",
     "postTitle": "wqerqwer title",
     "postID": "5e9f6809f013442008ada215",
