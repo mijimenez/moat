@@ -35,9 +35,9 @@ function Dashboard() {
     // console.log(trendingPosts);
 
 
-    function handleCategorySelect(category) {
-        console.log(category);
-        API.getPostByCategories(category)
+    function handleCategorySelect(categoryPicked) {
+        console.log(categoryPicked);
+        API.getPostByCategories(categoryPicked)
         .then(res => 
             setTrendingPosts(res.data)
         )
