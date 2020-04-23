@@ -2,7 +2,7 @@ Put http://localhost:3001/api/user/5e9e47b37d37452f0c2c72ab HTTP/1.1
 content-type: application/json
 
 {
-    "username": "PolkaDotMask2",
+    "username": "PolkaDotMask3",
     "firstName": "Joey",
     "lastName": "Ho",
     "password": "Testing_2",

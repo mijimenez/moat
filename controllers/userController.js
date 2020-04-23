@@ -73,6 +73,19 @@ module.exports = {
                username: req.body.username
             }
          )
+         .then(test => {
+            console.log(test)
+            return db.NewComment.updateMany(
+               {
+                  username: savedUser.username
+               },
+               {
+                  username: req.body.username
+               }
+            )
+         })
+
+
       }).catch((err) => {
          res.json(err)
       })
