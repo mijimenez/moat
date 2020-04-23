@@ -63,14 +63,16 @@ module.exports = {
       ).then((savedUser) => {
 
          res.json(savedUser)
-         // db.NewPost.updateMany(
-         //    {
-         //       username: savedUser.username
-         //    },
-         //    {
-         //       username: req.body.username
-         //    }
-         // )
+         console.log("post update " + savedUser.username)
+         console.log("post update " + req.body.username)
+         return db.NewPost.updateMany(
+            {
+               username: savedUser.username
+            },
+            {
+               username: req.body.username
+            }
+         )
       }).catch((err) => {
          res.json(err)
       })
