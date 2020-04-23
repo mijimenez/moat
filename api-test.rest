@@ -1,4 +1,4 @@
-DELETE http://localhost:3001/api/comment/5e9f6a5082de714768b2d8f9 HTTP/1.1
+GET http://localhost:3001/api/user/Ristian HTTP/1.1
 content-type: application/json
 
 {
