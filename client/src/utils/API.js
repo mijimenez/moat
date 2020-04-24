@@ -17,6 +17,10 @@ export default {
     getTrending: function () {
         return axios.get("/api/post");
     },
+    // Get trending by selected category
+    getPostByCategories: function(category) {
+        return axios.get("/api/post/cat/" + category)
+    },
     // Get all posts by specific user
     getAllUserPosts: function (id) {
         return axios.get("/api/post/" + id);
@@ -49,7 +53,7 @@ export default {
         return axios.delete("/api/comment/" + id);
     },
     // Upload user profile picture
-    uploadPhoto: function(profilePhoto) {
-        return axios.post("/api/user/updatePhoto", profilePhoto);
+    uploadPhoto: function(file) {
+        return axios.post("/api/user/updatePhoto", file);
     }
 };

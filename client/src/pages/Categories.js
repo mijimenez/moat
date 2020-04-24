@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Tagline from "../components/Tagline";
 // import Button from "../components/Button";
-import ListGroup from "../components/ListGroup";
+// import { List, ListItem } from "../components/List";
 // import TestList from "../components/TestList";
 
 // import Post from "../components/Post";
