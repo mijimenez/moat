@@ -89,7 +89,7 @@ function Dashboard() {
                     <p className="mb-3 text-center font-weight-bold">Trending</p>
                     {
                         trendingPosts.length > 0 ? trendingPosts.map(post =>
-                        (< UserPost post={post} getTrending={getTrending} />)) : (
+                        (< UserPost post={post} getTrending={getTrending} key={post._id} />)) : (
                             <p className="display-message text-center mt-5">No one has created any posts yet!</p>
                         )}   
                 </div>

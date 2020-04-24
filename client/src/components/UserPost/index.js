@@ -48,7 +48,7 @@ function UserPost({ post, posts, getUser, getTrending }) {
     }
 
     function sendToModal() {
-        return(<ViewPostModal modalId={post._id} post={post} commentsArray={commentsArray} getUser={getUser} getTrending={getTrending} />)
+        return(<ViewPostModal modalId={post._id} post={post} commentsArray={commentsArray} getUser={getUser} getTrending={getTrending} key={post._id}/>)
     }
 
     return (
@@ -82,6 +82,7 @@ function UserPost({ post, posts, getUser, getTrending }) {
                     {/* <ViewPostModal modalId={post._id} post={post} commentsArray={commentsArray} getUser={getUser} getTrending={getTrending} /> */}
 
                 </div>
+<<<<<<< HEAD
                 <div className="tags-w-num d-flex justify-content-between align-items-center">
                     <div className="tags d-flex">
                         {post.categories.map(category => (
@@ -89,6 +90,27 @@ function UserPost({ post, posts, getUser, getTrending }) {
                         ))}
                     </div>
                     <p className="commentsNum font-weight-bold">{post.commentsArray.length} Comments</p>
+=======
+                <Button className="viewBtn align-self-start ml-auto"
+                    id={post._id} value="view" data-toggle="modal"
+                    // data-target={`#viewPostModal${i}`}
+                    data-target={`#viewPostModal${post._id}`}
+                    onClick={handleBtnClick}
+                />
+                {sendToModal()}
+                {/* <ViewPostModal modalId={post._id} post={post} commentsArray={commentsArray} getUser={getUser} getTrending={getTrending} /> */}
+                {getUser ?
+                    <Button className="deleteBtn align-self-start ml-3"
+                        id={post._id} value="delete" onClick={() => deletePost(post._id)}
+                    /> : ""
+                }
+            </div>
+            <div className="tags-w-num d-flex justify-content-between align-items-center">
+                <div className="tags d-flex">
+                    {post.categories.map(category => (
+                        <h6 className="tag" key={category}>{category}</h6>
+                    ))}
+>>>>>>> master
                 </div>
             </div>
         </Card>
