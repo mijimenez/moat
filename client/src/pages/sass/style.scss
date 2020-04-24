@@ -97,6 +97,14 @@ hr {
         margin: 0 0 5% 0;
         width: 100%;
         text-align: center;
+        .list-group {
+            .item {
+                &:hover {
+                    color: $c-theme;
+                    cursor: pointer;
+                }
+            }
+        }
     }
     .trending {
         padding: 0;

@@ -267,6 +267,11 @@ hr {
   text-align: center;
 }
 
+#dashboardPage .categories .list-group .item:hover, #categoriesPage .categories .list-group .item:hover {
+  color: #1f93ff;
+  cursor: pointer;
+}
+
 #dashboardPage .trending, #categoriesPage .trending {
   padding: 0;
   width: 100%;
