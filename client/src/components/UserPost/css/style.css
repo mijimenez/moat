@@ -134,19 +134,22 @@ a:hover, a:active {
 }
 
 /* ----- Sticky Footer */
-.view-modal .modal-content:not(:last-child) {
+.card:not(:last-child) {
   margin-bottom: 1em;
 }
 
-.view-modal .modal-content .modal-header {
-  border-bottom: none;
+.card .post-card img {
+  width: 50px;
 }
 
-.view-modal .modal-content .modal-body {
-  padding-bottom: 0;
+.card .post-card .tag {
+  color: #1f93ff;
+  border: thin solid #1f93ff;
+  border-radius: 20px;
+  padding: 1em 2em;
 }
 
-.view-modal .modal-content .modal-footer {
-  border-top: 0;
+.card .post-card .tag:not(:last-child) {
+  margin-right: 1em;
 }
 /*# sourceMappingURL=style.css.map */

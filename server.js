@@ -8,7 +8,9 @@ const dbConnection = require("./models/mongoose");
 const userRoutes = require("./routes");
 const MongoStore = require("connect-mongo")(session);
 const mongoose = require("mongoose")
+require("dotenv").config();
 
+console.log(process.env.REACT_APP_MY_TEST_VARIABLE);
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));

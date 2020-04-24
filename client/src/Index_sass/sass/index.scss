@@ -404,6 +404,64 @@ $f-body: 'Roboto', sans-serif;
 	align-content: $value;
 }
 
+// ================
+// Flexbox Sticky Footer
+
+@mixin stickyFooter($_x-content, $_x-wrapper: 'body', $_x-ieFix: 'false') {
+
+	////// Description:
+	  // - mixin to automatically execute a Flexbox sticky footer
+	  ////
+	
+	////// @param $_x-content
+	  // - the element that wraps the main page content and should extend to fill the extra available space on the screen
+	  // - should be a STRING containing a CSS selector
+	  // - REQUIRED parameter
+	  ////
+	
+	////// @param $_x-wrapper
+	  // - the element that wraps the main page content, as well as additional elements like headers and footers
+	  // - should be a STRING containing a CSS selector
+	  // - defaults to "body", but a different selector can be provided if you have additional wrapper divs within the body
+	  ////
+	
+	////// @param $_x-ieFix
+	  // - a BOOLEAN value ("true" or "false")
+	  // - addresses an IE bug (it does not support min-height in a vertically oriented Flexbox structure), which causes the sticky footer not to work in IE
+	  // - the fix is that min-height is replaced with height ... in most cases this will work fine, but it can cause some undesired side effects with background images
+	  ////
+	
+	////// Instructions:
+	  // - This mixin should be declared outside of any selector.
+	  // - Look at the content of your page and determine the markup structure. If your header, footer and main content are immediate children of the body, you only need to supply one value: the selector for the main content. If you have additional wrappers, you may need to provide a value for the second parameter as well.
+	  // - Test your page in IE and determine whether you need the IE fix. If you do, set the last parameter to "true".
+	  ////
+	
+	  // Safari fix to prevent unclickable elements
+	  @if $_x-ieFix == 'true' {
+		@at-root body {
+		  position: relative;
+		}
+	  }
+	
+	  #{$_x-wrapper} {
+		@include flexbox();
+		@include flex-direction(column);
+		@if $_x-ieFix == 'true' {
+		  height: 100vh;
+		} @else {
+		  min-height: 100vh;
+		}
+		& > * {
+		  @include flex-shrink(0);
+		}
+	  }
+	  #{$_x-content} {
+		@include flex-grow(1);
+	  }
+	}
+	
+
 
 /* ---------  Setup */
 * {

@@ -10,6 +10,8 @@ import NoMatch from "./pages/NoMatch";
 import Categories from "./pages/Categories";
 import "./App.css";
 
+console.log(process.env);
+
 function App() {
   return (
     <Router>

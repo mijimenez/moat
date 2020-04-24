@@ -222,25 +222,26 @@ hr {
   }
 }
 
-#dashboardPage .hero {
+#dashboardPage .hero, #categoriesPage .hero {
   background-color: #1f93ff;
+  margin-top: 82px;
 }
 
-#dashboardPage .hero .wrapper {
+#dashboardPage .hero .wrapper, #categoriesPage .hero .wrapper {
   color: #fff;
   text-align: center;
 }
 
-#dashboardPage .hero .wrapper .welcome {
+#dashboardPage .hero .wrapper .welcome, #categoriesPage .hero .wrapper .welcome {
   margin-bottom: 1em;
 }
 
-#dashboardPage .hero .wrapper p {
+#dashboardPage .hero .wrapper p, #categoriesPage .hero .wrapper p {
   color: #fff;
 }
 
 @media (min-width: 56.25em) {
-  #dashboardPage .hero .wrapper {
+  #dashboardPage .hero .wrapper, #categoriesPage .hero .wrapper {
     text-align: left;
     display: -webkit-box;
     display: -moz-flex;
@@ -255,36 +256,37 @@ hr {
     -moz-justify-content: space-between;
     justify-content: space-between;
   }
-  #dashboardPage .hero .wrapper .welcome {
+  #dashboardPage .hero .wrapper .welcome, #categoriesPage .hero .wrapper .welcome {
     margin: 0 5% 0 0;
   }
 }
 
-#dashboardPage .categories {
+#dashboardPage .categories, #categoriesPage .categories {
   padding: 0;
   margin: 0 0 5% 0;
   width: 100%;
   text-align: center;
 }
 
-#dashboardPage .trending {
+#dashboardPage .trending, #categoriesPage .trending {
   padding: 0;
   width: 100%;
 }
 
 @media (min-width: 37.5em) {
-  #dashboardPage .categories {
+  #dashboardPage .categories, #categoriesPage .categories {
     width: 30%;
     padding: 0;
     margin: 2.5em 5% 0 0;
     text-align: left;
   }
-  #dashboardPage .trending {
+  #dashboardPage .trending, #categoriesPage .trending {
     width: 65%;
   }
 }
 
 #accountPage .info {
+  margin-top: 62px;
   background-color: #fff;
   padding: 5% 0;
   -webkit-box-shadow: 0px 3px 5px -2px rgba(0, 0, 0, 0.3);

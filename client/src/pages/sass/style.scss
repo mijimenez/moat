@@ -67,10 +67,11 @@ hr {
     }
 }
 
-// ----- Dashboard Page
-#dashboardPage {
+// ----- Dashboard & Categories Page
+#dashboardPage, #categoriesPage {
     .hero {
         background-color: $c-theme;
+        margin-top: 82px;
         .wrapper {
             color: $c-white;
             text-align: center;
@@ -117,6 +118,7 @@ hr {
 // ----- Account Page
 #accountPage {
     .info {
+        margin-top: 62px;
         background-color: $c-white;
         padding: 5% 0;
         @include box-shadow;

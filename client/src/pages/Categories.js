@@ -37,7 +37,7 @@ export default function Categories() {
 
 
    return (
-      <div className="container" id="dashboardPage" style={{ marginTop: "30px", marginBottom: "100px", minHeight: "100vh" }}>
+      <div className="container" id="categoriesPage" style={{ marginTop: "30px", marginBottom: "100px", minHeight: "100vh" }}>
          <div className="hero row p-5 mb-3">
             {/* <div className="col-md-6">
                     <Tagline lineNum={[{ 1: "Welcome to" }, 2]} />
