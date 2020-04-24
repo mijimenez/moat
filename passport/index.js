@@ -17,6 +17,7 @@ passport.serializeUser((user, done) => {
 // keeps them logged in in express
 passport.deserializeUser((user, done) => {
 	console.log('DeserializeUser called')
+	// User.findById(userId, (err, user) => done(err, user));
 	// User.findOne(
 	// 	{ _id: id },
 	// 	'username',

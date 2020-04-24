@@ -1,50 +1,62 @@
 import React, { useState, useEffect } from "react";
 import Tagline from "../components/Tagline";
+import { List, ListItem } from "../components/List";
 // import Button from "../components/Button";
-// import { List, ListItem } from "../components/List";
+// import ListGroup from "../components/ListGroup";
 // import TestList from "../components/TestList";
-import Card from "../components/Card";
+import CategoriesCard from "../components/CategoriesCard";
 // import Post from "../components/Post";
 import API from "../utils/API";
 import "./sass/style.scss";
 import categories from "../utils/categories.json"
 
-export default function Categories() {
+function Categories() {
 
-//    const [userCategories, setCategories] = useState({})
+   const [userCategories, setCategories] = useState({})
 
-//    useEffect(() => {
-//       getUser();
-//       getUserCategories();
-//    }, [])
+   useEffect(() => {
+      getUser();
+      getUserCategories();
+   }, [])
 
-//    let usernameStored;
-//    function getUser() {
-//       usernameStored = localStorage.getItem("usernameMOAT");
-//       console.log("usernameStored: " + usernameStored)
-//       API.getUser(usernameStored);
-//   }
+   let usernameStored;
+   function getUser() {
+      usernameStored = localStorage.getItem("usernameMOAT");
+      console.log("usernameStored: " + usernameStored)
+      API.getUser(usernameStored);
+   }
 
-   // function getUserCategories() {
-   //    API.getUserCategories("PolkaDotMask")
-   //       .then(res => {
-   //          console.log(res.data)
-   //          setCategories(res.data)
-   //          console.log(userCategories)
-   //       })
-         
-   // }
+   function getUserCategories() {
+      usernameStored = localStorage.getItem("usernameMOAT");
+      console.log("usernameStored: " + usernameStored)
+      console.log(usernameStored)
+      API.getUserCategories(usernameStored)
+         .then(res => {
+            console.log(res.data)
+            setCategories(res.data)
+            console.log(userCategories)
+         })
+         .catch(err => console.log(err));
+   }
+   console.log(userCategories)
+
+   function handleCategorySelect(categoryPicked) {
+      console.log("category " + categoryPicked);
+      usernameStored = localStorage.getItem("usernameMOAT");
+      console.log("category " + usernameStored)
+
+      
+      API.updateUserCategories({ categoryPreferences: categoryPicked, username: usernameStored })
+         .then(res => {
+            console.log("newCat response " + res.data)
+            getUserCategories();
+         })
+   };
 
 
    return (
       <div className="container" id="categoriesPage" style={{ marginTop: "30px", marginBottom: "100px", minHeight: "100vh" }}>
          <div className="hero row p-5 mb-3">
-            {/* <div className="col-md-6">
-                    <Tagline lineNum={[{ 1: "Welcome to" }, 2]} />
-                </div>
-                <div className="col-md-6">
-                    <Tagline lineNum={[3]} />
-                </div> */}
             <div className="col-12">
                <div className="wrapper">
                   <div className="welcome">
@@ -59,18 +71,45 @@ export default function Categories() {
             <div className="categories">
                <ul class="list-group">
                   <li class="list-group-item font-weight-bold">Your Categories</li>
-                  {/* {userCategories.map(category =>
-                     <li className="list-group-item">{category}</li>
-                  )} */}
+                  {userCategories.length > 0 ? userCategories.map(post =>
+                     <li className="list-group-item">{post} <button className="float-right"> X </button> </li>
+                  ) : (
+                        <li className="list-group-item"><div className="row">It looks like you don't have any categories yet.</div><br></br><div className="row">Just click some categories that you are interested in to get started</div></li>
+                     )}
                </ul>
             </div>
             <div className="trending">
                <p className="mb-3 text-center font-weight-bold">Trending</p>
                <div class="categories-container">
                   {categories.sort().map(category =>
+                     <a href="#" className="category-boxes">
+                        <CategoriesCard
+                           key={category.id}
+                           item={category}
+                           handleCategorySelect={handleCategorySelect}
+                           categoryPicked={category}
+                        >{category}
+                        </CategoriesCard>
+                     </a>
+                  )}
+               </div>
+               {/* <List>
+                  <div class="categories-container">
+                  {categories.sort().map(category =>
                      <a href="#" className="category-boxes"><Card>{category}</Card></a>
                   )}
                </div>
+                  <ul class="list-group">
+                     {categories.sort().map(category => (
+                        <ListItem
+                           key={category.id}
+                           item={category}
+                           handleCategorySelect={handleCategorySelect}
+                           categoryPicked={category}
+                        />
+                     ))}
+                  </ul>
+               </List> */}
             </div>
          </div>
       </div>
@@ -78,3 +117,4 @@ export default function Categories() {
 
 }
 
+export default Categories;
