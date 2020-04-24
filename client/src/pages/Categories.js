@@ -4,7 +4,7 @@ import { List, ListItem } from "../components/List";
 // import Button from "../components/Button";
 // import ListGroup from "../components/ListGroup";
 // import TestList from "../components/TestList";
-// import Card from "../components/Card";
+import Card from "../components/Card";
 // import Post from "../components/Post";
 import API from "../utils/API";
 import "./sass/style.scss";
@@ -83,7 +83,17 @@ function Categories() {
             </div>
             <div className="trending">
                <p className="mb-3 text-center font-weight-bold">Trending</p>
-               <List>
+               <div class="categories-container">
+                  {categories.sort().map(category =>
+                     <a href="#" className="category-boxes"><Card>{category}</Card></a>
+                  )}
+               </div>
+               {/* <List>
+                  <div class="categories-container">
+                  {categories.sort().map(category =>
+                     <a href="#" className="category-boxes"><Card>{category}</Card></a>
+                  )}
+               </div>
                   <ul class="list-group">
                      {categories.sort().map(category => (
                         <ListItem
@@ -94,7 +104,7 @@ function Categories() {
                         />
                      ))}
                   </ul>
-               </List>
+               </List> */}
             </div>
          </div>
       </div>
