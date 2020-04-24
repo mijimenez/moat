@@ -46,12 +46,16 @@ function Categories() {
       console.log("category " + categoryPicked);
       usernameStored = localStorage.getItem("usernameMOAT");
       console.log("category " + usernameStored)
-
-      API.updateUserCategories({ categoryPreferences: categoryPicked, username: usernameStored })
-         .then(res => {
-            console.log("newCat response " + res.data)
-            getUserCategories();
-         })
+      if (categoryPicked === "") {
+         return console.log("not found)");
+      }
+      else {
+         API.updateUserCategories({ categoryPreferences: categoryPicked, username: usernameStored })
+            .then(res => {
+               console.log("newCat response " + res.data)
+               getUserCategories();
+            })
+      }
    };
 
 
