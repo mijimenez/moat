@@ -28,6 +28,25 @@ module.exports = {
          });
    },
 
+   updateUserCategories: function (req, res) {
+      console.log(req.body)
+
+      db.User.findOneAndUpdate(
+         {
+            username: req.params.id
+         },
+         {
+            categoryPreferences: req.body.category
+         },
+         {
+            useFindAndModify: false
+         }
+         .then((newCategory) => {
+            console.log(newCategory)
+         })
+      )
+   },
+
    // find a single user by username
    findUser: function (req, res) {
       const username = req.params.id
@@ -73,17 +92,17 @@ module.exports = {
                username: req.body.username
             }
          )
-         .then(test => {
-            console.log(test)
-            return db.NewComment.updateMany(
-               {
-                  username: savedUser.username
-               },
-               {
-                  username: req.body.username
-               }
-            )
-         })
+            .then(test => {
+               console.log(test)
+               return db.NewComment.updateMany(
+                  {
+                     username: savedUser.username
+                  },
+                  {
+                     username: req.body.username
+                  }
+               )
+            })
 
 
       }).catch((err) => {

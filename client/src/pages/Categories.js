@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Tagline from "../components/Tagline";
-// import Button from "../components/Button";
-// import { List, ListItem } from "../components/List";
+import Button from "../components/Button";
+import { List, ListItem } from "../components/List";
 // import TestList from "../components/TestList";
-
-// import Post from "../components/Post";
-import API from "../utils/API";
+import API from "../utils/API"
 import "./sass/style.scss";
 import categories from "../utils/categories.json"
 
@@ -39,6 +37,16 @@ function Categories() {
    }
    console.log(userCategories)
 
+   function handleCategorySelect(categoryPicked) {
+      console.log(categoryPicked);
+      API.getPostByCategories(categoryPicked)
+         .then(res => {
+            console.log(res.data);
+            //  setTrendingPosts(res.data)
+         })
+         .catch(err => console.log(err));
+   };
+
 
    return (
       <div className="container" id="dashboardPage" style={{ marginTop: "30px", marginBottom: "100px", minHeight: "100vh" }}>
@@ -62,14 +70,29 @@ function Categories() {
          <div className="row">
             <div className="categories">
                <ul class="list-group">
-                  <li class="list-group-item font-weight-bold">Your Categories</li>
-                  {userCategories.length > 0 ? userCategories.map(post =>
-                     <li className="list-group-item">{post}  <button id="test">X</button></li>) : (
+                  {userCategories.length > 0 ? (
+                     <List>
+                        <li class="list-group-item font-weight-bold">Your Categories</li>
+                        {userCategories.map(category => (
+                           // update button style for this section to be smaller and gray
+                           <>
+                           <ListItem
+                              key={category.id}
+                              item={category}
+                              handleCategorySelect={handleCategorySelect}
+                              categoryPicked={category}
+                              
+                           />
+                           <Button value={"Remove"}></Button>
+                           </>
+                        ))}
+                     </List>
+                  ) : (
                         <li className="list-group-item"><div className="row">It looks like you don't have any categories yet.</div><br></br><div className="row">Just click some categories that you are interested in to get started</div></li>
                      )}
-                     <button>Save</button>
+                  {/* <button>Save</button> */}
                </ul>
-               
+
             </div>
             <div className="trending">
                <p className="mb-3 text-center font-weight-bold">Trending</p>
