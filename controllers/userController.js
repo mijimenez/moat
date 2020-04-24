@@ -126,6 +126,10 @@ module.exports = {
          File Name In Uploaded Directory: ${files.filetoupload.path}`);
 
          // Here we can save path of file to a database.
+         // db.User
+         // .update({ profilePicture: files.filetoupload.path })
+         // .then(dbModel => res.json(dbModel))
+         // .catch(err => res.status(422).json(err));
 
          res.write('File uploaded');
          res.end();

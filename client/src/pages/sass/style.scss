@@ -75,7 +75,7 @@ hr {
     .hero {
         // background-color: $c-theme;
         background: $c-theme url("/img/hero.jpg") no-repeat fixed center / cover;
-        // margin-top: 82px;
+        margin-top: 82px;
         .wrapper {
             color: $c-white;
             text-align: center;
@@ -116,13 +116,14 @@ hr {
     }
     @media (min-width: $mq-small) {
         .categories {
-            width: 30%;
+            // width: 30%;
             padding: 0;
             margin: 2.5em 5% 0 0;
             text-align: left;
         }
         .trending {
-            width: 65%;
+            width: 100;
+            margin-left: 160px;
         }
     }
 }
@@ -130,7 +131,7 @@ hr {
 // ----- Account Page
 #accountPage {
     .info {
-        // margin-top: 62px;
+        margin-top: 62px;
         background-color: $c-white;
         padding: 5% 0;
         @include box-shadow;
@@ -220,3 +221,20 @@ hr {
     transition: .4s all;
 }
 
+.sticky {
+    position: fixed;
+    top: 0;
+  }
+
+  .sticky-wrapper {
+    position: relative;
+    height: 3rem; /* We need to change this value */
+  }
+  
+  .sticky .sticky-inner {
+    position: fixed;
+    top: 82px;
+    // left: 0;
+    // right: 0;
+    z-index: 1;
+  }

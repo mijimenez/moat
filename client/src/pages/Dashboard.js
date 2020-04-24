@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 import Tagline from "../components/Tagline";
 // import Button from "../components/Button";
 import UserPost from "../components/UserPost";
@@ -12,9 +13,24 @@ function Dashboard() {
 
     const [trendingPosts, setTrendingPosts] = useState({})
 
+    const [isSticky, setSticky] = useState(false);
+    const ref = useRef(null);
+    const handleScroll = () => {
+      if (ref.current) {
+        setSticky(ref.current.getBoundingClientRect().top <= 0);
+      }
+
+    };
+
     useEffect(() => {
         getTrending();
         console.log("Dashboard useEffect")
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+          window.removeEventListener('scroll', () => handleScroll);
+        };
     }, [])
 
     function getTrending() {
@@ -52,7 +68,7 @@ function Dashboard() {
                 </div>
             </div>
             <div className="row">
-                <div className="categories">
+                <div className={`sticky-wrapper${isSticky ? ' sticky' : ''}`} ref={ref}>
                     {categories.length >0? (
                     <List>
                         <li class="list-group-item font-weight-bold">By Category</li>
