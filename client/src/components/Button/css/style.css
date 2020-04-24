@@ -129,7 +129,7 @@ a {
 }
 
 a:hover, a:active {
-  color: #1f93ff;
+  color: #52acff;
   text-decoration: none;
 }
 
@@ -146,7 +146,16 @@ button, .btn {
   transition: .4s all;
 }
 
-button:hover, button:focus, .btn:hover, .btn:focus {
+button:hover, .btn:hover {
   background-color: #006cd2;
+  outline: none !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+button:focus, .btn:focus {
+  outline: none !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
 }
 /*# sourceMappingURL=style.css.map */

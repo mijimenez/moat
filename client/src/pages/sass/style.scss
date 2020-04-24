@@ -24,7 +24,9 @@ hr {
         padding: 15%;
         .wrapper {
             width: 100%;
+            max-width: 400px;
             .or {
+                margin: 1em 0;
                 &::before, &::after {
                     display: inline-block;
                     content: "";
@@ -41,7 +43,8 @@ hr {
     }
     .welcome-side {
         padding: 15%;
-        background-color: $c-theme;
+        // background-color: $c-theme;
+        background: $c-theme url("/img/hero.jpg") no-repeat fixed center / cover;
         .logo {
             width: 100%;
             max-width: 80px;
@@ -67,10 +70,12 @@ hr {
     }
 }
 
-// ----- Dashboard Page
-#dashboardPage {
+// ----- Dashboard & Categories Page
+#dashboardPage, #categoriesPage {
     .hero {
-        background-color: $c-theme;
+        // background-color: $c-theme;
+        background: $c-theme url("/img/hero.jpg") no-repeat fixed center / cover;
+        margin-top: 82px;
         .wrapper {
             color: $c-white;
             text-align: center;
@@ -96,6 +101,14 @@ hr {
         margin: 0 0 5% 0;
         width: 100%;
         text-align: center;
+        .list-group {
+            .item {
+                &:hover {
+                    color: $c-theme;
+                    cursor: pointer;
+                }
+            }
+        }
     }
     .trending {
         padding: 0;
@@ -103,13 +116,14 @@ hr {
     }
     @media (min-width: $mq-small) {
         .categories {
-            width: 30%;
+            // width: 30%;
             padding: 0;
             margin: 2.5em 5% 0 0;
             text-align: left;
         }
         .trending {
-            width: 65%;
+            width: 100;
+            margin-left: 160px;
         }
     }
 }
@@ -117,35 +131,43 @@ hr {
 // ----- Account Page
 #accountPage {
     .info {
+        margin-top: 62px;
         background-color: $c-white;
         padding: 5% 0;
         @include box-shadow;
-        .row {
-            @include align-items(center);
-            .user-image {
-                margin-bottom: 10%;
-                padding-bottom: 10%;
-                border-bottom: thin solid $c-black;
-                width: 100%;
-                text-align: center;
-                @media (min-width: $mq-small) {
-                    width: 40%;
-                    margin: 0 10% 0 0;
-                    padding: 0 10% 0 0;
-                    border-bottom: 0;
-                    border-right: thin solid $c-black;
+        .container {
+            width: 90%;
+            .row {
+                @include align-items(center);
+                .user-image {
+                    margin-bottom: 10%;
+                    padding-bottom: 10%;
+                    border-bottom: thin solid $c-black;
+                    width: 100%;
+                    text-align: center;
+                    @media (min-width: $mq-small) {
+                        width: 40%;
+                        margin: 0 10% 0 0;
+                        padding: 0 10% 0 0;
+                        border-bottom: 0;
+                        border-right: thin solid $c-black;
+                    }
+                    img {
+                        width: 100%;
+                        max-width: 200px;
+                    }
                 }
             }
-        }
-        .user-info {
-            width: 100%;
-            @media (min-width: $mq-small) {
-                width: 60%;
+            .user-info {
+                width: 100%;
+                max-width: 400px;
+                margin: auto;
             }
         }
     }
     .yourPosts {
         padding: 5% 0;
+        width: 90%;
         .add-post {
             width: 100%;
             margin-bottom: 5%;
@@ -153,8 +175,8 @@ hr {
             padding: 0 0 5% 0;
             .card .card-body {
                 @include flexbox;
-                @include justify-content(center);
                 @include align-items(center);
+                @include flex-direction(column);
             }
         }
         .posts {
@@ -171,3 +193,48 @@ hr {
         }
     }
 }
+
+#categoriesPage {
+    .categories-container {
+        text-align: center;
+        @media (min-width: $mq-small) {
+            @include flexbox;
+            @include flex-wrap(wrap);
+            .category-boxes {
+                width: 50%;
+                .card {
+                    .card-body {
+                        padding: 2em 0;
+                    }
+                }
+            }
+        }
+        @media (min-width: $mq-medium) {
+            .category-boxes {
+                width: 33.333%;
+            } 
+        }
+    }
+}
+
+.card {
+    transition: .4s all;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+  }
+
+  .sticky-wrapper {
+    position: relative;
+    height: 3rem; /* We need to change this value */
+  }
+  
+  .sticky .sticky-inner {
+    position: fixed;
+    top: 82px;
+    // left: 0;
+    // right: 0;
+    z-index: 1;
+  }

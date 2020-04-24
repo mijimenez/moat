@@ -5,6 +5,9 @@
     background-color: $c-white!important;
     @include box-shadow;
     &-brand {
+        &:hover {
+            opacity: .5;
+        }
         @include flexbox;
         @include align-items(center);
         img {
@@ -14,7 +17,30 @@
             display: inline;
             color: $c-black;
             font-size: 1.5em;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
+        }
+    }
+    &-toggler {
+        background-color: white!important;
+        transition: all .4s;
+        width: 3em;
+        border: none!important;
+        &:hover {
+            outline: none !important;
+            box-shadow: none;
+            border: none!important;
+            opacity: .5;
+        }
+    }
+    &-collapse {
+        .username {
+            font-weight: bold;
+            color: $c-theme!important;
+        }
+        ul {
+            li:not(:last-child) {
+                margin-right: .5em;
+            }
         }
     }
 }
