@@ -112,11 +112,7 @@ function Account() {
                             <p className="font-weight-bold my-3">Upload Profile Picture</p>
 
                             <div class="custom-file">
-<<<<<<< HEAD
-                                <input type="file" className="custom-file-input" id="customFile" onChange={handleFile} />
-=======
                                 <input type="file" className="custom-file-input mb-3" id="customFile" onChange={handleFile}/>
->>>>>>> master
                                 <label className="custom-file-label" for="customFile">Choose file</label>
                                 <Button className="btn btn-primary updateBtn" value="Upload" onClick={handleUpload} />
                             </div>
