@@ -23,6 +23,7 @@ function Categories() {
    function getUser() {
       usernameStored = localStorage.getItem("usernameMOAT");
       console.log("usernameStored: " + usernameStored)
+      console.log(categories)
       API.getUser(usernameStored);
    }
 
@@ -41,11 +42,11 @@ function Categories() {
    console.log(userCategories)
 
    function handleCategorySelect(categoryPicked) {
+
       console.log("category " + categoryPicked);
       usernameStored = localStorage.getItem("usernameMOAT");
       console.log("category " + usernameStored)
 
-      
       API.updateUserCategories({ categoryPreferences: categoryPicked, username: usernameStored })
          .then(res => {
             console.log("newCat response " + res.data)
@@ -82,14 +83,12 @@ function Categories() {
                <p className="mb-3 text-center font-weight-bold">Trending</p>
                <div class="categories-container">
                   {categories.sort().map(category =>
-                     <a href="#" className="category-boxes">
-                        <CategoriesCard
-                           key={category.id}
-                           item={category}
-                           handleCategorySelect={handleCategorySelect}
-                           categoryPicked={category}
-                        >{category}
-                        </CategoriesCard>
+                     <a href="#" key={category.id} className="category-boxes">
+                        <div className="card">
+                           <div className="card-body" onClick={() => handleCategorySelect(category)}>
+                              {category}
+                           </div>
+                        </div>
                      </a>
                   )}
                </div>
