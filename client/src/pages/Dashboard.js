@@ -4,12 +4,15 @@ import Tagline from "../components/Tagline";
 // import Button from "../components/Button";
 import UserPost from "../components/UserPost";
 import { List, ListItem } from "../components/List";
+import { Link } from "react-router-dom";
 import API from "../utils/API";
 import "./sass/style.scss";
 
 function Dashboard() {
 
-    const categories = ["Appliance", "Home", "Lawn"];
+    // const categories = ["Appliance", "Home", "Lawn"];
+
+    const [path, setPath] = useState(window.location.pathname);
     const [userCategories, setCategories] = useState({})
     const [trendingPosts, setTrendingPosts] = useState({})
 
@@ -58,6 +61,9 @@ function Dashboard() {
     }
     console.log(userCategories)
 
+    function filler() {
+        console.log("test")
+    }
 
     function handleCategorySelect(categoryPicked) {
         console.log(categoryPicked);
@@ -96,8 +102,15 @@ function Dashboard() {
                         ) : (
                             <List>
                                 <ListItem
-                                item={"No categories added. Click here to add categories."}
+                                item={
+                                    <Link to="/categories">
+                                        <span>No categories added. Click here to add categories.</span>
+                                    </Link>
+                                }
+                                handleCategorySelect={filler}
+                                // {"No categories added. Click here to add categories."}
                                 // handleCategorySelect={routeToCategories}
+                                // categoryPicked={"/dashboard"}
                                 >
                                 </ListItem>
                             </List>
