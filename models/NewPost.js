@@ -13,7 +13,6 @@ const postSchema = new Schema({
    },
    postTitle: {
       type: String,
-      unique: true,
       required: true
    },
    postBody: {

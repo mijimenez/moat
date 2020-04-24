@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default {
     // Sign up user
-    signupUser: function(userInfo) {
+    signupUser: function (userInfo) {
         return axios.post("/api/user/signup", userInfo);
     },
     // Login user
@@ -37,16 +37,20 @@ export default {
         return axios.get("/api/post/1/" + post);
     },
     // Delete specific user post
-    deleteUserPost: function(id) {
+    deleteUserPost: function (id) {
         return axios.delete("/api/post/" + id);
     },
     // Get comments of each post
-    findCommentByPost: function(id) {
+    findCommentByPost: function (id) {
         return axios.get("/api/comment/" + id);
     },
     // Create comment
-    createComment: function(id, info) {
+    createComment: function (id, info) {
         return axios.post("/api/comment/" + id, info);
+    },
+    // Delete comment
+    deleteComment: function (id) {
+        return axios.delete("/api/comment/" + id);
     },
     // Upload user profile picture
     uploadPhoto: function(file) {

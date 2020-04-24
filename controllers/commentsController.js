@@ -84,6 +84,7 @@ module.exports = {
             )
             .then((test) => {
                console.log(test)
+               res.json(test);
             })
          })
       // console.log(res.body)
