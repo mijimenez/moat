@@ -51,6 +51,7 @@ module.exports = {
 
    removeUserCategory: function (req, res) {
       
+      console.log(req.body)
       db.User.findOneAndUpdate(
          {
             username: req.body.username
@@ -64,7 +65,8 @@ module.exports = {
             useFindAndModify: false
          })
          .then((newCategory) => {
-            console.log(newCategory)
+            console.log("remove res " + newCategory)
+            res.json(newCategory)
          })
    },
 

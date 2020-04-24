@@ -23,19 +23,19 @@ function Categories() {
    function getUser() {
       usernameStored = localStorage.getItem("usernameMOAT");
       console.log("usernameStored: " + usernameStored)
-      console.log(categories)
+      console.log( "getUser cat" +categories)
       API.getUser(usernameStored);
    }
 
    function getUserCategories() {
       usernameStored = localStorage.getItem("usernameMOAT");
       console.log("usernameStored: " + usernameStored)
-      console.log(usernameStored)
+      console.log("user" + usernameStored)
       API.getUserCategories(usernameStored)
          .then(res => {
-            console.log(res.data)
+            console.log("get user res" + res.data)
             setCategories(res.data)
-            console.log(userCategories)
+            console.log("get user cat" + userCategories)
          })
          .catch(err => console.log(err));
    }
@@ -60,17 +60,17 @@ function Categories() {
    };
 
    function removeUserCategory(category) {
-      
-      console.log("x button" +category);
+
+      console.log("x button" + category);
       if (category === "") {
          return console.log("Not found")
       }
       else {
-         API.removeUserCategory({categoryPreferences: category, username: usernameStored})
-         .then(res => {
-            console.log("removeCat response "+ res.data)
-            getUserCategories();
-         })
+         API.removeUserCategory({ categoryPreferences: category, username: usernameStored })
+            .then(res => {
+               console.log("removeCat response " + res.data)
+               getUserCategories();
+            })
       }
    }
 
@@ -93,7 +93,9 @@ function Categories() {
                <ul class="list-group">
                   <li class="list-group-item font-weight-bold">Your Categories</li>
                   {userCategories.length > 0 ? userCategories.map(category =>
-                     <li className="list-group-item"> {category} <button className="float-right" onClick={() => removeUserCategory(category)}> X </button> </li>
+                     <li className="list-group-item"> {category}
+                        <button className="float-right" onClick={() => removeUserCategory(category)}> X </button>
+                     </li>
                   ) : (
                         <li className="list-group-item">
                            <div className="row">It looks like you don't have any categories yet.</div>

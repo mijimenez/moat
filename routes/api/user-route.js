@@ -23,7 +23,10 @@ router.route("/:id")
 router.route("/cat/:id")
    .get(credentialsController.getUserCategories)
    .post(credentialsController.updateUserCategories)
-   .delete(credentialsController.removeUserCategory)
+   .put(credentialsController.removeUserCategory)
+
+router.route("/rcat/")
+   .post(credentialsController.removeUserCategory)
 
 // // Login route
 // --- (You can send user id to front end here if you want, but Express is already keeping track of user through serialize/deserialize so no need to pass user id)

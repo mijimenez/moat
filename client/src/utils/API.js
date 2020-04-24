@@ -43,7 +43,7 @@ export default {
         return axios.post("/api/user/cat/1", category)
     },
     removeUserCategory: function(category) {
-        return axios.delete("/api/user/cat/1", category)
+        return axios.post("/api/user/rcat/", category)
     },
     // Delete specific user post
     deleteUserPost: function (id) {
