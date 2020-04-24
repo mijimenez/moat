@@ -61,7 +61,7 @@ function Categories() {
 
    function removeUserCategory(category) {
       
-      console.log(category);
+      console.log("x button" +category);
       if (category === "") {
          return console.log("Not found")
       }
@@ -92,8 +92,8 @@ function Categories() {
             <div className="categories">
                <ul class="list-group">
                   <li class="list-group-item font-weight-bold">Your Categories</li>
-                  {userCategories.length > 0 ? userCategories.map(post =>
-                     <li className="list-group-item">{post} <button className="float-right" onClick={() => removeUserCategory(post)}> X </button> </li>
+                  {userCategories.length > 0 ? userCategories.map(category =>
+                     <li className="list-group-item"> {category} <button className="float-right" onClick={() => removeUserCategory(category)}> X </button> </li>
                   ) : (
                         <li className="list-group-item">
                            <div className="row">It looks like you don't have any categories yet.</div>
