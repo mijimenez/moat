@@ -1,18 +1,19 @@
-GET http://localhost:3001/api/post/cat/Home HTTP/1.1
+POST http://localhost:3001/api/user/cat/PolkaDotMask HTTP/1.1
 content-type: application/json
 
 {
-    "username": "StaySixFeetAwayPlease2",
-    "firstName": "Fenix",
+    "username": "PolkaDotMask",
+    "firstName": "Joey",
     "lastName": "Ho",
-    "password": "Testing_1",
-    "email": "joe3@gmail.com",
+    "password": "Testing_2",
+    "email": "joe345@gmail.com",
     "profilePicture": "../img/NoImageFound.png",
     "postTitle": "wqerqwer title",
-    "postID": "5e9f6809f013442008ada215",
+    "postID": "5ea1d39a81dcf55598c54943",
     "commentBody": "qwerqwer is my qwerqwerqwerqwer",
     "postBody": "eeee eeeee the newly created post",
-    "category": ["Food", "Family"]
+    "category": ["Food", "Family"],
+    "categoryPreferences": ["Dance", "Appliance", "Cosmetics", "Music", "Test"]
 }
 
 ###

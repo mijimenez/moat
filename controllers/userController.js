@@ -1,5 +1,6 @@
 const db = require("../models");
 const formidable = require('formidable');
+const bcrypt = require("bcryptjs");
 
 
 
@@ -7,13 +8,13 @@ const formidable = require('formidable');
 module.exports = {
 
    // find all users
-   allUsers: function (req,res) {
+   allUsers: function (req, res) {
       console.log(req.body)
       db.User
-      .find()
-      .sort({_id: -1})
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+         .find()
+         .sort({ _id: -1 })
+         .then(dbModel => res.json(dbModel))
+         .catch(err => res.status(422).json(err));
    },
 
    getUserCategories: function (req, res) {
@@ -27,64 +28,92 @@ module.exports = {
          });
    },
 
+   updateUserCategories: function (req, res) {
+      console.log("body " + req.body.categoryPreferences)
+      console.log(req.body.username)
+
+      db.User.findOneAndUpdate(
+         {
+            username: req.body.username
+         },
+         {
+            $addToSet: {
+               categoryPreferences: req.body.categoryPreferences
+            }
+         },
+         {
+            useFindAndModify: false
+         })
+         .then((newCategory) => {
+            console.log(newCategory)
+         })
+
+   },
+
    // find a single user by username
    findUser: function (req, res) {
       const username = req.params.id
       console.log(username)
       db.User
-      .findOne({username: username})
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+         .findOne({ username: username })
+         .then(dbModel => res.json(dbModel))
+         .catch(err => res.status(422).json(err));
    },
 
    updateUser: function (req, res) {
 
+      const hashedPassword = bcrypt.hashSync(req.body.password, 10)
+      console.log(hashedPassword)
+      console.log(req.params.id)
       // var password = req.body.password
-      const { username, password, email, firstName, lastName } = req.body
-      // bcrypt.hash(password, (hash) => {
-      //    req.body.password = hash
-      // })
-      // ADD VALIDATION
-      db.User.findOne({ username: req.params.id }, (err, user) => {
-         console.log(user.username)
-         if (err) {
-            console.log('User.js post error: ', err)
-         } else if (req.params.id !== user.username && user) {
-            console.log(user.username)
-            res.json({
-               error: `Sorry, already a user with the username: ${username}`
-            })
-         } 
-         else if (req.body.email !== user.email && user) {
-            console.log(user.email)
-            res.json({
-               error: `Sorry, already a user with the email: ${req.body.email}`
-            })
-         }
-         else {
-            db.User.findOneAndUpdate(
-               {
-                  username: req.params.id
-               },
-               {
-                  username: username,
-                  password: password,
-                  email: email,
-                  firstName: firstName,
-                  lastName: lastName
-               },
-               {
-                  useFindAndModify: false
-               }
-            ).then((savedUser) => {
+      const { username, email, firstName, lastName } = req.body
 
-               res.json(savedUser)
-            }).catch((err) => {
-               res.json(err)
-            })
+      db.User.findOneAndUpdate(
+         {
+            username: req.params.id
+         },
+         {
+            username: username,
+            password: hashedPassword,
+            email: email,
+            firstName: firstName,
+            lastName: lastName
+         },
+         {
+            useFindAndModify: false
          }
+      ).then((savedUser) => {
+
+         res.json(savedUser)
+         console.log("post update " + savedUser.username)
+         console.log("post update " + req.body.username)
+         return db.NewPost.updateMany(
+            {
+               username: savedUser.username
+            },
+            {
+               username: req.body.username
+            }
+         )
+            .then(test => {
+               console.log(test)
+               return db.NewComment.updateMany(
+                  {
+                     username: savedUser.username
+                  },
+                  {
+                     username: req.body.username
+                  }
+               )
+            })
+
+
+      }).catch((err) => {
+         res.json(err)
       })
+
    },
+
 
    // sign up using the passport validation and password hashing
    signUp: function (req, res) {
@@ -126,25 +155,46 @@ module.exports = {
          console.log(`File Name Uploaded: ${files.filetoupload.name}
          File Name In Uploaded Directory: ${files.filetoupload.path}`);
 
-         // Here we can save path of file to a database.
-         // db.User
-         // .update({ "_id": ObjectId(req.user.id) },{ $set: {profilePicture: files.filetoupload.path} }, { new:true } )
-         // .then(dbModel => {
-         //    res.json(dbModel);
-         //    console.log(dbModel)
-         //    })
-         // .catch(err => res.status(422).json(err));
-         console.log(req.user._id);
+         console.log("upload1" + req.user._id);
          db.User
-         .findByIdAndUpdate({ _id: req.user._id },{ $set: {profilePicture: files.filetoupload.path} }, { new:true } )
-         .then(dbModel => {
-            res.json(dbModel);
-            console.log(dbModel)
-            })
-         .catch(err => res.status(422).json(err));
+            .findByIdAndUpdate(
+               {
+                  _id: req.user._id
+               },
+               {
+                  $set:
+                  {
+                     profilePicture: files.filetoupload.path
+                  }
+               },
+               { new: true })
+            .then(dbModel => {
+               res.json(dbModel);
+               console.log("upload 2" + dbModel)
 
-         // res.write('File uploaded');
-         // res.end();
+               return db.NewPost.updateMany(
+                  {
+                     username: dbModel.username
+                  },
+                  {
+                     profilePicture: files.filetoupload.path
+                  }
+               )
+                  .then(test => {
+                     console.log("upload3" + test)
+                     return db.NewComment.updateMany(
+                        {
+                           username: dbModel.username
+                        },
+                        {
+                           profilePicture: files.filetoupload.path
+                        }
+                     )
+                  })
+            })
+            .catch(err => {
+               res.status(422).json(err)
+            });
       });
    }
 };

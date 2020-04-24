@@ -19,14 +19,7 @@ module.exports = {
    // create a new comment on a post
    createComment: function (req, res) {
 
-      var comment = {
-         username: req.body.username,
-         profilePicture: req.body.profilePicture,
-         commentBody: req.body.commentBody,
-         date: new Date()
-      }
-      console.log(comment)
-
+      console.log(req.body.postID)
       db.NewComment.create(req.body)
          .then(function (newComment) {
             console.log("Test " + newComment._id)
@@ -60,18 +53,18 @@ module.exports = {
             console.log(commentsArray)
             res.json(commentsArray)
          })
-      // .then(comment => {
-      //    console.log(comment)
-      // });
    },
 
 
    removeComment: function (req, res) {
+      
       console.log(req.params.id)
 
       db.NewComment.findOneAndDelete({ _id: req.params.id })
          .then((deletedDocument) => {
-            console.log(deletedDocument)
+            
+            res.json(deletedDocument)
+            console.log("test " + deletedDocument.postID)
 
             return db.NewPost.findOneAndUpdate(
                { _id: deletedDocument.postID },
@@ -87,22 +80,5 @@ module.exports = {
                res.json(test);
             })
          })
-      // console.log(res.body)
-      // .then(test => {
-      //    console.log(test)
-      // })
-
-      // return db.NewPost.findOneAndUpdate(
-      //    // { _id: test.postID },
-      //    {
-      //       $pull: {
-      //          commentsArray: req.params.id
-      //       }
-      //    },
-      //    { useFindAndModify: false }
-
-      // )
-      // .then(dbModel => res.json(dbModel))
-      // .catch(err => res.status(422).json(err));
    }
 };
