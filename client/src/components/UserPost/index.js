@@ -3,9 +3,7 @@ import Card from "../Card";
 import Button from "../Button";
 import ViewPostModal from "../ViewPostModal";
 import Image from "../Image";
-// import "./sass/style.scss";
 import API from "../../utils/API";
-import "./sass/style.scss";
 
 function UserPost({ post, posts, getUser, getTrending }) {
     const [commentsArray, setCommentsArray] = useState([]);
@@ -54,43 +52,15 @@ function UserPost({ post, posts, getUser, getTrending }) {
     return (
         // posts.map((post, i) => (
         <Card>
-            <div className="post-card">
-                <div className="description-w-btn mb-3">
-                    <div className="titles d-flex">
-                        {/* Putting just fake image of user for now */}
-                        <p className="description text-left mb-3">
-                            {console.log("Post here: ", post)}
-                            <img className="mr-2" src={post.profilePicture} style={{ borderRadius: "50%" }} /> {post.username}
-                        </p>
-                        <Button className="viewBtn align-self-start ml-auto"
-                        id={post._id} value="view" data-toggle="modal"
-                        // data-target={`#viewPostModal${i}`}
-                        data-target={`#viewPostModal${post._id}`}
-                        onClick={handleBtnClick}
-                        />
-                        {getUser ?
-                        <Button className="deleteBtn align-self-start ml-3"
-                            id={post._id} value="delete" onClick={() => deletePost(post._id)}
-                        /> : ""
-                        }
-                    </div>
-                    <div>
-                        <h3 className="title text-left mb-3">{post.postTitle}</h3>
-                        <p className="description text-left">{post.postBody}</p>
-                    </div>
-                    {sendToModal()}
-                    {/* <ViewPostModal modalId={post._id} post={post} commentsArray={commentsArray} getUser={getUser} getTrending={getTrending} /> */}
-
+            <div className="description-w-btn d-flex mb-3">
+                <div className="titles">
+                    {/* Putting just fake image of user for now */}
+                    <p className="description text-left">
+                        <img src={process.env.PUBLIC_URL + post.profilePicture} style={{ borderRadius: "50%" }} /> {post.username}
+                    </p>
+                    <h3 className="title text-left mb-3">{post.postTitle}</h3>
+                    <p className="description text-left">{post.postBody}</p>
                 </div>
-<<<<<<< HEAD
-                <div className="tags-w-num d-flex justify-content-between align-items-center">
-                    <div className="tags d-flex">
-                        {post.categories.map(category => (
-                            <h6 className="tag">{category}</h6>
-                        ))}
-                    </div>
-                    <p className="commentsNum font-weight-bold">{post.commentsArray.length} Comments</p>
-=======
                 <Button className="viewBtn align-self-start ml-auto"
                     id={post._id} value="view" data-toggle="modal"
                     // data-target={`#viewPostModal${i}`}
@@ -110,8 +80,8 @@ function UserPost({ post, posts, getUser, getTrending }) {
                     {post.categories.map(category => (
                         <h6 className="tag" key={category}>{category}</h6>
                     ))}
->>>>>>> master
                 </div>
+                <p className="commentsNum font-weight-bold">{post.commentsArray.length} Comments</p>
             </div>
         </Card>
         // ))
