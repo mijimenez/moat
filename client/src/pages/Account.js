@@ -125,7 +125,7 @@ function Account() {
                 <div className="row">
                     <div className="add-post" style={{}}>
                         <Card className="add-post-card">
-                            <p className="mr-3 font-weight-bold">Add Post</p>
+                            <p className="mr-3 mb-2 font-weight-bold">Add Post</p>
                             <CreatePostModal />
                         </Card>
                     </div>

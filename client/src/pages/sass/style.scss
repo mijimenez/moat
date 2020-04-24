@@ -174,8 +174,8 @@ hr {
             padding: 0 0 5% 0;
             .card .card-body {
                 @include flexbox;
-                @include justify-content(center);
                 @include align-items(center);
+                @include flex-direction(column);
             }
         }
         .posts {

@@ -10,7 +10,7 @@ import NoMatch from "./pages/NoMatch";
 import Categories from "./pages/Categories";
 import "./App.css";
 
-console.log(process.env);
+console.log(process.env.REACT_APP_MY_TEST_VARIABLE);
 
 function App() {
   return (
