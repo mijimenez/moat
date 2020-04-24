@@ -83,10 +83,13 @@ function Account() {
         let fileObject = file.file;
         let formdata = new FormData();
         formdata.append("filetoupload", fileObject);
+        // localStorage.setItem("profilePicMOAT", res.data.profilePicture);
+        console.log(formdata)
+        
         API.uploadPhoto(formdata)
             .then(res => {
                 console.log("Successfully uploaded profile pic!");
-                console.log(res);
+                console.log("picture" + res);
             })
             .catch(err => console.log("Failed uploading picture.", err))
     }

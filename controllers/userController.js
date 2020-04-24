@@ -155,25 +155,46 @@ module.exports = {
          console.log(`File Name Uploaded: ${files.filetoupload.name}
          File Name In Uploaded Directory: ${files.filetoupload.path}`);
 
-         // Here we can save path of file to a database.
-         // db.User
-         // .update({ "_id": ObjectId(req.user.id) },{ $set: {profilePicture: files.filetoupload.path} }, { new:true } )
-         // .then(dbModel => {
-         //    res.json(dbModel);
-         //    console.log(dbModel)
-         //    })
-         // .catch(err => res.status(422).json(err));
-         console.log(req.user._id);
+         console.log("upload1" + req.user._id);
          db.User
-         .findByIdAndUpdate({ _id: req.user._id },{ $set: {profilePicture: files.filetoupload.path} }, { new:true } )
-         .then(dbModel => {
-            res.json(dbModel);
-            console.log(dbModel)
-            })
-         .catch(err => res.status(422).json(err));
+            .findByIdAndUpdate(
+               {
+                  _id: req.user._id
+               },
+               {
+                  $set:
+                  {
+                     profilePicture: files.filetoupload.path
+                  }
+               },
+               { new: true })
+            .then(dbModel => {
+               res.json(dbModel);
+               console.log("upload 2" + dbModel)
 
-         // res.write('File uploaded');
-         // res.end();
+               return db.NewPost.updateMany(
+                  {
+                     username: dbModel.username
+                  },
+                  {
+                     profilePicture: files.filetoupload.path
+                  }
+               )
+                  .then(test => {
+                     console.log("upload3" + test)
+                     return db.NewComment.updateMany(
+                        {
+                           username: dbModel.username
+                        },
+                        {
+                           profilePicture: files.filetoupload.path
+                        }
+                     )
+                  })
+            })
+            .catch(err => {
+               res.status(422).json(err)
+            });
       });
    }
 };
