@@ -84,7 +84,7 @@ function Dashboard() {
             </div>
             <div className="row">
                 <div className={`sticky-wrapper${isSticky ? ' sticky' : ''}`} ref={ref}>
-                    {categories.length >0? (
+                    {userCategories.length >0? (
                     <List>
                         <li className="list-group-item font-weight-bold">Get Trending</li>
                         <br></br>
