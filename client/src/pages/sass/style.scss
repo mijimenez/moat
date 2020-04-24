@@ -152,9 +152,14 @@ hr {
                         border-bottom: 0;
                         border-right: thin solid $c-black;
                     }
-                    img {
-                        width: 100%;
-                        max-width: 200px;
+                    .profile-picture {
+                        height: 200px;
+                        width: 200px;
+                        margin: auto;
+                        background-position: center;
+                        background-size: cover;
+                        border-radius: 50%;
+                        background-color: $c-black;
                     }
                 }
             }
