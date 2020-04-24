@@ -19,18 +19,18 @@ function Navbar() {
     }
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{ display: window.location.pathname === "/" || window.location.pathname === "/signin" || window.location.pathname === "/signup" ? "none" : "block" }}>
+        <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light" style={{ display: window.location.pathname === "/" || window.location.pathname === "/signin" || window.location.pathname === "/signup" ? "none" : "block" }}>
             <div className="container">
                 <Link className="navbar-brand" to="/dashboard" onClick={() => setPath("/dashboard")}><img src={process.env.PUBLIC_URL + "/img/moat_logo_color.png"} alt="MOAT Logo" className="logo mr-2" /><h1 className="logo-name">MOAT</h1></Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav navbar-right ml-auto">
+                    <ul className="navbar-nav navbar-right text-center ml-auto">
                         {
                             localStorage.getItem("usernameMOAT") ?
                                 <li className="nav-item">
-                                    <div className="nav-link inactive text-muted">Hi, {localStorage.getItem("usernameMOAT")}</div>
+                                    <div className="nav-link username inactive text-muted">Hi, {localStorage.getItem("usernameMOAT")}</div>
                                 </li> : ""
                         }
                         <li className="nav-item">
@@ -57,9 +57,9 @@ function Navbar() {
                         <li className="nav-item">
                             <Link className="nav-link" to="/" onClick={() => { return setPath("/"), logout() }}>Logout</Link>
                         </li>
-                        <li className="nav-item">
+                        {/* <li className="nav-item">
                             <CreatePostModal />
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
             </div>

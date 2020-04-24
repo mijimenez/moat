@@ -36,7 +36,7 @@ function CreatePostModal(props) {
     return (
         <div>
             <button type="button" className="create-post-btn" data-toggle="modal" data-target="#exampleModal">
-                +
+                Create +
             </button>
 
             {/* --- Modal */}

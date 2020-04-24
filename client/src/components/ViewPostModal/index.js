@@ -91,7 +91,7 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
                         <div className="modal-body">
                             {/* <img src={comment.profilePicture} style={{ borderRadius: "50%" }} /> */}
                             {/* Putting just fake image of user for now */}
-                            <p className="description text-left"><img src={process.env.PUBLIC_URL + comment.profilePicture} style={{ borderRadius: "50%" }} /> {comment.username}</p>
+                            <p className="description text-left mb-3"><img className="mr-2" src={process.env.PUBLIC_URL + comment.profilePicture} style={{ borderRadius: "50%" }} /> {comment.username}</p>
                             <p className="description text-left">{comment.commentBody}</p>
                             <p className="description text-left">postID for this comment {comment.postID}</p>
                             <p className="description text-left">commentID for this comment {comment._id}</p>
@@ -122,13 +122,13 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
 
     return (
         <div>
-            <div className="modal fade" id={`viewPostModal${modalId}`} tabindex="-1" role="dialog"
+            <div className="modal view-modal fade" id={`viewPostModal${modalId}`} tabindex="-1" role="dialog"
                 aria-labelledby="viewPostModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
                             {/* Putting just fake image of user for now */}
-                            <p className="modal-title" id="viewPostModalLabel">Posted by {post.username} <img src={process.env.PUBLIC_URL + post.profilePicture} style={{ borderRadius: "50%" }} /></p>
+                            <p className="modal-title" id="viewPostModalLabel">Posted by {post.username} <img className="ml-2" src={process.env.PUBLIC_URL + post.profilePicture} style={{ borderRadius: "50%" }} /></p>
                             <button type="button" onClick={handleBtnClick} className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -166,6 +166,7 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
                                 value="comment"
                             />
                         </div>
+                        <hr style={{ width: "90%" }}/>
                         {/* <div className="modal-dialog" role="document">
                             {commentsArray.map(comment => (
                                 <div className="modal-content">

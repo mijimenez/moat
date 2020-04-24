@@ -25,7 +25,7 @@ body {
 
 /* ---------  Fonts */
 h1, h2, h3, h4, h5 {
-  font-family: "Helvetica", sans-serif;
+  font-family: "Roboto", sans-serif;
   margin: 0;
 }
 
@@ -73,14 +73,14 @@ h4 {
 h5 {
   font-size: .8rem;
   font-weight: bold;
-  font-family: "Helvetica", sans-serif;
+  font-family: "Roboto", sans-serif;
   margin: 0;
 }
 
 h6 {
   font-size: .7rem;
   font-weight: bold;
-  font-family: "Helvetica", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   margin: 0;
 }
@@ -91,28 +91,28 @@ strong {
 
 p, ul, li, a, label, input[type="text"],
 textarea[type="text"], input[type="text"]::-webkit-input-placeholder, textarea[type="text"]::-webkit-input-placeholder, button[type="submit"] {
-  font-family: "Helvetica", sans-serif;
+  font-family: "Roboto", sans-serif;
   margin: 0;
   color: #777;
 }
 
 p, ul, li, a, label, input[type="text"],
 textarea[type="text"], input[type="text"]:-ms-input-placeholder, textarea[type="text"]:-ms-input-placeholder, button[type="submit"] {
-  font-family: "Helvetica", sans-serif;
+  font-family: "Roboto", sans-serif;
   margin: 0;
   color: #777;
 }
 
 p, ul, li, a, label, input[type="text"],
 textarea[type="text"], input[type="text"]::-ms-input-placeholder, textarea[type="text"]::-ms-input-placeholder, button[type="submit"] {
-  font-family: "Helvetica", sans-serif;
+  font-family: "Roboto", sans-serif;
   margin: 0;
   color: #777;
 }
 
 p, ul, li, a, label, input[type="text"],
 textarea[type="text"], input[type="text"]::placeholder, textarea[type="text"]::placeholder, button[type="submit"] {
-  font-family: "Helvetica", sans-serif;
+  font-family: "Roboto", sans-serif;
   margin: 0;
   color: #777;
 }
@@ -134,4 +134,22 @@ a:hover, a:active {
 }
 
 /* ----- Sticky Footer */
-/*# sourceMappingURL=index.css.map */
+.card:not(:last-child) {
+  margin-bottom: 1em;
+}
+
+.card .post-card img {
+  width: 50px;
+}
+
+.card .post-card .tag {
+  color: #1f93ff;
+  border: thin solid #1f93ff;
+  border-radius: 20px;
+  padding: 1em 2em;
+}
+
+.card .post-card .tag:not(:last-child) {
+  margin-right: 1em;
+}
+/*# sourceMappingURL=style.css.map */

@@ -119,16 +119,32 @@ module.exports = {
       console.log("Received profile pic image");
       console.log(req.body);
       var form = new formidable.IncomingForm();
-      form.uploadDir = "./uploaded"; // set my directory where to save uploaded files
+      form.uploadDir = "./client/public/uploaded"; // set my directory where to save uploaded files
       form.keepExtensions = true;
       form.parse(req, function (err, fields, files) {
+         console.log(files);
          console.log(`File Name Uploaded: ${files.filetoupload.name}
          File Name In Uploaded Directory: ${files.filetoupload.path}`);
 
          // Here we can save path of file to a database.
+         // db.User
+         // .update({ "_id": ObjectId(req.user.id) },{ $set: {profilePicture: files.filetoupload.path} }, { new:true } )
+         // .then(dbModel => {
+         //    res.json(dbModel);
+         //    console.log(dbModel)
+         //    })
+         // .catch(err => res.status(422).json(err));
+         console.log(req.user._id);
+         db.User
+         .findByIdAndUpdate({ _id: req.user._id },{ $set: {profilePicture: files.filetoupload.path} }, { new:true } )
+         .then(dbModel => {
+            res.json(dbModel);
+            console.log(dbModel)
+            })
+         .catch(err => res.status(422).json(err));
 
-         res.write('File uploaded');
-         res.end();
+         // res.write('File uploaded');
+         // res.end();
       });
    }
 };

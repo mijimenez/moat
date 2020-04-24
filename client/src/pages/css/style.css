@@ -25,7 +25,7 @@ body {
 
 /* ---------  Fonts */
 h1, h2, h3, h4, h5 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Helvetica", sans-serif;
   margin: 0;
 }
 
@@ -73,14 +73,14 @@ h4 {
 h5 {
   font-size: .8rem;
   font-weight: bold;
-  font-family: "Roboto", sans-serif;
+  font-family: "Helvetica", sans-serif;
   margin: 0;
 }
 
 h6 {
   font-size: .7rem;
   font-weight: bold;
-  font-family: "Roboto", sans-serif;
+  font-family: "Helvetica", sans-serif;
   text-transform: uppercase;
   margin: 0;
 }
@@ -91,28 +91,28 @@ strong {
 
 p, ul, li, a, label, input[type="text"],
 textarea[type="text"], input[type="text"]::-webkit-input-placeholder, textarea[type="text"]::-webkit-input-placeholder, button[type="submit"] {
-  font-family: "Roboto", sans-serif;
+  font-family: "Helvetica", sans-serif;
   margin: 0;
   color: #777;
 }
 
 p, ul, li, a, label, input[type="text"],
 textarea[type="text"], input[type="text"]:-ms-input-placeholder, textarea[type="text"]:-ms-input-placeholder, button[type="submit"] {
-  font-family: "Roboto", sans-serif;
+  font-family: "Helvetica", sans-serif;
   margin: 0;
   color: #777;
 }
 
 p, ul, li, a, label, input[type="text"],
 textarea[type="text"], input[type="text"]::-ms-input-placeholder, textarea[type="text"]::-ms-input-placeholder, button[type="submit"] {
-  font-family: "Roboto", sans-serif;
+  font-family: "Helvetica", sans-serif;
   margin: 0;
   color: #777;
 }
 
 p, ul, li, a, label, input[type="text"],
 textarea[type="text"], input[type="text"]::placeholder, textarea[type="text"]::placeholder, button[type="submit"] {
-  font-family: "Roboto", sans-serif;
+  font-family: "Helvetica", sans-serif;
   margin: 0;
   color: #777;
 }
@@ -161,6 +161,11 @@ hr {
 
 #signinPage .form-side .wrapper, #signupPage .form-side .wrapper {
   width: 100%;
+  max-width: 400px;
+}
+
+#signinPage .form-side .wrapper .or, #signupPage .form-side .wrapper .or {
+  margin: 1em 0;
 }
 
 #signinPage .form-side .wrapper .or::before, #signinPage .form-side .wrapper .or::after, #signupPage .form-side .wrapper .or::before, #signupPage .form-side .wrapper .or::after {
@@ -179,7 +184,7 @@ hr {
 
 #signinPage .welcome-side, #signupPage .welcome-side {
   padding: 15%;
-  background-color: #1f93ff;
+  background: #1f93ff url("/img/hero.jpg") no-repeat fixed center/cover;
 }
 
 #signinPage .welcome-side .logo, #signupPage .welcome-side .logo {
@@ -222,25 +227,26 @@ hr {
   }
 }
 
-#dashboardPage .hero {
-  background-color: #1f93ff;
+#dashboardPage .hero, #categoriesPage .hero {
+  background: #1f93ff url("/img/hero.jpg") no-repeat fixed center/cover;
+  margin-top: 82px;
 }
 
-#dashboardPage .hero .wrapper {
+#dashboardPage .hero .wrapper, #categoriesPage .hero .wrapper {
   color: #fff;
   text-align: center;
 }
 
-#dashboardPage .hero .wrapper .welcome {
+#dashboardPage .hero .wrapper .welcome, #categoriesPage .hero .wrapper .welcome {
   margin-bottom: 1em;
 }
 
-#dashboardPage .hero .wrapper p {
+#dashboardPage .hero .wrapper p, #categoriesPage .hero .wrapper p {
   color: #fff;
 }
 
 @media (min-width: 56.25em) {
-  #dashboardPage .hero .wrapper {
+  #dashboardPage .hero .wrapper, #categoriesPage .hero .wrapper {
     text-align: left;
     display: -webkit-box;
     display: -moz-flex;
@@ -255,50 +261,60 @@ hr {
     -moz-justify-content: space-between;
     justify-content: space-between;
   }
-  #dashboardPage .hero .wrapper .welcome {
+  #dashboardPage .hero .wrapper .welcome, #categoriesPage .hero .wrapper .welcome {
     margin: 0 5% 0 0;
   }
 }
 
-#dashboardPage .categories {
+#dashboardPage .categories, #categoriesPage .categories {
   padding: 0;
   margin: 0 0 5% 0;
   width: 100%;
   text-align: center;
 }
 
-#dashboardPage .trending {
+#dashboardPage .categories .list-group .item:hover, #categoriesPage .categories .list-group .item:hover {
+  color: #1f93ff;
+  cursor: pointer;
+}
+
+#dashboardPage .trending, #categoriesPage .trending {
   padding: 0;
   width: 100%;
 }
 
 @media (min-width: 37.5em) {
-  #dashboardPage .categories {
-    width: 30%;
+  #dashboardPage .categories, #categoriesPage .categories {
     padding: 0;
     margin: 2.5em 5% 0 0;
     text-align: left;
   }
-  #dashboardPage .trending {
-    width: 65%;
+  #dashboardPage .trending, #categoriesPage .trending {
+    width: 100;
+    margin-left: 160px;
   }
 }
 
 #accountPage .info {
+  margin-top: 62px;
   background-color: #fff;
   padding: 5% 0;
   -webkit-box-shadow: 0px 3px 5px -2px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 3px 5px -2px rgba(0, 0, 0, 0.3);
 }
 
-#accountPage .info .row {
+#accountPage .info .container {
+  width: 90%;
+}
+
+#accountPage .info .container .row {
   -webkit-box-align: center;
   -ms-flex-align: center;
   -moz-align-items: center;
   align-items: center;
 }
 
-#accountPage .info .row .user-image {
+#accountPage .info .container .row .user-image {
   margin-bottom: 10%;
   padding-bottom: 10%;
   border-bottom: thin solid #000;
@@ -307,7 +323,7 @@ hr {
 }
 
 @media (min-width: 37.5em) {
-  #accountPage .info .row .user-image {
+  #accountPage .info .container .row .user-image {
     width: 40%;
     margin: 0 10% 0 0;
     padding: 0 10% 0 0;
@@ -316,18 +332,20 @@ hr {
   }
 }
 
-#accountPage .info .user-info {
+#accountPage .info .container .row .user-image img {
   width: 100%;
+  max-width: 200px;
 }
 
-@media (min-width: 37.5em) {
-  #accountPage .info .user-info {
-    width: 60%;
-  }
+#accountPage .info .container .user-info {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
 }
 
 #accountPage .yourPosts {
   padding: 5% 0;
+  width: 90%;
 }
 
 #accountPage .yourPosts .add-post {
@@ -342,14 +360,15 @@ hr {
   display: -moz-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  -moz-justify-content: center;
-  justify-content: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   -moz-align-items: center;
   align-items: center;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 #accountPage .yourPosts .posts {
@@ -364,5 +383,54 @@ hr {
   #accountPage .yourPosts .posts {
     width: 70%;
   }
+}
+
+#categoriesPage .categories-container {
+  text-align: center;
+}
+
+@media (min-width: 37.5em) {
+  #categoriesPage .categories-container {
+    display: -webkit-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  #categoriesPage .categories-container .category-boxes {
+    width: 50%;
+  }
+  #categoriesPage .categories-container .category-boxes .card .card-body {
+    padding: 2em 0;
+  }
+}
+
+@media (min-width: 56.25em) {
+  #categoriesPage .categories-container .category-boxes {
+    width: 33.333%;
+  }
+}
+
+.card {
+  -webkit-transition: .4s all;
+  transition: .4s all;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+}
+
+.sticky-wrapper {
+  position: relative;
+  height: 3rem;
+  /* We need to change this value */
+}
+
+.sticky .sticky-inner {
+  position: fixed;
+  top: 82px;
+  z-index: 1;
 }
 /*# sourceMappingURL=style.css.map */
