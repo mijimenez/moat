@@ -36,7 +36,9 @@ module.exports = {
             username: req.params.id
          },
          {
-            categoryPreferences: req.body.categoryPreferences
+            $push: {
+               categoryPreferences: req.body.categoryPreferences
+            }
          },
          {
             useFindAndModify: false

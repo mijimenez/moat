@@ -35,10 +35,31 @@ function Categories() {
             console.log(res.data)
             setCategories(res.data)
             console.log(userCategories)
+            // getUserCategories;
          })
          .catch(err => console.log(err));
    }
    console.log(userCategories)
+
+   function handleCategorySelect(categoryPicked) {
+
+      // console.log(category);
+      console.log("category " + categoryPicked);
+      usernameStored = localStorage.getItem("usernameMOAT");
+      console.log("category " + usernameStored)
+
+      API.updateUserCategories(usernameStored)
+      .then(res => {
+         console.log("newCat response " + res.data)
+         getUserCategories();
+      })
+      // API.getPostByCategories(categoryPicked)
+      // .then(res => {
+      //     console.log(res.data);
+      //     setTrendingPosts(res.data)
+      // })
+      // .catch(err => console.log(err));
+  };
 
 
    return (
@@ -102,7 +123,7 @@ function Categories() {
                         <ListItem
                            key={category.id}
                            item={category}
-                           // handleCategorySelect={handleCategorySelect}
+                           handleCategorySelect={handleCategorySelect}
                            categoryPicked={category}
                         />
                      ))}
