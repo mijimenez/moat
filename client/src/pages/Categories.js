@@ -3,7 +3,7 @@ import Tagline from "../components/Tagline";
 // import Button from "../components/Button";
 // import { List, ListItem } from "../components/List";
 // import TestList from "../components/TestList";
-
+import Card from "../components/Card";
 // import Post from "../components/Post";
 import API from "../utils/API";
 import "./sass/style.scss";
@@ -48,7 +48,7 @@ export default function Categories() {
             <div className="col-12">
                <div className="wrapper">
                   <div className="welcome">
-                     <h1>Categories</h1>
+                     <h1 className="mb-2">Categories</h1>
                      <h4 className="tagline">Master of All Trades</h4>
                   </div>
                   <p>A place to learn just about anything. Choose your trades and master them.</p>
@@ -66,11 +66,11 @@ export default function Categories() {
             </div>
             <div className="trending">
                <p className="mb-3 text-center font-weight-bold">Trending</p>
-               <ul class="list-group">
+               <div class="categories-container">
                   {categories.sort().map(category =>
-                     <li className="list-group-item">{category}</li>
+                     <a href="#" className="category-boxes"><Card>{category}</Card></a>
                   )}
-               </ul>
+               </div>
             </div>
          </div>
       </div>

@@ -97,15 +97,15 @@ function Account() {
                     <div className="row">
                         <div className="user-image" style={{}}>
                             <img src={userPosts.profilePic} style={{ borderRadius: "50%" }} />
-                            <div>Upload Profile Picture</div>
+                            <div className="my-3">Upload Profile Picture</div>
 
                             <div class="custom-file">
-                                <input type="file" className="custom-file-input" id="customFile" onChange={handleFile}/>
+                                <input type="file" className="custom-file-input mb-3" id="customFile" onChange={handleFile}/>
                                 <label className="custom-file-label" for="customFile">Choose file</label>
                                 <Button className="btn btn-primary updateBtn" value="Upload" onClick={handleUpload} />
                             </div>
 
-                            <div>
+                            <div className="mt-5">
                                 <p>{userInfo.firstName}, {userInfo.lastName}</p>
                                 <p>{userInfo.username}</p>
                                 <p>{userInfo.email}</p>

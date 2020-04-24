@@ -71,7 +71,7 @@ hr {
 #dashboardPage, #categoriesPage {
     .hero {
         background-color: $c-theme;
-        margin-top: 82px;
+        // margin-top: 82px;
         .wrapper {
             color: $c-white;
             text-align: center;
@@ -118,36 +118,43 @@ hr {
 // ----- Account Page
 #accountPage {
     .info {
-        margin-top: 62px;
+        // margin-top: 62px;
         background-color: $c-white;
         padding: 5% 0;
         @include box-shadow;
-        .row {
-            @include align-items(center);
-            .user-image {
-                margin-bottom: 10%;
-                padding-bottom: 10%;
-                border-bottom: thin solid $c-black;
-                width: 100%;
-                text-align: center;
-                @media (min-width: $mq-small) {
-                    width: 40%;
-                    margin: 0 10% 0 0;
-                    padding: 0 10% 0 0;
-                    border-bottom: 0;
-                    border-right: thin solid $c-black;
+        .container {
+            width: 90%;
+            .row {
+                @include align-items(center);
+                .user-image {
+                    margin-bottom: 10%;
+                    padding-bottom: 10%;
+                    border-bottom: thin solid $c-black;
+                    width: 100%;
+                    text-align: center;
+                    @media (min-width: $mq-small) {
+                        width: 40%;
+                        margin: 0 10% 0 0;
+                        padding: 0 10% 0 0;
+                        border-bottom: 0;
+                        border-right: thin solid $c-black;
+                    }
+                    img {
+                        width: 100%;
+                        max-width: 200px;
+                    }
                 }
             }
-        }
-        .user-info {
-            width: 100%;
-            @media (min-width: $mq-small) {
-                width: 60%;
+            .user-info {
+                width: 100%;
+                max-width: 400px;
+                margin: auto;
             }
         }
     }
     .yourPosts {
         padding: 5% 0;
+        width: 90%;
         .add-post {
             width: 100%;
             margin-bottom: 5%;
@@ -173,3 +180,24 @@ hr {
         }
     }
 }
+
+#categoriesPage {
+    .categories-container {
+        @media (min-width: $mq-small) {
+            @include flexbox;
+            @include flex-wrap(wrap);
+            .category-boxes {
+                width: 50%;
+                .card {
+                    height: 100px;
+                }
+            }
+        }
+        @media (min-width: $mq-medium) {
+            .category-boxes {
+                width: 33.333%;
+            } 
+        }
+    }
+}
+

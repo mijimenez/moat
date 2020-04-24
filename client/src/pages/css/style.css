@@ -224,7 +224,6 @@ hr {
 
 #dashboardPage .hero, #categoriesPage .hero {
   background-color: #1f93ff;
-  margin-top: 82px;
 }
 
 #dashboardPage .hero .wrapper, #categoriesPage .hero .wrapper {
@@ -286,21 +285,24 @@ hr {
 }
 
 #accountPage .info {
-  margin-top: 62px;
   background-color: #fff;
   padding: 5% 0;
   -webkit-box-shadow: 0px 3px 5px -2px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 3px 5px -2px rgba(0, 0, 0, 0.3);
 }
 
-#accountPage .info .row {
+#accountPage .info .container {
+  width: 90%;
+}
+
+#accountPage .info .container .row {
   -webkit-box-align: center;
   -ms-flex-align: center;
   -moz-align-items: center;
   align-items: center;
 }
 
-#accountPage .info .row .user-image {
+#accountPage .info .container .row .user-image {
   margin-bottom: 10%;
   padding-bottom: 10%;
   border-bottom: thin solid #000;
@@ -309,7 +311,7 @@ hr {
 }
 
 @media (min-width: 37.5em) {
-  #accountPage .info .row .user-image {
+  #accountPage .info .container .row .user-image {
     width: 40%;
     margin: 0 10% 0 0;
     padding: 0 10% 0 0;
@@ -318,18 +320,20 @@ hr {
   }
 }
 
-#accountPage .info .user-info {
+#accountPage .info .container .row .user-image img {
   width: 100%;
+  max-width: 200px;
 }
 
-@media (min-width: 37.5em) {
-  #accountPage .info .user-info {
-    width: 60%;
-  }
+#accountPage .info .container .user-info {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
 }
 
 #accountPage .yourPosts {
   padding: 5% 0;
+  width: 90%;
 }
 
 #accountPage .yourPosts .add-post {
@@ -365,6 +369,29 @@ hr {
   }
   #accountPage .yourPosts .posts {
     width: 70%;
+  }
+}
+
+@media (min-width: 37.5em) {
+  #categoriesPage .categories-container {
+    display: -webkit-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  #categoriesPage .categories-container .category-boxes {
+    width: 50%;
+  }
+  #categoriesPage .categories-container .category-boxes .card {
+    height: 100px;
+  }
+}
+
+@media (min-width: 56.25em) {
+  #categoriesPage .categories-container .category-boxes {
+    width: 33.333%;
   }
 }
 /*# sourceMappingURL=style.css.map */

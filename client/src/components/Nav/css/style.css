@@ -129,7 +129,7 @@ a {
 }
 
 a:hover, a:active {
-  color: #1f93ff;
+  color: #52acff;
   text-decoration: none;
 }
 
@@ -160,5 +160,14 @@ a:hover, a:active {
   color: #000;
   font-size: 1.5em;
   letter-spacing: 4px;
+}
+
+.navbar-collapse .username {
+  font-weight: bold;
+  color: #1f93ff !important;
+}
+
+.navbar-collapse ul li:not(:last-child) {
+  margin-right: .5em;
 }
 /*# sourceMappingURL=style.css.map */

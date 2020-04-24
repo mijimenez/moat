@@ -17,4 +17,15 @@
             letter-spacing: 4px;
         }
     }
+    &-collapse {
+        .username {
+            font-weight: bold;
+            color: $c-theme!important;
+        }
+        ul {
+            li:not(:last-child) {
+                margin-right: .5em;
+            }
+        }
+    }
 }
