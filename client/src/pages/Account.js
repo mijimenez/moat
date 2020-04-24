@@ -164,7 +164,7 @@ function Account() {
                             } */}
                             {
                                 posts.length > 0 ? posts.map(post =>
-                                    (< UserPost post={post} getUser={getUser}/>)) :
+                                    (< UserPost post={post} getUser={getUser} key={post._id}/>)) :
                                     <div className="description-w-btn d-flex mb-3">
                                         <p className="description text-left">No Posts Yet</p>
                                     </div>
