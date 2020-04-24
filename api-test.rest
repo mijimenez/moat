@@ -1,8 +1,8 @@
-POST http://localhost:3001/api/post/1 HTTP/1.1
+PUT http://localhost:3001/api/user/cat/PolkaDotMask HTTP/1.1
 content-type: application/json
 
 {
-    "username": "PolkaDotMask3",
+    "username": "PolkaDotMask",
     "firstName": "Joey",
     "lastName": "Ho",
     "password": "Testing_2",
@@ -12,7 +12,8 @@ content-type: application/json
     "postID": "5ea1d39a81dcf55598c54943",
     "commentBody": "qwerqwer is my qwerqwerqwerqwer",
     "postBody": "eeee eeeee the newly created post",
-    "category": ["Food", "Family"]
+    "category": ["Food", "Family"],
+    "categoryPreferences": ["Dance", "Appliance"]
 }
 
 ###

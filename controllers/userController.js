@@ -36,15 +36,15 @@ module.exports = {
             username: req.params.id
          },
          {
-            categoryPreferences: req.body.category
+            categoryPreferences: req.body.categoryPreferences
          },
          {
             useFindAndModify: false
-         }
+         })
          .then((newCategory) => {
             console.log(newCategory)
          })
-      )
+
    },
 
    // find a single user by username

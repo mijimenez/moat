@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Tagline from "../components/Tagline";
+import { List, ListItem } from "../components/List";
 // import Button from "../components/Button";
 // import ListGroup from "../components/ListGroup";
 // import TestList from "../components/TestList";
@@ -65,7 +66,7 @@ function Categories() {
                   <li class="list-group-item font-weight-bold">Your Categories</li>
                   {userCategories.length > 0 ? userCategories.map(post =>
                      <li className="list-group-item">{post} <button className="float-right"> X </button> </li>
-                     ) : (
+                  ) : (
                         <li className="list-group-item"><div className="row">It looks like you don't have any categories yet.</div><br></br><div className="row">Just click some categories that you are interested in to get started</div></li>
                      )}
                </ul>
@@ -91,18 +92,25 @@ function Categories() {
                         <li className="list-group-item"><div className="row">It looks like you don't have any categories yet.</div><br></br><div className="row">Just click some categories that you are interested in to get started</div></li>
                      )}
                   {/* <button>Save</button> */}
-               {/* </ul> */} 
+               {/* </ul> */}
             </div>
             <div className="trending">
                <p className="mb-3 text-center font-weight-bold">Trending</p>
-               <ul class="list-group">
-                  {categories.sort().map(category =>
-                     <li className="list-group-item">{category}</li>
-                  )}
-               </ul>
+               <List>
+                  <ul class="list-group">
+                     {categories.sort().map(category => (
+                        <ListItem
+                           key={category.id}
+                           item={category}
+                           // handleCategorySelect={handleCategorySelect}
+                           categoryPicked={category}
+                        />
+                     ))}
+                  </ul>
+               </List>
+            </div>
             </div>
          </div>
-      </div>
    );
 
 }

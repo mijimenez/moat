@@ -9,11 +9,12 @@ import "./sass/style.scss";
 function Dashboard() {
 
     const categories = ["Appliance", "Home", "Lawn"];
-
+    const [userCategories, setCategories] = useState({})
     const [trendingPosts, setTrendingPosts] = useState({})
 
     useEffect(() => {
         getTrending();
+        getUserCategories()
         console.log("Dashboard useEffect")
     }, [])
 
@@ -26,6 +27,20 @@ function Dashboard() {
         .catch(err => console.log(err));
     }
     // console.log(trendingPosts);
+    let usernameStored
+    function getUserCategories() {
+        usernameStored = localStorage.getItem("usernameMOAT");
+        console.log("usernameStored: " + usernameStored)
+        console.log(usernameStored)
+        API.getUserCategories(usernameStored)
+           .then(res => {
+              console.log(res.data)
+              setCategories(res.data)
+              console.log(userCategories)
+           })
+           .catch(err => console.log(err));
+     }
+     console.log(userCategories)
 
 
     function handleCategorySelect(categoryPicked) {
@@ -53,10 +68,12 @@ function Dashboard() {
             </div>
             <div className="row">
                 <div className="categories">
-                    {categories.length >0? (
+                    {userCategories.length >0? (
                     <List>
-                        <li class="list-group-item font-weight-bold">By Category</li>
-                        {categories.map(category => (
+                        <li className="list-group-item font-weight-bold">Get Trending</li>
+                        <br></br>
+                        <li className="list-group-item font-weight-bold">By Category</li>
+                        {userCategories.map(category => (
                             <ListItem
                                 key={category.id}
                                 item={category}
