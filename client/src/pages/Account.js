@@ -79,15 +79,16 @@ function Account() {
     }
 
     const handleUpload = (e) => {
-        console.log(file);
-        // let file = file;
+        console.log(file.file);
+        let fileObject = file.file;
         let formdata = new FormData();
-        formdata.append("filetoupload", file);
+        formdata.append("filetoupload", fileObject);
         API.uploadPhoto(formdata)
             .then(res => {
                 console.log("Successfully uploaded profile pic!");
+                console.log(res);
             })
-            .catch(err => console.log("Failed uploading picture."))
+            .catch(err => console.log("Failed uploading picture.", err))
     }
 
     return (
@@ -97,15 +98,15 @@ function Account() {
                     <div className="row">
                         <div className="user-image" style={{}}>
                             <img src={userPosts.profilePic} style={{ borderRadius: "50%" }} />
-                            <div>Upload Profile Picture</div>
+                            <p className="font-weight-bold my-3">Upload Profile Picture</p>
 
                             <div class="custom-file">
-                                <input type="file" className="custom-file-input" id="customFile" onChange={handleFile}/>
+                                <input type="file" className="custom-file-input mb-3" id="customFile" onChange={handleFile}/>
                                 <label className="custom-file-label" for="customFile">Choose file</label>
                                 <Button className="btn btn-primary updateBtn" value="Upload" onClick={handleUpload} />
                             </div>
 
-                            <div>
+                            <div className="mt-5">
                                 <p>{userInfo.firstName}, {userInfo.lastName}</p>
                                 <p>{userInfo.username}</p>
                                 <p>{userInfo.email}</p>
@@ -125,7 +126,7 @@ function Account() {
                 <div className="row">
                     <div className="add-post" style={{}}>
                         <Card className="add-post-card">
-                            <p className="mr-3 font-weight-bold">Add Post</p>
+                            <p className="mr-3 mb-2 font-weight-bold">Add Post</p>
                             <CreatePostModal />
                         </Card>
                     </div>
@@ -140,7 +141,7 @@ function Account() {
                             } */}
                             {
                                 posts.length > 0 ? posts.map(post =>
-                                    (< UserPost post={post} getUser={getUser}/>)) :
+                                    (< UserPost post={post} getUser={getUser} key={post._id}/>)) :
                                     <div className="description-w-btn d-flex mb-3">
                                         <p className="description text-left">No Posts Yet</p>
                                     </div>

@@ -4,6 +4,7 @@ import { List, ListItem } from "../components/List";
 // import Button from "../components/Button";
 // import ListGroup from "../components/ListGroup";
 // import TestList from "../components/TestList";
+// import Card from "../components/Card";
 // import Post from "../components/Post";
 import API from "../utils/API";
 import "./sass/style.scss";
@@ -57,12 +58,12 @@ function Categories() {
 
 
    return (
-      <div className="container" id="dashboardPage" style={{ marginTop: "30px", marginBottom: "100px", minHeight: "100vh" }}>
+      <div className="container" id="categoriesPage" style={{ marginTop: "30px", marginBottom: "100px", minHeight: "100vh" }}>
          <div className="hero row p-5 mb-3">
             <div className="col-12">
                <div className="wrapper">
                   <div className="welcome">
-                     <h1>Categories</h1>
+                     <h1 className="mb-2">Categories</h1>
                      <h4 className="tagline">Master of All Trades</h4>
                   </div>
                   <p>A place to learn just about anything. Choose your trades and master them.</p>

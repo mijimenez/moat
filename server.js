@@ -8,7 +8,9 @@ const dbConnection = require("./models/mongoose");
 const userRoutes = require("./routes");
 const MongoStore = require("connect-mongo")(session);
 const mongoose = require("mongoose")
+require("dotenv").config();
 
+console.log(process.env.REACT_APP_MY_TEST_VARIABLE);
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -17,6 +19,8 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
    app.use(express.static("client/build"));
 }
+// Give access to uploaded folder in the client/public folder
+app.use(express.static("./"));
 
 // Sessions (setting up express-session - once logged in you stay logged in in Express)
 app.use(

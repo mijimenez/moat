@@ -17,12 +17,14 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^4.1.2",
+    "env-cmd": "^10.1.0",
     "nodemon": "^1.19.4"
   },
   "dependencies": {
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "connect-mongo": "^3.2.0",
+    "dotenv": "^8.2.0",
     "express": "^4.16.3",
     "express-session": "^1.17.0",
     "file-upload-with-preview": "^4.0.8",
