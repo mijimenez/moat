@@ -11,7 +11,7 @@ module.exports = {
       db.NewPost
          .find(req.query)
          .limit(50)
-         .sort({ commentsArray: -1, date: -1 })
+         .sort({ commentsArrayLength: -1, date: -1 })
          .then(dbModel => res.json(dbModel))
          .catch(err => res.status(422).json(err));
    },
@@ -22,7 +22,7 @@ module.exports = {
       console.log(req.params)
 
       const id = req.params.id
-      console.log(id)
+      console.log("create post" + id)
 
       db.NewPost.create(req.body)
          .then(function (newPost) {
@@ -31,7 +31,7 @@ module.exports = {
             res.json(newPost)
             return db.User.findOneAndUpdate(
 
-               { _id : id },
+               { username : req.body.username },
                {
                   $push: {
                      createdPosts: newPost._id
@@ -46,12 +46,9 @@ module.exports = {
    getUserPost: function (req, res) {
       console.log(req.params)
 
-      return db.NewPost.findOne({ _id: req.params.id })
+      return db.NewPost.findOne({ username: req.params.id })
          .populate('commentsArray').exec((err, commentsArray) => {
             console.log(commentsArray)
-            if(err) {
-               res.status(422).json(err)
-            }
             res.json(commentsArray)
          })
    },
@@ -60,10 +57,10 @@ module.exports = {
    getAllUserPosts: function (req, res) {
       console.log("userID " + req.params.id)
 
-      db.NewPost.find({ _id: req.params.id })
+      db.NewPost.find({ username: req.params.id })
          .sort({ date: -1})
          .then(allPosts => {
-            console.log(allPosts);
+            console.log("all user" + allPosts);
             res.json(allPosts)
          })
          .catch((err) => res.status(422).json(err));
@@ -83,7 +80,7 @@ module.exports = {
    
       db.NewPost.find({ categories: req.params.category || /req.params/i})
       .limit(50)
-      .sort({ commentsArray: -1, date: -1 })
+      .sort({ commentsArrayLength: -1, date: -1 })
       .then(postCategory => {
          console.log(postCategory)
          res.json(postCategory)

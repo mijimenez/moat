@@ -74,7 +74,7 @@ function Account() {
     function getPostsByUser() {
         API.getAllUserPosts(usernameStored)
             .then(res => {
-                console.log(res.data);
+                console.log("alluserpost " + res.data);
                 setPosts(res.data);
             })
             .catch(err => console.log(err));
