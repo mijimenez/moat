@@ -89,9 +89,11 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
                     <div className="modal-content" key={comment._id}>
 
                         <div className="modal-body">
-                            {/* <img src={comment.profilePicture} style={{ borderRadius: "50%" }} /> */}
-                            {/* Putting just fake image of user for now */}
-                            <p className="description text-left mb-3"><img className="mr-2" src={process.env.PUBLIC_URL + comment.profilePicture} style={{ borderRadius: "50%" }} /> {comment.username}</p>
+                            <div className="d-flex align-items-center mb-3">
+                                <div className="profile-picture ml-0 mr-2" style={{ backgroundImage: `url(${comment.profilePictur})`}}></div>
+                                <p className="modal-title" id="viewPostModalLabel">Posted by        {comment.username}
+                                </p>
+                            </div>
                             <p className="description text-left">{comment.commentBody}</p>
                             <p className="description text-left">postID for this comment {comment.postID}</p>
                             <p className="description text-left">commentID for this comment {comment._id}</p>
@@ -127,8 +129,11 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            {/* Putting just fake image of user for now */}
-                            <p className="modal-title" id="viewPostModalLabel">Posted by {post.username} <img className="ml-2" src={process.env.PUBLIC_URL + post.profilePicture} style={{ borderRadius: "50%" }} /></p>
+                            <div className="d-flex align-items-center">
+                                <div className="profile-picture mr-2" style={{ backgroundImage: `url(${post.profilePicture})`}}></div>
+                                <p className="modal-title" id="viewPostModalLabel">Posted by        {post.username}
+                                </p>
+                            </div>
                             <button type="button" onClick={handleBtnClick} className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
