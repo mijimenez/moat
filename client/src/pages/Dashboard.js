@@ -78,9 +78,9 @@ function Dashboard() {
             </div>
             <div className="row">
                 <div className={`sticky-wrapper${isSticky ? ' sticky' : ''}`} ref={ref}>
-                    <ul className="list-group">
-                        {userCategories.length > 0 ? (
-                            <List>
+
+                    {userCategories.length > 0 ? (
+                        <List>
                                 <li className="list-group-item font-weight-bold">Get Trending</li>
                                 <br></br>
                                 <li className="list-group-item font-weight-bold">By Category</li>
@@ -94,9 +94,15 @@ function Dashboard() {
                                 ))}
                             </List>
                         ) : (
-                                <p className="display-message text-center mt-5">No categories added. Add from categories tab to save search preferences.<button> Here! </button></p>
+                            <List>
+                                <ListItem
+                                item={"No categories added. Click here to add categories."}
+                                // handleCategorySelect={routeToCategories}
+                                >
+                                </ListItem>
+                            </List>
+                            
                             )}
-                    </ul>
                 </div>
                 <div className="trending">
                     <p className="mb-3 text-center font-weight-bold">Trending</p>
