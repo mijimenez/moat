@@ -25,7 +25,7 @@ body {
 
 /* ---------  Fonts */
 h1, h2, h3, h4, h5 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Helvetica", sans-serif;
   margin: 0;
 }
 
@@ -73,14 +73,14 @@ h4 {
 h5 {
   font-size: .8rem;
   font-weight: bold;
-  font-family: "Roboto", sans-serif;
+  font-family: "Helvetica", sans-serif;
   margin: 0;
 }
 
 h6 {
   font-size: .7rem;
   font-weight: bold;
-  font-family: "Roboto", sans-serif;
+  font-family: "Helvetica", sans-serif;
   text-transform: uppercase;
   margin: 0;
 }
@@ -91,28 +91,28 @@ strong {
 
 p, ul, li, a, label, input[type="text"],
 textarea[type="text"], input[type="text"]::-webkit-input-placeholder, textarea[type="text"]::-webkit-input-placeholder, button[type="submit"] {
-  font-family: "Roboto", sans-serif;
+  font-family: "Helvetica", sans-serif;
   margin: 0;
   color: #777;
 }
 
 p, ul, li, a, label, input[type="text"],
 textarea[type="text"], input[type="text"]:-ms-input-placeholder, textarea[type="text"]:-ms-input-placeholder, button[type="submit"] {
-  font-family: "Roboto", sans-serif;
+  font-family: "Helvetica", sans-serif;
   margin: 0;
   color: #777;
 }
 
 p, ul, li, a, label, input[type="text"],
 textarea[type="text"], input[type="text"]::-ms-input-placeholder, textarea[type="text"]::-ms-input-placeholder, button[type="submit"] {
-  font-family: "Roboto", sans-serif;
+  font-family: "Helvetica", sans-serif;
   margin: 0;
   color: #777;
 }
 
 p, ul, li, a, label, input[type="text"],
 textarea[type="text"], input[type="text"]::placeholder, textarea[type="text"]::placeholder, button[type="submit"] {
-  font-family: "Roboto", sans-serif;
+  font-family: "Helvetica", sans-serif;
   margin: 0;
   color: #777;
 }
@@ -151,6 +151,10 @@ a:hover, a:active {
   align-items: center;
 }
 
+.navbar-brand:hover {
+  opacity: .5;
+}
+
 .navbar-brand img {
   height: 27px;
 }
@@ -159,7 +163,7 @@ a:hover, a:active {
   display: inline;
   color: #000;
   font-size: 1.5em;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
 }
 
 .navbar-toggler {

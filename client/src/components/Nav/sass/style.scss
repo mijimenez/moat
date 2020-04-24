@@ -5,6 +5,9 @@
     background-color: $c-white!important;
     @include box-shadow;
     &-brand {
+        &:hover {
+            opacity: .5;
+        }
         @include flexbox;
         @include align-items(center);
         img {
@@ -14,7 +17,7 @@
             display: inline;
             color: $c-black;
             font-size: 1.5em;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
         }
     }
     &-toggler {
