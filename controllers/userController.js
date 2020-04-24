@@ -126,7 +126,7 @@ module.exports = {
       console.log("Received profile pic image");
       console.log(req.body);
       var form = new formidable.IncomingForm();
-      form.uploadDir = "./"; // set my directory where to save uploaded files
+      form.uploadDir = "./uploaded"; // set my directory where to save uploaded files
       form.keepExtensions = true;
       form.parse(req, function (err, fields, files) {
          console.log(`File Name Uploaded: ${files.filetoupload.name}

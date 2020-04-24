@@ -10,13 +10,10 @@ import CreatePostModal from "../components/CreatePostModal";
 // import ViewPostModal from "../components/ViewPostModal";
 import API from "../utils/API";
 
-// ----- Image upload
-import FileUploadWithPreview from 'file-upload-with-preview';
-
 function Account() {
+    const [file, setFile] = useState({fileName: null});
     const [userInfo, setUserInfo] = useState({});
     const uploadedImages = useRef([]);
-    // const [userUpload, setUserUpload] = useState({});
     const [userPosts, setUserPosts] = useState({
         userId: "",
         profilePic: "",
@@ -25,25 +22,7 @@ function Account() {
     })
     const [posts, setPosts] = useState([]);
 
-    var upload;
-
     useEffect(() => {
-        upload = new FileUploadWithPreview('myUniqueUploadId');
-        window.addEventListener('fileUploadWithPreview:imagesAdded', function(e) {
-            // e.detail.uploadId
-            // e.detail.cachedFileArray
-            // e.detail.addedFilesCount
-            // Use e.detail.uploadId to match up to your specific input
-            // if (e.detail.uploadId === 'mySecondImage') {
-            //     console.log(e.detail.cachedFileArray)
-            //     console.log(e.detail.addedFilesCount)
-            // }
-            // console.log(upload.cachedFileArray);
-            // console.log("e.detail.cachedFileArray: " , upload.cachedFileArray);
-            // uploadedImages.current = e.detail.cachedFileArray;
-            // console.log("Cached File: " , upload.cachedFileArray);
-            uploadedImages.current = upload.cachedFileArray;
-        });
         getUser();
     }, [])
 
@@ -92,15 +71,24 @@ function Account() {
         console.log(userPosts);
     };
 
-    const handleUploadClick = event => {
-        // console.log("Uploaded: ", uploadedImages.current[0]);
-        const profilePic = uploadedImages.current[0];
-        API.uploadPhoto(profilePic)
+    const handleFile = (e) => {
+        let file = e.target.files[0];
+        setFile({
+            file: file
+        })
+    }
+
+    const handleUpload = (e) => {
+        console.log(file);
+        // let file = file;
+        let formdata = new FormData();
+        formdata.append("filetoupload", file);
+        API.uploadPhoto(formdata)
             .then(res => {
                 console.log("Successfully uploaded profile pic!");
             })
             .catch(err => console.log("Failed uploading picture."))
-    };
+    }
 
     return (
         <div id="accountPage">
@@ -111,23 +99,11 @@ function Account() {
                             <img src={userPosts.profilePic} style={{ borderRadius: "50%" }} />
                             <div>Upload Profile Picture</div>
 
-
-                            <div class="custom-file-container" data-upload-id="myUniqueUploadId">
-                                <label>Upload File <a href="javascript:void(0)" class="custom-file-container__image-clear" title="Clear Image">&times;</a></label>
-                                <label class="custom-file-container__custom-file" >
-                                    <input type="file" class="custom-file-container__custom-file__custom-file-input" accept="*" aria-label="Choose File"/>
-                                    <input type="hidden" name="MAX_FILE_SIZE" value="10485760" />
-                                    <span class="custom-file-container__custom-file__custom-file-control"></span>
-                                </label>
-                                <div class="custom-file-container__image-preview"></div>
-                                <Button className="btn btn-primary updateBtn" value="Upload" onClick={handleUploadClick} />
-                            </div>
-                            {/* <div class="custom-file">
-                                <input type="file" className="custom-file-input" id="customFile" onClick={handleUploadClick}/>
+                            <div class="custom-file">
+                                <input type="file" className="custom-file-input" id="customFile" onChange={handleFile}/>
                                 <label className="custom-file-label" for="customFile">Choose file</label>
-                                <Button className="btn btn-primary updateBtn" value="Upload" onClick={handleUploadClick} />
-                            </div> */}
-
+                                <Button className="btn btn-primary updateBtn" value="Upload" onClick={handleUpload} />
+                            </div>
 
                             <div>
                                 <p>{userInfo.firstName}, {userInfo.lastName}</p>

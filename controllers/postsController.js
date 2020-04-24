@@ -11,7 +11,7 @@ module.exports = {
       db.NewPost
          .find(req.query)
          .limit(50)
-         .sort({ commentsArrayLength: -1, date: -1 })
+         .sort({ commentsArrayLength: -1 })
          .then(dbModel => res.json(dbModel))
          .catch(err => res.status(422).json(err));
    },
@@ -77,10 +77,9 @@ module.exports = {
    // getting a post by specific categories
    getPostByCategories: function (req, res) {
       console.log(req.params)
-   
       db.NewPost.find({ categories: req.params.category || /req.params/i})
       .limit(50)
-      .sort({ commentsArrayLength: -1, date: -1 })
+      .sort({ commentsArrayLength: -1 })
       .then(postCategory => {
          console.log(postCategory)
          res.json(postCategory)
