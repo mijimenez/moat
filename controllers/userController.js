@@ -47,7 +47,25 @@ module.exports = {
          .then((newCategory) => {
             console.log(newCategory)
          })
+   },
 
+   removeUserCategory: function (req, res) {
+      
+      db.User.findOneAndUpdate(
+         {
+            username: req.body.username
+         },
+         {
+            $pull: {
+               categoryPreferences: req.body.categoryPreferences
+            }
+         },
+         {
+            useFindAndModify: false
+         })
+         .then((newCategory) => {
+            console.log(newCategory)
+         })
    },
 
    // find a single user by username

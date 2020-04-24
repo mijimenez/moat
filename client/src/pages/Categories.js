@@ -41,6 +41,7 @@ function Categories() {
    }
    console.log(userCategories)
 
+
    function handleCategorySelect(categoryPicked) {
 
       console.log("category " + categoryPicked);
@@ -57,6 +58,21 @@ function Categories() {
             })
       }
    };
+
+   function removeUserCategory(category) {
+      
+      console.log(category);
+      if (category === "") {
+         return console.log("Not found")
+      }
+      else {
+         API.removeUserCategory({categoryPreferences: category, username: usernameStored})
+         .then(res => {
+            console.log("removeCat response "+ res.data)
+            getUserCategories();
+         })
+      }
+   }
 
 
    return (
@@ -77,9 +93,13 @@ function Categories() {
                <ul class="list-group">
                   <li class="list-group-item font-weight-bold">Your Categories</li>
                   {userCategories.length > 0 ? userCategories.map(post =>
-                     <li className="list-group-item">{post} <button className="float-right"> X </button> </li>
+                     <li className="list-group-item">{post} <button className="float-right" onClick={() => removeUserCategory(category)}> X </button> </li>
                   ) : (
-                        <li className="list-group-item"><div className="row">It looks like you don't have any categories yet.</div><br></br><div className="row">Just click some categories that you are interested in to get started</div></li>
+                        <li className="list-group-item">
+                           <div className="row">It looks like you don't have any categories yet.</div>
+                           <br></br>
+                           <div className="row">Just click some categories that you are interested in to get started</div>
+                        </li>
                      )}
                </ul>
             </div>
@@ -96,23 +116,6 @@ function Categories() {
                      </a>
                   )}
                </div>
-               {/* <List>
-                  <div class="categories-container">
-                  {categories.sort().map(category =>
-                     <a href="#" className="category-boxes"><Card>{category}</Card></a>
-                  )}
-               </div>
-                  <ul class="list-group">
-                     {categories.sort().map(category => (
-                        <ListItem
-                           key={category.id}
-                           item={category}
-                           handleCategorySelect={handleCategorySelect}
-                           categoryPicked={category}
-                        />
-                     ))}
-                  </ul>
-               </List> */}
             </div>
          </div>
       </div>

@@ -108,11 +108,7 @@ function Dashboard() {
                                     </Link>
                                 }
                                 handleCategorySelect={filler}
-                                // {"No categories added. Click here to add categories."}
-                                // handleCategorySelect={routeToCategories}
-                                // categoryPicked={"/dashboard"}
-                                >
-                                </ListItem>
+                                ></ListItem>
                             </List>
                             
                             )}
