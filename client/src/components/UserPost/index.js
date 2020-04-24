@@ -46,7 +46,7 @@ function UserPost({ post, posts, getUser, getTrending }) {
     }
 
     function sendToModal() {
-        return(<ViewPostModal modalId={post._id} post={post} commentsArray={commentsArray} getUser={getUser} getTrending={getTrending} />)
+        return(<ViewPostModal modalId={post._id} post={post} commentsArray={commentsArray} getUser={getUser} getTrending={getTrending} key={post._id}/>)
     }
 
     return (
@@ -78,7 +78,7 @@ function UserPost({ post, posts, getUser, getTrending }) {
             <div className="tags-w-num d-flex justify-content-between align-items-center">
                 <div className="tags d-flex">
                     {post.categories.map(category => (
-                        <h6 className="tag">{category}</h6>
+                        <h6 className="tag" key={category}>{category}</h6>
                     ))}
                 </div>
                 <p className="commentsNum font-weight-bold">{post.commentsArray.length} Comments</p>
