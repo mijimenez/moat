@@ -332,9 +332,14 @@ hr {
   }
 }
 
-#accountPage .info .container .row .user-image img {
-  width: 100%;
-  max-width: 200px;
+#accountPage .info .container .row .user-image .profile-picture {
+  height: 200px;
+  width: 200px;
+  margin: auto;
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  background-color: #000;
 }
 
 #accountPage .info .container .user-info {
