@@ -4,18 +4,22 @@
     &:not(:last-child) {
         margin-bottom: 1em;
     }
-    .post-card {
-        img {
-            width: 50px;
-        }
-        .tag {
-            color: $c-theme;
-            border: thin solid $c-theme;
-            border-radius: 20px;
-            padding: 1em 2em;
-            &:not(:last-child) {
-                margin-right: 1em;
-            }
+    .profile-picture {
+        height: 50px;
+        width: 50px;
+        margin: auto;
+        background-position: center;
+        background-size: cover;
+        border-radius: 50%;
+        background-color: $c-black;
+    }
+    .tag {
+        color: $c-theme;
+        border: thin solid $c-theme;
+        border-radius: 20px;
+        padding: 1em 2em;
+        &:not(:last-child) {
+            margin-right: 1em;
         }
     }
 }
