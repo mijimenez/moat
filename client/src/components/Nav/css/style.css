@@ -162,6 +162,22 @@ a:hover, a:active {
   letter-spacing: 4px;
 }
 
+.navbar-toggler {
+  background-color: white !important;
+  -webkit-transition: all .4s;
+  transition: all .4s;
+  width: 3em;
+  border: none !important;
+}
+
+.navbar-toggler:hover {
+  outline: none !important;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: none !important;
+  opacity: .5;
+}
+
 .navbar-collapse .username {
   font-weight: bold;
   color: #1f93ff !important;

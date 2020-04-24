@@ -372,6 +372,10 @@ hr {
   }
 }
 
+#categoriesPage .categories-container {
+  text-align: center;
+}
+
 @media (min-width: 37.5em) {
   #categoriesPage .categories-container {
     display: -webkit-box;
@@ -384,8 +388,8 @@ hr {
   #categoriesPage .categories-container .category-boxes {
     width: 50%;
   }
-  #categoriesPage .categories-container .category-boxes .card {
-    height: 100px;
+  #categoriesPage .categories-container .category-boxes .card .card-body {
+    padding: 2em 0;
   }
 }
 
@@ -393,5 +397,10 @@ hr {
   #categoriesPage .categories-container .category-boxes {
     width: 33.333%;
   }
+}
+
+.card {
+  -webkit-transition: .4s all;
+  transition: .4s all;
 }
 /*# sourceMappingURL=style.css.map */

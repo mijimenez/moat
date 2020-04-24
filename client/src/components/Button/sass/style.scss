@@ -10,8 +10,16 @@ button, .btn {
     border: none;
     cursor: pointer;
     transition: .4s all;
-    &:hover, &:focus {
+    &:hover {
         background-color: darken($c-theme, 15%);
+        outline: none !important;
+        box-shadow: none!important;
+    }
+    &:focus {
+        outline: none !important;
+        box-shadow: none!important;
     }
 }
+
+
 

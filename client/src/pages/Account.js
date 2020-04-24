@@ -97,7 +97,7 @@ function Account() {
                     <div className="row">
                         <div className="user-image" style={{}}>
                             <img src={userPosts.profilePic} style={{ borderRadius: "50%" }} />
-                            <div className="my-3">Upload Profile Picture</div>
+                            <p className="font-weight-bold my-3">Upload Profile Picture</p>
 
                             <div class="custom-file">
                                 <input type="file" className="custom-file-input mb-3" id="customFile" onChange={handleFile}/>

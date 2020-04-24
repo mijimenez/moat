@@ -183,13 +183,16 @@ hr {
 
 #categoriesPage {
     .categories-container {
+        text-align: center;
         @media (min-width: $mq-small) {
             @include flexbox;
             @include flex-wrap(wrap);
             .category-boxes {
                 width: 50%;
                 .card {
-                    height: 100px;
+                    .card-body {
+                        padding: 2em 0;
+                    }
                 }
             }
         }
@@ -199,5 +202,9 @@ hr {
             } 
         }
     }
+}
+
+.card {
+    transition: .4s all;
 }
 
