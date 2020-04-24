@@ -30,11 +30,11 @@ module.exports = {
 
    updateUserCategories: function (req, res) {
       console.log("body " + req.body.categoryPreferences)
-      console.log(req.params.id)
+      console.log(req.body.username)
 
       db.User.findOneAndUpdate(
          {
-            username: req.params.id
+            username: req.body.username
          },
          {
             $addToSet: {

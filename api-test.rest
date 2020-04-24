@@ -13,7 +13,7 @@ content-type: application/json
     "commentBody": "qwerqwer is my qwerqwerqwerqwer",
     "postBody": "eeee eeeee the newly created post",
     "category": ["Food", "Family"],
-    "categoryPreferences": ["Dance", "Appliance", "Cosmetics"]
+    "categoryPreferences": ["Dance", "Appliance", "Cosmetics", "Music", "Test"]
 }
 
 ###

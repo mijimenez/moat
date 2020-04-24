@@ -4,7 +4,6 @@ import { List, ListItem } from "../components/List";
 // import Button from "../components/Button";
 // import ListGroup from "../components/ListGroup";
 // import TestList from "../components/TestList";
-
 // import Post from "../components/Post";
 import API from "../utils/API";
 import "./sass/style.scss";
@@ -35,7 +34,6 @@ function Categories() {
             console.log(res.data)
             setCategories(res.data)
             console.log(userCategories)
-            // getUserCategories;
          })
          .catch(err => console.log(err));
    }
@@ -47,30 +45,20 @@ function Categories() {
       console.log("category " + categoryPicked);
       usernameStored = localStorage.getItem("usernameMOAT");
       console.log("category " + usernameStored)
+      // const object = {categoryPreferences: categoryPicked , username: usernameStored}
+      // console.log(object)
 
-      API.updateUserCategories(usernameStored)
-      .then(res => {
-         console.log("newCat response " + res.data)
-         getUserCategories();
-      })
-      // API.getPostByCategories(categoryPicked)
-      // .then(res => {
-      //     console.log(res.data);
-      //     setTrendingPosts(res.data)
-      // })
-      // .catch(err => console.log(err));
-  };
+      API.updateUserCategories({ categoryPreferences: categoryPicked, username: usernameStored })
+         .then(res => {
+            console.log("newCat response " + res.data)
+            getUserCategories();
+         })
+   };
 
 
    return (
       <div className="container" id="dashboardPage" style={{ marginTop: "30px", marginBottom: "100px", minHeight: "100vh" }}>
          <div className="hero row p-5 mb-3">
-            {/* <div className="col-md-6">
-                    <Tagline lineNum={[{ 1: "Welcome to" }, 2]} />
-                </div>
-                <div className="col-md-6">
-                    <Tagline lineNum={[3]} />
-                </div> */}
             <div className="col-12">
                <div className="wrapper">
                   <div className="welcome">
@@ -91,29 +79,6 @@ function Categories() {
                         <li className="list-group-item"><div className="row">It looks like you don't have any categories yet.</div><br></br><div className="row">Just click some categories that you are interested in to get started</div></li>
                      )}
                </ul>
-               {/* <ul class="list-group">
-                  {userCategories.length > 0 ? (
-                     <List>
-                        <li class="list-group-item font-weight-bold">Your Categories</li>
-                        {userCategories.map(category => (
-                           // update button style for this section to be smaller and gray
-                           <>
-                           <ListItem
-                              key={category.id}
-                              item={category}
-                              handleCategorySelect={handleCategorySelect}
-                              categoryPicked={category}
-                              
-                           />
-                           <Button value={"Remove"}/>
-                           </>
-                        ))}
-                     </List>
-                  ) : (
-                        <li className="list-group-item"><div className="row">It looks like you don't have any categories yet.</div><br></br><div className="row">Just click some categories that you are interested in to get started</div></li>
-                     )}
-                  {/* <button>Save</button> */}
-               {/* </ul> */}
             </div>
             <div className="trending">
                <p className="mb-3 text-center font-weight-bold">Trending</p>
@@ -130,8 +95,8 @@ function Categories() {
                   </ul>
                </List>
             </div>
-            </div>
          </div>
+      </div>
    );
 
 }

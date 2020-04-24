@@ -40,7 +40,7 @@ export default {
         return axios.get("/api/user/cat/" + id)
     },
     updateUserCategories: function(category) {
-        return axios.post("/api/user/cat/", category)
+        return axios.post("/api/user/cat/1", category)
     },
     // Delete specific user post
     deleteUserPost: function (id) {
