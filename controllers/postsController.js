@@ -11,7 +11,7 @@ module.exports = {
       db.NewPost
          .find(req.query)
          .limit(50)
-         .sort({ commentsArray: -1, date: -1 })
+         .sort({ commentsArrayLength: -1 })
          .then(dbModel => res.json(dbModel))
          .catch(err => res.status(422).json(err));
    },
@@ -21,17 +21,33 @@ module.exports = {
       console.log(req.body)
       console.log(req.params)
 
-      const userId = req.params.id
-      console.log(userId)
+      var d = new Date();
+      var hour = d.getHours();
+      var date = d.getDate();
+      var month = d.getMonth() + 1; // Since getMonth() returns month from 0-11 not 1-12
+      var year = d.getFullYear();
+       
+      const customDate = ""+year + month + date + hour;
+      console.log(customDate)
+   
 
-      db.NewPost.create(req.body)
+      db.NewPost.create(
+         {
+            username: req.body.username,
+            postTitle: req.body.postTitle,
+            postBody: req.body.postBody,
+            profilePicture: req.body.profilePicture,
+            categories: req.body.categories,
+            date: customDate
+         }
+      )
          .then(function (newPost) {
             console.log(newPost._id)
 
             res.json(newPost)
             return db.User.findOneAndUpdate(
 
-               { username : userId },
+               { username : req.body.username },
                {
                   $push: {
                      createdPosts: newPost._id
@@ -46,12 +62,9 @@ module.exports = {
    getUserPost: function (req, res) {
       console.log(req.params)
 
-      return db.NewPost.findOne({ _id: req.params.id })
+      return db.NewPost.findOne({ username: req.params.id })
          .populate('commentsArray').exec((err, commentsArray) => {
             console.log(commentsArray)
-            if(err) {
-               res.status(422).json(err)
-            }
             res.json(commentsArray)
          })
    },
@@ -63,7 +76,7 @@ module.exports = {
       db.NewPost.find({ username: req.params.id })
          .sort({ date: -1})
          .then(allPosts => {
-            console.log(allPosts);
+            console.log("all user" + allPosts);
             res.json(allPosts)
          })
          .catch((err) => res.status(422).json(err));
@@ -74,7 +87,7 @@ module.exports = {
    getAllUserCategories: function (req, res) {
       console.log(req.params);
 
-      db.NewPost.find({ username: req.params.name, categories: req.params.category })
+      db.NewPost.find({ _id: req.params.name, categories: req.params.category })
    },
 
    // getting a post by specific categories
@@ -82,7 +95,7 @@ module.exports = {
       console.log(req.params)
       db.NewPost.find({ categories: req.params.category || /req.params/i})
       .limit(50)
-      .sort({ commentsArray: -1, date: -1 })
+      .sort({ commentsArrayLength: -1 })
       .then(postCategory => {
          console.log(postCategory)
          res.json(postCategory)

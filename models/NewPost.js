@@ -29,10 +29,7 @@ const postSchema = new Schema({
          ref: "NewComment"
       }
    ],
-   date: {
-      type: Date,
-      default: Date.now
-   }
+   date: {type: String}
 });
 
 const NewPost = mongoose.model("NewPost", postSchema);

@@ -13,6 +13,7 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
     });
     const [commentsRendered, setCommentsRendered] = useState({});
     const [commentLength, setCommentLength] = useState();
+    
     useEffect(() => {
         console.log("viewpostmodal useEffect")
         console.log(`commentsRendered: ${JSON.stringify(commentsRendered)}, commentLength: ${commentLength}`)

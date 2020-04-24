@@ -22,6 +22,7 @@ router.route("/:id")
 // actual route is api/user/cat/":id"
 router.route("/cat/:id")
    .get(credentialsController.getUserCategories)
+   .post(credentialsController.updateUserCategories)
 
 // // Login route
 // --- (You can send user id to front end here if you want, but Express is already keeping track of user through serialize/deserialize so no need to pass user id)
