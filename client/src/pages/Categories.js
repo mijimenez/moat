@@ -93,7 +93,7 @@ function Categories() {
                <ul class="list-group">
                   <li class="list-group-item font-weight-bold">Your Categories</li>
                   {userCategories.length > 0 ? userCategories.map(post =>
-                     <li className="list-group-item">{post} <button className="float-right" onClick={() => removeUserCategory(category)}> X </button> </li>
+                     <li className="list-group-item">{post} <button className="float-right" onClick={() => removeUserCategory(post)}> X </button> </li>
                   ) : (
                         <li className="list-group-item">
                            <div className="row">It looks like you don't have any categories yet.</div>
