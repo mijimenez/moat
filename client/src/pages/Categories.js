@@ -85,7 +85,15 @@ function Categories() {
                <p className="mb-3 text-center font-weight-bold">Trending</p>
                <div class="categories-container">
                   {categories.sort().map(category =>
-                     <a href="#" className="category-boxes"><Card>{category}</Card></a>
+                     <a href="#" className="category-boxes">
+                        <Card
+                           key={category.id}
+                           item={category}
+                           handleCategorySelect={handleCategorySelect}
+                           categoryPicked={category}
+                        >{category}
+                        </Card>
+                     </a>
                   )}
                </div>
                {/* <List>

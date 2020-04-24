@@ -5,7 +5,7 @@ import Button from "../Button";
 function Card({ children, props }) {
     return (
         <div className="card">
-            <div className="card-body">
+            <div className="card-body" onClick={() => props.handleCategorySelect(props.categoryPicked)}>
                 {children}
             </div>
         </div>
