@@ -29,14 +29,15 @@ module.exports = {
    },
 
    updateUserCategories: function (req, res) {
-      console.log(req.body)
+      console.log("body " + req.body.categoryPreferences)
+      console.log(req.params.id)
 
       db.User.findOneAndUpdate(
          {
             username: req.params.id
          },
          {
-            $push: {
+            $addToSet: {
                categoryPreferences: req.body.categoryPreferences
             }
          },

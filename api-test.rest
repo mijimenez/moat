@@ -1,4 +1,4 @@
-PUT http://localhost:3001/api/user/cat/PolkaDotMask HTTP/1.1
+POST http://localhost:3001/api/user/cat/PolkaDotMask HTTP/1.1
 content-type: application/json
 
 {
@@ -13,7 +13,7 @@ content-type: application/json
     "commentBody": "qwerqwer is my qwerqwerqwerqwer",
     "postBody": "eeee eeeee the newly created post",
     "category": ["Food", "Family"],
-    "categoryPreferences": ["Dance", "Appliance"]
+    "categoryPreferences": ["Dance", "Appliance", "Cosmetics"]
 }
 
 ###
