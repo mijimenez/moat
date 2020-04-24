@@ -161,6 +161,7 @@ hr {
 
 #signinPage .form-side .wrapper, #signupPage .form-side .wrapper {
   width: 100%;
+  max-width: 400px;
 }
 
 #signinPage .form-side .wrapper .or::before, #signinPage .form-side .wrapper .or::after, #signupPage .form-side .wrapper .or::before, #signupPage .form-side .wrapper .or::after {
@@ -179,7 +180,7 @@ hr {
 
 #signinPage .welcome-side, #signupPage .welcome-side {
   padding: 15%;
-  background-color: #1f93ff;
+  background: #1f93ff url("/img/hero.jpg") no-repeat fixed center/cover;
 }
 
 #signinPage .welcome-side .logo, #signupPage .welcome-side .logo {
@@ -223,7 +224,7 @@ hr {
 }
 
 #dashboardPage .hero, #categoriesPage .hero {
-  background-color: #1f93ff;
+  background: #1f93ff url("/img/hero.jpg") no-repeat fixed center/cover;
 }
 
 #dashboardPage .hero .wrapper, #categoriesPage .hero .wrapper {

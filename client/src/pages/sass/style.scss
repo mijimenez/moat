@@ -24,6 +24,7 @@ hr {
         padding: 15%;
         .wrapper {
             width: 100%;
+            max-width: 400px;
             .or {
                 &::before, &::after {
                     display: inline-block;
@@ -41,7 +42,8 @@ hr {
     }
     .welcome-side {
         padding: 15%;
-        background-color: $c-theme;
+        // background-color: $c-theme;
+        background: $c-theme url("/img/hero.jpg") no-repeat fixed center / cover;
         .logo {
             width: 100%;
             max-width: 80px;
@@ -70,7 +72,8 @@ hr {
 // ----- Dashboard & Categories Page
 #dashboardPage, #categoriesPage {
     .hero {
-        background-color: $c-theme;
+        // background-color: $c-theme;
+        background: $c-theme url("/img/hero.jpg") no-repeat fixed center / cover;
         // margin-top: 82px;
         .wrapper {
             color: $c-white;
