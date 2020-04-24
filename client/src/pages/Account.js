@@ -79,15 +79,16 @@ function Account() {
     }
 
     const handleUpload = (e) => {
-        console.log(file);
-        // let file = file;
+        console.log(file.file);
+        let fileObject = file.file;
         let formdata = new FormData();
-        formdata.append("filetoupload", file);
+        formdata.append("filetoupload", fileObject);
         API.uploadPhoto(formdata)
             .then(res => {
                 console.log("Successfully uploaded profile pic!");
+                console.log(res);
             })
-            .catch(err => console.log("Failed uploading picture."))
+            .catch(err => console.log("Failed uploading picture.", err))
     }
 
     return (

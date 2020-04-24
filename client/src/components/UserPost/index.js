@@ -59,7 +59,8 @@ function UserPost({ post, posts, getUser, getTrending }) {
                     <div className="titles d-flex">
                         {/* Putting just fake image of user for now */}
                         <p className="description text-left mb-3">
-                            <img className="mr-2" src={process.env.PUBLIC_URL + post.profilePicture} style={{ borderRadius: "50%" }} /> {post.username}
+                            {console.log("Post here: ", post)}
+                            <img className="mr-2" src={post.profilePicture} style={{ borderRadius: "50%" }} /> {post.username}
                         </p>
                         <Button className="viewBtn align-self-start ml-auto"
                         id={post._id} value="view" data-toggle="modal"

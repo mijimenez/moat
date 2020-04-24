@@ -19,6 +19,8 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
    app.use(express.static("client/build"));
 }
+// Give access to uploaded folder in the client/public folder
+app.use(express.static("./"));
 
 // Sessions (setting up express-session - once logged in you stay logged in in Express)
 app.use(
