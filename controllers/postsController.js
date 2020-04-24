@@ -21,10 +21,26 @@ module.exports = {
       console.log(req.body)
       console.log(req.params)
 
-      const id = req.params.id
-      console.log("create post" + id)
+      var d = new Date();
+      var hour = d.getHours();
+      var date = d.getDate();
+      var month = d.getMonth() + 1; // Since getMonth() returns month from 0-11 not 1-12
+      var year = d.getFullYear();
+       
+      const customDate = ""+year + month + date + hour;
+      console.log(customDate)
+   
 
-      db.NewPost.create(req.body)
+      db.NewPost.create(
+         {
+            username: req.body.username,
+            postTitle: req.body.postTitle,
+            postBody: req.body.postBody,
+            profilePicture: req.body.profilePicture,
+            categories: req.body.categories,
+            date: customDate
+         }
+      )
          .then(function (newPost) {
             console.log(newPost._id)
 

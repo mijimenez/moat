@@ -45,12 +45,6 @@ const userSchema = new Schema({
          type: Schema.Types.ObjectId,
          ref: "NewPost"
       }
-   ],
-   createdComments: [
-      {
-         type: Schema.Types.ObjectId,
-         ref: "NewComment"
-      }
    ]
 })
 // Define schema methods
