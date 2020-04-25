@@ -102,8 +102,7 @@ function Dashboard() {
                                 <ListItem
                                 item={
                                     <Link to="/categories">
-                                        <span>No categories added.</span><br></br>
-                                        <span>Click here to add categories.</span>
+                                        <span>No categories added. Click here to add categories.</span>
                                     </Link>
                                 }
                                 handleCategorySelect={filler}
