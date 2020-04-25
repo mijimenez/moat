@@ -64,5 +64,8 @@ export default {
     // Upload user profile picture
     uploadPhoto: function(file) {
         return axios.post("/api/user/updatePhoto", file);
+    },
+    updateUser: function(id, userInfo) {
+        return axios.put("/api/user/" + id, userInfo)
     }
 };

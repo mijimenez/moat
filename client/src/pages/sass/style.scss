@@ -45,6 +45,9 @@ hr {
         padding: 15%;
         // background-color: $c-theme;
         background: $c-theme url("/img/hero.jpg") no-repeat fixed center / cover;
+        @media (min-width: $mq-medium) {
+            background: $c-theme url("/img/hero-large.jpg") no-repeat fixed center / cover;
+        }
         .logo {
             width: 100%;
             max-width: 80px;
@@ -75,6 +78,9 @@ hr {
     .hero {
         // background-color: $c-theme;
         background: $c-theme url("/img/hero.jpg") no-repeat fixed center / cover;
+        @media (min-width: $mq-medium) {
+            background: $c-theme url("/img/hero-large.jpg") no-repeat fixed center / cover;
+        }
         margin-top: 82px;
         .wrapper {
             color: $c-white;
@@ -96,23 +102,22 @@ hr {
             }
         }
     }
-    .categories {
+    .sticky-inner {
         padding: 0;
         margin: 0 0 5% 0;
-        width: 100%;
+        // width: 100%;
         text-align: center;
-        .list-group {
-            .item {
-                &:hover {
-                    color: $c-theme;
-                    cursor: pointer;
-                }
+        .item {
+            &:hover {
+                color: $c-theme;
+                cursor: pointer;
             }
         }
     }
     .trending {
         padding: 0;
         width: 100%;
+        margin-top: 10%;
     }
     @media (min-width: $mq-small) {
         .categories {
@@ -123,7 +128,8 @@ hr {
         }
         .trending {
             width: 100;
-            margin-left: 160px;
+            margin-left: 270px;
+            margin-top: -50px;
         }
     }
 }
@@ -222,24 +228,29 @@ hr {
     }
 }
 
-.card {
-    transition: .4s all;
+.sticky-wrapper {
+    // width: 100%;
+    text-align: center;
+    @media (max-width: $mq-small) {
+        width: 100%;
+    }
 }
-
-.sticky {
-    position: fixed;
-    top: 0;
-  }
-
-  .sticky-wrapper {
-    position: relative;
-    height: 3rem; /* We need to change this value */
-  }
-  
-  .sticky .sticky-inner {
-    position: fixed;
-    top: 82px;
-    // left: 0;
-    // right: 0;
-    z-index: 1;
-  }
+@media (min-width: $mq-small) {
+    .sticky {
+        position: fixed;
+        top: 0;
+      }
+    
+      .sticky-wrapper {
+        position: relative;
+        height: 3rem; /* We need to change this value */
+      }
+      
+      .sticky .sticky-inner {
+        position: fixed;
+        top: 82px;
+        // left: 0;
+        // right: 0;
+        z-index: 1;
+      }
+}
