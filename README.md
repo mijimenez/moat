@@ -12,7 +12,7 @@ Launch the application [here](------)
 ## Technologies Used
 - HTML5
 - CSS3
-- Sass
+- Sass(node-sass)
 - Bootstrap
 - JavaScript
 - Mongodb/Mongoose
@@ -44,7 +44,7 @@ Launch the application [here](------)
 - - -
 ## Collaborators
 [Christian Jones](https://github.com/jonesec2)
-[Seohui Choe](https://github.com/mijimenez)
-[Madeline Jimenez](https://github.com/schoe14)
+[Seohui Choe](https://github.com/schoe14)
+[Madeline Jimenez](https://github.com/mijimenez)
 
 
