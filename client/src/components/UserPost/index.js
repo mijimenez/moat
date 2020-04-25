@@ -57,7 +57,7 @@ function UserPost({ post, posts, getUser, getTrending }) {
                 <div className="image-title">
                     <div className="title d-flex align-items-center text-left">
                         {/* <img src={process.env.PUBLIC_URL + post.profilePicture} style={{ borderRadius: "50%" }} /> */}
-                        <div className="profile-picture mr-2" style={{ backgroundImage: `url(${post.profilePicture})`}}></div>
+                        <div className="profile-picture mr-2" style={{ backgroundImage: `url(${post.profilePicture})` }}></div>
                         <p>{post.username}</p>
                     </div>
                 </div>

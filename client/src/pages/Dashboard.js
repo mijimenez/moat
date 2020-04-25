@@ -10,9 +10,6 @@ import "./sass/style.scss";
 
 function Dashboard() {
 
-    // const categories = ["Appliance", "Home", "Lawn"];
-
-    const [path, setPath] = useState(window.location.pathname);
     const [userCategories, setCategories] = useState({})
     const [trendingPosts, setTrendingPosts] = useState({})
 
@@ -88,7 +85,7 @@ function Dashboard() {
                     {userCategories.length > 0 ? (
                         <List>
                                 <li className="list-group-item font-weight-bold">By All Users</li>
-                                <li className="list-group-item item">Trending</li>
+                                <li className="list-group-item item" onClick={() => getTrending()}>Trending</li>
                                 <br></br>
                                 <li className="list-group-item font-weight-bold">By Category</li>
                                 {userCategories.map(category => (

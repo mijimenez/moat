@@ -1,12 +1,5 @@
-// import React, { useState, useEffect } from "react";
 import React, { Fragment, useEffect, useRef, useState } from 'react';
 import Tagline from "../components/Tagline";
-import { List, ListItem } from "../components/List";
-// import Button from "../components/Button";
-// import ListGroup from "../components/ListGroup";
-// import TestList from "../components/TestList";
-import CategoriesCard from "../components/CategoriesCard";
-// import Post from "../components/Post";
 import API from "../utils/API";
 import "./sass/style.scss";
 import categories from "../utils/categories.json"
@@ -25,24 +18,13 @@ function Categories() {
    };
 
    useEffect(() => {
-      getUser();
+      // getUser();
+
       getUserCategories();
+   }, [userCategories.length])
 
-      window.addEventListener('scroll', handleScroll);
-
-      return () => {
-          window.removeEventListener('scroll', () => handleScroll);
-      };
-   }, [])
 
    let usernameStored;
-   function getUser() {
-      usernameStored = localStorage.getItem("usernameMOAT");
-      console.log("usernameStored: " + usernameStored)
-      console.log( "getUser cat" +categories)
-      API.getUser(usernameStored);
-   }
-
    function getUserCategories() {
       usernameStored = localStorage.getItem("usernameMOAT");
       console.log("usernameStored: " + usernameStored)
@@ -51,12 +33,11 @@ function Categories() {
          .then(res => {
             console.log("get user res" + res.data)
             setCategories(res.data)
-            console.log("get user cat" + userCategories)
+            console.log("get user cat", userCategories)
          })
          .catch(err => console.log(err));
    }
    console.log(userCategories)
-
 
    function handleCategorySelect(categoryPicked) {
 
@@ -78,16 +59,12 @@ function Categories() {
    function removeUserCategory(category) {
 
       console.log("x button" + category);
-      if (category === "") {
-         return console.log("Not found")
-      }
-      else {
-         API.removeUserCategory({ categoryPreferences: category, username: usernameStored })
-            .then(res => {
-               console.log("removeCat response " + res.data)
-               getUserCategories();
-            })
-      }
+      API.removeUserCategory({ categoryPreferences: category, username: usernameStored })
+         .then(res => {
+            console.log("removeCat response " + res.data)
+            getUserCategories();
+         })
+
    }
 
 

@@ -77,7 +77,7 @@ module.exports = {
             )
             .then((test) => {
                console.log(test)
-               res.json(test);
+               // res.json(test);
             })
          })
    }

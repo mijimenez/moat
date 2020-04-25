@@ -1,4 +1,4 @@
-PUT http://localhost:3001/api/user/cat/1 HTTP/1.1
+POST http://localhost:3001/api/user/rcat/ HTTP/1.1
 content-type: application/json
 
 {
