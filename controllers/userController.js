@@ -51,11 +51,12 @@ module.exports = {
 
    removeUserCategory: function (req, res) {
       
-      console.log(req.body)
+      console.log("remove category " + req.body.categoryPreferences)
       db.User.findOneAndUpdate(
          {
             username: req.body.username
-         },
+         }
+         ,
          {
             $pull: {
                categoryPreferences: req.body.categoryPreferences

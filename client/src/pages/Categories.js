@@ -17,7 +17,7 @@ function Categories() {
    useEffect(() => {
       getUser();
       getUserCategories();
-   }, [])
+   }, [userCategories.length > 0])
 
    let usernameStored;
    function getUser() {
@@ -51,12 +51,13 @@ function Categories() {
          return console.log("not found)");
       }
       else {
-         API.updateUserCategories({ categoryPreferences: categoryPicked, username: usernameStored })
+         return API.updateUserCategories({ categoryPreferences: categoryPicked, username: usernameStored })
             .then(res => {
+
                console.log("newCat response " + res.data)
                getUserCategories();
             })
-      }
+         }
    };
 
    function removeUserCategory(category) {
