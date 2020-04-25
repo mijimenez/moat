@@ -7,7 +7,7 @@ A MERN application that allows a user to create a personal account and view a da
 ![Desktop](client/public/img/demo.gif)
 
 ## Live Link
-Launch the application [here](------)
+Launch the application [here](https://masterofalltrades.herokuapp.com/)
 
 ## Technologies Used
 - HTML5
