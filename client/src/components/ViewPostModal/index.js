@@ -16,7 +16,7 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
     
     useEffect(() => {
         console.log("viewpostmodal useEffect")
-        console.log(`commentsRendered: ${JSON.stringify(commentsRendered)}, commentLength: ${commentLength}`)
+        console.log(`commentsRendered: ${JSON.stringify(commentsRendered)}`)
         // { commentsRendered.length > 0 ? renderComments(commentsRendered) : renderComments(commentsArray) }
         // { commentsRendered.length > 0 ? setCommentLength(commentsRendered.length) : setCommentLength(commentsArray.length) }
     }, [commentsRendered.length >= 0])
@@ -91,13 +91,13 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
 
                         <div className="modal-body">
                             <div className="d-flex align-items-center mb-3">
-                                <div className="profile-picture ml-0 mr-2" style={{ backgroundImage: `url(${comment.profilePictur})`}}></div>
+                                <div className="profile-picture ml-0 mr-2" style={{ backgroundImage: `url(${comment.profilePicture})`}}></div>
                                 <p className="modal-title" id="viewPostModalLabel">Posted by        {comment.username}
                                 </p>
                             </div>
                             <p className="description text-left">{comment.commentBody}</p>
-                            <p className="description text-left">postID for this comment {comment.postID}</p>
-                            <p className="description text-left">commentID for this comment {comment._id}</p>
+                            {/* <p className="description text-left">postID for this comment {comment.postID}</p>
+                            <p className="description text-left">commentID for this comment {comment._id}</p> */}
                         </div>
                         <div className="modal-footer">
                             {localStorage.getItem("usernameMOAT") === comment.username ?
@@ -141,14 +141,14 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
                         </div>
                         <div className="modal-body">
                             <div className="titles mb-3">
-                                <h3 className="title text-left mb-3">postID for this post: {post._id}</h3>
+                                {/* <h3 className="title text-left mb-3">postID for this post: {post._id}</h3> */}
                                 <h3 className="title text-left mb-3">{post.postTitle}</h3>
                                 <p className="description text-left">{post.postBody}</p>
                             </div>
                             <div className="tags-w-num  mb-3 d-flex justify-content-between align-items-center">
                                 <div className="tags d-flex">
                                     {post.categories.map(category => (
-                                        <h6 className="tag">{category}</h6>
+                                        <h6 className="tag" key={category}>{category}</h6>
                                     ))}
                                 </div>
                             </div>
