@@ -168,7 +168,10 @@ module.exports = {
 
    uploadPhoto: function (req, res) {
       console.log("Received profile pic image");
-      console.log(req.body);
+      console.log("upload req " + req.user._id);
+      const id = req.user._id
+      console.log(id)
+
       var form = new formidable.IncomingForm();
       form.uploadDir = process.env.NODE_ENV === "production" ? ".\\client\\build\\uploaded" : ".\\client\\public\\uploaded"; // set my directory where to save uploaded files
       form.keepExtensions = true;
@@ -177,15 +180,15 @@ module.exports = {
          console.log(`File Name Uploaded: ${files.filetoupload.name}
          File Name In Uploaded Directory: ${files.filetoupload.path}`);
 
-         if (files.filetoupload.name === "") {
+         if (id === "") {
             return
          }
          else {
-         console.log("upload1" + req.user._id);
+         console.log("upload1 " + id);
          db.User
             .findByIdAndUpdate(
                {
-                  _id: req.user._id
+                  _id: id
                },
                {
                   $set:

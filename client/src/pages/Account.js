@@ -116,7 +116,7 @@ function Account() {
                 console.log("Successfully uploaded profile pic!");
                 console.log("picture: " + JSON.stringify(res.data.profilePicture));
                 localStorage.setItem("profilePicMOAT", res.data.profilePicture.replace(/\\/gi, "/"));
-                window.location.reload();
+                // window.location.reload();
             })
             .catch(err => console.log("Failed uploading picture.", err))
     }
