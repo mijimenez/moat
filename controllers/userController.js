@@ -170,13 +170,17 @@ module.exports = {
       console.log("Received profile pic image");
       console.log(req.body);
       var form = new formidable.IncomingForm();
-      form.uploadDir = "./client/public/uploaded"; // set my directory where to save uploaded files
+      form.uploadDir = process.env.NODE_ENV === "production" ? ".\\client\\build\\uploaded" : ".\\client\\public\\uploaded"; // set my directory where to save uploaded files
       form.keepExtensions = true;
       form.parse(req, function (err, fields, files) {
          console.log(files);
          console.log(`File Name Uploaded: ${files.filetoupload.name}
          File Name In Uploaded Directory: ${files.filetoupload.path}`);
 
+         if (files.filetoupload.name === "") {
+            return
+         }
+         else {
          console.log("upload1" + req.user._id);
          db.User
             .findByIdAndUpdate(
@@ -217,6 +221,7 @@ module.exports = {
             .catch(err => {
                res.status(422).json(err)
             });
+         }
       });
    }
 };

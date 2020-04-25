@@ -33,7 +33,7 @@ function Account() {
         console.log("usernameStored: " + usernameStored)
         API.getUser(usernameStored)
             .then(res => {
-                console.log(res.data);
+                console.log("get user" + JSON.stringify(res.data, null,4));
                 setUserPosts({ userId: res.data._id, profilePic: res.data.profilePicture, createdPostsIds: [res.data.createdPosts], createdCommentsIds: [res.data.createdComments] });
                 setUserInfo(
                     {
@@ -114,7 +114,7 @@ function Account() {
             .then(res => {
                 console.log("Successfully uploaded profile pic!");
                 console.log("picture: " + JSON.stringify(res.data.profilePicture));
-                localStorage.setItem("profilePicMOAT", res.data.profilePicture);
+                localStorage.setItem("profilePicMOAT", res.data.profilePicture.replace(/\\/gi, "/"));
                 window.location.reload();
             })
             .catch(err => console.log("Failed uploading picture.", err))
@@ -126,7 +126,8 @@ function Account() {
                 <div className="container">
                     <div className="row">
                         <div className="user-image" style={{}}>
-                            <div className="profile-picture" style={{ backgroundImage: `url(${userPosts.profilePic})`}}>
+                            
+                            <div className="profile-picture" style={{ backgroundImage: `url(${userPosts.profilePic.replace(/\\/gi, "/")})`}}>
                             </div>
                             <p className="font-weight-bold my-3">Upload Profile Picture</p>
 
