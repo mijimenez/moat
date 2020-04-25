@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { Fragment, useEffect, useRef, useState } from 'react';
+import Tagline from "../components/Tagline";
 import API from "../utils/API";
 import "./sass/style.scss";
 import categories from "../utils/categories.json"
@@ -21,10 +22,6 @@ function Categories() {
 
       getUserCategories();
    }, [userCategories.length])
-
-   function componentWillUpdate(category) {
-      removeUserCategory(category);
-   }
 
 
    let usernameStored;
@@ -90,11 +87,7 @@ function Categories() {
                   <li class="list-group-item font-weight-bold">Your Categories</li>
                   {userCategories.length > 0 ? userCategories.map(category =>
                      <li className="list-group-item"> {category}
-<<<<<<< HEAD
-                        <button className="float-right" onClick={() => componentWillUpdate(category)}> X </button>
-=======
                         <button className="float-right ml-2" onClick={() => removeUserCategory(category)}> X </button>
->>>>>>> master
                      </li>
                   ) : (
                         <li className="list-group-item">
