@@ -1,11 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Tagline from "../components/Tagline";
-import { List, ListItem } from "../components/List";
-// import Button from "../components/Button";
-// import ListGroup from "../components/ListGroup";
-// import TestList from "../components/TestList";
-import CategoriesCard from "../components/CategoriesCard";
-// import Post from "../components/Post";
 import API from "../utils/API";
 import "./sass/style.scss";
 import categories from "../utils/categories.json"
@@ -15,19 +8,17 @@ function Categories() {
    const [userCategories, setCategories] = useState({})
 
    useEffect(() => {
-      getUser();
-      getUserCategories();
-   }, [userCategories.length > 0])
+      // getUser();
 
-   
-   let usernameStored;
-   function getUser() {
-      usernameStored = localStorage.getItem("usernameMOAT");
-      console.log("usernameStored: " + usernameStored)
-      console.log( "getUser cat" +categories)
-      API.getUser(usernameStored);
+      getUserCategories();
+   }, [userCategories.length])
+
+   function componentWillUpdate(category) {
+      removeUserCategory(category);
    }
 
+
+   let usernameStored;
    function getUserCategories() {
       usernameStored = localStorage.getItem("usernameMOAT");
       console.log("usernameStored: " + usernameStored)
@@ -36,12 +27,11 @@ function Categories() {
          .then(res => {
             console.log("get user res" + res.data)
             setCategories(res.data)
-            console.log("get user cat" + userCategories)
+            console.log("get user cat", userCategories)
          })
          .catch(err => console.log(err));
    }
    console.log(userCategories)
-
 
    function handleCategorySelect(categoryPicked) {
 
@@ -52,28 +42,23 @@ function Categories() {
          return console.log("not found)");
       }
       else {
-         return API.updateUserCategories({ categoryPreferences: categoryPicked, username: usernameStored })
+         API.updateUserCategories({ categoryPreferences: categoryPicked, username: usernameStored })
             .then(res => {
-
                console.log("newCat response " + res.data)
                getUserCategories();
             })
-         }
+      }
    };
 
    function removeUserCategory(category) {
 
       console.log("x button" + category);
-      if (category === "") {
-         return console.log("Not found")
-      }
-      else {
-         API.removeUserCategory({ categoryPreferences: category, username: usernameStored })
-            .then(res => {
-               console.log("removeCat response " + res.data)
-               getUserCategories();
-            })
-      }
+      API.removeUserCategory({ categoryPreferences: category, username: usernameStored })
+         .then(res => {
+            console.log("removeCat response " + res.data)
+            getUserCategories();
+         })
+
    }
 
 
@@ -96,7 +81,7 @@ function Categories() {
                   <li class="list-group-item font-weight-bold">Your Categories</li>
                   {userCategories.length > 0 ? userCategories.map(category =>
                      <li className="list-group-item"> {category}
-                        <button className="float-right" onClick={() => removeUserCategory(category)}> X </button>
+                        <button className="float-right" onClick={() => componentWillUpdate(category)}> X </button>
                      </li>
                   ) : (
                         <li className="list-group-item">
