@@ -19,6 +19,7 @@ function Categories() {
       getUserCategories();
    }, [userCategories.length > 0])
 
+   
    let usernameStored;
    function getUser() {
       usernameStored = localStorage.getItem("usernameMOAT");
