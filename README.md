@@ -12,13 +12,14 @@ Launch the application [here](https://masterofalltrades.herokuapp.com/)
 ## Technologies Used
 - HTML5
 - CSS3
-- Sass(node-sass)
+- Sass (node-sass)
 - Bootstrap
 - JavaScript
 - Mongodb/Mongoose
 - Express
 - React.js
 - Node.js
+- Formidable (npm)
 
 ## Features
 - Create an account
@@ -34,7 +35,7 @@ Launch the application [here](https://masterofalltrades.herokuapp.com/)
 ## User Story
 - AS A hobbyist, amateur or professional with questions related to a topic
 - I WANT to be able to make an account to search for or post questions related to specific categories
-- SO THAT I can review find or provide answers to questions that like-minded people have
+- SO THAT I can review find or provide answers to questions that experienced people have
 
 ## Acceptance Criteria
 - GIVEN a user creates an account
