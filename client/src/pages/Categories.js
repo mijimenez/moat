@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
+import React, { Fragment, useEffect, useRef, useState } from 'react';
 import Tagline from "../components/Tagline";
 import { List, ListItem } from "../components/List";
 // import Button from "../components/Button";
@@ -14,9 +15,24 @@ function Categories() {
 
    const [userCategories, setCategories] = useState({})
 
+   const [isSticky, setSticky] = useState(false);
+   const ref = useRef(null);
+   const handleScroll = () => {
+       if (ref.current) {
+           setSticky(ref.current.getBoundingClientRect().top <= 0);
+       }
+
+   };
+
    useEffect(() => {
       getUser();
       getUserCategories();
+
+      window.addEventListener('scroll', handleScroll);
+
+      return () => {
+          window.removeEventListener('scroll', () => handleScroll);
+      };
    }, [])
 
    let usernameStored;
@@ -89,12 +105,12 @@ function Categories() {
             </div>
          </div>
          <div className="row">
-            <div className="categories">
-               <ul class="list-group">
+            <div className={`sticky-wrapper${isSticky ? ' sticky' : ''}`} ref={ref}>
+               <ul class="list-group sticky-inner">
                   <li class="list-group-item font-weight-bold">Your Categories</li>
                   {userCategories.length > 0 ? userCategories.map(category =>
                      <li className="list-group-item"> {category}
-                        <button className="float-right" onClick={() => removeUserCategory(category)}> X </button>
+                        <button className="float-right ml-2" onClick={() => removeUserCategory(category)}> X </button>
                      </li>
                   ) : (
                         <li className="list-group-item">
@@ -106,7 +122,7 @@ function Categories() {
                </ul>
             </div>
             <div className="trending">
-               <p className="mb-3 text-center font-weight-bold">Trending</p>
+               <p className="mb-3 text-center font-weight-bold">Select Categories</p>
                <div class="categories-container">
                   {categories.sort().map(category =>
                      <a href="#" key={category.id} className="category-boxes">

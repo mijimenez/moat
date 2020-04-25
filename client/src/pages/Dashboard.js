@@ -28,7 +28,7 @@ function Dashboard() {
     useEffect(() => {
         getTrending();
         getUserCategories()
-        console.log("Dashboard useEffect")
+        // console.log("Dashboard useEffect")
 
         window.addEventListener('scroll', handleScroll);
 
@@ -87,7 +87,8 @@ function Dashboard() {
 
                     {userCategories.length > 0 ? (
                         <List>
-                                <li className="list-group-item font-weight-bold">Get Trending</li>
+                                <li className="list-group-item font-weight-bold">By All Users</li>
+                                <li className="list-group-item item">Trending</li>
                                 <br></br>
                                 <li className="list-group-item font-weight-bold">By Category</li>
                                 {userCategories.map(category => (
