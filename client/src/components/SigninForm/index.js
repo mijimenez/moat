@@ -6,18 +6,18 @@ function SigninForm({ userInfo, handleInputChange }) {
     return (
         <form>
             {infoReceived.map(formInfo => {
-                return(
-                <div className="form-group" key={formInfo}>
-                    <input
-                        value={userInfo[formInfo]}
-                        onChange={handleInputChange}
-                        name={formInfo}
-                        type={formInfo}
-                        className="form-control"
-                        id={`input${formInfo.charAt(0).toLocaleUpperCase()}${formInfo.substring(1)}`}
-                        placeholder={formInfo.toLocaleLowerCase()}
-                    />
-                </div>
+                return (
+                    <div className="form-group" key={formInfo}>
+                        <input
+                            value={userInfo[formInfo]}
+                            onChange={handleInputChange}
+                            name={formInfo}
+                            type={formInfo}
+                            className="form-control"
+                            id={`input${formInfo.charAt(0).toLocaleUpperCase()}${formInfo.substring(1)}`}
+                            placeholder={formInfo.toLocaleLowerCase()}
+                        />
+                    </div>
                 )
             })}
 
