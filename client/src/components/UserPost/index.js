@@ -45,7 +45,7 @@ function UserPost({ post, posts, getUser, getTrending }) {
             .catch(err => console.log(err));
     }
 
-    function sendToModal() {
+    const sendToModal = () => {
         return(<ViewPostModal modalId={post._id} post={post} commentsArray={commentsArray} getUser={getUser} getTrending={getTrending} key={post._id}/>)
     }
 

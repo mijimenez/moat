@@ -21,6 +21,7 @@ function Account() {
         createdCommentsIds: []
     })
     const [posts, setPosts] = useState([]);
+    const [errMsg, setErrMsg] = useState();
 
     useEffect(() => {
         getUser();
@@ -40,7 +41,7 @@ function Account() {
                         lastName: res.data.lastName ? res.data.lastName : "",
                         username: res.data.username,
                         email: res.data.email ? res.data.email : "",
-                        password: res.data.password
+                        password: ""
                     }
                 )
             })
@@ -68,18 +69,31 @@ function Account() {
         event.preventDefault();
         console.log(userInfo);
         // console.log(event.target.value);
-        console.log(userPosts);
-        updateUser();
+        // console.log(userPosts);
+        const regEx = /.+@.+\..+/;
+        !regEx.test(userInfo.email) ? setErrMsg("Invalid email form") : setErrMsg("Password has to be at least 6 characters")
+        if (userInfo.password.length >= 6 && regEx.test(userInfo.email)) {
+            setErrMsg("");
+            updateUser();
+        }
     };
 
     const updateUser = () => {
         API.updateUser(localStorage.getItem("usernameMOAT"), userInfo)
             .then(res => {
-                console.log(res);
-                if (res.status === 200) {
-                    getUser();
+                console.log(res.data)
+                if (res.data.code) {
+                    setErrMsg(`${Object.keys(res.data.keyValue).toLocaleString().charAt(0).toLocaleUpperCase()}${Object.keys(res.data.keyValue).toLocaleString().substring(1)} already exists`) // duplicated username/email
+                    return;
+                }
+                else {
+                    console.log("updated user info")
+                    localStorage.setItem("usernameMOAT", userInfo.username);
+                    setErrMsg("Successfully updated");
+                    window.location.reload();
                 }
             })
+            .catch(err => console.log("updating user info err: " + err));
     }
 
     const handleFile = (e) => {
@@ -94,13 +108,14 @@ function Account() {
         let fileObject = file.file;
         let formdata = new FormData();
         formdata.append("filetoupload", fileObject);
-        // localStorage.setItem("profilePicMOAT", res.data.profilePicture);
         console.log(formdata)
-        
+
         API.uploadPhoto(formdata)
             .then(res => {
                 console.log("Successfully uploaded profile pic!");
-                console.log("picture" + res);
+                console.log("picture: " + JSON.stringify(res.data.profilePicture));
+                localStorage.setItem("profilePicMOAT", res.data.profilePicture);
+                getUser();
             })
             .catch(err => console.log("Failed uploading picture.", err))
     }
@@ -115,7 +130,7 @@ function Account() {
                             <p className="font-weight-bold my-3">Upload Profile Picture</p>
 
                             <div class="custom-file">
-                                <input type="file" className="custom-file-input mb-3" id="customFile" onChange={handleFile}/>
+                                <input type="file" className="custom-file-input mb-3" id="customFile" onChange={handleFile} />
                                 <label className="custom-file-label" for="customFile">Choose file</label>
                                 <Button className="btn btn-primary updateBtn" value="Upload" onClick={handleUpload} />
                             </div>
@@ -130,7 +145,8 @@ function Account() {
                         <div className="col user-info">
                             <p className="mb-3 text-center font-weight-bold">Update Information</p>
                             <SigninForm userInfo={userInfo} handleInputChange={handleInputChange} />
-                            <Button className="btn btn-primary updateBtn" value="save" onClick={handleBtnClick} />
+                            <Button className="btn btn-primary updateBtn" value="save" onClick={handleBtnClick} disabled={!(userInfo.username) || !(userInfo.email)} />
+                            <div className="errMsg" key="errMsg">{errMsg}</div>
                         </div>
                     </div>
                 </div>
