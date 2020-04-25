@@ -126,7 +126,8 @@ function Account() {
                 <div className="container">
                     <div className="row">
                         <div className="user-image" style={{}}>
-                            <img src={userPosts.profilePic} style={{ borderRadius: "50%" }} />
+                            <div className="profile-picture" style={{ backgroundImage: `url(${userPosts.profilePic})`}}>
+                            </div>
                             <p className="font-weight-bold my-3">Upload Profile Picture</p>
 
                             <div class="custom-file">

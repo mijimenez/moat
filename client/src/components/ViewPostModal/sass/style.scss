@@ -15,5 +15,14 @@
         .modal-footer {
             border-top: 0;
         }
+        .profile-picture {
+            height: 50px;
+            width: 50px;
+            margin: auto;
+            background-position: center;
+            background-size: cover;
+            border-radius: 50%;
+            background-color: $c-black;
+        }
     }
 }
