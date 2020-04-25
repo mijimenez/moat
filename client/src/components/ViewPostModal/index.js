@@ -91,7 +91,7 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
 
                         <div className="modal-body">
                             <div className="d-flex align-items-center mb-3">
-                                <div className="profile-picture ml-0 mr-2" style={{ backgroundImage: `url(${comment.profilePic})`}}></div>
+                                <div className="profile-picture ml-0 mr-2" style={{ backgroundImage: `url(${comment.profilePicture})`}}></div>
                                 <p className="modal-title" id="viewPostModalLabel">Posted by        {comment.username}
                                 </p>
                             </div>

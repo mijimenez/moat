@@ -173,7 +173,8 @@ module.exports = {
       console.log(id)
 
       var form = new formidable.IncomingForm();
-      form.uploadDir = process.env.NODE_ENV === "production" ? "./client/build/uploaded" : ".\\client\\public\\uploaded"; // set my directory where to save uploaded files
+      // production is expecting to look at build. Dev is looking at public
+      form.uploadDir = process.env.NODE_ENV === "production" ? "./client/build/uploaded" : "./client/public/uploaded"; // set my directory where to save uploaded files
       form.keepExtensions = true;
       form.parse(req, function (err, fields, files) {
          console.log(files);
