@@ -63,6 +63,7 @@ function Categories() {
          .then(res => {
             console.log("removeCat response " + res.data)
             getUserCategories();
+            // setCategories(res.data)
          })
 
    }

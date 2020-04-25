@@ -112,10 +112,11 @@ function Account() {
 
         API.uploadPhoto(formdata)
             .then(res => {
+                console.log( `--------------- \n  here is res  \n ------------ ${JSON.stringify(res.data, null,4)} \n --------------` )
                 console.log("Successfully uploaded profile pic!");
                 console.log("picture: " + JSON.stringify(res.data.profilePicture));
                 localStorage.setItem("profilePicMOAT", res.data.profilePicture.replace(/\\/gi, "/"));
-                window.location.reload();
+                // window.location.reload();
             })
             .catch(err => console.log("Failed uploading picture.", err))
     }
