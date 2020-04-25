@@ -187,6 +187,12 @@ hr {
   background: #1f93ff url("/img/hero.jpg") no-repeat fixed center/cover;
 }
 
+@media (min-width: 56.25em) {
+  #signinPage .welcome-side, #signupPage .welcome-side {
+    background: #1f93ff url("/img/hero-large.jpg") no-repeat fixed center/cover;
+  }
+}
+
 #signinPage .welcome-side .logo, #signupPage .welcome-side .logo {
   width: 100%;
   max-width: 80px;
@@ -232,6 +238,12 @@ hr {
   margin-top: 82px;
 }
 
+@media (min-width: 56.25em) {
+  #dashboardPage .hero, #categoriesPage .hero {
+    background: #1f93ff url("/img/hero-large.jpg") no-repeat fixed center/cover;
+  }
+}
+
 #dashboardPage .hero .wrapper, #categoriesPage .hero .wrapper {
   color: #fff;
   text-align: center;
@@ -266,14 +278,14 @@ hr {
   }
 }
 
-#dashboardPage .categories, #categoriesPage .categories {
+#dashboardPage .sticky-inner, #categoriesPage .sticky-inner {
   padding: 0;
   margin: 0 0 5% 0;
   width: 100%;
   text-align: center;
 }
 
-#dashboardPage .categories .list-group .item:hover, #categoriesPage .categories .list-group .item:hover {
+#dashboardPage .sticky-inner .item:hover, #categoriesPage .sticky-inner .item:hover {
   color: #1f93ff;
   cursor: pointer;
 }
@@ -281,6 +293,7 @@ hr {
 #dashboardPage .trending, #categoriesPage .trending {
   padding: 0;
   width: 100%;
+  margin-top: 10%;
 }
 
 @media (min-width: 37.5em) {
@@ -291,7 +304,8 @@ hr {
   }
   #dashboardPage .trending, #categoriesPage .trending {
     width: 100;
-    margin-left: 160px;
+    margin-left: 270px;
+    margin-top: -50px;
   }
 }
 
@@ -422,20 +436,30 @@ hr {
   transition: .4s all;
 }
 
-.sticky {
-  position: fixed;
-  top: 0;
-}
-
 .sticky-wrapper {
-  position: relative;
-  height: 3rem;
-  /* We need to change this value */
+  text-align: center;
 }
 
-.sticky .sticky-inner {
-  position: fixed;
-  top: 82px;
-  z-index: 1;
+@media (max-width: 37.5em) {
+  .sticky-wrapper {
+    width: 100%;
+  }
+}
+
+@media (min-width: 37.5em) {
+  .sticky {
+    position: fixed;
+    top: 0;
+  }
+  .sticky-wrapper {
+    position: relative;
+    height: 3rem;
+    /* We need to change this value */
+  }
+  .sticky .sticky-inner {
+    position: fixed;
+    top: 82px;
+    z-index: 1;
+  }
 }
 /*# sourceMappingURL=style.css.map */
