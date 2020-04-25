@@ -91,6 +91,7 @@ User
    .then(data => {
       console.log(data.result.n + " records inserted!");
       process.exit(0);
+      console.log("test")
    })
    .catch(err => {
       console.error(err);
