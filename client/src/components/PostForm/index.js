@@ -10,6 +10,7 @@ export function Input(props) {
     </div>
   );
 }
+
 export function TextArea(props) {
   return (
     <div className="form-group">
@@ -17,12 +18,17 @@ export function TextArea(props) {
     </div>
   );
 }
+
 export function Select(props) {
+
   const [userCategories, setCategories] = useState({})
+  
   useEffect(() => {
     // getUser();
+
     getUserCategories();
   }, [userCategories.length])
+  
   let usernameStored;
    function getUserCategories() {
       usernameStored = localStorage.getItem("usernameMOAT");

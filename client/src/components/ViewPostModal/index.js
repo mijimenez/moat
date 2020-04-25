@@ -9,7 +9,7 @@ import API from "../../utils/API";
 function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
     const [formObject, setFormObject] = useState({
         username: localStorage.getItem("usernameMOAT"),
-        profilePicture: localStorage.getItem("profilePicMOAT"),
+        profilePicture: localStorage.getItem("profilePicMOAT").replace(/\\/gi, "/")
     });
     const [commentsRendered, setCommentsRendered] = useState({});
     const [commentLength, setCommentLength] = useState();
@@ -91,7 +91,7 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
 
                         <div className="modal-body">
                             <div className="d-flex align-items-center mb-3">
-                                <div className="profile-picture ml-0 mr-2" style={{ backgroundImage: `url(${comment.profilePicture})`}}></div>
+                                <div className="profile-picture ml-0 mr-2" style={{ backgroundImage: `url(${comment.profilePic})`}}></div>
                                 <p className="modal-title" id="viewPostModalLabel">Posted by        {comment.username}
                                 </p>
                             </div>
@@ -131,7 +131,7 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
                     <div className="modal-content">
                         <div className="modal-header">
                             <div className="d-flex align-items-center">
-                                <div className="profile-picture mr-2" style={{ backgroundImage: `url(${post.profilePicture})`}}></div>
+                                <div className="profile-picture mr-2" style={{ backgroundImage: `url(${post.profilePicture.replace(/\\/gi, "/")})`}}></div>
                                 <p className="modal-title" id="viewPostModalLabel">Posted by        {post.username}
                                 </p>
                             </div>

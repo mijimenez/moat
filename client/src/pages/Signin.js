@@ -43,7 +43,7 @@ function Signin() {
                         <h1 className="logo-name">MOAT</h1>
                         <h4 className="tagline text-white">Master of All Trades</h4>
                     </div>
-                    <p className="text-white">A place for hobbyists and professionals to exchange advice.</p>
+                    <p className="text-white">A place for hobbyists and professionals to talk shop.</p>
                 </div>
             </div>
 
