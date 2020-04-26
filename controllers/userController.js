@@ -173,12 +173,17 @@ module.exports = {
       console.log(id)
 
       var form = new formidable.IncomingForm();
-      form.uploadDir = process.env.NODE_ENV === "production" ? "./client/build/uploaded" : ".\\client\\public\\uploaded"; // set my directory where to save uploaded files
+      // Deployed in production is expecting to look at build folder. If not production : Dev is looking at public folder
+      form.uploadDir = process.env.NODE_ENV === "production" ? "./client/build/uploaded" : "./client/public/uploaded"; // set my directory where to save uploaded files
+      
       form.keepExtensions = true;
+      
       form.parse(req, function (err, fields, files) {
          console.log(files);
-         console.log(`File Name Uploaded: ${files.filetoupload.name}
-         File Name In Uploaded Directory: ${files.filetoupload.path}`);
+         console.log(`\n File Name Uploaded: ${files.filetoupload.name}\n-------------------------
+         \nFile Name In Uploaded Directory: \n${files.filetoupload.path.replace(/\\/gi, "/")}\n--------------------------`);
+         const newPicture = files.filetoupload.path.replace(/\\/gi, "/")
+         console.log(newPicture)
 
          if (id === "") {
             return
@@ -193,7 +198,7 @@ module.exports = {
                {
                   $set:
                   {
-                     profilePicture: files.filetoupload.path
+                     profilePicture: newPicture
                   }
                },
                { new: true })
@@ -206,7 +211,7 @@ module.exports = {
                      username: dbModel.username
                   },
                   {
-                     profilePicture: files.filetoupload.path
+                     profilePicture: newPicture
                   }
                )
                   .then(test => {
@@ -216,7 +221,7 @@ module.exports = {
                            username: dbModel.username
                         },
                         {
-                           profilePicture: files.filetoupload.path
+                           profilePicture: newPicture
                         }
                      )
                   })
