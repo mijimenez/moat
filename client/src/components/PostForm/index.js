@@ -3,7 +3,6 @@ import Button from "../Button";
 import "./sass/style.scss";
 import API from "../../utils/API";
 // import categories from "../utils/categories.json"
-
 export function Input(props) {
   return (
     <div className="form-group">
@@ -44,7 +43,6 @@ export function Select(props) {
          .catch(err => console.log(err));
    }
    console.log(userCategories)
-
   return (
     <div className="form-group">
       <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Categories</label>
@@ -57,7 +55,6 @@ export function Select(props) {
     </div>
   );
 }
-
 export function FormBtn(props) {
   return (
     <Button
