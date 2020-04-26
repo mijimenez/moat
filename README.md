@@ -1,18 +1,28 @@
-# M.O.A.T. (Master of All Trades)
+# MOAT (Master of All Trades)
 
-A MERN application that allows a user to create a personal account and view a dashboard of questions and answers from like-minded people based on categories of interest like "Technology" or "Home".
+A place for hobbyists and professionals to talk shop. This is a MERN application that allows a user to create a personal account and view a dashboard of questions and answers from experienced people based on categories of interest like "Tech" or "Home".
 
 ## Screenshot of Application
 
-![Desktop](client/public/img/demo.gif)
+### Uploading Profile Picture
+![Desktop](client/public/img/demo-1.gif)
+
+### Selecting Category Preferences
+![Desktop](client/public/img/demo-2.gif)
+
+### Creating a Post
+![Desktop](client/public/img/demo-3.gif)
+
+### Commenting on Post
+![Desktop](client/public/img/demo-4.gif)
 
 ## Live Link
-Launch the application [here](https://masterofalltrades.herokuapp.com/)
+Launch the application [here](https://master-of-all-trades.herokuapp.com/)
 
 ## Technologies Used
 - HTML5
 - CSS3
-- Sass (node-sass)
+- Sass (node-sass npm)
 - Bootstrap
 - JavaScript
 - Mongodb/Mongoose
@@ -20,6 +30,7 @@ Launch the application [here](https://masterofalltrades.herokuapp.com/)
 - React.js
 - Node.js
 - Formidable (npm)
+- Passport (npm)
 
 ## Features
 - Create an account
