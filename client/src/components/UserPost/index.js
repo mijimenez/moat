@@ -15,12 +15,7 @@ function UserPost({ post, posts, getUser, getTrending }) {
 
     const handleBtnClick = event => {
         event.preventDefault();
-        // console.log("Post id: " + event.target.id);
-        // API.findCommentByPost(event.target.id)
-        //     .then(res => {
-        //         console.log(res.data);
-        //         setCommentsArray(res.data.commentsArray);
-        //     })
+
         console.log("when click view button (post._id): " + post._id)
         findCommentByPost();
     };
