@@ -68,8 +68,7 @@ function Account() {
     const handleBtnClick = event => {
         event.preventDefault();
         console.log(userInfo);
-        // console.log(event.target.value);
-        // console.log(userPosts);
+
         const regEx = /.+@.+\..+/;
         !regEx.test(userInfo.email) ? setErrMsg("Invalid email form") : setErrMsg("Password has to be at least 6 characters")
         if (userInfo.password.length >= 6 && regEx.test(userInfo.email)) {
@@ -116,7 +115,7 @@ function Account() {
                 console.log("Successfully uploaded profile pic!");
                 console.log("picture: " + JSON.stringify(res.data.profilePicture));
                 localStorage.setItem("profilePicMOAT", res.data.profilePicture.replace(/\\/gi, "/"));
-                // window.location.reload();
+                window.location.reload();
             })
             .catch(err => console.log("Failed uploading picture.", err))
     }

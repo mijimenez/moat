@@ -15,12 +15,7 @@ function UserPost({ post, posts, getUser, getTrending }) {
 
     const handleBtnClick = event => {
         event.preventDefault();
-        // console.log("Post id: " + event.target.id);
-        // API.findCommentByPost(event.target.id)
-        //     .then(res => {
-        //         console.log(res.data);
-        //         setCommentsArray(res.data.commentsArray);
-        //     })
+
         console.log("when click view button (post._id): " + post._id)
         findCommentByPost();
     };
@@ -57,7 +52,7 @@ function UserPost({ post, posts, getUser, getTrending }) {
                 <div className="image-title">
                     <div className="title d-flex align-items-center text-left">
                         {/* <img src={process.env.PUBLIC_URL + post.profilePicture} style={{ borderRadius: "50%" }} /> */}
-                        <div className="profile-picture mr-2" style={{ backgroundImage: `url(${post.profilePicture.replace(/\\/gi, "/")})` }}></div>
+                        <div className="profile-picture mr-2" style={{ backgroundImage: `url(${post.profilePicture.replace(/\\/gi, "/")}` }}></div>
                         <p>{post.username}</p>
                     </div>
                 </div>
