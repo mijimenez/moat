@@ -30,7 +30,8 @@ const postSchema = new Schema({
       }
    ],
    prettyDate: {type: String},
-   date: {type: String}
+   trendingDate: {type: String},
+   preciseDate: {type:String}
 });
 
 const NewPost = mongoose.model("NewPost", postSchema);

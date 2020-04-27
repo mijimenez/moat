@@ -19,15 +19,19 @@ module.exports = {
                      postImage: 1,
                      categories: 1,
                      commentsArray: 1,
-                     date: 1,
-                     length: {"$size": "$commentsArray"}
+                     prettyDate: 1,
+                     trendingDate: 1,
+                     length: { "$size": "$commentsArray" }
                   }
                },
-               {$sort: {date: -1, length: -1 } },
+               { $sort: { trendingDate: -1, length: -1 } },
                { $limit: 50 }
             ]
          )
-         .then(dbModel => res.json(dbModel))
+         .then(dbModel => {
+            console.log(dbModel)
+            res.json(dbModel)
+         })
          .catch(err => res.status(422).json(err));
    },
 
@@ -37,17 +41,19 @@ module.exports = {
       console.log(req.params)
 
       var d = new Date();
-      var minute = d.getMinutes();
+      var seconds = d.getSeconds();
+      var minute = ((d.getMinutes() < 10 ? '0' : '') + d.getMinutes()); // if minutes less than 10 add a 0 in front
       var hour = d.getHours();
       var date = d.getDate();
       var month = d.getMonth() + 1; // Since getMonth() returns month from 0-11 not 1-12
       var year = d.getFullYear();
-       
-      const customDate = ""+year + month + date + hour;
+
+      const customDate = "" + year + month + date + hour;
       const prettyDate = month + "/" + date + "/" + year + "  " + hour + ":" + minute
+      const preciseDate = "" + year + month + date + hour + minute + seconds;
       console.log(customDate)
       console.log(prettyDate)
-   
+
 
       db.NewPost.create(
          {
@@ -56,7 +62,9 @@ module.exports = {
             postBody: req.body.postBody,
             profilePicture: req.body.profilePicture,
             categories: req.body.categories,
-            date: customDate
+            prettyDate: prettyDate,
+            trendingDate: customDate,
+            preciseDate: preciseDate
          }
       )
          .then(function (newPost) {
@@ -65,7 +73,7 @@ module.exports = {
             res.json(newPost)
             return db.User.findOneAndUpdate(
 
-               { username : req.body.username },
+               { username: req.body.username },
                {
                   $push: {
                      createdPosts: newPost._id
@@ -92,7 +100,7 @@ module.exports = {
       console.log("userID " + req.params.id)
 
       db.NewPost.find({ username: req.params.id })
-         .sort({ date: -1})
+         .sort({ preciseDate: -1 })
          .then(allPosts => {
             console.log("all user" + allPosts);
             res.json(allPosts)
@@ -111,18 +119,40 @@ module.exports = {
    // getting a post by specific categories
    getPostByCategories: function (req, res) {
       console.log(req.params)
-      db.NewPost.find({ categories: req.params.category || /req.params/i})
-      .limit(50)
-      .sort({ commentsArrayLength: -1 })
-      .then(postCategory => {
-         console.log(postCategory)
-         res.json(postCategory)
-      })
-      .catch(err => {
-         res.status(422).json(err)
-      })
+      db.NewPost.aggregate(
+         [
+            {
+               $match: {
+                  categories: req.params.category
+               }
+            },
+            {
+               $project: {
+                  username: 1,
+                  profilePicture: 1,
+                  postTitle: 1,
+                  postImage: 1,
+                  categories: 1,
+                  commentsArray: 1,
+                  prettyDate: 1,
+                  trendingDate: 1,
+                  length: { "$size": "$commentsArray" }
+               }
+            },
+            { $sort: { trendingDate: -1, length: -1 } },
+            { $limit: 50 }
+         ]
+      )
+         .limit(50)
+         .then(postCategory => {
+            console.log(postCategory)
+            res.json(postCategory)
+         })
+         .catch(err => {
+            res.status(422).json(err)
+         })
    },
-   
+
    //
    removePost: function (req, res) {
       console.log(req.params.id)
