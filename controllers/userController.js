@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 
 
 // Defining methods for the booksController
-module.exports = {
+module.exports = { 
 
    // find all users
    allUsers: function (req, res) {

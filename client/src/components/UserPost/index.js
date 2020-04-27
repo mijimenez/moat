@@ -53,7 +53,8 @@ function UserPost({ post, posts, getUser, getTrending }) {
                     <div className="title d-flex align-items-center text-left">
                         {/* <img src={process.env.PUBLIC_URL + post.profilePicture} style={{ borderRadius: "50%" }} /> */}
                         <div className="profile-picture mr-2" style={{ backgroundImage: `url(${post.profilePicture.replace(/\\/gi, "/")}` }}></div>
-    <p>{post.username + " Pretty Date " +  post.prettyDate + " trending by hour " + post.trendingDate + " account view by second " + post.preciseDate}</p>
+    <p>{post.username}</p>
+    {/* <p>{post.username + " Pretty Date " +  post.prettyDate + " trending by hour " + post.trendingDate + " account view by second " + post.preciseDate}</p> */}
                     </div>
                 </div>
                 <div className="buttons d-flex">
@@ -79,7 +80,9 @@ function UserPost({ post, posts, getUser, getTrending }) {
                     {post.categories.map(category => (
                         <h6 className="tag" key={category}>{category}</h6>
                     ))}
+                    <p>{+ " " +  post.prettyDate}</p>
                 </div>
+                
                 <p className="commentsNum font-weight-bold">{post.commentsArray.length} Comments</p>
             </div>
         </Card>

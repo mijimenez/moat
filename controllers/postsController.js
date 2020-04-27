@@ -29,7 +29,6 @@ module.exports = {
             ]
          )
          .then(dbModel => {
-            console.log(dbModel)
             res.json(dbModel)
          })
          .catch(err => res.status(422).json(err));
@@ -37,10 +36,12 @@ module.exports = {
 
    // creates a post and adds to user's document
    createPost: function (req, res) {
-      console.log(req.body)
-      console.log(req.params)
+      console.log("create post body " + req.body)
+      // console.log(req.params)
 
       var d = new Date();
+      const time = d.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+       console.log(time)
       var seconds = d.getSeconds();
       var minute = ((d.getMinutes() < 10 ? '0' : '') + d.getMinutes()); // if minutes less than 10 add a 0 in front
       var hour = d.getHours();
@@ -49,10 +50,10 @@ module.exports = {
       var year = d.getFullYear();
 
       const customDate = "" + year + month + date + hour;
-      const prettyDate = month + "/" + date + "/" + year + "  " + hour + ":" + minute
+      const prettyDate = month + "/" + date + "/" + year + "  " + time
       const preciseDate = "" + year + month + date + hour + minute + seconds;
-      console.log(customDate)
-      console.log(prettyDate)
+      // console.log(customDate)
+      // console.log(prettyDate)
 
 
       db.NewPost.create(
@@ -102,7 +103,6 @@ module.exports = {
       db.NewPost.find({ username: req.params.id })
          .sort({ preciseDate: -1 })
          .then(allPosts => {
-            console.log("all user" + allPosts);
             res.json(allPosts)
          })
          .catch((err) => res.status(422).json(err));
