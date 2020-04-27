@@ -1,12 +1,7 @@
 const db = require("../models");
-// const router = require("express").Router();
-// const express = require("express");
-// const passport = require("../passport");
-
 
 module.exports = {
    // gets all Notes and orders by date and then comment amount.
-   // For future we can limit to top 50 results or something
    getTrending: function (req, res) {
       db.NewPost
          .aggregate(
@@ -36,12 +31,9 @@ module.exports = {
 
    // creates a post and adds to user's document
    createPost: function (req, res) {
-      console.log("create post body " + req.body)
-      // console.log(req.params)
 
       var d = new Date();
       const time = d.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
-       console.log(time)
       var seconds = d.getSeconds();
       var minute = ((d.getMinutes() < 10 ? '0' : '') + d.getMinutes()); // if minutes less than 10 add a 0 in front
       var hour = d.getHours();
@@ -52,9 +44,6 @@ module.exports = {
       const customDate = "" + year + month + date + hour;
       const prettyDate = month + "/" + date + "/" + year + "  " + time
       const preciseDate = "" + year + month + date + hour + minute + seconds;
-      // console.log(customDate)
-      // console.log(prettyDate)
-
 
       db.NewPost.create(
          {
@@ -69,7 +58,6 @@ module.exports = {
          }
       )
          .then(function (newPost) {
-            console.log(newPost._id)
 
             res.json(newPost)
             return db.User.findOneAndUpdate(
@@ -87,18 +75,16 @@ module.exports = {
 
    // gets a specific post 
    getUserPost: function (req, res) {
-      console.log(req.params)
 
       return db.NewPost.findOne({ username: req.params.id })
          .populate('commentsArray').exec((err, commentsArray) => {
-            console.log(commentsArray)
+
             res.json(commentsArray)
          })
    },
 
    // finds all the posts by a single user
    getAllUserPosts: function (req, res) {
-      console.log("userID " + req.params.id)
 
       db.NewPost.find({ username: req.params.id })
          .sort({ preciseDate: -1 })
@@ -108,17 +94,9 @@ module.exports = {
          .catch((err) => res.status(422).json(err));
    },
 
-
-   //
-   getAllUserCategories: function (req, res) {
-      console.log(req.params);
-
-      db.NewPost.find({ _id: req.params.name, categories: req.params.category })
-   },
-
    // getting a post by specific categories
    getPostByCategories: function (req, res) {
-      console.log(req.params)
+
       db.NewPost.aggregate(
          [
             {
@@ -145,7 +123,7 @@ module.exports = {
       )
          .limit(50)
          .then(postCategory => {
-            console.log(postCategory)
+
             res.json(postCategory)
          })
          .catch(err => {
@@ -153,9 +131,8 @@ module.exports = {
          })
    },
 
-   //
+   // removes a post
    removePost: function (req, res) {
-      console.log(req.params.id)
 
       db.NewPost
          .deleteOne({ _id: req.params.id })
