@@ -12,21 +12,21 @@ module.exports = {
          .aggregate(
             [
                {
-                  "$project": {
-                     "username": 1,
-                     "profilePicture": 1,
-                     "postTitle": 1,
-                     "postImage": 1,
-                     "categories": 1,
-                     "commentsArray": 1,
-                     "length": {"$size": "$commentsArray"}
+                  $project: {
+                     username: 1,
+                     profilePicture: 1,
+                     postTitle: 1,
+                     postImage: 1,
+                     categories: 1,
+                     commentsArray: 1,
+                     date: 1,
+                     length: {"$size": "$commentsArray"}
                   }
                },
-               {"$sort": { "length": -1 } },
-               { "$limit": 50 }
+               {$sort: {date: -1, length: -1 } },
+               { $limit: 50 }
             ]
          )
-         .limit(50)
          .then(dbModel => res.json(dbModel))
          .catch(err => res.status(422).json(err));
    },
@@ -37,13 +37,16 @@ module.exports = {
       console.log(req.params)
 
       var d = new Date();
+      var minute = d.getMinutes();
       var hour = d.getHours();
       var date = d.getDate();
       var month = d.getMonth() + 1; // Since getMonth() returns month from 0-11 not 1-12
       var year = d.getFullYear();
        
       const customDate = ""+year + month + date + hour;
+      const prettyDate = month + "/" + date + "/" + year + "  " + hour + ":" + minute
       console.log(customDate)
+      console.log(prettyDate)
    
 
       db.NewPost.create(

@@ -29,6 +29,7 @@ const postSchema = new Schema({
          ref: "NewComment"
       }
    ],
+   prettyDate: {type: String},
    date: {type: String}
 });
 
