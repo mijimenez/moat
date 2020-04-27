@@ -9,9 +9,24 @@ module.exports = {
    // For future we can limit to top 50 results or something
    getTrending: function (req, res) {
       db.NewPost
-         .find(req.query)
+         .aggregate(
+            [
+               {
+                  "$project": {
+                     "username": 1,
+                     "profilePicture": 1,
+                     "postTitle": 1,
+                     "postImage": 1,
+                     "categories": 1,
+                     "commentsArray": 1,
+                     "length": {"$size": "$commentsArray"}
+                  }
+               },
+               {"$sort": { "length": -1 } },
+               { "$limit": 50 }
+            ]
+         )
          .limit(50)
-         .sort({ commentsArrayLength: -1 })
          .then(dbModel => res.json(dbModel))
          .catch(err => res.status(422).json(err));
    },
