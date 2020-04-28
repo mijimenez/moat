@@ -148,6 +148,15 @@ a:hover, a:active {
   background-color: #000;
 }
 
+.card .name-date .username {
+  color: #1f93ff;
+  font-weight: bold;
+}
+
+.card .name-date .date {
+  font-size: .8em;
+}
+
 .card .tag {
   color: #1f93ff;
   border: thin solid #1f93ff;

@@ -48,17 +48,20 @@ function UserPost({ post, posts, getUser, getTrending }) {
     return (
         // posts.map((post, i) => (
         <Card>
-            <div className="description-w-btn d-flex  justify-content-between mb-3">
+            <div className="description-w-btn d-flex justify-content-between flex-wrap mb-3">
                 <div className="image-title">
-                    <div className="title d-flex align-items-center text-left">
+                    <div className="title d-flex align-items-center text-left mb-3">
                         {/* <img src={process.env.PUBLIC_URL + post.profilePicture} style={{ borderRadius: "50%" }} /> */}
                         <div className="profile-picture mr-2" style={{ backgroundImage: `url(${post.profilePicture.replace(/\\/gi, "/")}` }}></div>
-    <p>{post.username}</p>
-    {/* <p>{post.username + " Pretty Date " +  post.prettyDate + " trending by hour " + post.trendingDate + " account view by second " + post.preciseDate}</p> */}
+                        <div className="name-date">
+                            <p className="username">{post.username}</p>
+                            <p className="date">{+ " " +  post.prettyDate}</p>
+                            {/* <p>{post.username + " Pretty Date " +  post.prettyDate + " trending by hour " + post.trendingDate + " account view by second " + post.preciseDate}</p> */}
+                        </div>
                     </div>
                 </div>
-                <div className="buttons d-flex">
-                    <Button className="viewBtn align-self-start ml-auto"
+                <div className="buttons d-flex flex-wrap justify-content-end">
+                    <Button className="viewBtn align-self-start ml-auto mb-2"
                         id={post._id} value="view" data-toggle="modal"
                         // data-target={`#viewPostModal${i}`}
                         data-target={`#viewPostModal${post._id}`}
@@ -75,12 +78,11 @@ function UserPost({ post, posts, getUser, getTrending }) {
             </div>
             <h3 className="title text-left mb-3">{post.postTitle}</h3>
             <p className="description text-left mb-3">{post.postBody}</p>
-            <div className="tags-w-num d-flex justify-content-between align-items-center">
-                <div className="tags d-flex">
+            <div className="tags-w-num d-flex flex-wrap justify-content-between align-items-center">
+                <div className="tags d-flex align-items-center mb-2">
                     {post.categories.map(category => (
                         <h6 className="tag" key={category}>{category}</h6>
                     ))}
-                    <p>{+ " " +  post.prettyDate}</p>
                 </div>
                 
                 <p className="commentsNum font-weight-bold">{post.commentsArray.length} Comments</p>
