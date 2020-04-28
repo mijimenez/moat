@@ -33,7 +33,7 @@ function Account() {
         console.log("usernameStored: " + usernameStored)
         API.getUser(usernameStored)
             .then(res => {
-                console.log("get user" + JSON.stringify(res.data, null,4));
+                console.log("get user" + JSON.stringify(res.data, null, 4));
                 setUserPosts({ userId: res.data._id, profilePic: res.data.profilePicture, createdPostsIds: [res.data.createdPosts], createdCommentsIds: [res.data.createdComments] });
                 setUserInfo(
                     {
@@ -48,7 +48,7 @@ function Account() {
             .then(() => {
                 getPostsByUser()
             })
-            .catch(err => console.log(err));
+            .catch(err => console.log("getUser error: " + err));
     }
 
     function getPostsByUser() {
@@ -57,7 +57,7 @@ function Account() {
                 console.log("alluserpost " + res.data);
                 setPosts(res.data);
             })
-            .catch(err => console.log(err));
+            .catch(err => console.log("getPostsByUser error: " +  err));
     }
 
     const handleInputChange = event => {
@@ -111,7 +111,7 @@ function Account() {
 
         API.uploadPhoto(formdata)
             .then(res => {
-                console.log( `--------------- \n  here is res  \n ------------ ${JSON.stringify(res.data, null,4)} \n --------------` )
+                console.log(`--------------- \n  here is res  \n ------------ ${JSON.stringify(res.data, null, 4)} \n --------------`)
                 console.log("Successfully uploaded profile pic!");
                 console.log("picture: " + JSON.stringify(res.data.profilePicture));
                 localStorage.setItem("profilePicMOAT", res.data.profilePicture.replace(/\\/gi, "/"));
@@ -126,8 +126,8 @@ function Account() {
                 <div className="container">
                     <div className="row">
                         <div className="user-image" style={{}}>
-                            
-                            <div className="profile-picture" style={{ backgroundImage: `url(${userPosts.profilePic.replace(/\\/gi, "/")})`}}>
+
+                            <div className="profile-picture" style={{ backgroundImage: `url(${userPosts.profilePic.replace(/\\/gi, "/")})` }}>
                             </div>
                             <p className="font-weight-bold my-3">Upload Profile Picture</p>
 
@@ -148,7 +148,7 @@ function Account() {
                             <p className="mb-3 text-center font-weight-bold">Update Information</p>
                             <SigninForm userInfo={userInfo} handleInputChange={handleInputChange} />
                             <Button className="btn btn-primary updateBtn" value="save" onClick={handleBtnClick} disabled={!(userInfo.username) || !(userInfo.email)} />
-                            <div className="errMsg" key="errMsg">{errMsg}</div>
+                            <div className={errMsg ? "p-2 my-3 alert alert-danger" : ""} key="errMsg" role="alert" id="errMsg">{errMsg}</div>
                         </div>
                     </div>
                 </div>
