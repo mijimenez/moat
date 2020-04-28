@@ -164,7 +164,7 @@ function Account() {
                     </div>
                     <div className="posts" style={{}}>
                         <p className="mb-3 text-center font-weight-bold">Your Posts</p>
-                        <div className="user-posts" id={userPosts.userId}>
+                        <div className="user-posts post-cards" id={userPosts.userId}>
                             {/* {
                                 posts.length > 0 ? < UserPost posts={posts} getUser={getUser} /> :
                                     <div className="description-w-btn d-flex mb-3">

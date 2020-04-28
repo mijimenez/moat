@@ -48,10 +48,11 @@ $f-body: 'Helvetica', sans-serif;
   box-shadow: 0px 3px 5px -2px rgba(0,0,0,0.3);
 }
 
-@mixin center($max-width) {
-  width: 90%;
-  max-width: $max-width;
-  margin: auto;
+@mixin center($width, $max-width) {
+	width: $width;
+	max-width: $max-width;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 // =================================
@@ -553,6 +554,13 @@ $f-body: 'Helvetica', sans-serif;
         color: lighten($c-theme, 10%);
         text-decoration: none;
     }
+  }
+
+  .modal-dialog {
+	  @include center(90%, $mq-mediumLarge);
+	.modal-content {
+		padding: 1em;
+	}
   }
 
   // ----- Layout

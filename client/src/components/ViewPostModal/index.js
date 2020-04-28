@@ -89,9 +89,9 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
 
     function renderComments(comments) {
         return (
-            <div className="modal-dialog mb-3" style={{ width: "90%", margin: "auto" }} role="document">
+            <div className="comments-modal modal-dialog mb-3" style={{ width: "90%", margin: "auto" }} role="document">
                 {comments.map(comment => (
-                    <div className="modal-content" key={comment._id}>
+                    <div className="modal-content" key={comment.id}>
 
                         <div className="modal-body">
                             <div className="d-flex align-items-center mb-3">
@@ -129,7 +129,7 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
 
     return (
         <div>
-            <div className="modal view-modal fade" id={`viewPostModal${modalId}`} tabindex="-1" role="dialog"
+            <div className="main-model modal view-modal fade" id={`viewPostModal${modalId}`} tabindex="-1" role="dialog"
                 aria-labelledby="viewPostModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
@@ -152,7 +152,7 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
                             <div className="tags-w-num  mb-3 d-flex justify-content-between align-items-center">
                                 <div className="tags d-flex">
                                     {post.categories.map(category => (
-                                        <h6 className="tag" key={category}>{category}</h6>
+                                        <h6 className="tag" key={category.id}>{category}</h6>
                                     ))}
                                 </div>
                             </div>
@@ -177,10 +177,9 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
                                 value="comment"
                             />
                         </div>
-                        <hr style={{ width: "90%" }} />
                         {/* <div className="modal-dialog" role="document">
                             {commentsArray.map(comment => (
-                                <div className="modal-content">
+                                <div className="modal-content" key={category.id}>
 
                                     <div className="modal-body">
                                         <img src={commentsArray.profilePicture} style={{ borderRadius: "50%" }} />

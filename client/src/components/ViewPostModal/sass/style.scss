@@ -24,5 +24,16 @@
             border-radius: 50%;
             background-color: $c-black;
         }
+        hr {
+            width: 95%!important;
+        }
+    }
+}
+
+.comments-modal {
+    width: 95%!important;
+    margin-top: 1.5em!important;
+    .modal-content {
+        padding: 0!important;
     }
 }

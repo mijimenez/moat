@@ -21,6 +21,12 @@ function Categories() {
       // getUser();
 
       getUserCategories();
+
+      window.addEventListener('scroll', handleScroll);
+
+      return () => {
+          window.removeEventListener('scroll', () => handleScroll);
+      };
    }, [userCategories.length])
 
 
@@ -85,32 +91,34 @@ function Categories() {
          </div>
          <div className="row">
             <div className={`sticky-wrapper${isSticky ? ' sticky' : ''}`} ref={ref}>
-               <ul class="list-group sticky-inner">
-                  <li class="list-group-item font-weight-bold">Your Categories</li>
-                  {userCategories.length > 0 ? userCategories.map(category =>
-                     <li className="list-group-item"> {category}
-                        <button className="float-right ml-2" onClick={() => removeUserCategory(category)}> X </button>
-                     </li>
-                  ) : (
-                        <li className="list-group-item" style={{ width: "200px"}}>
-                           <p className="row p-1">It looks like you don't have any categories yet.</p>
-                           <br></br>
-                           <p className="row p-1">Just click some categories that you are interested in to get started.</p>
+               <div className="list-overflow-container  sticky-inner">
+                  <ul className="list-group">
+                     <li className="list-group-item font-weight-bold">Your Categories</li>
+                     {userCategories.length > 0 ? userCategories.map(category =>
+                        <li className="list-group-item d-flex justify-content-between align-items-center text-left"
+                        key={category.id}>
+                           <p className="mr-1">{category}</p>
+                           <button className="float-right ml-2" onClick={() => removeUserCategory(category)}> X </button>
                         </li>
-                     )}
-               </ul>
+                     ) : (
+                           <li className="list-group-item">
+                              <p className="row p-1 justify-content-center">It looks like you don't have any categories yet.</p>
+                              <br></br>
+                              <p className="row p-1 justify-content-center">Just click some categories that you are interested in to get started.</p>
+                           </li>
+                        )}
+                  </ul>
+               </div>
             </div>
             <div className="trending">
                <p className="mb-3 text-center font-weight-bold">Select Categories</p>
-               <div class="categories-container">
+               <div className="categories-container">
                   {categories.sort().map(category =>
-                     <a href="#" key={category.id} className="category-boxes">
-                        <div className="card">
-                           <div className="card-body" onClick={() => handleCategorySelect(category)}>
-                              {category}
-                           </div>
+                     <div className="card category-boxes" key={category.id}>
+                        <div className="card-body" onClick={() => handleCategorySelect(category)}>
+                           {category}
                         </div>
-                     </a>
+                     </div>
                   )}
                </div>
             </div>
