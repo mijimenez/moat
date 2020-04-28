@@ -131,6 +131,17 @@ module.exports = {
          })
    },
 
+   updatePost: function (req,res) {
+
+      console.log("update post " + req)
+
+      db.User.findOneAndUpdate(
+         {
+            _id: req.body.id
+         }
+      )
+   },
+
    // removes a post
    removePost: function (req, res) {
 
