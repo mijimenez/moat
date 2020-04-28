@@ -133,6 +133,17 @@ a:hover, a:active {
   text-decoration: none;
 }
 
+.modal-dialog {
+  width: 90%;
+  max-width: 64em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.modal-dialog .modal-content {
+  padding: 1em;
+}
+
 /* ----- Sticky Footer */
 .view-modal .modal-content:not(:last-child) {
   margin-bottom: 1em;
@@ -158,5 +169,18 @@ a:hover, a:active {
   background-size: cover;
   border-radius: 50%;
   background-color: #000;
+}
+
+.view-modal .modal-content hr {
+  width: 95% !important;
+}
+
+.comments-modal {
+  width: 95% !important;
+  margin-top: 1.5em !important;
+}
+
+.comments-modal .modal-content {
+  padding: 0 !important;
 }
 /*# sourceMappingURL=style.css.map */

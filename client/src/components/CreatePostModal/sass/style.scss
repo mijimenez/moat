@@ -9,3 +9,9 @@
 .textArea {
     height: 200px!important;
 }
+
+.create-post-modal {
+    .modal-header, .modal-footer {
+        border: none;
+    }
+}
