@@ -85,7 +85,7 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
 
     function renderComments(comments) {
         return (
-            <div className="modal-dialog mb-3" style={{ width: "90%", margin: "auto" }} role="document">
+            <div className="comments-modal modal-dialog mb-3" style={{ width: "90%", margin: "auto" }} role="document">
                 {comments.map(comment => (
                     <div className="modal-content" key={comment._id}>
 
@@ -125,7 +125,7 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
 
     return (
         <div>
-            <div className="modal view-modal fade" id={`viewPostModal${modalId}`} tabindex="-1" role="dialog"
+            <div className="main-model modal view-modal fade" id={`viewPostModal${modalId}`} tabindex="-1" role="dialog"
                 aria-labelledby="viewPostModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
