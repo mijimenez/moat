@@ -112,7 +112,7 @@ function Dashboard() {
                             
                             )}
                 </div>
-                <div className="trending">
+                <div className="trending post-cards">
                     <p className="mb-3 text-center font-weight-bold">Trending</p>
                     {
                         trendingPosts.length > 0 ? trendingPosts.map(post =>

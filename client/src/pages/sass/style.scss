@@ -213,6 +213,11 @@ hr {
             @include flex-wrap(wrap);
             .category-boxes {
                 width: 50%;
+                transition: .4s all;
+                &:hover {
+                    color: $c-theme;
+                    cursor: pointer;
+                }
                 .card {
                     .card-body {
                         padding: 2em 0;
@@ -235,6 +240,11 @@ hr {
         width: 100%;
     }
 }
+
+.sticky-inner {
+    margin-top: 2.5em!important;
+}
+
 @media (min-width: $mq-small) {
     .sticky {
         position: fixed;
@@ -245,10 +255,14 @@ hr {
         position: relative;
         height: 3rem; /* We need to change this value */
       }
+
+      .sticky-inner {
+        width: 250px;
+      }
       
       .sticky .sticky-inner {
         position: fixed;
-        top: 82px;
+        top: 42px;
         // left: 0;
         // right: 0;
         z-index: 1;

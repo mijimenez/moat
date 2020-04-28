@@ -21,6 +21,12 @@ function Categories() {
       // getUser();
 
       getUserCategories();
+
+      window.addEventListener('scroll', handleScroll);
+
+      return () => {
+          window.removeEventListener('scroll', () => handleScroll);
+      };
    }, [userCategories.length])
 
 
@@ -88,7 +94,8 @@ function Categories() {
                <ul class="list-group sticky-inner">
                   <li class="list-group-item font-weight-bold">Your Categories</li>
                   {userCategories.length > 0 ? userCategories.map(category =>
-                     <li className="list-group-item"> {category}
+                     <li className="list-group-item d-flex justify-content-between align-items-center text-left">
+                        <p className="mr-1">{category}</p>
                         <button className="float-right ml-2" onClick={() => removeUserCategory(category)}> X </button>
                      </li>
                   ) : (
@@ -104,13 +111,11 @@ function Categories() {
                <p className="mb-3 text-center font-weight-bold">Select Categories</p>
                <div class="categories-container">
                   {categories.sort().map(category =>
-                     <a href="#" key={category.id} className="category-boxes">
-                        <div className="card">
-                           <div className="card-body" onClick={() => handleCategorySelect(category)}>
-                              {category}
-                           </div>
+                     <div className="card category-boxes" key={category.id}>
+                        <div className="card-body" onClick={() => handleCategorySelect(category)}>
+                           {category}
                         </div>
-                     </a>
+                     </div>
                   )}
                </div>
             </div>

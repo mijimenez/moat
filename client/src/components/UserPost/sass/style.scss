@@ -1,9 +1,6 @@
 @import '../../../Index_sass/sass/index.scss';
 
 .card {
-    &:not(:last-child) {
-        margin-bottom: 1em;
-    }
     .profile-picture {
         height: 50px;
         width: 50px;
@@ -30,5 +27,11 @@
         &:not(:last-child) {
             margin-right: 1em;
         }
+    }
+}
+
+.post-cards .card {
+    &:not(:last-child) {
+        margin-bottom: 1em;
     }
 }

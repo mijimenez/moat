@@ -48,7 +48,7 @@ function UserPost({ post, posts, getUser, getTrending }) {
     return (
         // posts.map((post, i) => (
         <Card>
-            <div className="description-w-btn d-flex justify-content-between flex-wrap mb-3">
+            <div className="post-cards description-w-btn d-flex justify-content-between flex-wrap mb-3">
                 <div className="image-title">
                     <div className="title d-flex align-items-center text-left mb-3">
                         {/* <img src={process.env.PUBLIC_URL + post.profilePicture} style={{ borderRadius: "50%" }} /> */}
