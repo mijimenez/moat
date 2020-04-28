@@ -177,7 +177,6 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
                                 value="comment"
                             />
                         </div>
-                        <hr style={{ width: "90%" }} />
                         {/* <div className="modal-dialog" role="document">
                             {commentsArray.map(comment => (
                                 <div className="modal-content" key={category.id}>
