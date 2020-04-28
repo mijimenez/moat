@@ -245,6 +245,16 @@ hr {
     margin-top: 2.5em!important;
 }
 
+.list-overflow-container {
+    max-height: 545px;
+    border: 1px #DDDDDD solid;
+    border-radius: 4px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-width: 960px;
+    margin: auto;
+  }
+
 @media (min-width: $mq-small) {
     .sticky {
         position: fixed;

@@ -90,7 +90,7 @@ function Dashboard() {
                                 <li className="list-group-item font-weight-bold">By Category</li>
                                 {userCategories.map(category => (
                                     <ListItem
-                                        // key={category.id}
+                                        key={category.id}
                                         item={category}
                                         handleCategorySelect={handleCategorySelect}
                                         categoryPicked={category}
