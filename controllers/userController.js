@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 
 
 // Defining methods for the booksController
-module.exports = {
+module.exports = { 
 
    // find all users
    allUsers: function (req, res) {
@@ -51,16 +51,18 @@ module.exports = {
    },
 
    removeUserCategory: function (req, res) {
-      
-      console.log("remove category " + req.body.categoryPreferences)
-      db.User.update(
+      const category = req.body.categoryPreferences
+      console.log(req.body)
+      console.log(req.body.username)
+      console.log("remove category " + category)
+      db.User.findOneAndUpdate(
          {
             username: req.body.username
          }
          ,
          {
             $pull: {
-               categoryPreferences: req.body.categoryPreferences
+               categoryPreferences: category
             }
          },
          {

@@ -57,7 +57,8 @@ function Categories() {
    };
 
    function removeUserCategory(category) {
-
+      
+      usernameStored = localStorage.getItem("usernameMOAT");
       console.log("x button" + category);
       API.removeUserCategory({ categoryPreferences: category, username: usernameStored })
          .then(res => {
