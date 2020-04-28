@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Tagline from "../components/Tagline";
 import Image from "../components/Image";
 import SigninForm from "../components/SigninForm";
@@ -11,9 +11,7 @@ function Signin() {
         username: "",
         password: ""
     });
-
-    // useEffect(() => {
-    // }, [])
+    const [errMsg, setErrMsg] = useState();
 
     const handleInputChange = event => {
         const { name, value } = event.target;
@@ -31,8 +29,18 @@ function Signin() {
                 localStorage.setItem("categoryMOAT", res.data.categoryPreferences);
                 if (res.status === 200) window.location.href = "/dashboard";
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                console.log(err)
+                setErrMsg("Wrong credentials");
+            });
     };
+
+    const onKeyDown = event => {
+        if (event.key === "Enter") {
+            handleBtnClick(event);
+        }
+        else return;
+    }
 
     return (
         <div id="signinPage">
@@ -49,8 +57,9 @@ function Signin() {
 
             <div className="form-side">
                 <div className="wrapper">
-                    <SigninForm userInfo={userInfo} handleInputChange={handleInputChange} />
+                    <SigninForm userInfo={userInfo} handleInputChange={handleInputChange} onKeyDown={onKeyDown} />
                     <Button className="btn btn-primary mb-3 signinBtn" value="sign in" onClick={handleBtnClick} disabled={!(userInfo.username) || !(userInfo.password)} />
+                    <div className={errMsg ? "p-2 alert alert-danger" : ""} key="errMsg" role="alert" id="errMsg">{errMsg}</div>
                     <p className="or">OR</p>
                     <p>Create your account by</p>
                     <div><a href="/signup" className="font-weight-bold signup-link">signing up here.</a></div>
