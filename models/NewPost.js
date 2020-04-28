@@ -29,7 +29,9 @@ const postSchema = new Schema({
          ref: "NewComment"
       }
    ],
-   date: {type: String}
+   prettyDate: {type: String},
+   trendingDate: {type: String},
+   preciseDate: {type:String}
 });
 
 const NewPost = mongoose.model("NewPost", postSchema);

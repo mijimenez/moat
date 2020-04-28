@@ -21,7 +21,7 @@ function Navbar() {
     return (
         <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light" style={{ display: window.location.pathname === "/" || window.location.pathname === "/signin" || window.location.pathname === "/signup" ? "none" : "block" }}>
             <div className="container">
-                <Link className="navbar-brand" to="/dashboard" onClick={() => setPath("/dashboard")}><img src={process.env.PUBLIC_URL + "/img/moat_logo_color.png"} alt="MOAT Logo" className="logo mr-2" /><h1 className="logo-name">MOAT</h1></Link>
+                <Link id="link-trigger" className="navbar-brand" to="/dashboard" onClick={() => setPath("/dashboard")}><img src={process.env.PUBLIC_URL + "/img/moat_logo_color.png"} alt="MOAT Logo" className="logo mr-2" /><h1 className="logo-name">MOAT</h1></Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -34,21 +34,21 @@ function Navbar() {
                                 </li> : ""
                         }
                         <li className="nav-item">
-                            <Link className={
+                            <Link id="link-trigger" className={
                                 window.location.pathname === "/dashboard"
                                     ? "nav-link active"
                                     : "nav-link inactive"
                             } to="/dashboard" onClick={() => setPath("/dashboard")}>Dashboard</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className={
+                            <Link id="link-trigger" className={
                                 window.location.pathname === "/categories"
                                     ? "nav-link active"
                                     : "nav-link inactive"
                             } to="/categories" onClick={() => setPath("/categories")}>Categories</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className={
+                            <Link id="link-trigger" className={
                                 window.location.pathname === "/account"
                                     ? "nav-link active"
                                     : "nav-link inactive"
