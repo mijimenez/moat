@@ -101,10 +101,10 @@ function Categories() {
                            <button className="float-right ml-2" onClick={() => removeUserCategory(category)}> X </button>
                         </li>
                      ) : (
-                           <li className="list-group-item" style={{ width: "200px"}}>
-                              <p className="row p-1">It looks like you don't have any categories yet.</p>
+                           <li className="list-group-item">
+                              <p className="row p-1 justify-content-center">It looks like you don't have any categories yet.</p>
                               <br></br>
-                              <p className="row p-1">Just click some categories that you are interested in to get started.</p>
+                              <p className="row p-1 justify-content-center">Just click some categories that you are interested in to get started.</p>
                            </li>
                         )}
                   </ul>
