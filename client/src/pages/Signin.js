@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Tagline from "../components/Tagline";
 import Image from "../components/Image";
 import SigninForm from "../components/SigninForm";
@@ -12,9 +12,6 @@ function Signin() {
         password: ""
     });
     const [errMsg, setErrMsg] = useState();
-
-    // useEffect(() => {
-    // }, [])
 
     const handleInputChange = event => {
         const { name, value } = event.target;

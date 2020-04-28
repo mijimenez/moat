@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Tagline from "../components/Tagline";
 import SigninForm from "../components/SigninForm";
 import Button from "../components/Button";
@@ -13,9 +13,7 @@ function Signup() {
         email: "",
         password: ""
     });
-
-    // useEffect(() => {
-    // }, [])
+    const [errMsg, setErrMsg] = useState();
 
     const handleInputChange = event => {
         const { name, value } = event.target;
@@ -25,22 +23,43 @@ function Signup() {
     const handleBtnClick = event => {
         event.preventDefault();
         console.log(userInfo);
+        const regEx = /.+@.+\..+/;
+        !regEx.test(userInfo.email) ? setErrMsg("Invalid email form") : setErrMsg("Password has to be at least 6 characters")
+        if (userInfo.password.length >= 6 && regEx.test(userInfo.email)) {
+            setErrMsg("");
+            signupUser(userInfo);
+        }
+
+    };
+
+    const signupUser = (userInfo) => {
+        console.log(userInfo);
         API.signupUser(userInfo)
             .then(res => {
                 console.log(res);
-                localStorage.setItem("usernameMOAT", res.data.username);
-                localStorage.setItem("profilePicMOAT", res.data.profilePicture);
-                localStorage.setItem("categoryMOAT", res.data.categoryPreferences);
-                if (res.status === 200) window.location.href = "/dashboard";
+                if (res.data.code) {
+                    setErrMsg("Sorry, already a user with the email");
+                    return;
+                }
+                else if (res.data.error) {
+                    setErrMsg("Sorry, already a user with the username");
+                    return;
+                }
+                else {
+                    localStorage.setItem("usernameMOAT", res.data.username);
+                    localStorage.setItem("profilePicMOAT", res.data.profilePicture);
+                    localStorage.setItem("categoryMOAT", res.data.categoryPreferences);
+                    window.location.href = "/dashboard";
+                }
             })
             .catch(err => console.log(err));
-    };
+    }
 
     return (
         <div id="signupPage">
             <div className="welcome-side">
                 <div className="wrapper">
-                    <img src={process.env.PUBLIC_URL + "/img/moat_logo_white.png"} alt="MOAT Logo" className="logo"/>
+                    <img src={process.env.PUBLIC_URL + "/img/moat_logo_white.png"} alt="MOAT Logo" className="logo" />
                     <div className="welcome">
                         <h1 className="logo-name">MOAT</h1>
                         <h4 className="tagline text-white">Master of All Trades</h4>
@@ -53,6 +72,7 @@ function Signup() {
                 <div className="wrapper">
                     <SigninForm userInfo={userInfo} handleInputChange={handleInputChange} />
                     <Button className="btn btn-primary mb-3 signupBtn" value="sign up" onClick={handleBtnClick} disabled={!(userInfo.username) || !(userInfo.password) || !(userInfo.email)} />
+                    <div className={errMsg ? "p-2 alert alert-danger" : ""} key="errMsg" role="alert" id="errMsg">{errMsg}</div>
                     <p className="or">OR</p>
                     <p>Already have an account?</p>
                     <div><a href="/signin" className="font-weight-bold signup-link">Sign in here.</a></div>
