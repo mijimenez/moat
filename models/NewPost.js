@@ -22,7 +22,10 @@ const postSchema = new Schema({
    postImage: {
 
    },
-   categories: [],
+   categories: {
+      type: Array,
+      required: true
+   },
    commentsArray: [
       {
          type: Schema.Types.ObjectId,
