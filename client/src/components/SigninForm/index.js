@@ -1,7 +1,7 @@
 import React from "react";
 // import "../sass/style.scss";
 
-function SigninForm({ userInfo, handleInputChange }) {
+function SigninForm({ userInfo, handleInputChange, onKeyDown }) {
     const infoReceived = Object.keys(userInfo);
     return (
         <form>
@@ -11,6 +11,7 @@ function SigninForm({ userInfo, handleInputChange }) {
                         <input
                             value={userInfo[formInfo]}
                             onChange={handleInputChange}
+                            onKeyDown={onKeyDown}
                             name={formInfo}
                             type={formInfo}
                             className="form-control"

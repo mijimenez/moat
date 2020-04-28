@@ -12,11 +12,11 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
         profilePicture: localStorage.getItem("profilePicMOAT").replace(/\\/gi, "/")
     });
     const [commentsRendered, setCommentsRendered] = useState({});
-    const [commentLength, setCommentLength] = useState();
-    
+    // const [commentLength, setCommentLength] = useState();
+
     useEffect(() => {
         console.log("viewpostmodal useEffect")
-        console.log(`commentsRendered: ${JSON.stringify(commentsRendered)}`)
+        console.log(`commentsRendered: ${JSON.stringify(commentsRendered, null, 4)}`)
         // { commentsRendered.length > 0 ? renderComments(commentsRendered) : renderComments(commentsArray) }
         // { commentsRendered.length > 0 ? setCommentLength(commentsRendered.length) : setCommentLength(commentsArray.length) }
     }, [commentsRendered.length >= 0])
@@ -30,11 +30,14 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
         console.log(post);
         console.log(formObject);
         // console.log(event.target.id);
-        {
-            getUser ? getUser() : getTrending();
-        }
-        // createComment();
     };
+
+    const onKeyDown = event => {
+        if (event.key === "Enter") {
+            createComment(event);
+        }
+        else return;
+    }
 
     const createComment = (event) => {
         console.log("when click create comment -> post_id: " + post._id + " event.target.id " + event.target.id)
@@ -58,7 +61,8 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
             .then(res => {
                 console.log(`rerender comments by postId (${postId}): ${JSON.stringify(res.data.commentsArray)}`);
                 setCommentsRendered(res.data.commentsArray);
-                setCommentLength(res.data.commentsArray.length);
+                // setCommentLength(res.data.commentsArray.length);
+                getUser ? getUser() : getTrending();
             })
     }
 
@@ -91,7 +95,7 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
 
                         <div className="modal-body">
                             <div className="d-flex align-items-center mb-3">
-                                <div className="profile-picture ml-0 mr-2" style={{ backgroundImage: `url(${comment.profilePicture})`}}></div>
+                                <div className="profile-picture ml-0 mr-2" style={{ backgroundImage: `url(${comment.profilePicture})` }}></div>
                                 <p className="modal-title" id="viewPostModalLabel">Posted by        {comment.username}
                                 </p>
                             </div>
@@ -131,7 +135,7 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
                     <div className="modal-content">
                         <div className="modal-header">
                             <div className="d-flex align-items-center">
-                                <div className="profile-picture mr-2" style={{ backgroundImage: `url(${post.profilePicture.replace(/\\/gi, "/")})`}}></div>
+                                <div className="profile-picture mr-2" style={{ backgroundImage: `url(${post.profilePicture.replace(/\\/gi, "/")})` }}></div>
                                 <p className="modal-title" id="viewPostModalLabel">Posted by        {post.username}
                                 </p>
                             </div>
@@ -159,6 +163,7 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
                             {commentsRendered.length >= 0 ? renderNumberOfComments(commentsRendered.length) : renderNumberOfComments(commentsArray.length)}
                             <TextArea id="commentBody" rows="4" cols="50"
                                 onChange={handleInputChange}
+                                onKeyDown={onKeyDown}
                                 value={formObject.commentBody}
                                 name="commentBody"
                                 placeholder=""
@@ -172,7 +177,7 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
                                 value="comment"
                             />
                         </div>
-                        <hr style={{ width: "90%" }}/>
+                        <hr style={{ width: "90%" }} />
                         {/* <div className="modal-dialog" role="document">
                             {commentsArray.map(comment => (
                                 <div className="modal-content">

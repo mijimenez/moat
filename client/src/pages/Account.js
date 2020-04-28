@@ -48,7 +48,7 @@ function Account() {
             .then(() => {
                 getPostsByUser()
             })
-            .catch(err => console.log(err));
+            .catch(err => console.log("getUser error: " + err));
     }
 
     function getPostsByUser() {
@@ -57,7 +57,7 @@ function Account() {
                 console.log("alluserpost " + res.data);
                 setPosts(res.data);
             })
-            .catch(err => console.log(err));
+            .catch(err => console.log("getPostsByUser error: " +  err));
     }
 
     const handleInputChange = event => {
@@ -148,7 +148,7 @@ function Account() {
                             <p className="mb-3 text-center font-weight-bold">Update Information</p>
                             <SigninForm userInfo={userInfo} handleInputChange={handleInputChange} />
                             <Button className="btn btn-primary updateBtn" value="save" onClick={handleBtnClick} disabled={!(userInfo.username) || !(userInfo.email)} />
-                            <div className="errMsg" key="errMsg">{errMsg}</div>
+                            <div className={errMsg ? "p-2 my-3 alert alert-danger" : ""} key="errMsg" role="alert" id="errMsg">{errMsg}</div>
                         </div>
                     </div>
                 </div>
