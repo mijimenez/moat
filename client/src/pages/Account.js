@@ -33,7 +33,7 @@ function Account() {
         console.log("usernameStored: " + usernameStored)
         API.getUser(usernameStored)
             .then(res => {
-                console.log("get user" + JSON.stringify(res.data, null,4));
+                console.log("get user" + JSON.stringify(res.data, null, 4));
                 setUserPosts({ userId: res.data._id, profilePic: res.data.profilePicture, createdPostsIds: [res.data.createdPosts], createdCommentsIds: [res.data.createdComments] });
                 setUserInfo(
                     {
@@ -111,7 +111,7 @@ function Account() {
 
         API.uploadPhoto(formdata)
             .then(res => {
-                console.log( `--------------- \n  here is res  \n ------------ ${JSON.stringify(res.data, null,4)} \n --------------` )
+                console.log(`--------------- \n  here is res  \n ------------ ${JSON.stringify(res.data, null, 4)} \n --------------`)
                 console.log("Successfully uploaded profile pic!");
                 console.log("picture: " + JSON.stringify(res.data.profilePicture));
                 localStorage.setItem("profilePicMOAT", res.data.profilePicture.replace(/\\/gi, "/"));
@@ -126,10 +126,10 @@ function Account() {
                 <div className="container">
                     <div className="row">
                         <div className="user-image" style={{}}>
-                            
-                            <div className="profile-picture" style={{ backgroundImage: `url(${userPosts.profilePic.replace(/\\/gi, "/")})`}}>
+
+                            <div className="profile-picture" style={{ backgroundImage: `url(${userPosts.profilePic.replace(/\\/gi, "/")})` }}>
                             </div>
-                            <p className="font-weight-bold my-3">Upload Profile Picture</p>
+                            <p className="font-weight-bold my-3 text-center">Upload Profile Picture</p>
 
                             <div class="custom-file">
                                 <input type="file" className="custom-file-input mb-3" id="customFile" onChange={handleFile} />
@@ -153,6 +153,8 @@ function Account() {
                     </div>
                 </div>
             </div>
+
+
 
             <div className="container yourPosts">
                 <div className="row">
