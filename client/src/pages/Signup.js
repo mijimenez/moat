@@ -13,6 +13,7 @@ function Signup() {
         email: "",
         password: ""
     });
+    const formInfo = ["firstName", "lastName", "username", "email", "password"];
     const [errMsg, setErrMsg] = useState();
 
     const handleInputChange = event => {
@@ -46,10 +47,11 @@ function Signup() {
                     return;
                 }
                 else {
+                    setErrMsg("Successfully created an account");
                     localStorage.setItem("usernameMOAT", res.data.username);
                     localStorage.setItem("profilePicMOAT", res.data.profilePicture);
                     localStorage.setItem("categoryMOAT", res.data.categoryPreferences);
-                    window.location.href = "/dashboard";
+                    window.location.href = "/signin";
                 }
             })
             .catch(err => console.log(err));
@@ -70,7 +72,7 @@ function Signup() {
 
             <div className="form-side">
                 <div className="wrapper">
-                    <SigninForm userInfo={userInfo} handleInputChange={handleInputChange} />
+                    <SigninForm userInfo={userInfo} formInfo={formInfo} handleInputChange={handleInputChange} />
                     <Button className="btn btn-primary mb-3 signupBtn" value="sign up" onClick={handleBtnClick} disabled={!(userInfo.username) || !(userInfo.password) || !(userInfo.email)} />
                     <div className={errMsg ? "p-2 alert alert-danger" : ""} key="errMsg" role="alert" id="errMsg">{errMsg}</div>
                     <p className="or">OR</p>
