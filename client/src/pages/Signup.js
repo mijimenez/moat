@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Tagline from "../components/Tagline";
 import SigninForm from "../components/SigninForm";
 import Button from "../components/Button";
 import API from "../utils/API";

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 // import Tagline from "../components/Tagline";
 // import Image from "../components/Image";
 import SigninForm from "../components/SigninForm";
@@ -20,7 +20,6 @@ function Account() {
         password: ""
     });
     const formInfo = ["firstName", "lastName", "username", "email", "password"];
-    const uploadedImages = useRef([]);
     const [userPosts, setUserPosts] = useState({
         userId: "",
         profilePic: "",

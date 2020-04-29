@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import API from "../../utils/API";
-import CreatePostModal from "../CreatePostModal";
 import "./sass/style.scss";
 
 function Navbar() {
@@ -57,9 +56,6 @@ function Navbar() {
                         <li className="nav-item">
                             <Link className="nav-link" to="/" onClick={() => { return setPath("/"), logout() }}>Logout</Link>
                         </li>
-                        {/* <li className="nav-item">
-                            <CreatePostModal />
-                        </li> */}
                     </ul>
                 </div>
             </div>
