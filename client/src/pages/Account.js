@@ -129,7 +129,7 @@ function Account() {
 
                             <div className="profile-picture" style={{ backgroundImage: `url(${userPosts.profilePic.replace(/\\/gi, "/")})` }}>
                             </div>
-                            <p className="font-weight-bold my-3">Upload Profile Picture</p>
+                            <p className="font-weight-bold my-3 text-center">Upload Profile Picture</p>
 
                             <div className="custom-file">
                                 <input type="file" className="custom-file-input mb-3" id="customFile" onChange={handleFile} />
@@ -153,6 +153,8 @@ function Account() {
                     </div>
                 </div>
             </div>
+
+
 
             <div className="container yourPosts">
                 <div className="row">

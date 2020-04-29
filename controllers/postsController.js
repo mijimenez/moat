@@ -131,6 +131,44 @@ module.exports = {
          })
    },
 
+   updatePost: function (req,res) {
+
+      var d = new Date();
+      const time = d.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+      var date = d.getDate();
+      var month = d.getMonth() + 1; // Since getMonth() returns month from 0-11 not 1-12
+      var year = d.getFullYear();
+
+      const editTime = month + "/" + date + "/" + year + "  " + time
+
+      console.log("update post " + req);
+
+      db.User.findOneAndUpdate(
+         {
+            _id: req.body.id
+         },
+         {
+            postBody: req.body.postBody
+         },
+         {
+            useFindAndModify: false
+         }
+      ).then((updatedPost) => {
+
+         console.log(updatedPost)
+         res.json(updatedPost);
+         return db.findOneAndUpdate(
+            {
+               _id: updatedPost._id
+            },
+            {
+               editTime: editTime,
+               edited: 1
+            }
+         )
+      })
+   },
+
    // removes a post
    removePost: function (req, res) {
 
