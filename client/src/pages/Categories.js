@@ -1,5 +1,4 @@
-import React, { Fragment, useEffect, useRef, useState } from 'react';
-import Tagline from "../components/Tagline";
+import React, { useEffect, useRef, useState } from 'react';
 import API from "../utils/API";
 import "./sass/style.scss";
 import categories from "../utils/categories.json"

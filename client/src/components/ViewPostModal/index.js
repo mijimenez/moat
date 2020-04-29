@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 // import API from "../../utils/API";
 import { TextArea } from "../PostForm";
 import Button from "../Button";
-import Image from "../Image";
 import "./sass/style.scss";
 import API from "../../utils/API";
 
@@ -12,13 +11,11 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
         profilePicture: localStorage.getItem("profilePicMOAT").replace(/\\/gi, "/")
     });
     const [commentsRendered, setCommentsRendered] = useState({});
-    // const [commentLength, setCommentLength] = useState();
+
 
     useEffect(() => {
         console.log("viewpostmodal useEffect")
         console.log(`commentsRendered: ${JSON.stringify(commentsRendered, null, 4)}`)
-        // { commentsRendered.length > 0 ? renderComments(commentsRendered) : renderComments(commentsArray) }
-        // { commentsRendered.length > 0 ? setCommentLength(commentsRendered.length) : setCommentLength(commentsArray.length) }
     }, [commentsRendered.length >= 0])
     const handleInputChange = event => {
         const { name, value } = event.target;

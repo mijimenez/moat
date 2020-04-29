@@ -1,6 +1,5 @@
 import React from "react";
-import Button from "../Button";
-// import "./sass/style.scss";
+
 
 function Card({ children, props }) {
     return (

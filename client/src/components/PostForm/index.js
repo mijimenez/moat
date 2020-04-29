@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../Button";
 import "./sass/style.scss";
 import API from "../../utils/API";
@@ -45,9 +45,9 @@ export function Select(props) {
    console.log(userCategories)
   return (
     <div className="form-group">
-      <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Categories</label>
-      <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" {...props} >
-        <option selected disabled>Choose...</option>
+      <label className="my-1 mr-2" htmlFor="inlineFormCustomSelectPref">Categories</label>
+      <select className="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" {...props} >
+        <option defaultValue disabled>Choose...</option>
         {userCategories.length > 0 ? userCategories.map(category => 
           <option value={category}>{category}</option>
         ) : (<option disabled>Go to Categories page to start posting.</option>)}
