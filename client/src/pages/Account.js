@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 // import Tagline from "../components/Tagline";
 // import Image from "../components/Image";
 import SigninForm from "../components/SigninForm";
@@ -13,7 +13,6 @@ import API from "../utils/API";
 function Account() {
     const [file, setFile] = useState({ fileName: null });
     const [userInfo, setUserInfo] = useState({});
-    const uploadedImages = useRef([]);
     const [userPosts, setUserPosts] = useState({
         userId: "",
         profilePic: "",

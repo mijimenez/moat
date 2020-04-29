@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Tagline from "../components/Tagline";
-import Image from "../components/Image";
 import SigninForm from "../components/SigninForm";
 import Button from "../components/Button";
 import API from "../utils/API";
