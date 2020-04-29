@@ -45,7 +45,7 @@ export function Select(props) {
    console.log(userCategories)
   return (
     <div className="form-group">
-      <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Categories</label>
+      <label class="my-1 mr-2" htmlFor="inlineFormCustomSelectPref">Categories</label>
       <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" {...props} >
         <option selected disabled>Choose...</option>
         {userCategories.length > 0 ? userCategories.map(category => 
