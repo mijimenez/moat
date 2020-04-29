@@ -12,7 +12,14 @@ import API from "../utils/API";
 
 function Account() {
     const [file, setFile] = useState({ fileName: null });
-    const [userInfo, setUserInfo] = useState({});
+    const [userInfo, setUserInfo] = useState({
+        firstName: "",
+        lastName: "",
+        username: "",
+        email: "",
+        password: ""
+    });
+    const formInfo = ["firstName", "lastName", "username", "email", "password"];
     const uploadedImages = useRef([]);
     const [userPosts, setUserPosts] = useState({
         userId: "",
@@ -146,7 +153,7 @@ function Account() {
 
                         <div className="col user-info">
                             <p className="mb-3 text-center font-weight-bold">Update Information</p>
-                            <SigninForm userInfo={userInfo} handleInputChange={handleInputChange} />
+                            <SigninForm userInfo={userInfo} formInfo={formInfo} handleInputChange={handleInputChange} />
                             <Button className="btn btn-primary updateBtn" value="save" onClick={handleBtnClick} disabled={!(userInfo.username) || !(userInfo.email)} />
                             <div className={errMsg ? "p-2 my-3 alert alert-danger" : ""} key="errMsg" role="alert" id="errMsg">{errMsg}</div>
                         </div>
