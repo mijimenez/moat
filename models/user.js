@@ -31,7 +31,7 @@ const userSchema = new Schema({
    },
    profilePicture: {
       type: String,
-      default: "../img/NoImageFound.png"
+      default: "../img/moat_logo_color.png"
    },
    categoryPreferences: {
       type: []
