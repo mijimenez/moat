@@ -91,7 +91,7 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
         return (
             <div className="comments-modal modal-dialog mb-3" style={{ width: "90%", margin: "auto" }} role="document">
                 {comments.map(comment => (
-                    <div className="modal-content" key={comment.id}>
+                    <div className="modal-content" key={comment._id}>
 
                         <div className="modal-body">
                             <div className="d-flex align-items-center mb-3">
@@ -129,7 +129,7 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
 
     return (
         <div>
-            <div className="main-model modal view-modal fade" id={`viewPostModal${modalId}`} tabindex="-1" role="dialog"
+            <div className="main-model modal view-modal fade" id={`viewPostModal${modalId}`} tabIndex="-1" role="dialog"
                 aria-labelledby="viewPostModalLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
@@ -152,7 +152,7 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
                             <div className="tags-w-num  mb-3 d-flex justify-content-between align-items-center">
                                 <div className="tags d-flex">
                                     {post.categories.map(category => (
-                                        <h6 className="tag" key={category.id}>{category}</h6>
+                                        <h6 className="tag" key={category}>{category}</h6>
                                     ))}
                                 </div>
                             </div>

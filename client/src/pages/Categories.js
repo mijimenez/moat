@@ -96,7 +96,7 @@ function Categories() {
                      <li className="list-group-item font-weight-bold">Your Categories</li>
                      {userCategories.length > 0 ? userCategories.map(category =>
                         <li className="list-group-item d-flex justify-content-between align-items-center text-left"
-                        key={category.id}>
+                        key={category}>
                            <p className="mr-1">{category}</p>
                            <button className="float-right ml-2" onClick={() => removeUserCategory(category)}> X </button>
                         </li>
@@ -114,7 +114,7 @@ function Categories() {
                <p className="mb-3 text-center font-weight-bold">Select Categories</p>
                <div className="categories-container">
                   {categories.sort().map(category =>
-                     <div className="card category-boxes" key={category.id}>
+                     <div className="card category-boxes" key={category} id={category}>
                         <div className="card-body" onClick={() => handleCategorySelect(category)}>
                            {category}
                         </div>
