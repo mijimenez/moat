@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
-// import Tagline from "../components/Tagline";
-// import Image from "../components/Image";
 import SigninForm from "../components/SigninForm";
 import Button from "../components/Button";
 import Card from "../components/Card";
 import "./sass/style.scss";
 import UserPost from "../components/UserPost";
 import CreatePostModal from "../components/CreatePostModal";
-// import ViewPostModal from "../components/ViewPostModal";
 import API from "../utils/API";
 
 function Account() {
