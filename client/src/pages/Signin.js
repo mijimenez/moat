@@ -11,6 +11,7 @@ function Signin() {
         username: "",
         password: ""
     });
+    const formInfo = ["username", "password"];
     const [errMsg, setErrMsg] = useState();
 
     const handleInputChange = event => {
@@ -57,7 +58,7 @@ function Signin() {
 
             <div className="form-side">
                 <div className="wrapper">
-                    <SigninForm userInfo={userInfo} handleInputChange={handleInputChange} onKeyDown={onKeyDown} />
+                    <SigninForm userInfo={userInfo} formInfo={formInfo} handleInputChange={handleInputChange} onKeyDown={onKeyDown} />
                     <Button className="btn btn-primary mb-3 signinBtn" value="sign in" onClick={handleBtnClick} disabled={!(userInfo.username) || !(userInfo.password)} />
                     <div className={errMsg ? "p-2 alert alert-danger" : ""} key="errMsg" role="alert" id="errMsg">{errMsg}</div>
                     <p className="or">OR</p>
