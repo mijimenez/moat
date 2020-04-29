@@ -41,7 +41,7 @@ app.use(userRoutes);
 // Send every other request to the React app
 // Define any API routes before this runs
 app.get("*", (req, res) => {
-   res.send("catch all route being hit");
+   // res.send("catch all route being hit");
    res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
