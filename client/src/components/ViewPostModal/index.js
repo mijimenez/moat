@@ -142,7 +142,6 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
                         </div>
                         <div className="modal-body">
                             <div className="titles mb-3">
-                                {/* <h3 className="title text-left mb-3">postID for this post: {post._id}</h3> */}
                                 <h3 className="title text-left mb-3">{post.postTitle}</h3>
                                 <p className="description text-left">{post.postBody}</p>
                             </div>
@@ -153,10 +152,6 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
                                     ))}
                                 </div>
                             </div>
-                            {/* <p className="commentsNum  mb-3 font-weight-bold description text-left">
-                                {commentLength > 0 ? commentLength : commentsArray.length} Comments
-                            </p> */}
-                            {/* {commentLength >= 0 ? renderNumberOfComments(commentLength) : renderNumberOfComments(commentsArray.length)} */}
                             {commentsRendered.length >= 0 ? renderNumberOfComments(commentsRendered.length) : renderNumberOfComments(commentsArray.length)}
                             <TextArea id="commentBody" rows="4" cols="50"
                                 onChange={handleInputChange}
@@ -174,28 +169,6 @@ function ViewPostModal({ post, modalId, commentsArray, getUser, getTrending }) {
                                 value="comment"
                             />
                         </div>
-                        {/* <div className="modal-dialog" role="document">
-                            {commentsArray.map(comment => (
-                                <div className="modal-content" key={category.id}>
-
-                                    <div className="modal-body">
-                                        <img src={commentsArray.profilePicture} style={{ borderRadius: "50%" }} />
-                                        <p className="description text-left">{comment.username}</p>
-                                        <p className="description text-left">{comment.commentBody}</p>
-                                    </div>
-                                    <div className="modal-footer">
-                                        {localStorage.getItem("usernameMOAT") === comment.username ?
-                                            <Button
-                                                id={comment._id}
-                                                onClick={deleteComment}
-                                                value="delete"
-                                            /> : ""
-                                        }
-                                    </div>
-
-                                </div>
-                            ))}
-                        </div> */}
                         {commentsRendered.length >= 0 ? renderComments(commentsRendered) : renderComments(commentsArray)}
                     </div>
                 </div>
