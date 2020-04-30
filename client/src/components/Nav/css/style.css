@@ -133,6 +133,17 @@ a:hover, a:active {
   text-decoration: none;
 }
 
+.modal-dialog {
+  width: 90%;
+  max-width: 64em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.modal-dialog .modal-content {
+  padding: 1em;
+}
+
 /* ----- Sticky Footer */
 .navbar {
   background-color: #fff !important;
@@ -187,7 +198,9 @@ a:hover, a:active {
   color: #1f93ff !important;
 }
 
-.navbar-collapse ul li:not(:last-child) {
-  margin-right: .5em;
+@media (min-width: 991px) {
+  .navbar-collapse ul li:not(:last-child) {
+    margin-right: .5em;
+  }
 }
 /*# sourceMappingURL=style.css.map */
