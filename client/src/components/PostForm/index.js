@@ -47,7 +47,7 @@ export function Select(props) {
     <div className="form-group">
       <label className="my-1 mr-2" htmlFor="inlineFormCustomSelectPref">Categories</label>
       <select className="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" {...props} >
-        <option defaultValue disabled>Choose...</option>
+        <option value="Choose" disabled>Choose...</option>
         {userCategories.length > 0 ? userCategories.map(category => 
           <option value={category}>{category}</option>
         ) : (<option disabled>Go to Categories page to start posting.</option>)}
