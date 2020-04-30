@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 
 
 // Defining methods for the booksController
-module.exports = { 
+module.exports = {
 
    // find all users
    allUsers: function (req, res) {
@@ -169,68 +169,64 @@ module.exports = {
    },
 
    uploadPhoto: function (req, res) {
-      console.log("Received profile pic image");
-      console.log("upload req " + req.user._id);
       const id = req.user._id
-      console.log(id)
+
 
       var form = new formidable.IncomingForm();
       // Deployed in production is expecting to look at build folder. If not production : Dev is looking at public folder
       form.uploadDir = process.env.NODE_ENV === "production" ? "./client/build/uploaded" : "./client/public/uploaded"; // set my directory where to save uploaded files
-      
+
       form.keepExtensions = true;
-      
+
       form.parse(req, function (err, fields, files) {
          console.log(files);
-         console.log(`\n File Name Uploaded: ${files.filetoupload.name}\n-------------------------
-         \nFile Name In Uploaded Directory: \n${files.filetoupload.path.replace(/\\/gi, "/")}\n--------------------------`);
-         const newPicture = files.filetoupload.path.replace(/\\/gi, "/")
-         console.log(newPicture)
 
-         if (id === "") {
+         if (files.filetoupload === "" || files.filetoupload == undefined || id === "" || id == undefined) {
             return
          }
          else {
-         console.log("upload1 " + id);
-         db.User
-            .findByIdAndUpdate(
-               {
-                  _id: id
-               },
-               {
-                  $set:
+            const newPicture = files.filetoupload.path.replace(/\\/gi, "/")
+            console.log(newPicture)
+            console.log("upload1 " + id);
+            db.User
+               .findByIdAndUpdate(
                   {
-                     profilePicture: newPicture
-                  }
-               },
-               { new: true })
-            .then(dbModel => {
-               res.json(dbModel);
-               console.log("upload 2" + dbModel)
-
-               return db.NewPost.updateMany(
-                  {
-                     username: dbModel.username
+                     _id: id
                   },
                   {
-                     profilePicture: newPicture
-                  }
-               )
-                  .then(test => {
-                     console.log("upload3" + test)
-                     return db.NewComment.updateMany(
-                        {
-                           username: dbModel.username
-                        },
-                        {
-                           profilePicture: newPicture
-                        }
-                     )
-                  })
-            })
-            .catch(err => {
-               res.status(422).json(err)
-            });
+                     $set:
+                     {
+                        profilePicture: newPicture
+                     }
+                  },
+                  { new: true })
+               .then(dbModel => {
+                  res.json(dbModel);
+                  console.log("upload 2" + dbModel)
+
+                  return db.NewPost.updateMany(
+                     {
+                        username: dbModel.username
+                     },
+                     {
+                        profilePicture: newPicture
+                     }
+                  )
+                     .then(test => {
+                        console.log("upload3" + test)
+                        return db.NewComment.updateMany(
+                           {
+                              username: dbModel.username
+                           },
+                           {
+                              profilePicture: newPicture
+                           }
+                        )
+                     })
+               })
+               .catch(err => {
+                  res.status(422).json(err)
+               });
          }
       });
    }
