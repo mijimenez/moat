@@ -37,9 +37,11 @@
             font-weight: bold;
             color: $c-theme!important;
         }
-        ul {
-            li:not(:last-child) {
-                margin-right: .5em;
+        @media (min-width: 991px) {
+            ul {
+                li:not(:last-child) {
+                    margin-right: .5em;
+                }
             }
         }
     }
