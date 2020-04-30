@@ -34,7 +34,7 @@ module.exports = {
    createPost: function (req, res) {
 
       var d = new Date();
-      const time = d.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+      const time = d.toLocaleString('en-US', { timeZone: 'America/New_York', hour: 'numeric', minute: 'numeric', hour12: true })
       var seconds = d.getSeconds();
       var minute = ((d.getMinutes() < 10 ? '0' : '') + d.getMinutes()); // if minutes less than 10 add a 0 in front
       var hour = d.getHours();
