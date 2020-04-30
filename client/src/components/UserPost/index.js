@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Card from "../Card";
 import Button from "../Button";
 import ViewPostModal from "../ViewPostModal";
-// import Image from "../Image";
 import "./sass/style.scss";
 import API from "../../utils/API";
 
@@ -46,7 +45,7 @@ function UserPost({ post, posts, getUser, getTrending }) {
     }
 
     return (
-        // posts.map((post, i) => (
+
         <Card>
             <div className="post-cards description-w-btn d-flex justify-content-between flex-wrap mb-3">
                 <div className="image-title">
@@ -56,7 +55,6 @@ function UserPost({ post, posts, getUser, getTrending }) {
                         <div className="name-date">
                             <p className="username">{post.username}</p>
                             <p className="date">{+ " " +  post.prettyDate}</p>
-                            {/* <p>{post.username + " Pretty Date " +  post.prettyDate + " trending by hour " + post.trendingDate + " account view by second " + post.preciseDate}</p> */}
                         </div>
                     </div>
                 </div>
@@ -68,7 +66,6 @@ function UserPost({ post, posts, getUser, getTrending }) {
                         onClick={handleBtnClick}
                     />
                     {sendToModal()}
-                    {/* <ViewPostModal modalId={post._id} post={post} commentsArray={commentsArray} getUser={getUser} getTrending={getTrending} /> */}
                     {getUser ?
                         <Button className="deleteBtn align-self-start ml-3"
                             id={post._id} value="delete" onClick={() => deletePost(post._id)}
@@ -88,7 +85,6 @@ function UserPost({ post, posts, getUser, getTrending }) {
                 <p className="commentsNum font-weight-bold">{post.commentsArray.length} Comments</p>
             </div>
         </Card>
-        // ))
     );
 }
 

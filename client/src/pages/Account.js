@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
+
 import SigninForm from "../components/SigninForm";
 import Button from "../components/Button";
 import Card from "../components/Card";
 import "./sass/style.scss";
 import UserPost from "../components/UserPost";
 import CreatePostModal from "../components/CreatePostModal";
+
+
 import API from "../utils/API";
 
 function Account() {
@@ -57,7 +60,6 @@ function Account() {
     function getPostsByUser() {
         API.getAllUserPosts(usernameStored)
             .then(res => {
-                console.log("alluserpost " + res.data);
                 setPosts(res.data);
             })
             .catch(err => console.log("getPostsByUser error: " +  err));
@@ -104,13 +106,14 @@ function Account() {
             file: file
         })
     }
+    
 
     const handleUpload = (e) => {
         console.log(file.file);
+
         let fileObject = file.file;
         let formdata = new FormData();
         formdata.append("filetoupload", fileObject);
-        console.log(formdata)
 
         API.uploadPhoto(formdata)
             .then(res => {
