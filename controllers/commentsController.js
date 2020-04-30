@@ -1,7 +1,5 @@
 const db = require("../models");
-const router = require("express").Router();
-const express = require("express");
-const passport = require("../passport");
+
 
 
 module.exports = {

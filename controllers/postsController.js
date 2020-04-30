@@ -131,6 +131,7 @@ module.exports = {
          })
    },
 
+   // for future iterations
    updatePost: function (req,res) {
 
       var d = new Date();
