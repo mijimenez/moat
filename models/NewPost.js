@@ -34,12 +34,7 @@ const postSchema = new Schema({
    ],
    prettyDate: {type: String},
    trendingDate: {type: String},
-   preciseDate: {type:String},
-   editTime: {type: String},
-   edited: { 
-      type: Number,
-      default: 0
-   }
+   preciseDate: {type:String}
 });
 
 const NewPost = mongoose.model("NewPost", postSchema);

@@ -11,6 +11,7 @@ module.exports = {
                      username: 1,
                      profilePicture: 1,
                      postTitle: 1,
+                     postBody: 1,
                      postImage: 1,
                      categories: 1,
                      commentsArray: 1,
@@ -109,6 +110,7 @@ module.exports = {
                   username: 1,
                   profilePicture: 1,
                   postTitle: 1,
+                  postBody: 1,
                   postImage: 1,
                   categories: 1,
                   commentsArray: 1,
@@ -131,6 +133,7 @@ module.exports = {
          })
    },
 
+   // for future iterations
    updatePost: function (req,res) {
 
       var d = new Date();

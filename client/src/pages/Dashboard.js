@@ -25,7 +25,6 @@ function Dashboard() {
     useEffect(() => {
         getTrending();
         getUserCategories()
-        // console.log("Dashboard useEffect")
 
         window.addEventListener('scroll', handleScroll);
 
@@ -47,16 +46,15 @@ function Dashboard() {
     function getUserCategories() {
         usernameStored = localStorage.getItem("usernameMOAT");
         console.log("usernameStored: " + usernameStored)
-        console.log(usernameStored)
         API.getUserCategories(usernameStored)
             .then(res => {
-                console.log(res.data)
+
                 setCategories(res.data)
-                console.log(userCategories)
+
             })
             .catch(err => console.log(err));
     }
-    console.log(userCategories)
+
 
     function filler() {
         console.log("test")

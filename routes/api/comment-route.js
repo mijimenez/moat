@@ -15,7 +15,6 @@ router.route("/:id")
    .post(commentController.createComment)
    .delete(commentController.removeComment)
    .get(commentController.findCommentByPost)
-   // create route to get all comments by a user for user profile
 
 
 
